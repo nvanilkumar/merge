@@ -1,0 +1,104 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 7 Nov, 2016, 1:26:54 PM
+    Author     : Rukhumuddin
+*/
+
+/* globel styles */
+body{
+    font-weight: 500;
+    background-color:#e9e9e9;
+    color:#000;
+    margin-top: 100px;
+}
+.no-paddding{
+    padding:0px;
+}
+label{
+    font-weight:500;
+}
+option{
+    font-size:1.4rem;
+}
+.page-container{
+    background-color:#FFFFFF;
+    padding:30px 20px 30px 20px;
+    height:auto;
+    margin-bottom:30px;   
+}
+
+/* login styles */
+.login-page-form{
+    margin-top:50px;
+    vertical-align:center;
+    position: relative;
+    background: #ffffff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    -webkit-transition: .3s ease;
+    transition: .3s ease;
+    padding: 0px 15px;
+}
+.login-page-form h3{
+    color: #00467e ;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-left: 4px solid #00467e;
+    padding: 4px 0px 8px 0px;
+    margin-top: 50px;
+    margin-left:15px;
+    margin-right:15px;
+}
+.loginInputs{
+    height:45px;
+}
+.logInBtn{
+    width: 100%;
+    border-radius: 2px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    border: 1px solid #4CAF50;
+}
+@media(min-width:768px) {
+    body {
+        margin-top: 50px;
+    }
+}
+
+#wrapper {
+    padding-left: 0;
+}
+
+#page-wrapper {
+    width: 100%;
+    padding: 0;	
+}
+
+.huge {
+    font-size: 50px;
+    line-height: normal;
+}
+.com-logo{
+    width: 100px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: -35px;
+    text-align: center;
+}
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 225px;
+    }
+
+    #page-wrapper {
+        padding: 10px;
+    }
+}

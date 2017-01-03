@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "name": "Time Sheet",
+    "description": "Add todays time sheet information",
+    "version": "0.2",
+    "background": {
+        "scripts": ["background.js","codebase/dhtmlxscheduler.js","codebase/dhtmlxscheduler_minical.js"],
+        "persistent": false
+    },
+    "browser_action": {
+        "default_icon": "images/timer_selected.png",
+        "default_popup": "index.html"
+    },
+     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "permissions": [
+        "notifications",
+        "tabs",
+        "activeTab",
+        "http://*/*",
+        "https://*/*"
+    ]
+
+
+
+
+
+}

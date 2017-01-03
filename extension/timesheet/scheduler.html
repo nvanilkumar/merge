@@ -1,0 +1,59 @@
+<!doctype html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Mini calendar in the scheduler header</title>
+     <script src="jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="codebase/dhtmlxscheduler.js"></script>
+    <link rel="stylesheet" href="codebase/dhtmlxscheduler.css" type="text/css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+    <script type="text/javascript" src="codebase/dhtmlxscheduler_minical.js"></script>
+
+    <script src="scheduler.js"></script>
+
+    <style>
+        body { 
+            min-width: 420px; 
+            overflow-x: hidden; 
+            font-family: Arial, sans-serif; 
+            font-size: 12px; 
+        }
+        input, textarea { 
+            width: 420px; 
+        }
+        input#save { 
+            font-weight: bold; width: auto; 
+        }
+        
+    </style>
+
+</head>
+
+
+
+
+<body >
+    <div class="container">
+        <div id="scheduler_here" class="dhx_cal_container" style='width:100%; min-height:600px; border:1px solid #E0E0E0; margin-top:30px;'>
+            <div class="dhx_cal_navline">
+               <div class="dropdown" style="padding-left:50px;">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Select
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                              <li><a class="today-v" href="#">Today</a></li>
+                              <li><a class="prev-day" href="#">Previous Day</a></li>
+                            </ul>
+                          </div> 
+<!--                <div class="dhx_cal_prev_button">&nbsp;</div>
+                <div class="dhx_cal_next_button">&nbsp;</div>-->
+<!--                <div class="dhx_cal_today_button"></div>-->
+                <div class="dhx_cal_date" style="text-align:center; padding-left:100px; font-size:18px;"></div>         
+<!--                <div class="dhx_cal_tab" name="day_tab" style="right:204px;"></div>-->
+            </div>
+            <div class="dhx_cal_header">
+            </div>
+            <div class="dhx_cal_data">
+            </div>
+        </div>
+    </div>   
+    <script type="text/javascript" src="bootstrap.min.js"></script>
+</body>
