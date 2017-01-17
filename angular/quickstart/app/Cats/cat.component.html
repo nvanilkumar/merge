@@ -1,0 +1,26 @@
+<h2>Cats</h2>
+<p>List of cats</p>
+<ul class="demo-list-icon mdl-list">
+    <li class="mdl-list__item" *ngFor="let cat of cats | async">
+        <span class="mdl-list__item-primary-content">
+            <i class="material-icons mdl-list__item-icon">pets</i>
+            <a [routerLink]="['/cats', cat.id.$t]">{{cat.name.$t}}</a>
+        </span>
+    </li>
+</ul>
+
+
+<div>
+
+    <input #newHero
+        (keyup.enter)="addHero(newHero.value)"
+        (blur)="addHero(newHero.value); newHero.value='' ">
+    
+    <button (click)=addHero(newHero.value)>Add</button>
+    
+    <ul><li *ngFor="let hero of heroes">{{hero}}</li></ul>
+    
+    
+    <input #box (keyup)="0">
+    <p>{{box.value}}</p>
+</div>
