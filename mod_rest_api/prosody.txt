@@ -1,0 +1,94 @@
+--vpn details-------------
+Login name : cestech
+password: cestech@123
+ip address: 192.168.36.73
+OS Type: Ubuntu Server 14.04 
+
+
+Login name : root
+password: Ces@2016
+ip address: 104.236.249.130
+OS Type: Ubuntu Server 14.04 
+
+ftpdetail
+user: ftpuser
+pass: cestech@123
+
+
+----------------commands to user
+ apt-get install prosody
+ netstat -tulpn
+192.168.36.73
+
+my ip add : 192.168.36.86
+
+ /etc/init.d/prosody stop
+/etc/init.d/prosody start
+
+
+
+config
+virtualhost "cesxmpp.com"
+true
+key ---/var/lib/prosody/cesxmpp.com.key\
+cesxmpp.com.crt
+
+test@cesxmpp.com
+
+"conference.192.168.36.73
+
+
+
+--topen host file
+Hold the Start Key and R –  copy + paste the following and click OK:
+
+notepad %windir%/system32/Drivers/etc/hosts
+
+ C:/Users/Anil/AppData/Local/Google/Chrome/
+ 
+ 
+ 
+ -------------- install lua    ----  http://kb.solarvps.com/ubuntu/how-to-install-lua-on-ubuntu/
+ 
+ ----Installing modules
+ default modules path = /usr/lib/prosody/modules/.
+ get_userslist
+ ----telnet
+ telnet localhost 5582
+user:list(hostname, pattern)
+user:list('192.168.36.73');
+
+ ---reset api url
+ 
+ http://192.168.36.73:5280/admin_rest/user/anil
+ 
+ 
+ ---for loop in lua 
+ names = {'John', 'Joe', 'Steve'}
+for k,v in pairs(names) do print(v) end
+
+--to print in log file in lua
+  module:log("info", "test ing done");
+  
+  
+  get_server_details
+
+ --get pid
+cat /run/prosody/prosody.pid
+
+
+test.vantage.com
+ 
+ 
+   for k,v in pairs(whitelist) do 
+    module:log("info",k .. "@test ing 1111@"..v);
+  end
+
+  
+  
+  --servers
+  vantage.cestechservices.net
+xmpp.cestechservices.net
+
+--To create user
+prosodyctl adduser  ramu@im.t4s.me
