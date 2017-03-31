@@ -1,0 +1,89 @@
+@media only screen and (max-width: 1024px) {
+.slider-caption{padding:20px}
+.slider-caption h2{line-height:40px;font-size:32px}
+.slider-caption h4{margin-top:10px}
+}
+@media only screen and (max-width: 910px) {
+nav ul li{font-size:11px}
+nav a{display:block;padding:16px 15px 16px 0;letter-spacing:normal}
+.slider-caption{padding:20px}
+.slider-caption h2{line-height:30px;font-size:26px}
+.slider-caption h4{margin-top:10px;font-size:12px}
+#covers li a div h3{font-size:14px;font-weight:700}
+#covers li a div span{font-size:10px;font-weight:400;padding:5px 0}
+#covers li a div h4{bottom:10px;font-size:10px}
+#covers li a div{padding:10px}
+.bio-first,.bio-column,.bio-last{width:100%!important}
+}
+@media only screen and (max-width: 767px) {
+.section-title h1{font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:6px;padding:20px 0 40px;margin:0;-webkit-transform:none;-moz-transform:none;-o-transform:none;transform:none;margin:0!important}
+.container{padding:40px 10px}
+.section-nav{margin-top:20px}
+.section-nav ul li{list-style:none;display:inline-block!important;width:auto!important;margin:0 10px 0 0 !important}
+.section-nav ul li:last-child{margin-right:0!important}
+#fixed-header{padding:0 3px 3px}
+#contact_toggle,#share_toggle{padding:7px 1.6%}
+#share_toggle ul li{font-size:10px;margin-left:3px}
+#share_toggle a{padding:5px}
+#share_toggle h4{line-height:22px}
+#contact_toggle h1{margin-bottom:10px;padding:3px 0}
+#contact_toggle h2{font-size:13px;line-height:15px;margin:0 0 15px}
+#contact_toggle ul li{border-bottom:1px dotted #CCC;font-size:13px;margin-bottom:5px}
+#contact_toggle input,#contact_toggle textarea{font-size:11px;margin:0 0 5px;padding:4px 10px;width:100%}
+#contact_toggle input[type="submit"]{padding:3px 20px;margin-bottom:0}
+#contact_toggle textarea{height:60px}
+nav{margin:0!important}
+nav ul{width:100%}
+.nav-tab{display:block;width:50%}
+#logo{margin-top:50px;text-align:center}
+#logo h4{margin:0;padding:0;background:none;max-width:none;width:100%}
+.slider-caption{padding:10px}
+.slider-caption h2{line-height:24px;font-size:18px}
+.slider-caption h4{margin-top:6px;font-size:11px}
+#slider-arrows{bottom:15px;right:15px}
+.live h2{font-size:16px}
+.live h3{font-size:14px}
+.live{padding:0}
+#gallery-switch ul{margin:0 auto 40px}
+#gallery-switch ul li{width:48.8%}
+#gallery-switch ul li:first-child{margin-left:0}
+.caption-nav{margin-left:0;margin-top:30px}
+.caption-nav h2{font-size:14px}
+#biography{text-align:center}
+#biography hr{margin:0 auto 15px;width:25%}
+#news{text-align:center}
+#news h4{padding-bottom:50px}
+#social,#newsletter{text-align:center}
+#social{margin-top:30px}
+#social ul{float:none;margin:0 auto}
+#social ul li{display:inline-block;float:none}
+}
+@media only screen and (max-width: 459px) {
+#logo h1{font-size:35px}
+body{font-size:12px}
+.slider-caption{position:relative;width:100%}
+#slider-arrows{bottom:100px;list-style:none outside none;margin:0 auto;position:absolute;right:0;width:100%}
+#slider-arrows span:last-child{float:right}
+#slider-arrows span{margin:10px}
+#music ul li{float:left;font-size:0;margin-right:0}
+#music ul li:first-child{margin-left:0!important}
+#music .section-nav{display:none}
+#covers li{background:none repeat scroll 0 0 #FFF;box-shadow:0;padding:0;position:relative}
+.caption-nav h2{font-size:11px;display:block;float:none;width:100%;padding-bottom:5px;border-bottom:2px solid #D4D4D4;margin-bottom:10px;text-align:center}
+.caption-nav ul{float:none;margin:0 auto;width:auto}
+.caption-nav ul li{display:inline-block;float:none}
+.caption-nav ul li:first-child{margin:0}
+.caption-nav{margin-left:0;margin-top:15px}
+.caption{font-size:12px;margin-top:15px;margin-bottom:10px;float:none;margin-left:0;width:auto}
+#gallery-switch ul li:first-child{margin-left:0;margin-right:2.4%}
+#gallery-switch ul li{float:left;width:48.8%}
+#gallery-switch ul{margin:0 auto 30px}
+#twitter{width:90%}
+#twitter h3 a{padding:8px 10px 8px 35px}
+#photos > div .caption{width:100%;text-align:center;margin-bottom:30px;margin-left:0}
+#photos > .gallery-nav{float:none;width:100px;margin:0 auto}
+#gallery-nav-mobile{display:block}
+}
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+nav a{display:block;letter-spacing:normal;padding:8px 15px 8px 0}
+}

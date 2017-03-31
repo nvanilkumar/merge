@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the configuration file to be used with FCKpackager to generate the
+ * compressed code files in the "js" folder.
+ *
+ * Please check http://www.fckeditor.net for more info.
+-->
+<Package>
+	<Header><![CDATA[/*
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This file has been compressed for better performance. The original source
+ * can be found at "editor/_source".
+ */
+]]></Header>
+	<Constants removeDeclaration="false">
+		<Constant name="FCK_STATUS_NOTLOADED" value="0" />
+		<Constant name="FCK_STATUS_ACTIVE" value="1" />
+		<Constant name="FCK_STATUS_COMPLETE" value="2" />
+		<Constant name="FCK_TRISTATE_OFF" value="0" />
+		<Constant name="FCK_TRISTATE_ON" value="1" />
+		<Constant name="FCK_TRISTATE_DISABLED" value="-1" />
+		<Constant name="FCK_UNKNOWN" value="-9" />
+		<Constant name="FCK_TOOLBARITEM_ONLYICON" value="0" />
+		<Constant name="FCK_TOOLBARITEM_ONLYTEXT" value="1" />
+		<Constant name="FCK_TOOLBARITEM_ICONTEXT" value="2" />
+		<Constant name="FCK_EDITMODE_WYSIWYG" value="0" />
+		<Constant name="FCK_EDITMODE_SOURCE" value="1" />
+		<Constant name="FCK_STYLE_BLOCK" value="0" />
+		<Constant name="FCK_STYLE_INLINE" value="1" />
+		<Constant name="FCK_STYLE_OBJECT" value="2" />
+	</Constants>
+	<PackageFile path="editor/js/fckeditorcode_ie.min.js.gz">
+		<File path="editor/_source/fckconstants.min.js.gz" />
+		<File path="editor/_source/fckjscoreextensions.min.js.gz" />
+		<File path="editor/_source/classes/fckiecleanup.min.js.gz" />
+		<File path="editor/_source/internals/fckbrowserinfo.min.js.gz" />
+		<File path="editor/_source/internals/fckurlparams.min.js.gz" />
+		<File path="editor/_source/classes/fckevents.min.js.gz" />
+		<File path="editor/_source/classes/fckdataprocessor.min.js.gz" />
+		<File path="editor/_source/internals/fck.min.js.gz" />
+		<File path="editor/_source/internals/fck_ie.min.js.gz" />
+		<File path="editor/_source/internals/fckconfig.min.js.gz" />
+		<File path="editor/_source/internals/fckdebug_empty.min.js.gz" />
+		<File path="editor/_source/internals/fckdomtools.min.js.gz" />
+		<File path="editor/_source/internals/fcktools.min.js.gz" />
+		<File path="editor/_source/internals/fcktools_ie.min.js.gz" />
+		<File path="editor/_source/fckeditorapi.min.js.gz" />
+		<File path="editor/_source/classes/fckimagepreloader.min.js.gz" />
+
+		<File path="editor/_source/internals/fckregexlib.min.js.gz" />
+		<File path="editor/_source/internals/fcklistslib.min.js.gz" />
+		<File path="editor/_source/internals/fcklanguagemanager.min.js.gz" />
+		<File path="editor/_source/internals/fckxhtmlentities.min.js.gz" />
+		<File path="editor/_source/internals/fckxhtml.min.js.gz" />
+		<File path="editor/_source/internals/fckxhtml_ie.min.js.gz" />
+		<File path="editor/_source/internals/fckcodeformatter.min.js.gz" />
+		<File path="editor/_source/internals/fckundo.min.js.gz" />
+		<File path="editor/_source/classes/fckeditingarea.min.js.gz" />
+		<File path="editor/_source/classes/fckkeystrokehandler.min.js.gz" />
+
+		<File path="editor/dtd/fck_xhtml10transitional.min.js.gz" />
+		<File path="editor/_source/classes/fckstyle.min.js.gz" />
+		<File path="editor/_source/internals/fckstyles.min.js.gz" />
+
+		<File path="editor/_source/internals/fcklisthandler.min.js.gz" />
+		<File path="editor/_source/classes/fckelementpath.min.js.gz" />
+		<File path="editor/_source/classes/fckdomrange.min.js.gz" />
+		<File path="editor/_source/classes/fckdomrange_ie.min.js.gz" />
+		<File path="editor/_source/classes/fckdomrangeiterator.min.js.gz" />
+		<File path="editor/_source/classes/fckdocumentfragment_ie.min.js.gz" />
+		<File path="editor/_source/classes/fckw3crange.min.js.gz" />
+		<File path="editor/_source/classes/fckenterkey.min.js.gz" />
+
+		<File path="editor/_source/internals/fckdocumentprocessor.min.js.gz" />
+		<File path="editor/_source/internals/fckselection.min.js.gz" />
+		<File path="editor/_source/internals/fckselection_ie.min.js.gz" />
+
+		<File path="editor/_source/internals/fcktablehandler.min.js.gz" />
+		<File path="editor/_source/internals/fcktablehandler_ie.min.js.gz" />
+		<File path="editor/_source/classes/fckxml.min.js.gz" />
+		<File path="editor/_source/classes/fckxml_ie.min.js.gz" />
+
+		<File path="editor/_source/commandclasses/fcknamedcommand.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckstylecommand.min.js.gz" />
+		<File path="editor/_source/commandclasses/fck_othercommands.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckshowblocks.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckspellcheckcommand_ie.min.js.gz" />
+		<File path="editor/_source/commandclasses/fcktextcolorcommand.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckpasteplaintextcommand.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckpastewordcommand.min.js.gz" />
+		<File path="editor/_source/commandclasses/fcktablecommand.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckfitwindow.min.js.gz" />
+		<File path="editor/_source/commandclasses/fcklistcommands.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckjustifycommands.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckindentcommands.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckblockquotecommand.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckcorestylecommand.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckremoveformatcommand.min.js.gz" />
+		<File path="editor/_source/internals/fckcommands.min.js.gz" />
+
+		<File path="editor/_source/classes/fckpanel.min.js.gz" />
+		<File path="editor/_source/classes/fckicon.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarbuttonui.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarbutton.min.js.gz" />
+		<File path="editor/_source/classes/fckspecialcombo.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarspecialcombo.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarstylecombo.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarfontformatcombo.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarfontscombo.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarfontsizecombo.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarpanelbutton.min.js.gz" />
+		<File path="editor/_source/internals/fcktoolbaritems.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbar.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarbreak_ie.min.js.gz" />
+		<File path="editor/_source/internals/fcktoolbarset.min.js.gz" />
+		<File path="editor/_source/internals/fckdialog.min.js.gz" />
+
+		<File path="editor/_source/classes/fckmenuitem.min.js.gz" />
+		<File path="editor/_source/classes/fckmenublock.min.js.gz" />
+		<File path="editor/_source/classes/fckmenublockpanel.min.js.gz" />
+		<File path="editor/_source/classes/fckcontextmenu.min.js.gz" />
+		<File path="editor/_source/internals/fck_contextmenu.min.js.gz" />
+		<File path="editor/_source/classes/fckhtmliterator.min.js.gz" />
+
+		<File path="editor/_source/classes/fckplugin.min.js.gz" />
+		<File path="editor/_source/internals/fckplugins.min.js.gz" />
+	</PackageFile>
+
+	<PackageFile path="editor/js/fckeditorcode_gecko.min.js.gz">
+		<File path="editor/_source/fckconstants.min.js.gz" />
+		<File path="editor/_source/fckjscoreextensions.min.js.gz" />
+		<File path="editor/_source/internals/fckbrowserinfo.min.js.gz" />
+		<File path="editor/_source/internals/fckurlparams.min.js.gz" />
+		<File path="editor/_source/classes/fckevents.min.js.gz" />
+		<File path="editor/_source/classes/fckdataprocessor.min.js.gz" />
+		<File path="editor/_source/internals/fck.min.js.gz" />
+		<File path="editor/_source/internals/fck_gecko.min.js.gz" />
+		<File path="editor/_source/internals/fckconfig.min.js.gz" />
+		<File path="editor/_source/internals/fckdebug_empty.min.js.gz" />
+		<File path="editor/_source/internals/fckdomtools.min.js.gz" />
+		<File path="editor/_source/internals/fcktools.min.js.gz" />
+		<File path="editor/_source/internals/fcktools_gecko.min.js.gz" />
+		<File path="editor/_source/fckeditorapi.min.js.gz" />
+		<File path="editor/_source/classes/fckimagepreloader.min.js.gz" />
+
+		<File path="editor/_source/internals/fckregexlib.min.js.gz" />
+		<File path="editor/_source/internals/fcklistslib.min.js.gz" />
+		<File path="editor/_source/internals/fcklanguagemanager.min.js.gz" />
+		<File path="editor/_source/internals/fckxhtmlentities.min.js.gz" />
+		<File path="editor/_source/internals/fckxhtml.min.js.gz" />
+		<File path="editor/_source/internals/fckxhtml_gecko.min.js.gz" />
+		<File path="editor/_source/internals/fckcodeformatter.min.js.gz" />
+		<File path="editor/_source/internals/fckundo.min.js.gz" />
+		<File path="editor/_source/classes/fckeditingarea.min.js.gz" />
+		<File path="editor/_source/classes/fckkeystrokehandler.min.js.gz" />
+
+		<File path="editor/dtd/fck_xhtml10transitional.min.js.gz" />
+		<File path="editor/_source/classes/fckstyle.min.js.gz" />
+		<File path="editor/_source/internals/fckstyles.min.js.gz" />
+
+		<File path="editor/_source/internals/fcklisthandler.min.js.gz" />
+		<File path="editor/_source/classes/fckelementpath.min.js.gz" />
+		<File path="editor/_source/classes/fckdomrange.min.js.gz" />
+		<File path="editor/_source/classes/fckdomrange_gecko.min.js.gz" />
+		<File path="editor/_source/classes/fckdomrangeiterator.min.js.gz" />
+		<File path="editor/_source/classes/fckdocumentfragment_gecko.min.js.gz" />
+		<File path="editor/_source/classes/fckw3crange.min.js.gz" />
+		<File path="editor/_source/classes/fckenterkey.min.js.gz" />
+
+		<File path="editor/_source/internals/fckdocumentprocessor.min.js.gz" />
+		<File path="editor/_source/internals/fckselection.min.js.gz" />
+		<File path="editor/_source/internals/fckselection_gecko.min.js.gz" />
+
+		<File path="editor/_source/internals/fcktablehandler.min.js.gz" />
+		<File path="editor/_source/internals/fcktablehandler_gecko.min.js.gz" />
+		<File path="editor/_source/classes/fckxml.min.js.gz" />
+		<File path="editor/_source/classes/fckxml_gecko.min.js.gz" />
+
+		<File path="editor/_source/commandclasses/fcknamedcommand.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckstylecommand.min.js.gz" />
+		<File path="editor/_source/commandclasses/fck_othercommands.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckshowblocks.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckspellcheckcommand_gecko.min.js.gz" />
+		<File path="editor/_source/commandclasses/fcktextcolorcommand.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckpasteplaintextcommand.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckpastewordcommand.min.js.gz" />
+		<File path="editor/_source/commandclasses/fcktablecommand.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckfitwindow.min.js.gz" />
+		<File path="editor/_source/commandclasses/fcklistcommands.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckjustifycommands.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckindentcommands.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckblockquotecommand.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckcorestylecommand.min.js.gz" />
+		<File path="editor/_source/commandclasses/fckremoveformatcommand.min.js.gz" />
+		<File path="editor/_source/internals/fckcommands.min.js.gz" />
+
+		<File path="editor/_source/classes/fckpanel.min.js.gz" />
+		<File path="editor/_source/classes/fckicon.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarbuttonui.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarbutton.min.js.gz" />
+		<File path="editor/_source/classes/fckspecialcombo.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarspecialcombo.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarstylecombo.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarfontformatcombo.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarfontscombo.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarfontsizecombo.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarpanelbutton.min.js.gz" />
+		<File path="editor/_source/internals/fcktoolbaritems.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbar.min.js.gz" />
+		<File path="editor/_source/classes/fcktoolbarbreak_gecko.min.js.gz" />
+		<File path="editor/_source/internals/fcktoolbarset.min.js.gz" />
+		<File path="editor/_source/internals/fckdialog.min.js.gz" />
+
+		<File path="editor/_source/classes/fckmenuitem.min.js.gz" />
+		<File path="editor/_source/classes/fckmenublock.min.js.gz" />
+		<File path="editor/_source/classes/fckmenublockpanel.min.js.gz" />
+		<File path="editor/_source/classes/fckcontextmenu.min.js.gz" />
+		<File path="editor/_source/internals/fck_contextmenu.min.js.gz" />
+		<File path="editor/_source/classes/fckhtmliterator.min.js.gz" />
+
+		<File path="editor/_source/classes/fckplugin.min.js.gz" />
+		<File path="editor/_source/internals/fckplugins.min.js.gz" />
+	</PackageFile>
+
+</Package>

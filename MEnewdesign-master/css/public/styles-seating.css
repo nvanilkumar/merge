@@ -1,0 +1,352 @@
+.seatingrow1300 { width: 1300px !important;
+                  background: #fff;
+                  height: auto;
+                  overflow: hidden;}
+
+.seating100 { width:98%; padding:10px 10px;}  
+
+ul.r li.bl {width: 13px;
+            height: 13px;
+            background: url(../../images/static/available.png) center top no-repeat !important;  }
+
+ul.r li.rd {
+    background: url(../../images/static/booked.png) center top no-repeat !important;  }
+
+
+
+
+ul.r li.x {
+    color:#000000;
+    cursor:default;
+    width:13px;
+    height:13px;
+    background: url(../../images/static/other-area.png) center top no-repeat !important;  
+}
+ul.r li.gr1 {
+    background: url(../../images/static/current-booking.png) center top no-repeat !important;  
+    cursor:default;
+}
+
+/* seatplan row */
+ul.r {
+    padding:2px 0px !important;
+    margin:0px;
+    list-style-type:none;
+    height:18px;
+}
+
+
+
+
+/* the seatplan itself */
+div.seatplan {
+    max-width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    -moz-user-select:none;
+    -khtml-user-select:none;
+    user-select:none;
+    font-family: Arial, Helvetica, sans-serif, Tahoma;
+    font-size: 10px;
+    margin:0 auto;
+
+}
+@charset "utf-8";
+/* CSS Document */
+body
+{padding:0px;
+ margin:0px;}
+/*modules>osconcert*/
+#legend ul, #legend li,#prices-bar ul, #prices-bar li {
+    margin-left: 0px;
+    height: 14px;
+    background: #F2F2F2;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color:#000000;
+    padding: 5px;
+    display: inline;
+    list-style-type: none;
+}
+
+/* start: seat-plan styles */
+
+div#content_wrap {margin:0px;min-height:250px;}
+
+h1.level {
+    font-family: Arial, Helvetica, sans-serif, Tahoma;
+    font-size: 14px;
+    color: #000000;
+    background-color: #CCCCCC;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    margin:0 auto;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+
+/* the color legend */
+
+div#concert {margin-left:-40px;border: solid 0px blue;}
+
+/* prices bar missing classes */
+/*span#incart {background: none repeat scroll 0 0 #FF00FE;border: 1px solid grey;}*/
+span.plan_red {background: none repeat scroll 0 0 #fa9c9f;border: 1px solid grey;}
+span.plan_blue {background: none repeat scroll 0 0 #c0ffff;border: 1px solid grey;}
+span.plan_green {background: none repeat scroll 0 0 #80ff80;border: 1px solid grey;}
+span.plan_fuchsia {background: none repeat scroll 0 0 #ffc0ff;border: 1px solid grey;}
+span.plan_yellow {background: none repeat scroll 0 0 #ffffc0;border: 1px solid grey;}
+span.plan_black {background: none repeat scroll 0 0 #202020;border: 1px solid grey;background-image:url(images/disabled.gif);}
+span.plan_salmon {background: none repeat scroll 0 0 #FA8072;border: 1px solid grey;}
+span.plan_skyblue {background: none repeat scroll 0 0 #87CEEB;border: 1px solid grey;}
+span.plan_teal {background: none repeat scroll 0 0 #04aca9;border: 1px solid grey;}
+span.plan_thistle {background: none repeat scroll 0 0 #D8BFD8;border: 1px solid grey;}
+span.plan_palegreen {background: none repeat scroll 0 0 #98FB98;border: 1px solid grey;}
+span.plan_orange {background: none repeat scroll 0 0 #FFA500;border: 1px solid grey;}
+
+/* legend */
+ul#legend {height:14px;}
+ul#legend li {float:left;}
+ul#legend li:last-child{height:14px;width:16px;}
+span.plan_incart {background: none repeat scroll 0 0 #FF00FF;border: 1px solid #808080;}
+span.plan_reserved {background: none repeat scroll 0 0 #808080;border: 1px solid #808080;}
+span.plan_locked {background: none repeat scroll 0 0 #8080C0;border: 1px solid #808080;}
+span.plan_own {background: none repeat scroll 0 0 #FFFFFF;border: 1px solid #808080;}
+
+div#timeout {
+    font-size:12px;
+    height:14px;
+    border: grey dashed 1px;
+}
+/*TIMEOUT 2*/
+div#cart_timeout {
+    font-size:12px;
+    font-weight:bold;
+    color:#CC0000;
+}
+
+div#cleared{
+    text-align:center;
+    padding-top:120px;
+    font-size:14px;
+    font-weight:bold;
+    color:#666666;
+}
+
+div#indicator {
+    margin-top:2px;
+    height:11px;
+    width:16px;
+}
+
+div.activity {background:url(images/spinner.gif) no-repeat left top;}
+li.activity_on {color:#000000 !important;background: none repeat scroll 0 0 #FFFF00 !important;}
+li.activity_off {color:#000000 !important;background: none repeat scroll 0 0 #FFFF00 !important;}
+
+/* the seatplan itself */
+div.seatplan {
+    max-width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    -moz-user-select:none;
+    -khtml-user-select:none;
+    user-select:none;
+    font-family: Arial, Helvetica, sans-serif, Tahoma;
+    font-size: 10px;
+    margin:0 auto;
+}
+/*IMPORTANT:SEAT PLAN WIDTHS*/
+/*31*/div#sp1, div#sp2, div#sp3,div#sp4, div#sp5 {width:589px;}
+
+
+/* seatplan row */
+ul.r {
+    padding:0px;
+    margin:0px;
+    list-style-type:none;
+    height:22px;
+}
+
+/* the seats */
+ul.r li {
+    float: left;
+    /*IMPORTANT:SEAT CELL WIDTH*/
+    width: 16px !important;
+    height: 13px;
+    padding-top: 2px;
+    /*margin-right:1px;*/
+    font-size: 8px;	
+    text-align: center;
+    /*border: 1px solid #C0C0C0;*/
+    color: #000000;
+    cursor: pointer;
+}
+
+/* row letters */
+ul.r li.ltr {
+    font-weight: bold;
+    color:#000;
+    /*border: 1px solid #C0C0C0;*/
+    outline: 1px solid transparent;
+    background-color:#F7EFEF;
+    cursor:default; margin-right: 15px;
+}
+
+/* blank seats */
+ul.r li.b {
+    background: none repeat scroll 0 0 transparent;
+    cursor:default;
+    /*border: 1px solid transparent;*/
+    outline: 1px solid transparent;
+
+    /*test with background view*/
+    /*background:#CCCCCC;*/
+}
+
+/* half seats*/
+ul.r li.h {
+    width:8px;
+    background: none repeat scroll 0 0 transparent;
+    /*border: 1px solid transparent;*/
+    outline: 1px solid transparent;
+    cursor:default;
+
+    /*test with background view*/
+    /*background:#CCCCCC;*/
+}
+
+/* blue 		*/	ul.r li.bl {
+    width:13px;
+    height:13px;
+    /*background-image: url(seat-available.gif);*/
+}
+/* red 			*/	ul.r li.rd {
+    /*background-image: url(seat-booked.gif);*/
+    background-repeat: no-repeat;
+    border:none;
+}
+/* green		*/	ul.r li.gr {
+    /*background-image: url(seat-curentbook.gif);*/
+    cursor:default;
+}
+
+ul.r li.gr1 {
+    background-image: url(seat-curentbook.gif);
+    cursor:default;
+}
+
+/* orange		*/	ul.r li.or {background-color:#FFA500;}
+/* fuchsia		*/	ul.r li.fu {background-color:#FFC0FF;}
+/* yellow 		*/	ul.r li.ye {background-color:#FFFFC0;}
+/* salmon		*/	ul.r li.sa {background-color:#FA8072;}
+/* skyblue		*/	ul.r li.sb {background-color:#87CEEB;}
+/* teal 		*/	ul.r li.te {background-color:#008080;}
+/* thistle 		*/	ul.r li.th {background-color:#D8BFD8;}
+/* palegreen	*/	ul.r li.pg {background-color:#98FB98;}
+
+
+/* own seats (previously purchased) */
+ul.r li.o {
+    color:#000000;
+    background-color:#FFFFFF;
+    cursor:default;
+}
+
+/* sold seats */
+ul.r li.x {
+    color:#000000;
+    cursor:default;
+    width:13px;
+    height:13px;
+    /*background-image: url(seat-otherarea.gif);*/
+}
+
+/* seats in own basket */
+ul.r li.y {
+    color:#FFFFFF;
+    background-color:#FF00FF;
+    cursor:pointer;
+}
+
+/* seats in other's basket */
+ul.r li.z {
+    color:#000000;
+    background-color:#8080C0;
+    cursor:default;
+}
+
+/* hover styles - currently applies to all colors */
+ul.r li.s:hover {
+    color:#FFFFFF;
+
+}
+/*
+ul.r li.rd:hover {
+        background-color:#00D9D9;
+        color:#FFFFFF;
+}
+*/
+
+#easyTooltip{
+    background: white;
+    margin: 0;
+    padding: 5px 10px;
+    border: 1px solid #CCC;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+    font: 12px / 16px "Lucida Grande",Arial,Sans-serif;
+    line-height: 16px;
+    color: #666;
+    z-index:100;
+} 
+
+/* end: seat-plan styles */
+#stage
+{
+    color:#FFFFFF;
+    width:100%;
+    font-family: Arial, Helvetica, sans-serif, Tahoma;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-image: url(../../images/static/stage-facing.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 52px;
+    margin-top: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+}
+h2 a
+{
+
+    text-decoration:none;
+}
+.processbutton {
+    background: #f8485e none repeat scroll 0 0;
+    border: 0 none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 0;
+    padding: 10px 20px;
+    text-transform: capitalize;
+    width: auto;
+}
+.EmailURLBtn, .processbutton {
+    font-family: Lato,serif;
+}
+.processbutton, a.button {
+    color: #fff;
+    line-height: 22px;
+}

@@ -1,0 +1,15 @@
+
+	/* Direction-Hover-Effect */
+
+.gallery-container li a span.overlay {
+	top: 0px;
+	left: -100%;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+.gallery-container li a:hover span.overlay{
+	left: 0px;
+}

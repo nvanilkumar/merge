@@ -1,0 +1,40 @@
+Why variable can not start with a Number?
+since variables start with $ in PHP, is would be possible to have variables starting with numbers, but that would be a bit confusing to most people since there is no other language that allows variables starting with numbers (or at least I don't know any).
+
+
+property scope not supported in php
+
+
+ Which of the following method scopes is/are not supported by PHP?
+i) private
+ii) final
+iii) static
+iv) abstract
+a) Only ii)
+b) Only iv)
+c) ii) and iv)
+d) None of the mentioned
+
+Answer: d
+Explanation:PHP supports six method scopes: public, private, final, static, protected and abstract.
+PHP supports five class property scopes: public, private, protected, final and static.
+
+upload_error -- 7 type of errors , 0- for sucess
+
+single tone design pattern : http://code.tutsplus.com/tutorials/design-patterns-the-singleton-pattern--cms-23073
+
+
+---case sensitives in php
+-- implode function
+-- not only mathematical operator in php (*)
+
+-- select 1=1,1=2,NUll=Null, Null=3;
+
+--difference between self and this in php
+Using self in PHP can turn off polymorphic behavior and bypasses the vtable
+In very general terms, we can say that $this is used to reference the current object, 
+whereas self is used to access the current class itself.
+
+
+
+

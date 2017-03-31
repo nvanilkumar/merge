@@ -1,0 +1,1 @@
+angular.module('signupModule', ['commonModule','httpCallModule','angular-md5']);

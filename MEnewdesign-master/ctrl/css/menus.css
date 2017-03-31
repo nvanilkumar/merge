@@ -1,0 +1,137 @@
+.DUMMY
+{
+	/*dummy class to fix cases where browser bugs ignore first class (IE Mac)*/
+}
+
+td.menucorner
+{
+	width: 5px;
+	height: 5px;
+	line-height: 1pt;
+}
+
+td.menutop
+{
+	border-top: solid 1px #ffffff;
+	background-color: #000080;
+	line-height: 1pt;
+}
+
+td.menubottom
+{
+	border-bottom: solid 1px #ffffff;
+	background-color: #000080;
+	line-height: 1pt;
+}
+
+td.menuleft
+{
+	width: 5px;
+	font-size: 1pt;
+	border-left: solid 1px #ffffff;
+	background-color: #000080;
+}
+
+td.menuright
+{
+	width: 5px;
+	font-size: 1pt;	
+	border-right: solid 1px #ffffff;
+	background-color: #000080;
+}
+
+div.menuheader
+{
+	font-size: 9pt;
+	font-weight: bold;
+	color: #8080ff;
+	padding-left: 2px;
+	padding-bottom: 2px;
+}
+
+div.menuitem
+{
+	font-size: 8pt;
+	padding-bottom: 1px;
+	padding-left: 3px;
+	padding-top: 1px;
+}
+
+a.menuitem
+{
+	color: #ffffff;
+	text-decoration: none;
+}
+
+a.menuitem:visited
+{
+	color: #ffffff;
+	text-decoration: none;
+}
+
+a.menuitem:hover
+{
+	color: #ffffff;
+	text-decoration: underline;
+}
+
+.topmenu
+{
+	font-weight: bold;
+	color:white;
+}
+
+a.topmenuitem
+{
+	color: #8080ff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a.topmenuitem:visited
+{
+	color: #8080ff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a.topmenuitem:hover
+{
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.pagetitle
+{
+	color: #0C205B;
+	text-decoration: none;
+	font-weight: bold;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:14px;
+}
+/*div.menuhead
+{
+	font-size: 8pt;
+	padding-bottom: 1px;
+	padding-left: 3px;
+	padding-top: 1px;
+}*/
+
+a.menuhead
+{
+	color: #000099;
+	text-decoration: none;
+}
+
+a.menuhead:visited
+{
+	color: #000099;
+	text-decoration: none;
+}
+
+a.menuhead:hover
+{
+	color: #00CCFF;
+	text-decoration: underline;
+}

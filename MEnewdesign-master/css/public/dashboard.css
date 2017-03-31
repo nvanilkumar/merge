@@ -1,0 +1,4915 @@
+@charset "utf-8";
+/* CSS Document */
+/*-------------------------------------------------------------------------------
+  0. Outline
+-------------------------------------------------------------------------------*/
+/************************************************************
+----------------------OUTLINE OF STYLES----------------------
+
+1.Important frameworks and starters
+    A.Reset
+    B.Font-face and font-icons
+    C.Helper Classes 
+
+2.General styles
+
+3.Form styles
+    A.General Form Styles
+    B.Search Styles
+    C.Edit Fields
+
+4.Main Sections
+    A.Header
+    B.Footer
+    C.Navigation
+    D.Dashboard Organiser Pages
+    E.Layout
+    F.Gallery
+    G.Refund
+    H.Sales
+    I.Select Country
+    J.Tickets
+    K.Events
+    L.Miscellaneous
+    
+5.Components
+    A.Buttons
+    B.Dropdowns
+    C.Headings
+    D.Information
+    E.Tables
+    F.Tabs
+    G.Tags    
+**************************************************************  
+*************************************************************/
+/*-------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------
+  1. Important frameworks and starters 
+---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------*/
+/*
+
+@mixin uwp-transition($property:background-color,$seconds:0.4s){
+  -webkit-transition:$property $seconds;
+  -moz-transition:$property $seconds;
+  -o-transition:$property $seconds;
+  transition:$property $seconds;
+}
+
+@mixin uwp-box-sizing{
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -o-box-sizing:border-box;
+  box-sizing:border-box;
+}
+
+// mixin for cross browser opacity
+@mixin uwp-opacity($opacity:0.6) {
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=" + #{$opacity*100} + ")"; // first!
+  filter: alpha(opacity=#{$opacity*100}); // IE 5-9+
+  opacity: $opacity; 
+}
+
+// mixin for ie7 support of fonticons
+@mixin ie7icon($inner) {
+    *zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '#{$inner}');
+}
+
+
+// mixin for responsive media queries
+@mixin uwp-respond-to($media) {
+  @if $media == handhelds {
+    @media only screen and (max-width: 320px) { @content; }
+  }
+  @else if $media == medium-screens {
+    @media only screen and (min-width: 321px) and (max-width: 1024px) { @content; }
+  }
+  @else if $media == wide-screens {
+    @media only screen and (min-width: 1024px) { @content; }
+  }
+}
+
+@mixin chris-style-placeholder($color:#ccc,$include_and:false){
+  @if $include_and == true{
+    &::-webkit-input-placeholder {
+       color: $color;
+    }
+    
+    &:-moz-placeholder { /* Firefox 18- */
+/*      color: $color;  
+    }
+    
+    &::-moz-placeholder {  /* Firefox 19+ */
+/*    color: $color;  
+    }
+    
+    &:-ms-input-placeholder {  
+       color: $color;  
+    }  
+  } @else{
+    ::-webkit-input-placeholder {
+       color: $color;
+    }
+    
+    :-moz-placeholder { /* Firefox 18- */
+/*    color: $color;  
+    }
+    
+    ::-moz-placeholder {  /* Firefox 19+ */
+/*   color: $color;  
+    }
+    
+    :-ms-input-placeholder {  
+       color: $color;  
+    }
+  }
+  
+}
+/*
+@mixin css-triangle($direction:down, $main_side:6px, $adj_side_1:5px, $adj_side_2:5px, $border-style:solid, $color:#ccc){
+  width:0;
+  height:0;
+  @if $direction == down{
+    border-top:$main-side $border-style $color;
+    border-left:$adj_side_1 $border-style transparent;
+    border-right:$adj_side_2 $border-style transparent; 
+  }
+  @elseif $direction == up{
+    border-bottom:$main-side $border-style $color;
+    border-left:$adj_side_1 $border-style transparent;
+    border-right:$adj_side_2 $border-style transparent; 
+  }
+  @elseif $direction == right{
+    border-left:$main-side $border-style $color;
+    border-top:$adj_side_1 $border-style transparent;
+    border-bottom:$adj_side_2 $border-style transparent; 
+  }
+  @elseif $direction == left{
+    border-right:$main-side $border-style $color;
+    border-top:$adj_side_1 $border-style transparent;
+    border-bottom:$adj_side_2 $border-style transparent; 
+  } 
+}
+*/
+/*-------------------------------------------------------------------------------
+      A.Reset Styles
+    -------------------------------------------------------------------------------*/
+/*FILE NAME:  reset.css  
+
+*/
+/* line 6, reset.less */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+/* line 26, reset.less */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+/* line 30, reset.less */
+body {
+  background: #f5f6f7;
+}
+/* line 33, reset.less */
+ol,
+ul {
+  list-style: none;
+}
+/* line 36, reset.less */
+blockquote,
+q {
+  quotes: none;
+}
+/* line 39, reset.less */
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+/* line 44, reset.less */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* line 50, reset.less */
+a,
+ul a,
+ul li a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+}
+/*-------------------------------------------------------------------------------
+      B.Font Face and Font Icons
+    -------------------------------------------------------------------------------*/
+@font-face {
+  font-family: 'geomanist_regularregular';
+  src: url('../res/fonts/geomanist-regular-webfont.eot');
+  src: url('../res/fonts/geomanist-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../res/fonts/geomanist-regular-webfont.woff2') format('woff2'), url('../res/fonts/geomanist-regular-webfont.woff') format('woff'), url('../res/fonts/geomanist-regular-webfont.ttf') format('truetype'), url('../res/fonts/geomanist-regular-webfont.svg#geomanist_regularregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 1, font\font-icon.less */
+.whiteIcon {
+  float: right;
+}
+/* line 4, font\font-icon.less */
+#menulist.icon-payment {
+  position: absolute;
+  right: 0;
+  /*top: 7px*/
+}
+/* line 9, font\font-icon.less */
+.ddCustom .icon-downArrow {
+  position: absolute;
+  right: -12px;
+  top: 13px;
+  z-index: 1;
+  color: #808080;
+  font-size: 12px;
+  font-weight: bold;
+}
+/* line 18, font\font-icon.less */
+.icon-export,
+.icon-mail,
+.icon-attachment {
+  margin-right: 10px;
+  font-size: 14px;
+  color: #333;
+}
+/* line 23, font\font-icon.less */
+.icon-edit,
+.icon-preview {
+  font-size: 16px;
+  color: #333;
+}
+/* line 27, font\font-icon.less */
+.icon-delete {
+  color: #333;
+}
+/* line 28, font\font-icon.less */
+.tablefields .icon-edit,
+.tablefields .icon-delete {
+  margin-right: 10px;
+}
+/* line 32, font\font-icon.less */
+.icon-clock {
+  margin-top: 3px;
+  margin-right: 5px;
+}
+/* line 36, font\font-icon.less */
+.rightArea .icon-edit,
+.rightArea .icon-preview {
+  margin-right: 10px;
+}
+/* line 39, font\font-icon.less */
+.close-icon {
+  position: absolute;
+  left: 29%;
+  top: 4px;
+}
+/* line 44, font\font-icon.less */
+.createBtn .icon-add {
+  float: left;
+  font-weight: 700;
+}
+/* line 48, font\font-icon.less */
+.icon-add {
+  font-weight: 700;
+}
+/*-------------------------------------------------------------------------------
+      C.Helper Classes
+    -------------------------------------------------------------------------------*/
+/* line 1, helper-classes.less */
+.topAlign {
+  margin-top: 20px;
+}
+/* line 4, helper-classes.less */
+.topAdjust {
+  margin-top: -60px;
+}
+/* line 7, helper-classes.less */
+.bottomAdjust {
+  margin-bottom: 30px;
+}
+/* line 10, helper-classes.less */
+.bottomAdjust100 {
+  margin-bottom: 120px;
+}
+/* line 13, helper-classes.less */
+.height10 {
+  height: 10px;
+}
+/* line 14, helper-classes.less */
+.height20 {
+  height: 20px;
+}
+/* line 15, helper-classes.less */
+.gray {
+  color: #697484;
+  font-size: 40px !important;
+}
+/* line 19, helper-classes.less */
+.clearBoth {
+  clear: both;
+}
+/* line 22, helper-classes.less */
+.clearL {
+  clear: left;
+}
+/* line 25, helper-classes.less */
+.clearR {
+  clear: right;
+}
+/* line 28, helper-classes.less */
+.float-left {
+  float: left;
+}
+/* line 31, helper-classes.less */
+.float-right {
+  float: right;
+}
+/* line 35, helper-classes.less */
+.pink {
+  color: #ba36a6;
+}
+/* line 38, helper-classes.less */
+.green {
+  color: #0fcd26;
+}
+/* line 42, helper-classes.less */
+.defaultDroplist {
+  width: auto;
+  position: relative;
+}
+/*select 
+{
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  -o-appearance:none;
+   appearance:none; 
+}*/
+/* line 55, helper-classes.less */
+select::-ms-expand {
+  display: none;
+}
+/*-------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------
+  2. General Styles 
+---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------*/
+/* line 1, general.less */
+a {
+  color: #cad5e5;
+  text-decoration: none;
+  outline: none;
+}
+/* line 6, general.less */
+html body {
+  font-family: 'geomanist_regularregular', sans-serif;
+  background-color: #eaedf1;
+  margin: 0;
+  padding: 0;
+  color: #515151;
+}
+/* line 13, general.less */
+span {
+  display: block;
+}
+/* line 16, general.less */
+a {
+  text-decoration: none;
+}
+/* line 18, general.less */
+a:hover,
+a:focus {
+  color: #5f259f;
+  text-decoration: none !important;
+}
+/* line 23, general.less */
+.icon-downArrow {
+  float: left;
+  margin: 25px 5px;
+}
+/* line 27, general.less */
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+/* line 32, general.less */
+.wrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+/* line 37, general.less */
+.accessibility {
+  position: absolute;
+  left: -9999px;
+}
+@media only screen and (max-width: 480px) {
+  /* line 45, general.less */
+  .dropwidth100 {
+    width: 100% !important;
+  }
+}
+/*-------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------
+  3. Forms Styles 
+---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------
+      A.General Form Styles
+    -------------------------------------------------------------------------------*/
+/* line 1, forms\form.less */
+textarea:focus,
+input:focus {
+  outline: 0;
+}
+/* line 3, forms\form.less */
+*:focus {
+  outline: 0;
+}
+/*changed*/
+/* line 8, forms\form.less */
+input::-webkit-input-placeholder {
+  color: #cbcbcb;
+  text-transform: capitalize;
+}
+/* line 12, forms\form.less */
+input::-moz-placeholder {
+  color: #cbcbcb;
+  text-transform: capitalize;
+}
+/* mozilla solution */
+/* line 17, forms\form.less */
+input::-moz-placeholder {
+  vertical-align: text-bottom;
+}
+/* line 20, forms\form.less */
+input:-moz-placeholder {
+  /* Older versions of Firefox */
+  color: #cbcbcb;
+  /* #5b5b5b;*/
+  text-transform: capitalize;
+}
+/* line 24, forms\form.less */
+input:-ms-input-placeholder {
+  color: #5b5b5b;
+  text-transform: capitalize;
+}
+/*EO changed*/
+/* line 29, forms\form.less */
+input,
+textarea,
+select {
+  font: 14px/16px;
+}
+/* line 32, forms\form.less */
+label {
+  font-weight: normal;
+}
+/* line 36, forms\form.less */
+input[type="submit"] {
+  margin-bottom: 5px;
+}
+/* line 40, forms\form.less */
+select {
+  padding: 5px 10px;
+  margin: 20px 0px 0px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 5px;
+  color: #888;
+  border: 1px solid #e2e2e2;
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: white;
+  cursor: pointer;
+  font-size: 14px;
+  -webkit-box-shadow: inset 1px 4px 3px -5px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: inset 1px 4px 3px -5px rgba(0, 0, 0, 0.33);
+  box-shadow: inset 1px 4px 3px -5px rgba(0, 0, 0, 0.33);
+  outline: none;
+}
+/* line 60, forms\form.less */
+select:focus {
+  outline: none;
+}
+/* line 64, forms\form.less */
+select.droplist {
+  padding: 5px 10px;
+  margin: 20px 0px 0px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 10px;
+  background: none !important;
+  color: #000;
+  outline: none;
+  display: inline-block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  width: 50%;
+  font-size: 14px;
+  font-weight: 700;
+  border: none !important;
+}
+/* Targetting Webkit browsers only. FF will show the dropdown arrow with so much padding. */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  /* line 86, forms\form.less */
+  select {
+    padding-right: 18px;
+  }
+}
+/* line 90, forms\form.less */
+label {
+  position: relative;
+}
+/* line 93, forms\form.less */
+label:after {
+  content: '';
+  font-size: 11px;
+  color: #aaa;
+  right: 8px;
+  top: 2px;
+  padding: 0 0 2px;
+  border-bottom: 1px solid #ddd;
+  position: absolute;
+  pointer-events: none;
+  font-weight: 400;
+}
+/* line 105, forms\form.less */
+label:before {
+  right: 6px;
+  top: 4px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  pointer-events: none;
+  display: block;
+  font-size: 12px;
+}
+/* Custom Checkbox */
+/* line 118, forms\form.less */
+.information .custom-checkbox,
+.tablefields .custom-checkbox,
+.editFields .custom-checkbox {
+  width: 19px;
+  height: 19px;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  top: 0;
+  background: url("../res/images/check-box-small.png") no-repeat;
+  float: left;
+  margin-right: 10px;
+}
+/* line 129, forms\form.less */
+.information .custom-checkbox:hover,
+.tablefields .custom-checkbox:hover,
+.editFields .custom-checkbox:hover {
+  background: url("../res/images/check-box-small.png") no-repeat;
+}
+/* line 132, forms\form.less */
+.information .custom-checkbox.selected,
+.tablefields .custom-checkbox.selected,
+.editFields .custom-checkbox.selected {
+  background: url("../res/images/check-box-small-selected.png") no-repeat;
+}
+/* line 135, forms\form.less */
+.information .custom-checkbox input[type="checkbox"],
+.tablefields .custom-checkbox input[type="checkbox"],
+.editFields .custom-checkbox input[type="checkbox"] {
+  width: 19px;
+  height: 19px;
+}
+/* line 139, forms\form.less */
+.information .custom-checkbox input[type="checkbox"],
+.tablefields .custom-checkbox input[type="checkbox"],
+.editFields .custom-checkbox input[type="checkbox"] {
+  margin: 0;
+  position: absolute;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+  outline: none;
+  opacity: 0;
+  /* CSS hacks for older browsers */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -khtml-opacity: 0;
+  -moz-opacity: 0;
+}
+/* Custom Radio Button */
+/* line 155, forms\form.less */
+.information .custom-radio {
+  float: left;
+}
+/* line 158, forms\form.less */
+.tablefields > table > tbody > tr > td > .custom-radio,
+.checkbtn .custom-radio {
+  position: inherit;
+}
+/* line 161, forms\form.less */
+.information .custom-radio,
+.defaultDroplist .custom-radio,
+.valid_bottom .custom-radio,
+div .custom-radio {
+  position: relative;
+}
+/* line 165, forms\form.less */
+.information .custom-radio,
+.defaultDroplist .custom-radio,
+.valid_bottom .custom-radio,
+.tablefields > table > tbody > tr > td > div.checkbtn .custom-radio,
+div .custom-radio {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  float: left;
+  /*-index: 1;*/
+  top: 0px;
+  background: url("../res/images/radio_btn.png") no-repeat;
+  margin-right: 12px;
+}
+/* line 175, forms\form.less */
+.information .custom-radio:hover,
+.defaultDroplist .custom-radio:hover,
+.valid_bottom .custom-radio:hover,
+.tablefields > table > tbody > tr > td > div.checkbtn .custom-radio:hover,
+div .custom-radio:hover {
+  background: url("../res/images/radio_btn.png") no-repeat;
+}
+/* line 178, forms\form.less */
+.information .custom-radio.selected,
+.defaultDroplist .custom-radio.selected,
+.valid_bottom .custom-radio.selected,
+.tablefields > table > tbody > tr > td > div.checkbtn .custom-radio.selected,
+div .custom-radio.selected {
+  background: url("../res/images/radio-selected.png") no-repeat;
+}
+/* line 181, forms\form.less */
+.information .custom-radio input[type="radio"],
+.defaultDroplist .custom-radio input[type="radio"],
+.valid_bottom .custom-radio input[type="radio"],
+.tablefields > table > tbody > tr > td > div.checkbtn .custom-radio input[type="radio"],
+div .custom-radio input[type="radio"] {
+  margin: 1px;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  z-index: 2;
+  cursor: pointer;
+  outline: none;
+  opacity: 0;
+  /* CSS hacks for older browsers */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -khtml-opacity: 0;
+  -moz-opacity: 0;
+}
+/* line 198, forms\form.less */
+.information .custom-radio input[type="radio"],
+.defaultDroplist .custom-radio input[type="radio"],
+.valid_bottom .custom-radio input[type="radio"] {
+  position: absolute;
+}
+/* line 201, forms\form.less */
+.tablefields > table > tbody > tr > td > div .custom-radio input[type="radio"] {
+  position: inherit;
+}
+/* line 204, forms\form.less */
+#customFieldsDataTable span.custom-checkbox input[type="checkbox"] {
+  left: 0 !important;
+  position: relative;
+  top: 5px;
+}
+/* line 209, forms\form.less */
+#customFieldsDataTable span.custom-checkbox.selected,
+#customFieldsDataTable span.custom-checkbox {
+  left: 0 !important;
+  position: relative;
+  top: 5px;
+}
+/* line 215, forms\form.less */
+div label {
+  margin-right: 10px;
+  top: -2px;
+}
+/* line 219, forms\form.less */
+.checkbtn label {
+  top: -9px;
+  left: -10px;
+}
+/* line 223, forms\form.less */
+.defaultDroplist label {
+  margin-right: 10px;
+}
+/* line 226, forms\form.less */
+#browserother label {
+  display: inline-block;
+}
+/* line 230, forms\form.less */
+.page-company #city {
+  padding: 9px;
+  position: relative;
+  top: -2px;
+}
+/* line 235, forms\form.less */
+input.textfield,
+.textarea,
+input.textfield2,
+input.textfield3,
+#text_area,
+.offdisc_textfield {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #e2e2e2;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #ffffff;
+  margin-bottom: 20px;
+  color: #777;
+  -webkit-box-shadow: inset 1px 4px 3px -5px rgba(0, 0, 0, 0.33);
+  -moz-box-shadow: inset 1px 4px 3px -5px rgba(0, 0, 0, 0.33);
+  box-shadow: inset 1px 4px 3px -5px rgba(0, 0, 0, 0.33);
+}
+/* line 248, forms\form.less */
+table input.textfield,
+table .textarea,
+table input.textfield2,
+table input.textfield3,
+table #text_area,
+table .offdisc_textfield {
+  margin-bottom: 0;
+  padding: 5px;
+}
+/* line 253, forms\form.less */
+.offdisc_textfield {
+  width: 160px;
+  padding: 6px 0;
+}
+/* line 257, forms\form.less */
+.textarea {
+  min-height: 50px;
+}
+/* line 260, forms\form.less */
+.textarea2 {
+  width: 35%;
+  margin-bottom: -13px;
+}
+/* line 264, forms\form.less */
+input.textfield2 {
+  width: 35%;
+}
+/* line 268, forms\form.less */
+input.textfield3 {
+  width: 120px;
+}
+/* line 272, forms\form.less */
+.form-group .textfield,
+.form-group .textfield2,
+.form-group .textfield3,
+.form-group select {
+  margin-bottom: 0 !important;
+}
+/* line 277, forms\form.less */
+#webhookUrl {
+  margin-bottom: 0;
+}
+/* line 280, forms\form.less */
+.colorCode {
+  width: auto;
+  border: 1px solid #e2e2e2;
+  float: left;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  margin: 0px 20px 20px 0;
+}
+/* line 287, forms\form.less */
+.colorpicker {
+  padding: 10px 10px;
+  border: 0 !important;
+}
+/* line 291, forms\form.less */
+.code {
+  display: block;
+  float: left;
+  width: 22px;
+  height: 22px;
+  margin-left: 10px;
+}
+/* line 298, forms\form.less */
+.value {
+  text-align: left;
+  margin-right: 30px;
+}
+/* line 302, forms\form.less */
+.code.pink {
+  background: #ba36a6;
+}
+/* line 305, forms\form.less */
+.code.green {
+  background: #0fcd26;
+}
+/* line 308, forms\form.less */
+.fs-mandatory-field {
+  margin-bottom: 10px;
+  float: left;
+}
+/* line 311, forms\form.less */
+.fs-mandatory-field input,
+.fs-mandatory-field label {
+  display: inline !important;
+}
+/* line 316, forms\form.less */
+#addMoreTicketsInput {
+  margin-bottom: 10px;
+}
+/* line 320, forms\form.less */
+#addOptionClass {
+  margin-bottom: 20px;
+  display: block;
+  color: #333333;
+}
+/* line 324, forms\form.less */
+#addOptionClass:hover,
+#addOptionClass:focus {
+  color: #5f259f;
+}
+/* line 328, forms\form.less */
+.fs-summary-detail {
+  position: relative;
+  top: 4px;
+}
+/* line 332, forms\form.less */
+.fs-summary-detail .custom-radio {
+  position: relative;
+  top: 1px;
+  margin-right: 5px;
+}
+/*-------------------------------------------------------------------------------
+      B.Search Styles
+    -------------------------------------------------------------------------------*/
+/* line 1, forms\search.less */
+.search-res {
+  padding: 30px 15px;
+}
+/* line 4, forms\search.less */
+.search-container,
+.search-res {
+  position: relative;
+  top: 47px;
+  right: 20px;
+}
+@media only screen and (max-width: 767px) {
+  /* line 8, forms\search.less */
+  .search-container,
+  .search-res {
+    top: 36px;
+    right: 0;
+  }
+}
+/* line 13, forms\search.less */
+.search {
+  float: right;
+  right: 0;
+  width: 40px;
+  height: 50px;
+}
+/* line 19, forms\search.less */
+.search {
+  border-radius: 0;
+  border: none;
+  padding: 0px;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  transition: all .3s ease;
+  position: absolute;
+  background: transparent;
+  border-bottom: none;
+  cursor: pointer;
+  text-indent: 0px;
+  z-index: 2;
+}
+/* line 33, forms\search.less */
+input:after:focus.search {
+  content: "Enter your search";
+  position: absolute;
+  font-size: 20px;
+  color: red;
+}
+/* line 39, forms\search.less */
+.search:focus {
+  top: 0px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  border: 1px solid #9e9e9e;
+  border-radius: 10px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  width: 50%;
+  background: #FFF;
+  z-index: 99;
+  position: absolute;
+  text-indent: 18px;
+  opacity: 1;
+}
+@media only screen and (max-width: 767px) {
+  /* line 54, forms\search.less */
+  .search:focus {
+    width: 100%;
+  }
+}
+/* line 58, forms\search.less */
+input[type="search"] {
+  opacity: 0;
+  font-family: 'geomanist_regularregular', sans-serif !important;
+}
+/* line 62, forms\search.less */
+a.search {
+  position: absolute !important;
+  /*z-index: -1;*/
+  z-index: 0;
+  /*top: -30px;*/
+  font-size: 30px!important;
+  color: #919191!important;
+  width: 50px;
+  text-align: right;
+  display: inline-block;
+  border-bottom: none!important;
+  margin-top: 5px;
+}
+/* line 74, forms\search.less */
+.form-control:focus {
+  border: 1px solid #9e9e9e !important;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+/* line 80, forms\search.less */
+.search-container a.icon-search:hover {
+  color: #a82b95;
+}
+/*-------------------------------------------------------------------------------
+      C.Edit Fields
+    -------------------------------------------------------------------------------*/
+/* line 1, forms\edit-fields.less */
+.editFields form,
+.editFields1 form,
+.editFields2 form {
+  position: relative;
+  color: #777777;
+}
+/* line 5, forms\edit-fields.less */
+.btnSec {
+  width: 60%;
+  margin-top: 20px;
+}
+/* line 9, forms\edit-fields.less */
+.fs-form {
+  width: 60%;
+  overflow: hidden;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+@media only screen and (max-width: 1000px) {
+  /* line 13, forms\edit-fields.less */
+  .fs-form {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  /* line 16, forms\edit-fields.less */
+  .fs-form {
+    width: 100%;
+  }
+}
+/* line 20, forms\edit-fields.less */
+.fs-form-widget-setting {
+  background-color: white;
+  margin-bottom: 20px;
+  width: 95%;
+}
+@media only screen and (max-width: 1000px) {
+  /* line 25, forms\edit-fields.less */
+  .fs-form-widget-setting {
+    width: 100%;
+  }
+}
+/* line 28, forms\edit-fields.less */
+.fs-form-widget-setting img {
+  width: 100%;
+  display: block;
+}
+/* line 33, forms\edit-fields.less */
+.fs-form-content {
+  padding: 20px;
+}
+/* line 35, forms\edit-fields.less */
+.fs-form-content table {
+  margin-top: 0;
+}
+/* line 39, forms\edit-fields.less */
+#widget_button {
+  margin: 0 15px 20px 0;
+}
+/* line 42, forms\edit-fields.less */
+.fs-box-title {
+  background-color: #8666cd;
+  color: white;
+  line-height: 40px;
+  padding: 0 20px;
+  text-transform: uppercase;
+}
+@media only screen and (max-width: 500px) {
+  /* line 48, forms\edit-fields.less */
+  .fs-box-title {
+    font-size: 14px;
+  }
+}
+/* line 52, forms\edit-fields.less */
+.editFields {
+  background: #fff;
+  padding: 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 56, forms\edit-fields.less */
+.editFields form {
+  overflow: hidden;
+}
+/* line 60, forms\edit-fields.less */
+div#tinymce-13 {
+  width: 99.5% !important;
+}
+/* line 63, forms\edit-fields.less */
+.editFields1 {
+  width: 80%;
+  background: #fff;
+  padding: 20px;
+}
+/* line 68, forms\edit-fields.less */
+.editFields2 {
+  width: 100%;
+  /*	border: 1px solid #d7d7d7;
+	margin-top: 20px;
+	background: #fff;
+	padding: 20px*/
+}
+/* line 75, forms\edit-fields.less */
+.editFields1 span.suggestion,
+.editFields2 span.suggestion {
+  font-size: 12px;
+}
+/* line 78, forms\edit-fields.less */
+.editFields label,
+.editFields1 label,
+.ticketFields label,
+.editFields2 label {
+  position: inherit;
+  display: block;
+  color: #333333;
+  font-size: 14px;
+  /*padding-left: 5px;*/
+  margin-bottom: 5px;
+  font-weight: normal;
+}
+/* line 87, forms\edit-fields.less */
+.editFields select,
+.ticketFields select {
+  margin-top: 0;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  background-color: white;
+}
+/* line 95, forms\edit-fields.less */
+.editFields span.icon-downarrow {
+  right: 15px;
+  position: absolute;
+  top: 64%;
+}
+/* line 100, forms\edit-fields.less */
+.fs-add-discount-box,
+.fs-add-promoter-form,
+.fs-add-collaborator-form,
+.fs-add-offline-promoter-form,
+.fs-profile-form,
+.fs-dashboard-change-password,
+.fs-bank-details,
+.fs-company-details,
+.fs-payment-modes {
+  width: 70%;
+}
+@media only screen and (max-width: 1100px) {
+  /* line 109, forms\edit-fields.less */
+  .fs-add-discount-box,
+  .fs-add-promoter-form,
+  .fs-add-collaborator-form,
+  .fs-add-offline-promoter-form,
+  .fs-profile-form,
+  .fs-dashboard-change-password,
+  .fs-bank-details,
+  .fs-company-details,
+  .fs-payment-modes {
+    width: 100%;
+  }
+}
+/* line 113, forms\edit-fields.less */
+.fs-offline-booking {
+  width: 40%;
+}
+@media only screen and (max-width: 1100px) {
+  /* line 115, forms\edit-fields.less */
+  .fs-offline-booking {
+    width: 100%;
+  }
+}
+/*-------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------
+  4. Main Sections 
+---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------
+      A.Header
+    -------------------------------------------------------------------------------*/
+/* line 1, main-sections\header.less */
+.headerSec {
+  height: 80px;
+  background: #FFF;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  top: 0px;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
+@media only screen and (max-width: 600px) {
+  /* line 12, main-sections\header.less */
+  .headerSec {
+    height: 55px;
+  }
+}
+/* line 15, main-sections\header.less */
+.headerSec ul {
+  overflow: hidden;
+}
+/* line 20, main-sections\header.less */
+.logo {
+  margin-left: 20px;
+  padding-top: 8px;
+  float: left;
+  max-width: 180px;
+}
+@media only screen and (max-width: 1000px) {
+  /* line 26, main-sections\header.less */
+  .logo {
+    margin-left: 50px;
+    /*.page-dashboard &,.currentTicket &,.pastEventList &,.pastTicket &{
+			margin-left:20px !important;
+		}*/
+  }
+}
+@media only screen and (max-width: 600px) {
+  /* line 33, main-sections\header.less */
+  .logo {
+    margin-left: 36px;
+    padding-top: 10px;
+    max-width: 122px;
+    /*.page-dashboard &,.currentTicket &,.pastEventList &,.pastTicket &{
+			margin-left:10px !important;
+		}*/
+  }
+}
+/* line 42, main-sections\header.less */
+.logo img {
+  max-width: 100%;
+}
+/* line 46, main-sections\header.less */
+#mobile-menu-toggle {
+  position: absolute;
+  left: 20px;
+  top: 30px;
+  color: #5f259f;
+  /*.dashboard &,.currentTicket &,.pastEventList &,.pastTicket &{
+		display: none !important;
+	}
+	.page-dashboard &{
+		display: none;
+	}*/
+}
+/* line 52, main-sections\header.less */
+#mobile-menu-toggle:hover,
+#mobile-menu-toggle:focus {
+  color: #fdda24;
+}
+/* line 56, main-sections\header.less */
+#mobile-menu-toggle span {
+  font-size: 20px;
+}
+@media only screen and (min-width: 1001px) {
+  /* line 60, main-sections\header.less */
+  #mobile-menu-toggle {
+    display: none;
+  }
+}
+@media only screen and (max-width: 600px) {
+  /* line 64, main-sections\header.less */
+  #mobile-menu-toggle {
+    left: 10px;
+    top: 18px;
+  }
+}
+/* line 75, main-sections\header.less */
+.rightList {
+  width: auto;
+  margin-right: 20px;
+}
+@media only screen and (max-width: 600px) {
+  /* line 79, main-sections\header.less */
+  .rightList {
+    margin-right: 10px;
+  }
+}
+/* line 82, main-sections\header.less */
+.rightList .createBtn {
+  background-color: #FDDA24!important;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  margin-left: 5px;
+  margin-top: 13px;
+  padding: 10px!important;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: black !important;
+}
+@media only screen and (max-width: 600px) {
+  /* line 94, main-sections\header.less */
+  .rightList .createBtn {
+    line-height: 35px !important;
+    padding: 0 5px !important;
+    font-size: 11px;
+  }
+}
+/* line 101, main-sections\header.less */
+.rightList .icon-downarrow {
+  margin-top: 32px;
+  margin-left: 5px;
+}
+@media only screen and (max-width: 600px) {
+  /* line 105, main-sections\header.less */
+  .rightList .icon-downarrow {
+    display: none;
+  }
+}
+/* line 110, main-sections\header.less */
+.rightList li {
+  list-style-type: none;
+  display: inline-block;
+  float: left;
+  line-height: 80px;
+  margin-left: 20px;
+}
+@media only screen and (max-width: 600px) {
+  /* line 117, main-sections\header.less */
+  .rightList li {
+    margin-left: 10px;
+    line-height: 55px;
+  }
+}
+/* line 122, main-sections\header.less */
+.rightList li a {
+  color: #333;
+  font-size: 13px;
+}
+/* line 126, main-sections\header.less */
+.rightList li a img {
+  margin-top: 5px;
+}
+@media only screen and (max-width: 600px) {
+  /* line 133, main-sections\header.less */
+  .rightList .fs-header-help {
+    display: none;
+  }
+}
+/* line 137, main-sections\header.less */
+.rightList .fs-header-help a {
+  font-size: 16px;
+  position: relative;
+  top: 3px;
+}
+/* line 142, main-sections\header.less */
+.rightList .fs-header-help ul a {
+  font-size: 13px;
+}
+/* line 147, main-sections\header.less */
+.fs-usermenu .smile-icon {
+  font-size: 20px;
+  line-height: 28px;
+  width: 28px;
+  position: relative;
+  top: 4px;
+  text-align: center;
+  display: inline-block;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: #8666cd;
+  color: white;
+}
+/* line 158, main-sections\header.less */
+.fs-usermenu .smile-icon:hover,
+.fs-usermenu .smile-icon:focus {
+  background-color: #fdda24;
+  color: #5f259f;
+}
+/* line 164, main-sections\header.less */
+.fs-usermenu > a {
+  display: block;
+  width: 50px;
+  height: 80px;
+  background-image: url(../../images/static/profile-icon-50.png);
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+@media only screen and (max-width: 600px) {
+  /* line 171, main-sections\header.less */
+  .fs-usermenu > a {
+    height: 55px;
+    width: 40px;
+    background-size: 40px;
+  }
+}
+/* line 178, main-sections\header.less */
+#helpdropdown-menu li {
+  margin-left: 0;
+}
+/* line 184, main-sections\header.less */
+#menudvLoading {
+  background-color: rgba(136, 136, 136, 0.4);
+  height: 20px;
+  /* position: fixed;*/
+  /* width: 100%; */
+  z-index: 1000;
+  padding: 10px 0;
+}
+/* line 193, main-sections\header.less */
+.menuloadingopacity {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+/* line 197, main-sections\header.less */
+.menuloadingimg {
+  left: 50%;
+  opacity: 1;
+  filter: alpha(opacity=100);
+  position: absolute;
+  top: 50%;
+  border-radius: 4px;
+  display: block;
+  background-color: #fff;
+  -webkit-transform: translate(-50%, -55%);
+  -moz-transform: translate(-50%, -55%);
+  -o-transform: translate(-50%, -55%);
+  -ms-transform: translate(-50%, -55%);
+  transform: translate(-50%, -55%);
+  padding: 1px;
+  height: 11px !important;
+  width: auto;
+  float: left;
+  line-height: 40px;
+}
+/* line 218, main-sections\header.less */
+.menuloading {
+  background: url(../../images/static/loading_image.gif) center 10px no-repeat !important;
+  pointer-events: none;
+  text-indent: -9999px !important;
+  width: 140px;
+  padding: 5px !important;
+}
+/*-------------------------------------------------------------------------------
+      B.Footer
+    -------------------------------------------------------------------------------*/
+/* line 1, main-sections\footer.less */
+footer {
+  background: #393938;
+  padding: 50px 0 22px 0!important;
+  border-bottom: 5px solid #46bc18;
+  margin-top: 100px;
+}
+/* line 7, main-sections\footer.less */
+footer h4 {
+  color: #f5f6f7;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+/* line 12, main-sections\footer.less */
+footer nav li a {
+  display: block;
+  padding-bottom: 10px;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/* line 19, main-sections\footer.less */
+footer nav li a:hover {
+  color: #46bc18;
+}
+/* line 22, main-sections\footer.less */
+.ftr_container {
+  margin: 0 auto !important;
+  padding: 0px;
+}
+/* line 26, main-sections\footer.less */
+.footer-container {
+  margin: 0 auto !important;
+  padding: 0px;
+  width: 90%;
+}
+/* line 31, main-sections\footer.less */
+footer input[type="email"] {
+  height: 40px;
+  background: #515151;
+  border: 2px solid #363636;
+  width: 100%;
+  padding: 0px 10px;
+  border-radius: 5px;
+  color: #7e7e7e;
+}
+/* line 40, main-sections\footer.less */
+.footer-container nav ul {
+  float: left;
+  width: 20%;
+}
+/* line 44, main-sections\footer.less */
+.footer-copyright {
+  margin-top: 50px;
+  color: #5f5f5e;
+  font-size: 12px;
+  font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 0px;
+}
+/*-------------------------------------------------------------------------------
+      C.Navigation
+    -------------------------------------------------------------------------------*/
+/* line 1, main-sections\navigation.less */
+.navigation {
+  width: auto;
+}
+/* line 4, main-sections\navigation.less */
+.navigation ul {
+  margin: 0;
+  padding: 0;
+}
+/* line 8, main-sections\navigation.less */
+.navigation li a {
+  line-height: 48px;
+  color: #6a7583;
+  font-size: 16px;
+  list-style-type: none;
+  display: block;
+  border-left: 3px solid #282c37;
+}
+/* line 17, main-sections\navigation.less */
+.expand {
+  background: #f9f9f9;
+  display: block;
+  color: #fff !important;
+}
+/* line 22, main-sections\navigation.less */
+.hideexpand {
+  display: none;
+}
+/* line 24, main-sections\navigation.less */
+.navigation li span {
+  display: block;
+  margin-right: 10px;
+  float: left;
+  line-height: 48px;
+  padding-left: 15px;
+}
+/* line 31, main-sections\navigation.less */
+.navigation li a:hover,
+.navigation li a.active,
+.navigation li a.activated {
+  background: #1b1e28;
+  display: block;
+  color: #fff !important;
+}
+/* line 37, main-sections\navigation.less */
+.navigation li a:hover,
+.navigation li a.active {
+  border-left: 3px solid #ba36a6;
+}
+/* line 39, main-sections\navigation.less */
+.navigation a.selected {
+  background: #1b1e28;
+  border-left: 3px solid #1b1e28;
+}
+/* line 43, main-sections\navigation.less */
+.navigation li a.unselected {
+  color: #6a7583;
+}
+/* line 44, main-sections\navigation.less */
+.navigation li ul li a {
+  padding-left: 10px;
+  background: #1b1e28;
+  color: #ffffff;
+}
+/* line 49, main-sections\navigation.less */
+.navigation li ul li ul li a {
+  padding-left: 20px;
+  color: #6a7583;
+}
+/* line 55, main-sections\navigation.less */
+#cssmenu {
+  padding-top: 20px;
+}
+/* line 57, main-sections\navigation.less */
+#cssmenu .odd {
+  background-color: transparent;
+}
+/* line 60, main-sections\navigation.less */
+#cssmenu .icon {
+  padding: 0 20px 0 30px;
+  font-size: 18px;
+  position: relative;
+  top: 3px;
+}
+/* line 66, main-sections\navigation.less */
+#cssmenu a {
+  color: white;
+  display: block;
+  padding: 7px 0;
+  font-size: 13px;
+}
+/* line 71, main-sections\navigation.less */
+#cssmenu a:hover,
+#cssmenu a:focus {
+  text-decoration: none;
+}
+/* line 77, main-sections\navigation.less */
+#cssmenu .has-sub > a:hover,
+#cssmenu .has-sub > a.currentPage {
+  color: #5f259f;
+  background-color: #fdda24;
+}
+/* line 82, main-sections\navigation.less */
+#cssmenu ul ul {
+  display: none;
+}
+/* line 85, main-sections\navigation.less */
+#cssmenu ul ul a {
+  padding-left: 67px;
+}
+/* line 87, main-sections\navigation.less */
+#cssmenu ul ul a:hover,
+#cssmenu ul ul a:focus {
+  background-color: #53208a;
+}
+/* line 91, main-sections\navigation.less */
+#cssmenu .currentsubLink,
+#cssmenu .currentsubLink:hover {
+  color: #5f259f;
+  background-color: #fdda24;
+}
+/* line 95, main-sections\navigation.less */
+#cssmenu .sub-link-active .currentPage,
+#cssmenu a:hover {
+  background-color: #53208a !important;
+  color: #fdda24 !important;
+}
+/* line 99, main-sections\navigation.less */
+#cssmenu li.active > ul {
+  display: block;
+}
+/* line 102, main-sections\navigation.less */
+#cssmenu ul ul ul {
+  margin-left: 15px;
+  border-left: 1px dotted rgba(0, 0, 0, 0.5);
+}
+/* line 106, main-sections\navigation.less */
+#cssmenu .has-sub {
+  margin-bottom: 10px;
+}
+/* line 109, main-sections\navigation.less */
+#cssmenu li {
+  position: relative;
+}
+/* line 112, main-sections\navigation.less */
+#cssmenu ul ul a:not(:only-child):after {
+  content: "\f104";
+  font-family: fontawesome;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 14px;
+}
+/* line 120, main-sections\navigation.less */
+#cssmenu ul ul .active > a:not(:only-child):after {
+  content: "\f107";
+}
+/* line 125, main-sections\navigation.less */
+.fs-special-view-left-menu p {
+  color: white;
+}
+/* line 129, main-sections\navigation.less */
+.fs-special-view-left-menu ul ul {
+  display: block !important;
+}
+/* line 133, main-sections\navigation.less */
+.fs-header-help {
+  font-size: 16px;
+}
+/*-------------------------------------------------------------------------------
+      D.Dashboard Organiser Pages
+    -------------------------------------------------------------------------------*/
+/* line 1, main-sections\dashboard-organiser-pages.less */
+.db_details {
+  width: 95%;
+  margin: 90px auto;
+}
+/* line 5, main-sections\dashboard-organiser-pages.less */
+.db_details h3 {
+  color: #5f259f;
+  font-size: 20px;
+  margin: 0;
+  padding: 10px 0 0;
+  font-weight: 400;
+}
+/* line 12, main-sections\dashboard-organiser-pages.less */
+.db_details h5,
+.db_details h6 {
+  color: #515151;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+/* line 18, main-sections\dashboard-organiser-pages.less */
+.db_details h6 {
+  font-weight: 700;
+  margin: 20px 0;
+  clear: both;
+}
+/* line 26, main-sections\dashboard-organiser-pages.less */
+.db-usermenu {
+  position: absolute;
+  top: 99%;
+  right: 15px;
+  z-index: 1000;
+  width: 150px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  /*border-radius: 4px;*/
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+/* line 46, main-sections\dashboard-organiser-pages.less */
+.db-usermenu li {
+  list-style: none;
+  display: block;
+}
+/* line 50, main-sections\dashboard-organiser-pages.less */
+.db-usermenu span {
+  list-style: none;
+  display: block;
+}
+/* line 54, main-sections\dashboard-organiser-pages.less */
+.db-usermenu > li {
+  display: block;
+  float: left;
+}
+/* line 58, main-sections\dashboard-organiser-pages.less */
+.db-usermenu > li > a {
+  display: block;
+  padding: 3px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+/* line 67, main-sections\dashboard-organiser-pages.less */
+.db-usermenu > li > a:hover {
+  color: #ba36a6;
+}
+/* line 70, main-sections\dashboard-organiser-pages.less */
+.db-usermenu li {
+  height: 40px;
+}
+/* line 73, main-sections\dashboard-organiser-pages.less */
+.db-usermenu li span {
+  margin-right: 10px;
+  font-weight: normal;
+  font-size: 18px;
+  float: left;
+}
+/* line 79, main-sections\dashboard-organiser-pages.less */
+.db-usermenu hr {
+  border: 0;
+  border-top: 1px solid #eee;
+  clear: both;
+  width: 100%;
+}
+/* line 86, main-sections\dashboard-organiser-pages.less */
+.db-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+/* line 91, main-sections\dashboard-organiser-pages.less */
+.dbalert {
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 20px;
+  font-weight: 300;
+  margin: 10px 0;
+  background-color: #dff0d8;
+  padding: 15px;
+  width: auto;
+}
+/* line 104, main-sections\dashboard-organiser-pages.less */
+.db-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+/* line 112, main-sections\dashboard-organiser-pages.less */
+.tabs {
+  padding: 20px 0;
+  margin: 0;
+  list-style-type: none;
+}
+/* line 117, main-sections\dashboard-organiser-pages.less */
+.tabs li {
+  display: inline-block;
+  margin: 0;
+  margin-right: 3px;
+}
+/* line 122, main-sections\dashboard-organiser-pages.less */
+.tabs a {
+  text-decoration: none;
+  position: relative;
+  padding: 7px 0px;
+  outline: none;
+  color: #333333;
+  margin-right: 30px;
+  font-size: 16px;
+}
+@media only screen and (max-width: 767px) {
+  /* line 130, main-sections\dashboard-organiser-pages.less */
+  .tabs a {
+    margin-right: 10px;
+    font-size: 14px;
+  }
+}
+/* line 135, main-sections\dashboard-organiser-pages.less */
+.tabs a:visited {
+  color: #333333;
+}
+/* line 138, main-sections\dashboard-organiser-pages.less */
+.tabs a:hover,
+.tabs a:focus {
+  border-bottom: 2px solid #515151;
+}
+/* line 142, main-sections\dashboard-organiser-pages.less */
+.tabs .selected a,
+.tabs .selected a:hover,
+.tabs .selected a:focus {
+  color: #f65195;
+  border-bottom: 2px solid #f65195;
+}
+/* line 148, main-sections\dashboard-organiser-pages.less */
+.db-alert {
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 15px;
+}
+/* line 155, main-sections\dashboard-organiser-pages.less */
+.db-alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+/* line 161, main-sections\dashboard-organiser-pages.less */
+.db-alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+/* line 167, main-sections\dashboard-organiser-pages.less */
+.db-alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+/* line 173, main-sections\dashboard-organiser-pages.less */
+.db-alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  margin-top: 18px;
+  border-color: #d6e9c6;
+}
+/* line 179, main-sections\dashboard-organiser-pages.less */
+.fs-transtaction-actions {
+  position: relative;
+}
+@media only screen and (max-width: 550px) {
+  /* line 182, main-sections\dashboard-organiser-pages.less */
+  .fs-transtaction-actions select {
+    margin-top: 0 !important;
+  }
+}
+/* line 186, main-sections\dashboard-organiser-pages.less */
+.fs-transtaction-actions #download_files {
+  display: none;
+}
+/* line 189, main-sections\dashboard-organiser-pages.less */
+.fs-transtaction-actions .fs-export-reports-special {
+  right: -10px !important;
+  top: -67px !important;
+}
+@media only screen and (max-width: 450px) {
+  /* line 194, main-sections\dashboard-organiser-pages.less */
+  .fs-transtaction-actions .fs-summary-detail {
+    margin-top: 10px;
+  }
+}
+@media only screen and (max-width: 760px) {
+  /* line 199, main-sections\dashboard-organiser-pages.less */
+  .fs-transtaction-actions button {
+    margin-top: 10px !important;
+  }
+}
+/* line 203, main-sections\dashboard-organiser-pages.less */
+.fs-transtaction-actions .fs-export-email {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+@media only screen and (max-width: 1250px) {
+  /* line 207, main-sections\dashboard-organiser-pages.less */
+  .fs-transtaction-actions .fs-export-email {
+    position: static;
+  }
+}
+/* line 210, main-sections\dashboard-organiser-pages.less */
+.fs-transtaction-actions .fs-export-email #emailAttachedReports {
+  margin-right: 0;
+}
+/* line 214, main-sections\dashboard-organiser-pages.less */
+.fs-transtaction-actions .fs-filter-actions div > div {
+  display: inline-block;
+}
+/* line 216, main-sections\dashboard-organiser-pages.less */
+.fs-transtaction-actions .fs-filter-actions div > div select {
+  width: 160px;
+}
+/* line 220, main-sections\dashboard-organiser-pages.less */
+.fs-transtaction-actions .Btn {
+  position: relative;
+  top: -3px;
+  padding: 0 10px;
+}
+/* line 226, main-sections\dashboard-organiser-pages.less */
+.fs-action-in-alert {
+  color: #5f259f;
+  font-weight: italic;
+}
+/*-------------------------------------------------------------------------------
+      E.Layout
+    -------------------------------------------------------------------------------*/
+/* line 1, main-sections\layout.less */
+.container {
+  position: relative;
+  top: 69px;
+  width: 100% !important;
+  margin-left: 0 !important;
+  padding: 0 !important;
+}
+@media only screen and (max-width: 600px) {
+  /* line 7, main-sections\layout.less */
+  .container {
+    top: 55px;
+  }
+}
+/* line 13, main-sections\layout.less */
+.100widthfl {
+  width: 100%;
+  float: left;
+}
+/* line 14, main-sections\layout.less */
+.100width {
+  width: 100% !important;
+}
+/* line 15, main-sections\layout.less */
+.50wfl {
+  width: 50%;
+  float: left;
+}
+/* line 16, main-sections\layout.less */
+.50w {
+  width: 50%;
+}
+/* line 17, main-sections\layout.less */
+.50widthfl {
+  width: 50%;
+  float: left;
+}
+/* line 18, main-sections\layout.less */
+.50width {
+  width: 50% !important;
+}
+@media only screen and (max-width: 480px) {
+  /* line 21, main-sections\layout.less */
+  .100wfl {
+    width: 100%;
+    float: left;
+  }
+  /* line 22, main-sections\layout.less */
+  .100w {
+    width: 100% !important;
+  }
+  /* line 24, main-sections\layout.less */
+  .50wfl {
+    width: 50%;
+    float: left;
+  }
+  /* line 25, main-sections\layout.less */
+  .50w {
+    width: 50% !important;
+  }
+}
+/* line 29, main-sections\layout.less */
+.leftFixed {
+  width: 200px;
+  overflow: hidden;
+  background: #5f259f;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+}
+/* line 38, main-sections\layout.less */
+.leftFixed .sidebar-full-height-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 200px;
+  background-color: #5f259f;
+  z-index: -1;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+}
+@media only screen and (max-width: 1000px) {
+  /* line 50, main-sections\layout.less */
+  .leftFixed,
+  .leftFixed .sidebar-full-height-bg {
+    left: -200px;
+  }
+}
+/* line 55, main-sections\layout.less */
+.rightArea {
+  margin-left: 200px;
+  position: relative;
+  left: 0;
+  padding: 20px;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+}
+@media only screen and (max-width: 1000px) {
+  /* line 61, main-sections\layout.less */
+  .rightArea {
+    margin-left: 0px;
+  }
+}
+/* line 65, main-sections\layout.less */
+.rightArea .rightSec {
+  width: 100%;
+}
+/* line 69, main-sections\layout.less */
+.fs-show-me-on-screen,
+.leftFixed .fs-show-me-on-screen {
+  left: 0;
+}
+/* line 73, main-sections\layout.less */
+.fs-move-me-to-right {
+  left: 200px;
+}
+/* line 77, main-sections\layout.less */
+.fs-settings-buttons {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+@media only screen and (max-width: 600px) {
+  /* line 81, main-sections\layout.less */
+  .fs-settings-buttons {
+    position: static;
+  }
+}
+/*-------------------------------------------------------------------------------
+      F.Gallery
+    -------------------------------------------------------------------------------*/
+/* line 1, main-sections\gallery.less */
+.GalleryView-Thumb {
+  float: left;
+  width: 100%;
+  margin: 50px 0 100px 0;
+}
+/* line 2, main-sections\gallery.less */
+.GalleryThumb ul li {
+  list-style: none;
+  display: inline-block;
+  float: left;
+  width: 100%;
+}
+/* line 3, main-sections\gallery.less */
+.GalleryThumb li {
+  list-style: none;
+  display: inline-block;
+  float: left;
+  margin: 10px 20px 0 0;
+  width: 200px;
+}
+/* line 4, main-sections\gallery.less */
+.GalleryTitle-Text {
+  padding: 10px 5px;
+  font-size: 14px;
+  color: #333;
+  float: left;
+  width: 160px;
+  height: 40px;
+}
+/* line 5, main-sections\gallery.less */
+.Gallery-Delete {
+  padding: 10px 5px;
+  font-size: 14px;
+  color: #333;
+  float: right;
+  width: 20px;
+}
+/* line 6, main-sections\gallery.less */
+.Gallery-Delete a {
+  color: #f60;
+}
+/*-------------------------------------------------------------------------------
+      G.Refund
+    -------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------
+      H.Sales
+    -------------------------------------------------------------------------------*/
+/* line 1, main-sections\sales.less */
+.saleBox {
+  width: auto;
+  margin: 46px 0px 20px 0px;
+}
+/* line 5, main-sections\sales.less */
+.saleBox2 {
+  width: auto;
+  margin: 20px 0px;
+}
+/* line 9, main-sections\sales.less */
+.saleBox h4,
+.saleBox2 h4 {
+  text-transform: capitalize;
+  font-size: 22px;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+/* line 16, main-sections\sales.less */
+.saleBox span,
+.saleBox2 span {
+  font-size: 70px;
+  display: block;
+  text-align: left;
+}
+/* line 21, main-sections\sales.less */
+.saleGraph {
+  position: absolute;
+  right: 0;
+  top: 40%;
+  width: 30%;
+  margin: 0 auto;
+}
+/* line 28, main-sections\sales.less */
+.saleGraph span {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 15px;
+}
+/* line 33, main-sections\sales.less */
+.sales {
+  width: 70%;
+}
+@media only screen and (max-width: 600px) {
+  /* line 35, main-sections\sales.less */
+  .sales {
+    width: 100%;
+  }
+}
+/* line 40, main-sections\sales.less */
+.salesefforts a {
+  color: #f60;
+  font-weight: bold;
+}
+/*-------------------------------------------------------------------------------
+      I.Select Country
+    -------------------------------------------------------------------------------*/
+/* line 1, main-sections\select-country.less */
+.selCountry {
+  float: left;
+  margin-top: 19px;
+}
+/* line 5, main-sections\select-country.less */
+.selCountry li {
+  padding: 0 5px;
+}
+/* line 8, main-sections\select-country.less */
+.selCountry li img {
+  margin-top: 4px;
+  margin-left: 6px;
+  padding-right: 5px;
+  float: left;
+}
+/* line 14, main-sections\select-country.less */
+.selCountry li a {
+  padding: 5px 0;
+  width: 100%;
+  float: left;
+}
+/* line 19, main-sections\select-country.less */
+.selCountry li a:hover {
+  background: #e5e5e5;
+}
+/* line 22, main-sections\select-country.less */
+.selCountry .dropdown-menu > li > a {
+  padding: 10px 3px;
+}
+/* line 26, main-sections\select-country.less */
+.selCountry {
+  background: none;
+  padding: 5px;
+  margin-left: 15px;
+}
+/* line 31, main-sections\select-country.less */
+.selCountry a {
+  color: #333;
+}
+/* line 32, main-sections\select-country.less */
+.selCountry ul {
+  position: absolute;
+  top: 70%;
+  left: 160px;
+  z-index: 1000;
+  padding: 2px 5px;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  /* border-radius: 4px; */
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  color: #333;
+}
+/* line 52, main-sections\select-country.less */
+.selCountry ul > li {
+  height: 35px;
+}
+/* line 55, main-sections\select-country.less */
+.selCountry ul > li > a {
+  color: #333;
+}
+/* line 58, main-sections\select-country.less */
+.selCountry ul > li :hover {
+  background: none;
+  color: #ba36ae;
+}
+/* line 62, main-sections\select-country.less */
+.selCountryArrow {
+  display: inline;
+  /* position: absolute; */
+  /* top: 0px; */
+  margin-left: 5px;
+  margin-top: 2px;
+}
+/*-------------------------------------------------------------------------------
+      J.Tickets
+    -------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------
+      K.Events
+    -------------------------------------------------------------------------------*/
+/* line 1, main-sections\events.less */
+.eventCreated {
+  position: absolute;
+  right: 20px;
+  top: 90px;
+}
+/* line 7, main-sections\events.less */
+.tabcontents h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  clear: both;
+  font-size: 20px;
+}
+@media only screen and (max-width: 767px) {
+  /* line 12, main-sections\events.less */
+  .tabcontents h6 {
+    font-size: 16px;
+  }
+}
+/* line 17, main-sections\events.less */
+.eventCreated a {
+  display: inline-block;
+  text-align: center;
+  font-size: 14px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+/* line 24, main-sections\events.less */
+.rightArea > h3 {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #5f259f;
+}
+@media only screen and (max-width: 767px) {
+  /* line 28, main-sections\events.less */
+  .rightArea > h3 {
+    margin-top: 0;
+  }
+}
+/* line 32, main-sections\events.less */
+.eventCreated span {
+  text-align: right;
+  color: #969696;
+  font-size: 14px;
+}
+/* line 38, main-sections\events.less */
+.minheight {
+  min-height: 250px !important;
+}
+/* line 40, main-sections\events.less */
+.db_Eventbox {
+  background: #fff;
+  font-size: 18px;
+  float: left;
+  width: 48%;
+  margin: 0 2% 2% 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  /*min-height:372px;*/
+}
+@media only screen and (max-width: 900px) {
+  /* line 54, main-sections\events.less */
+  .db_Eventbox {
+    width: 48%;
+    margin: 2% 2% 0 0;
+  }
+}
+@media only screen and (max-width: 660px) {
+  /* line 58, main-sections\events.less */
+  .db_Eventbox {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+/* line 63, main-sections\events.less */
+.fs-event-title a {
+  color: white;
+  display: block;
+  font-size: 14px;
+}
+/* line 67, main-sections\events.less */
+.fs-event-title a:hover,
+.fs-event-title a:focus {
+  color: white;
+}
+/* line 71, main-sections\events.less */
+.fs-db_Eventbox-content {
+  padding: 20px;
+}
+/* line 74, main-sections\events.less */
+.fs-event-place-time {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #5f259f;
+  overflow: hidden;
+}
+/* line 80, main-sections\events.less */
+.fs-event-place-time span {
+  color: #333333;
+  font-size: 14px;
+}
+/* line 85, main-sections\events.less */
+.fs-event-place-time span.icon-locator {
+  font-size: 15px;
+  margin-left: -2px;
+}
+/* line 90, main-sections\events.less */
+.fs-event-place-time .fs-event-city-name {
+  margin-top: 5px;
+}
+/* line 94, main-sections\events.less */
+.fs-event-quantity {
+  font-size: 14px;
+}
+/* line 98, main-sections\events.less */
+.fs-ticket-management-buttons a {
+  display: block;
+  margin: 0 auto;
+  width: 102px;
+  text-align: center;
+  line-height: 20px;
+  margin-bottom: 5px;
+}
+@media only screen and (max-width: 715px) {
+  /* line 105, main-sections\events.less */
+  .fs-ticket-management-buttons a {
+    width: 100px;
+    font-size: 12px;
+    padding: 0;
+  }
+}
+/* line 110, main-sections\events.less */
+.fs-ticket-management-buttons a span[class*="icon-"] {
+  display: inline-block;
+  margin-right: 5px;
+  position: relative;
+  top: 1px;
+}
+/* line 117, main-sections\events.less */
+.fs-ticket-management-buttons p {
+  font-size: 16px;
+  color: #333333;
+  margin-bottom: 10px;
+}
+/* line 122, main-sections\events.less */
+.fs-ticket-management-buttons .ticketsId {
+  margin-top: 20px;
+}
+/* line 126, main-sections\events.less */
+.db_Eventbox_section {
+  overflow: hidden;
+}
+/* line 128, main-sections\events.less */
+.db_Eventbox_section .fs-ticket-management-buttons,
+.db_Eventbox_section .ticketsBooked {
+  float: left;
+  width: 50%;
+  text-align: center;
+}
+/* line 134, main-sections\events.less */
+.db_Eventbox_section .ticketsBooked h5 {
+  font-weight: 400;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+/* line 139, main-sections\events.less */
+.db_Eventbox_section .ticketsBooked a {
+  display: inline-block;
+  width: 145px;
+  line-height: 67px;
+  color: #5f259f;
+  font-size: 52px;
+  background-image: url(../res/images/ticket.png);
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+/* line 149, main-sections\events.less */
+.db_Eventbox_section .ticketsBooked .fs-total-amount {
+  display: inline-block;
+  width: 145px;
+  line-height: 67px;
+  color: #5f259f;
+  font-size: 20px;
+  background-image: url(../res/images/ticket.png);
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+/* line 161, main-sections\events.less */
+.db_Eventbox_footer {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #5f259f;
+}
+/* line 165, main-sections\events.less */
+.db_Eventbox_footer p {
+  font-size: 12px;
+  color: #333333;
+  text-align: right;
+}
+/* line 170, main-sections\events.less */
+.db_Eventbox_footer a {
+  margin-left: 5px;
+}
+/* line 175, main-sections\events.less */
+h6#no-events {
+  margin-top: 20px;
+}
+/* line 178, main-sections\events.less */
+#searchkeyword {
+  padding-left: 10px;
+  color: #5f259f;
+}
+/* line 183, main-sections\events.less */
+.noaccess {
+  margin: 30px 0 0 25% !important;
+  float: left !important;
+  width: 60% !important;
+}
+/* line 187, main-sections\events.less */
+.valid_date ul li {
+  float: left;
+  padding: 5px;
+  width: 100%;
+}
+/*-------------------------------------------------------------------------------
+      L.Miscellaneous
+    -------------------------------------------------------------------------------*/
+/* line 4, main-sections\miscellaneous.less */
+.priceDiv {
+  width: 50%;
+  float: left;
+}
+@media only screen and (max-width: 1170px) {
+  /* line 6, main-sections\miscellaneous.less */
+  .priceDiv {
+    width: 100%;
+    float: left;
+  }
+}
+/* line 12, main-sections\miscellaneous.less */
+.priceDiv > h4 {
+  font-size: 18px;
+}
+/* line 13, main-sections\miscellaneous.less */
+.priceDiv > span > .gray {
+  font-size: 30px !important;
+}
+/* line 15, main-sections\miscellaneous.less */
+#salesEffortAmounts .gray {
+  font-size: 30px !important;
+}
+/* line 18, main-sections\miscellaneous.less */
+.graphSec {
+  width: 100%;
+  margin: 10px 0px 0 0;
+  overflow: hidden;
+}
+/* line 22, main-sections\miscellaneous.less */
+.graphSec .Box1 {
+  width: 49%;
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  margin-bottom: 2%;
+  overflow: hidden;
+  background-color: white;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
+@media only screen and (max-width: 700px) {
+  /* line 34, main-sections\miscellaneous.less */
+  .graphSec .Box1 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  /* line 37, main-sections\miscellaneous.less */
+  .graphSec .Box1:nth-child(odd) {
+    margin-right: 0;
+  }
+}
+/* line 42, main-sections\miscellaneous.less */
+.graphSec .Box1:nth-child(odd) {
+  margin-right: 2%;
+}
+/* line 47, main-sections\miscellaneous.less */
+.Box1 h2,
+.fs-event-title {
+  background-color: #8666cd;
+  color: white;
+  padding: 10px 20px;
+  text-transform: uppercase;
+}
+@media only screen and (max-width: 500px) {
+  /* line 52, main-sections\miscellaneous.less */
+  .Box1 h2,
+  .fs-event-title {
+    font-size: 14px;
+  }
+}
+/* line 57, main-sections\miscellaneous.less */
+.db_Eventbox.fs-unpublished-event .fs-event-publish-button {
+  background-color: #fdda24;
+  color: #5f259f;
+}
+/* line 63, main-sections\miscellaneous.less */
+.fs-Box1-content {
+  padding: 20px;
+  overflow: hidden;
+}
+/* line 66, main-sections\miscellaneous.less */
+.fs-Box1-content table {
+  margin-top: 0;
+}
+/* line 70, main-sections\miscellaneous.less */
+.fs-sort-options {
+  color: white;
+  position: absolute;
+  top: 9px;
+  right: 20px;
+  font-size: 12px;
+}
+/* line 76, main-sections\miscellaneous.less */
+.fs-sort-options span[class*="icon-"] {
+  position: relative;
+  top: 1px;
+  left: -2px;
+}
+/* line 82, main-sections\miscellaneous.less */
+.fs-select-wrapper {
+  display: inline-block;
+  border: 1px solid #fff;
+  padding: 2px;
+  margin-left: 20px;
+}
+/* line 88, main-sections\miscellaneous.less */
+.fixedBox {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+/* line 94, main-sections\miscellaneous.less */
+#dateReportType,
+#menulist {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /*height: 32px;*/
+  border: none;
+  width: 80px;
+  text-indent: 8px;
+  background: none;
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  font-size: 12px !important;
+  color: white;
+}
+/* line 108, main-sections\miscellaneous.less */
+#dateReportType option,
+#menulist option {
+  color: #333333;
+}
+/* line 113, main-sections\miscellaneous.less */
+.memberDetail {
+  width: auto;
+}
+/* line 116, main-sections\miscellaneous.less */
+.memberDetail span {
+  text-align: left;
+  text-transform: capitalize;
+  font-size: 22px;
+  color: #657182;
+  display: block;
+}
+/* line 124, main-sections\miscellaneous.less */
+.fs-add-discount-box,
+.fs-profile-form,
+.fs-add-promoter-form,
+.fs-add-collaborator-form,
+.fs-add-offline-promoter-form,
+.fs-offline-booking,
+.fs-dashboard-change-password,
+.fs-bank-details,
+.fs-company-details,
+.fs-payment-modes {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  margin-bottom: 2%;
+  overflow: hidden;
+  background-color: white;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
+/* The CSS */
+/* line 145, main-sections\miscellaneous.less */
+.weekGraph {
+  width: 100%;
+}
+/* line 148, main-sections\miscellaneous.less */
+.weekGraph img {
+  width: 100%;
+  height: 267px;
+}
+/* line 152, main-sections\miscellaneous.less */
+.adjust {
+  width: 50%;
+}
+/* line 156, main-sections\miscellaneous.less */
+.save {
+  padding: 10px 20px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  border: 1px solid #d7d7d7;
+  background: #fff;
+  margin-top: 20px;
+  color: #7b7b7b;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* line 167, main-sections\miscellaneous.less */
+.alignText {
+  display: block !important;
+  margin-left: 38px;
+}
+/* line 172, main-sections\miscellaneous.less */
+.odd {
+  background: #efefef;
+}
+/* line 175, main-sections\miscellaneous.less */
+.downarrows {
+  padding-top: 15px;
+  line-height: 35px;
+}
+/* line 180, main-sections\miscellaneous.less */
+.defaultDroplist select {
+  background: #FFFFFF;
+  padding: 8px 27px 8px 10px;
+}
+/* line 184, main-sections\miscellaneous.less */
+.previewSec {
+  width: 100%;
+  float: left;
+}
+/* line 188, main-sections\miscellaneous.less */
+.generate {
+  width: 98%;
+  color: #c2c2c2;
+}
+/* line 193, main-sections\miscellaneous.less */
+.refundSec,
+.paymentSec {
+  width: 100%;
+}
+/* line 197, main-sections\miscellaneous.less */
+.paymentSec p {
+  line-height: 22px;
+}
+/* line 200, main-sections\miscellaneous.less */
+.defaultDroplist span {
+  display: inline-block;
+}
+/* line 204, main-sections\miscellaneous.less */
+.fs-color-codes {
+  overflow: hidden;
+}
+/* line 206, main-sections\miscellaneous.less */
+.fs-color-codes .fs-color-code-for {
+  position: inherit;
+  display: block;
+  color: #333333;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+/* line 213, main-sections\miscellaneous.less */
+.fs-color-codes li {
+  float: left;
+  width: 25%;
+}
+@media only screen and (max-width: 850px) {
+  /* line 216, main-sections\miscellaneous.less */
+  .fs-color-codes li {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  /* line 219, main-sections\miscellaneous.less */
+  .fs-color-codes li {
+    width: 100%;
+  }
+}
+/* line 225, main-sections\miscellaneous.less */
+.grayBg {
+  background: #cacaca;
+  color: #fff;
+}
+/* line 229, main-sections\miscellaneous.less */
+.grayBg,
+.pinkBg {
+  border-radius: 25px;
+  border: none;
+  text-align: center;
+  padding: 2px;
+  margin-right: 10px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+/* line 238, main-sections\miscellaneous.less */
+.pinkBg {
+  background: #fff;
+  color: #ba36a6;
+}
+/* srikanth */
+/* line 245, main-sections\miscellaneous.less */
+.valid_date {
+  width: 50%;
+  float: left;
+}
+@media only screen and (max-width: 600px) {
+  /* line 248, main-sections\miscellaneous.less */
+  .valid_date {
+    width: 100%;
+  }
+}
+/* line 252, main-sections\miscellaneous.less */
+.valid_date input.textfield {
+  width: 65%;
+}
+/* line 255, main-sections\miscellaneous.less */
+.valid_date ul li {
+  float: left;
+  width: 50%;
+  /*padding-right:40px;*/
+}
+/* line 259, main-sections\miscellaneous.less */
+.valid_date .valid_till {
+  display: inline-block;
+  float: right;
+}
+/* line 263, main-sections\miscellaneous.less */
+.valid_bottom {
+  margin-bottom: 15px;
+}
+/* line 267, main-sections\miscellaneous.less */
+.read-more a {
+  color: #515151;
+}
+/* line 270, main-sections\miscellaneous.less */
+.checkbtn {
+  display: inline-block;
+}
+/* line 274, main-sections\miscellaneous.less */
+.status {
+  margin-left: 6px;
+}
+/* line 277, main-sections\miscellaneous.less */
+.status img {
+  display: inline-block;
+  padding-right: 6px;
+}
+/* line 281, main-sections\miscellaneous.less */
+.uploadLogo {
+  /*position: absolute;*/
+  right: 20%;
+  top: 108px;
+}
+/*Dashboard organiser pages*/
+/* line 288, main-sections\miscellaneous.less */
+.boxTeal {
+  border-bottom: #18849e 2px solid;
+}
+/* line 291, main-sections\miscellaneous.less */
+.boxLightTeal {
+  border-bottom: #4fa1b4 2px solid;
+}
+/* line 295, main-sections\miscellaneous.less */
+.newClass {
+  display: block;
+}
+/* line 298, main-sections\miscellaneous.less */
+.none {
+  display: none;
+}
+/* line 303, main-sections\miscellaneous.less */
+div span {
+  display: inline-block;
+}
+/* line 307, main-sections\miscellaneous.less */
+#browserother {
+  display: none;
+}
+/* line 310, main-sections\miscellaneous.less */
+.add_ticket,
+.add_time {
+  color: #777777;
+  font-size: 33px;
+  cursor: pointer;
+  /* font-size: 100; */
+}
+/* line 315, main-sections\miscellaneous.less */
+.addfield {
+  width: 30%!important;
+  margin-right: 8px;
+}
+/* line 319, main-sections\miscellaneous.less */
+.downarrowSettings {
+  top: 12px!important;
+}
+/* line 322, main-sections\miscellaneous.less */
+.create_eve_tickets,
+.editFields {
+  position: relative;
+}
+/* line 325, main-sections\miscellaneous.less */
+.helpScreenOverlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5) url("../res/images/help.png") no-repeat;
+  z-index: 99;
+  overflow: hidden;
+  background-position: 100% -12%;
+}
+/* line 340, main-sections\miscellaneous.less */
+.rightList ul > li > a > img {
+  width: 50px;
+  height: 50px;
+  margin-top: 8px;
+  border-radius: 50px;
+}
+/* line 342, main-sections\miscellaneous.less */
+.WidgetPreview {
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  /*height: 400px;*/
+  height: auto;
+  overflow: auto;
+}
+/* line 345, main-sections\miscellaneous.less */
+.mandatory {
+  color: #f60;
+  font-size: 16px;
+}
+/* line 348, main-sections\miscellaneous.less */
+hr {
+  margin: 10px 0 20px 0;
+  border: 0;
+  background-color: #ccc;
+  height: 1px;
+  width: 100%;
+}
+/* line 350, main-sections\miscellaneous.less */
+.btn-holder {
+  margin-top: 20px;
+}
+/* line 354, main-sections\miscellaneous.less */
+.paymentmodes p {
+  width: 100%;
+  margin: 5px 0 15px 0;
+}
+/* line 356, main-sections\miscellaneous.less */
+.suggestiontext {
+  font-size: 14px;
+  color: #f60;
+}
+/* line 357, main-sections\miscellaneous.less */
+.suggestiontext-g {
+  font-size: 14px;
+  color: #898989;
+  display: block;
+}
+/* line 358, main-sections\miscellaneous.less */
+.font14 {
+  font-size: 14px;
+}
+/* line 360, main-sections\miscellaneous.less */
+.rightArea hr {
+  width: 100%;
+  float: left;
+}
+/* line 362, main-sections\miscellaneous.less */
+.promoterdisc-apply {
+  background: #ba36a6;
+  border: 1px solid #cacaca;
+  color: #FFF;
+  margin-left: 20px;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border: none;
+}
+/* line 365, main-sections\miscellaneous.less */
+.promoterdisc-cancel {
+  background: #fff;
+  border: none;
+  border: 1px solid #cacaca;
+  color: #7b7b7b;
+  margin-left: 10px;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+/* line 370, main-sections\miscellaneous.less */
+h3.del-paidamt {
+  font-size: 27px;
+  margin-top: 20px;
+  color: #767676 !important;
+}
+/* line 371, main-sections\miscellaneous.less */
+.Ref-Bonus {
+  float: left;
+  margin-top: 20px;
+  width: 100%;
+}
+/* line 372, main-sections\miscellaneous.less */
+.Ref-Bonus-Text {
+  color: #18849e;
+  font-size: 18px;
+  /*color:#09c;*/
+  margin: 10px 0;
+}
+/* line 374, main-sections\miscellaneous.less */
+.cyber-view {
+  background: #a5d16c;
+  padding: 5px 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  margin-right: 10px;
+}
+/* line 375, main-sections\miscellaneous.less */
+.cyber-download {
+  background: #fd6e6b;
+  padding: 5px 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+}
+/* line 377, main-sections\miscellaneous.less */
+.TestMailHolder {
+  float: left;
+  width: 100%;
+  margin-top: 40px;
+}
+/* line 378, main-sections\miscellaneous.less */
+.TestMailHolder input {
+  float: left;
+  width: 60%;
+  background: #ffffff none repeat scroll 0 0;
+  border: 1px solid #c2c2c2;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+/* line 384, main-sections\miscellaneous.less */
+.TestMailHolder .submit {
+  float: left;
+  width: 25%;
+  margin-left: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  line-height: 20px;
+  border: 0;
+  padding: 10px 25px;
+  text-transform: uppercase;
+  background: #ba36a6 none repeat scroll 0 0;
+  color: #fff;
+}
+/* line 391, main-sections\miscellaneous.less */
+.customdropdown-width {
+  float: left;
+  width: 80%;
+}
+/* line 392, main-sections\miscellaneous.less */
+.customdropdown-width select {
+  width: 100%;
+}
+/* line 394, main-sections\miscellaneous.less */
+.CustomOrder {
+  width: 25px;
+  padding: 5px;
+  border: 1px solid #c2c2c2;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background: #ffffff;
+  text-align: center;
+}
+/* line 404, main-sections\miscellaneous.less */
+.mar10 {
+  margin-right: 10px !important;
+}
+/* line 408, main-sections\miscellaneous.less */
+.alert-chkbtn > .custom-checkbox {
+  float: none;
+}
+/*No access page message styles*/
+/* line 411, main-sections\miscellaneous.less */
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  margin-top: 60px !important;
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+}
+/* line 412, main-sections\miscellaneous.less */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.6px;
+}
+/* line 415, main-sections\miscellaneous.less */
+.fade.in {
+  opacity: 1;
+}
+/*#dateReportType {margin-top:0 !important;}*/
+/* line 419, main-sections\miscellaneous.less */
+.discountDateClass {
+  float: left;
+  width: 50%;
+}
+@media only screen and (max-width: 650px) {
+  /* line 422, main-sections\miscellaneous.less */
+  .discountDateClass {
+    width: 100%;
+  }
+}
+/* line 426, main-sections\miscellaneous.less */
+.discountDateClass ul li {
+  float: left;
+  width: 50%;
+}
+/* line 427, main-sections\miscellaneous.less */
+.discountDateClass input.textfield {
+  width: 65%;
+}
+/* line 430, main-sections\miscellaneous.less */
+#viralTicket .checkbtn label {
+  top: 0 !important;
+}
+/* line 432, main-sections\miscellaneous.less */
+.BulkDiscClass {
+  float: left;
+  width: 100%;
+  padding: 10px 0;
+}
+/* line 434, main-sections\miscellaneous.less */
+div#preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  background: #f1f1f1;
+  opacity: 0.8;
+}
+/* line 435, main-sections\miscellaneous.less */
+div#preloader .bg {
+  background: url('../../images/me-loading.gif') no-repeat center center;
+  width: 32px;
+  height: 32px;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+}
+/* line 438, main-sections\miscellaneous.less */
+.PromoterListView td.view {
+  width: 200px;
+  float: left;
+}
+/* line 439, main-sections\miscellaneous.less */
+.PromoterListView td {
+  width: auto;
+  text-align: left !important;
+  float: left;
+  padding: 20px 20px 20px 40px;
+}
+/* line 440, main-sections\miscellaneous.less */
+textarea {
+  color: #5a6779;
+}
+/* line 443, main-sections\miscellaneous.less */
+.TransactionTotalDiv {
+  background: none;
+  border: none;
+  margin: 0;
+}
+/* line 444, main-sections\miscellaneous.less */
+.TransactionTotalDiv td {
+  text-align: center;
+  color: #555 !important;
+  border-right: 1px solid #ccc;
+}
+/* line 447, main-sections\miscellaneous.less */
+.TransactionTotalDiv td:last-child {
+  border-right: none;
+}
+/* line 448, main-sections\miscellaneous.less */
+.TransactionTotalDiv .transactiontitle {
+  font-size: 16px;
+  font-weight: normal;
+  padding: 10px 0;
+}
+/* line 449, main-sections\miscellaneous.less */
+.TransactionTotalDiv span {
+  width: 100%;
+  font-size: 24px;
+}
+@media only screen and (max-width: 600px) {
+  /*.TransactionTotalDiv table tr td, .TransactionTotalDiv table tr th:first-child, .TransactionTotalDiv table tr th:nth-child(2), .TransactionTotalDiv table tr th:nth-child(6) {width:100%; float:left;}*/
+  /* line 453, main-sections\miscellaneous.less */
+  .TransactionTotalDiv td {
+    float: left !important;
+    width: 100% !important;
+  }
+}
+/* line 463, main-sections\miscellaneous.less */
+.affiliateview {
+  font-weight: bold;
+  color: #9063CD;
+}
+/* line 465, main-sections\miscellaneous.less */
+.error {
+  font-weight: normal !important;
+}
+/* line 467, main-sections\miscellaneous.less */
+div#ticketsDiv label {
+  float: left;
+}
+@media only screen and (max-width: 600px) {
+  /* line 471, main-sections\miscellaneous.less */
+  .sort {
+    display: none;
+  }
+}
+/* line 475, main-sections\miscellaneous.less */
+#salesType,
+#ticketType {
+  margin-top: 0;
+}
+/* line 478, main-sections\miscellaneous.less */
+.page-configure #fieldType {
+  margin-bottom: 20px !important;
+}
+/* line 481, main-sections\miscellaneous.less */
+.fs-send-test-mail {
+  padding-top: 20px;
+  clear: both;
+}
+/* line 485, main-sections\miscellaneous.less */
+#testMail {
+  width: 200px;
+  line-height: 28px !important;
+  padding: 0;
+  position: relative;
+  top: 1px;
+}
+@media only screen and (max-width: 450px) {
+  /* line 491, main-sections\miscellaneous.less */
+  #testMail {
+    width: 100%;
+    margin-bottom: 0 !important;
+  }
+}
+/*-------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------
+  4. Components 
+---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------
+      A.Buttons
+    -------------------------------------------------------------------------------*/
+/* line 1, components\buttons.less */
+.Btn {
+  background: transparent;
+  border: 1px solid #c6c8cb;
+  color: #333333;
+  margin-right: 10px;
+  padding: 0 15px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  text-align: center;
+  display: inline-block;
+  line-height: 35px;
+  font-size: 14px;
+}
+/* line 15, components\buttons.less */
+.Btn span {
+  position: relative;
+  top: 2px;
+}
+/* line 20, components\buttons.less */
+.Btn:hover {
+  background: #fdda24;
+}
+/* line 25, components\buttons.less */
+.createBtn,
+.fs-btn {
+  background: #8666cd;
+  font-size: 13px;
+  display: inline-block;
+}
+/* line 30, components\buttons.less */
+.createBtn:hover,
+.fs-btn:hover,
+.createBtn:focus,
+.fs-btn:focus {
+  background-color: #fdda24;
+}
+@media only screen and (max-width: 500px) {
+  /* line 34, components\buttons.less */
+  .createBtn,
+  .fs-btn {
+    padding: 0 5px;
+  }
+}
+/* line 38, components\buttons.less */
+.createBtn:hover,
+.fs-btn:hover,
+.createBtn:focus,
+.fs-btn:focus {
+  color: #5f259f;
+}
+/* line 42, components\buttons.less */
+.rightList li .createBtn,
+.rightList li .fs-btn {
+  color: #fff;
+}
+/* line 44, components\buttons.less */
+.rightList li .createBtn:hover,
+.rightList li .fs-btn:hover,
+.rightList li .createBtn:focus,
+.rightList li .fs-btn:focus {
+  color: #5f259f;
+}
+/* line 48, components\buttons.less */
+.createBtn span[class*="icon-"],
+.fs-btn span[class*="icon-"] {
+  margin-right: 5px;
+}
+/* line 52, components\buttons.less */
+.createBtn,
+.saveBtn,
+.detailBtn,
+.fs-btn {
+  padding: 0 15px;
+  text-transform: capitalize;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  cursor: pointer;
+  display: inline-block;
+  border: 0;
+  color: white;
+  line-height: 28px !important;
+  outline: none;
+}
+/* line 64, components\buttons.less */
+.saveBtn,
+.detailBtn {
+  background-color: #eaedf1;
+  color: #333333;
+  margin-right: 20px;
+  font-size: 14px;
+}
+/* line 71, components\buttons.less */
+.seo-buttons .createBtn,
+.fs-custom-field-buttons .createBtn,
+.headerSec .createBtn,
+.btn-holder .createBtn {
+  margin-top: 0;
+}
+/* line 74, components\buttons.less */
+.seo-buttons .saveBtn,
+.fs-custom-field-buttons .saveBtn,
+.headerSec .saveBtn,
+.btn-holder .saveBtn {
+  margin-left: 10px;
+  margin-right: 0;
+}
+/* line 79, components\buttons.less */
+.DBcreateBtn {
+  background: #FDDA24 !important;
+  border: none;
+  color: #000 !important;
+  padding: 15px 25px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  line-height: 20px;
+  margin-top: 15px;
+}
+/* line 90, components\buttons.less */
+button {
+  border: 0;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  cursor: pointer;
+}
+/* line 95, components\buttons.less */
+.createBtn {
+  margin-top: 20px;
+}
+/* line 97, components\buttons.less */
+#customfields .createBtn {
+  margin-top: 0;
+}
+/* line 101, components\buttons.less */
+.DBcreateBtn:hover {
+  color: #000;
+}
+/* line 105, components\buttons.less */
+.detailBtn {
+  width: 62.55%;
+  margin-bottom: 20px;
+}
+/* line 106, components\buttons.less */
+.saveBtn:hover,
+.detailBtn:hover {
+  background: #e6e6e6;
+}
+/* line 109, components\buttons.less */
+div.editFields.float-left > form > button {
+  margin-top: 20px;
+}
+/* line 112, components\buttons.less */
+.orangrBtn {
+  background: #f65195;
+  color: white;
+}
+/* line 115, components\buttons.less */
+.orangrBtn:hover,
+.orangrBtn:focus {
+  background: #f5478f;
+  color: white;
+}
+/* line 120, components\buttons.less */
+.greenBtn {
+  background: #00af8a;
+  color: white;
+}
+/* line 123, components\buttons.less */
+.greenBtn:hover,
+.greenBtn:focus {
+  background: #00a582;
+  color: white;
+}
+/* line 128, components\buttons.less */
+.sellBtn {
+  background-color: #fdda24;
+  color: #5f259f;
+  padding: 2px 6px 3px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+/* line 133, components\buttons.less */
+.sellBtn:hover,
+.sellBtn:focus {
+  background: #fdd81a;
+  color: #5f259f;
+}
+/* line 138, components\buttons.less */
+.blueBtn {
+  background: #3BBECC;
+  color: white;
+}
+/* line 141, components\buttons.less */
+.blueBtn:hover,
+.blueBtn:focus {
+  background: #34bac9;
+  color: white;
+}
+/* line 146, components\buttons.less */
+.orangrBtn {
+  width: auto !important;
+}
+/* line 147, components\buttons.less */
+.orangrBtn,
+.greenBtn,
+.sellBtn,
+.blueBtn {
+  width: 60px;
+  text-align: center;
+  text-transform: capitalize;
+}
+/* line 152, components\buttons.less */
+.footer_btn {
+  width: 64%;
+  padding: 20px 0px;
+}
+/* line 156, components\buttons.less */
+button#loadMoreTransactions {
+  background-color: #5f259f;
+  color: white;
+  display: inline-block;
+  margin: 20px 0;
+  position: relative;
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+}
+/* line 165, components\buttons.less */
+button#loadMoreTransactions:hover,
+button#loadMoreTransactions:focus {
+  background-color: black;
+}
+/* line 169, components\buttons.less */
+ > #no-events {
+  display: none;
+}
+/* line 172, components\buttons.less */
+#viewMore {
+  clear: both;
+  display: block;
+  width: 100px;
+  text-align: center;
+  margin: 0 auto;
+}
+/*-------------------------------------------------------------------------------
+      B.Dropdowns
+    -------------------------------------------------------------------------------*/
+/**************Select Box***************/
+/* line 3, components\dropdowns.less */
+.ddCustom {
+  background-color: #ffffff !important;
+}
+/* line 6, components\dropdowns.less */
+.ddCustom .status,
+.ddCustom .dropdown-toggle {
+  background: transparent;
+}
+/* line 9, components\dropdowns.less */
+.ddCustom .dropdown-toggle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0);
+  width: 100%;
+}
+/* line 19, components\dropdowns.less */
+.headerDD {
+  width: 70px!important;
+  min-width: 100%;
+  color: #808080;
+  border-left: 1px solid #9fa2a3;
+  padding: 0px;
+  margin-top: 8px;
+}
+/* line 28, components\dropdowns.less */
+.helpdropdown-menu {
+  position: absolute;
+  top: 99%;
+  /*right: 85px;*/
+  right: 230px;
+  z-index: 1000;
+  padding: 10px;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  /*border-radius: 4px;*/
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+/* line 48, components\dropdowns.less */
+.helpdropdown-menu li {
+  list-style: none;
+  display: block;
+}
+/* line 52, components\dropdowns.less */
+.helpdropdown-menu li {
+  line-height: 40px;
+  float: none;
+}
+/*-------------------------------------------------------------------------------
+      C.Headings
+    -------------------------------------------------------------------------------*/
+/* line 1, components\headings.less */
+.heading {
+  position: relative;
+  width: 100%;
+}
+/* line 5, components\headings.less */
+.heading h2 {
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding: 0;
+  color: #8666cd;
+  width: 70%;
+  margin-top: 10px;
+}
+/* line 14, components\headings.less */
+.heading h2 span {
+  display: inline-block;
+}
+/* line 18, components\headings.less */
+.heading p {
+  font-size: 15px;
+  line-height: 22px;
+}
+/* line 22, components\headings.less */
+.heading li {
+  list-style-type: none;
+  display: inline-block;
+  margin: 0 15px 10px 0;
+}
+/* line 27, components\headings.less */
+.heading li a span {
+  display: inline-block;
+  margin-right: 5px;
+}
+/* line 31, components\headings.less */
+.heading li a {
+  margin-right: 0;
+  color: #333333;
+  font-size: 16px;
+}
+/* line 36, components\headings.less */
+.heading li a :hover {
+  color: #5f259f;
+}
+/* line 39, components\headings.less */
+.heading ul {
+  padding: 10px 0;
+  margin: 10px 0;
+  margin-top: 33px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+/* line 46, components\headings.less */
+.heading li {
+  margin-bottom: 0;
+}
+/*-------------------------------------------------------------------------------
+      D.Information
+    -------------------------------------------------------------------------------*/
+/* line 1, components\information.less */
+.information {
+  width: 64%;
+  margin-top: 25px;
+}
+@media only screen and (max-width: 1000px) {
+  /* line 4, components\information.less */
+  .information {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  /* line 7, components\information.less */
+  .information {
+    width: 100%;
+  }
+}
+/* line 12, components\information.less */
+.information p {
+  float: left;
+  /*width: 60%;*/
+  margin: 0 0 20px 0;
+  padding: 0;
+}
+/* line 18, components\information.less */
+.information h1 {
+  color: #333333;
+  font-size: 20px;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+/* line 24, components\information.less */
+.information label {
+  position: relative;
+  color: #333333;
+  font-size: 18px;
+  cursor: pointer;
+}
+/* line 30, components\information.less */
+.information span {
+  color: #656565;
+  font-size: 14px;
+}
+/* line 35, components\information.less */
+#ticketOptions {
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+/* line 38, components\information.less */
+#ticketOptions .fs-label-content {
+  color: #333333;
+  font-size: 18px;
+  position: relative;
+  margin-left: 30px;
+  top: -2px;
+  vertical-align: top;
+}
+/* line 47, components\information.less */
+#ticketOptions .custom-radio,
+#ticketOptions .custom-checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 53, components\information.less */
+#ticketOptions .fs-form-widget-setting {
+  width: 100%;
+}
+/* line 58, components\information.less */
+#ticketOptions .submitBtn {
+  margin-top: 0;
+}
+/* line 62, components\information.less */
+.mleft {
+  margin: 5px 0 10px 30px;
+  display: block;
+}
+/* line 67, components\information.less */
+.fs-payment-modes .information {
+  margin-top: 0;
+  width: 100%;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/*-------------------------------------------------------------------------------
+      E.Tables
+    -------------------------------------------------------------------------------*/
+/* line 1, components\tables.less */
+table {
+  margin-top: 20px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  overflow: hidden;
+  background-color: white;
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2);
+}
+/* line 9, components\tables.less */
+table th {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10px;
+  background-color: #5f259f;
+}
+/* line 17, components\tables.less */
+.fs-Box1-content table th {
+  background-color: #6d6d6d;
+}
+/* line 21, components\tables.less */
+table a {
+  color: #8666cd;
+}
+/* line 25, components\tables.less */
+table tbody tr:nth-child(even) {
+  background-color: #efefef;
+}
+/* line 32, components\tables.less */
+.bootstrap-timepicker-widget tbody tr:first-child,
+.ui-datepicker-calendar tbody tr:first-child {
+  background-color: transparent;
+  color: white;
+}
+/* line 38, components\tables.less */
+table tr th:last-child {
+  width: 25%;
+}
+/* line 41, components\tables.less */
+table tr td {
+  /*line-height: 42px;*/
+  padding: 7px;
+  text-align: center;
+  border-bottom: 1px solid #e9eef3;
+  color: #333333;
+  font-size: 13px;
+}
+/* line 49, components\tables.less */
+.table-center th,
+.table-center td {
+  text-align: center !important;
+}
+/* line 52, components\tables.less */
+.TotalTable {
+  background-color: #fff;
+}
+/* line 53, components\tables.less */
+.TotalTable td {
+  font-size: 16px;
+  font-weight: 500;
+  color: #f60 !important;
+}
+/* line 55, components\tables.less */
+.previewSec .ticketFields table tr th {
+  font-size: 16px;
+  font-weight: normal;
+}
+/* line 59, components\tables.less */
+.previewSec .ticketFields table {
+  border: none;
+}
+/* line 64, components\tables.less */
+.tablefields table {
+  width: 100%;
+  margin-top: 20px;
+  background: #ffffff;
+}
+/* line 70, components\tables.less */
+.tablefields table tr td {
+  border: none;
+  /*text-align: center;*/
+  text-align: left;
+  /*line-height: 55px;*/
+  /*padding:15px 0px;*/
+  text-transform: capitalize;
+}
+/* line 78, components\tables.less */
+.tablefields table tr th {
+  width: 15%;
+  text-align: left;
+  padding-left: 10px;
+}
+/* line 83, components\tables.less */
+div.tablefields > table > tbody > tr td span {
+  left: 45% !important;
+}
+/* line 86, components\tables.less */
+.ticketFields table {
+  margin-bottom: 20px;
+}
+/* line 89, components\tables.less */
+.ticketFields table tr th {
+  width: 20%;
+  text-align: left;
+  border-bottom: none;
+}
+/* line 95, components\tables.less */
+.refundSec table,
+.paymentSec table {
+  background: #ffffff;
+}
+/* line 98, components\tables.less */
+.refundSec table tr td,
+.refundSec table tr th {
+  width: 12.5%;
+  /*text-align: center;*/
+  text-align: left;
+  border-bottom: 1px solid #ededed;
+  padding-left: 10px;
+  padding-right: 5px;
+}
+/* line 106, components\tables.less */
+.refundSec table tr td,
+.refundSec table tr th:first-child,
+.refundSec table tr th:nth-child(2),
+.refundSec table tr th:nth-child(6) {
+  width: 5%;
+}
+/* line 109, components\tables.less */
+.refundSec table tr th:nth-child(3) {
+  width: 20%;
+}
+/* line 112, components\tables.less */
+.paymentSec table tr th,
+.paymentSec table tr td {
+  width: 25%;
+  text-align: center;
+}
+/* line 117, components\tables.less */
+.paymentSec table tr td:first-child,
+.pamentSec table tr td:nth-child(2),
+.paymentSec table tr th:first-child,
+body > div > div.container > div.rightArea > div.paymentSec > table > tbody > tr:nth-child(1) > th:nth-child(2) {
+  width: 8%;
+}
+/* line 121, components\tables.less */
+.sales table tr th,
+.sales table tr td {
+  width: 20%;
+  padding: 15px 0;
+  text-align: center;
+  border-right: 1px solid #dbdbdb;
+}
+/* line 127, components\tables.less */
+.sales table tr th {
+  border-bottom: none;
+}
+/* line 130, components\tables.less */
+.sales table tr td {
+  background: #ffffff;
+}
+/* line 133, components\tables.less */
+.sales table tr th:first-child,
+.sales table tr td:first-child {
+  width: 30%;
+}
+/* line 136, components\tables.less */
+.sales table tr th:last-child,
+.sales table tr td:last-child {
+  border-right: none;
+}
+/* line 140, components\tables.less */
+.discount table tr th:first-child,
+.discount table tr td:first-child,
+.discount table tr th:nth-child(2),
+.discount table tr td:nth-child(2) {
+  width: 6%;
+}
+/* line 143, components\tables.less */
+.discount table tr th:nth-child(6),
+.discount table tr td:nth-child(6) {
+  width: 10%;
+}
+/* line 146, components\tables.less */
+.discount table tr th:nth-child(9),
+.discount table tr td:nth-child(9) {
+  width: 8%;
+}
+/* line 149, components\tables.less */
+.discount td span,
+.tablefields td span {
+  display: inline-block;
+  margin-left: 10px;
+  cursor: pointer;
+}
+/* line 155, components\tables.less */
+.tablefields td span {
+  margin-right: -22px;
+}
+/* line 156, components\tables.less */
+.discount td span {
+  margin-right: 7px;
+}
+/* line 157, components\tables.less */
+.discount td span:last-child {
+  margin-right: 0;
+}
+/* line 161, components\tables.less */
+.CustomFileds table tr td {
+  padding: 8px 0px 8px 10px !important;
+}
+/*! Tablesaw - v1.0.4 - 2015-02-19
+* https://github.com/filamentgroup/tablesaw
+* Copyright (c) 2015 Filament Group; Licensed MIT */
+/* line 167, components\tables.less */
+table.tablesaw {
+  empty-cells: show;
+  max-width: 100%;
+  width: 100%;
+}
+/* line 173, components\tables.less */
+.tablesaw {
+  border-collapse: collapse;
+  width: 100%;
+}
+/* Structure */
+/* line 180, components\tables.less */
+.tablesaw {
+  border: 0;
+  padding: 0;
+}
+/* line 185, components\tables.less */
+.tablesaw th,
+.tablesaw td {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: .5em .7em;
+}
+/* line 193, components\tables.less */
+.tablesaw thead tr:first-child th {
+  padding-top: .9em;
+  padding-bottom: .7em;
+}
+/* line 200, components\tables.less */
+.tablesaw-enhanced .tablesaw-bar .btn {
+  border: 1px solid #ccc;
+  background: none;
+  background-color: #fafafa;
+  -webkit-box-shadow: 0 1px 0 #ffffff;
+  box-shadow: 0 1px 0 #ffffff;
+  color: #4a4a4a;
+  clear: both;
+  cursor: pointer;
+  display: block;
+  font: bold 20px/1 sans-serif;
+  margin: 0;
+  padding: .5em .85em .4em .85em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: capitalize;
+  text-shadow: 0 1px 0 #fff;
+  width: 100%;
+  /* Theming */
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.1)), color-stop(50%, rgba(255, 255, 255, 0.1)), color-stop(55%, rgba(170, 170, 170, 0.1)), to(rgba(120, 120, 120, 0.15)));
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(170, 170, 170, 0.1) 55%, rgba(120, 120, 120, 0.15) 100%);
+  background-image: linear-gradient(top, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(170, 170, 170, 0.1) 55%, rgba(120, 120, 120, 0.15) 100%);
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  border-radius: .25em;
+}
+/* line 232, components\tables.less */
+.tablesaw-enhanced .tablesaw-bar a.btn {
+  color: #1c95d4;
+}
+/* line 236, components\tables.less */
+.tablesaw-enhanced .tablesaw-bar .btn:hover {
+  text-decoration: none;
+}
+/* Default radio/checkbox styling horizonal controlgroups. */
+/* line 242, components\tables.less */
+.tablesaw-enhanced .tablesaw-bar .btn:active {
+  background-color: #ddd;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(100, 100, 100, 0.35)), to(rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(top, rgba(100, 100, 100, 0.35) 0%, rgba(255, 255, 255, 0) 70%);
+  background-image: linear-gradient(top, rgba(100, 100, 100, 0.35) 0%, rgba(255, 255, 255, 0) 70%);
+}
+/* line 249, components\tables.less */
+.tablesaw-enhanced .tablesaw-bar .btn:hover,
+.tablesaw-enhanced .tablesaw-bar .btn:focus {
+  color: #208de3;
+  background-color: #fff;
+  outline: none;
+}
+/* line 256, components\tables.less */
+.tablesaw-bar .btn:focus {
+  -webkit-box-shadow: 0 0 .35em #4faeef !important;
+  box-shadow: 0 0 .35em #4faeef !important;
+}
+/* line 261, components\tables.less */
+.ie-lte8 .tablesaw-bar .btn:hover,
+.ie-lte8 .tablesaw-bar .btn:focus {
+  color: #208de3;
+  background-color: #fff;
+  border-color: #aaa;
+  outline: none;
+}
+/* line 269, components\tables.less */
+.tablesaw-bar .btn-select select {
+  background: none;
+  border: none;
+  display: block;
+  position: absolute;
+  font-weight: inherit;
+  left: 0;
+  top: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  min-height: 1em;
+}
+/* line 284, components\tables.less */
+.tablesaw-bar .btn-select select {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  display: inline-block;
+  color: transparent;
+}
+/* line 291, components\tables.less */
+.tablesaw-bar .btn select option {
+  background: #fff;
+  color: #000;
+  font-family: sans-serif;
+}
+/* line 297, components\tables.less */
+.tablesaw-enhanced .tablesaw-bar .btn.btn-select {
+  color: #4d4d4d;
+  padding-right: 2.5em;
+  min-width: 7.25em;
+  text-align: left;
+  text-indent: 0;
+}
+/* line 305, components\tables.less */
+.ie-lte8 .tablesaw-bar .btn-select {
+  min-width: 6.1em;
+}
+/* line 309, components\tables.less */
+.tablesaw-bar .btn.btn-small,
+.tablesaw-bar .btn.btn-micro {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  position: relative;
+  top: 0;
+}
+/* line 318, components\tables.less */
+.tablesaw-bar .btn.btn-small {
+  font-size: 1.0625em;
+  line-height: 19px;
+  padding: .3em 1em .3em 1em;
+}
+/* line 324, components\tables.less */
+.tablesaw-bar .btn.btn-micro {
+  font-size: .8125em;
+  padding: .4em .7em .25em .7em;
+}
+/* line 329, components\tables.less */
+.tablesaw-enhanced .tablesaw-bar .btn-select {
+  text-align: left;
+}
+/* line 333, components\tables.less */
+.tablesaw-bar .btn-select:after {
+  background: #e5e5e5;
+  background: rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 2px 2px rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 2px rgba(255, 255, 255, 0.25);
+  content: " ";
+  display: block;
+  position: absolute;
+}
+/* line 343, components\tables.less */
+.tablesaw-bar .btn-select.btn-small,
+.tablesaw-bar .btn-select.btn-micro {
+  padding-right: 1.5em;
+}
+/* line 348, components\tables.less */
+.tablesaw-bar .btn-select:after {
+  background: none;
+  background-repeat: no-repeat;
+  background-position: .25em .45em;
+  content: "\25bc";
+  font-size: .55em;
+  padding-top: 1.2em;
+  padding-left: 1em;
+  left: auto;
+  right: 0;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  width: 1.8em;
+}
+/* line 364, components\tables.less */
+.tablesaw-bar .btn-select.btn-small:after,
+.tablesaw-bar .btn-select.btn-micro:after {
+  width: 1.2em;
+  font-size: .5em;
+  padding-top: 1em;
+  padding-right: .5em;
+  line-height: 1.65;
+  background: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-left-width: 0;
+}
+/* Column navigation buttons for swipe and columntoggle tables */
+/* line 379, components\tables.less */
+.tablesaw-advance .btn {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-shadow: 0 1px 0 #fff;
+  border-radius: .25em;
+}
+/* line 389, components\tables.less */
+.tablesaw-advance .btn.btn-micro {
+  font-size: .8125em;
+  padding: .3em .7em .25em .7em;
+}
+/* line 394, components\tables.less */
+.tablesaw-bar .tablesaw-advance a.tablesaw-nav-btn {
+  display: inline-block;
+  overflow: hidden;
+  width: 1.8em;
+  height: 1.8em;
+  background-position: 50% 50%;
+  margin-left: .5em;
+  position: relative;
+}
+/* line 404, components\tables.less */
+.tablesaw-bar .tablesaw-advance a.tablesaw-nav-btn.left:before,
+.tablesaw-bar .tablesaw-advance a.tablesaw-nav-btn.right:before,
+.tablesaw-bar .tablesaw-advance a.tablesaw-nav-btn.down:before,
+.tablesaw-bar .tablesaw-advance a.tablesaw-nav-btn.up:before {
+  content: "\0020";
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+/* line 415, components\tables.less */
+.tablesaw-bar .tablesaw-advance a.tablesaw-nav-btn.down:before {
+  left: .5em;
+  top: .65em;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #808080;
+}
+/* line 423, components\tables.less */
+.tablesaw-bar .tablesaw-advance a.tablesaw-nav-btn.up:before {
+  left: .5em;
+  top: .65em;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #808080;
+}
+/* line 431, components\tables.less */
+.tablesaw-bar .tablesaw-advance a.tablesaw-nav-btn.left:before,
+.tablesaw-bar .tablesaw-advance a.tablesaw-nav-btn.right:before {
+  top: .45em;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+/* line 438, components\tables.less */
+.tablesaw-bar .tablesaw-advance a.tablesaw-nav-btn.left:before {
+  left: .6em;
+  border-right: 5px solid #808080;
+}
+/* line 443, components\tables.less */
+.tablesaw-bar .tablesaw-advance a.tablesaw-nav-btn.right:before {
+  left: .7em;
+  border-left: 5px solid #808080;
+}
+/* line 448, components\tables.less */
+.tablesaw-advance a.tablesaw-nav-btn.disabled {
+  opacity: .25;
+  filter: alpha(opacity=25);
+  cursor: default;
+  pointer-events: none;
+}
+/* Table Toolbar */
+/* line 457, components\tables.less */
+.tablesaw-bar {
+  clear: both;
+  font-family: sans-serif;
+}
+/* line 462, components\tables.less */
+.tablesaw-toolbar {
+  font-size: .875em;
+  float: left;
+}
+/* line 467, components\tables.less */
+.tablesaw-toolbar label {
+  padding: .5em 0;
+  clear: both;
+  display: block;
+  color: #888;
+  margin-right: .5em;
+  text-transform: uppercase;
+}
+/* line 476, components\tables.less */
+.tablesaw-bar .btn,
+.tablesaw-enhanced .tablesaw-bar .btn {
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+/* line 482, components\tables.less */
+.tablesaw-bar .btn-select,
+.tablesaw-enhanced .tablesaw-bar .btn-select {
+  margin-bottom: 0;
+}
+/* line 487, components\tables.less */
+.tablesaw-bar .tablesaw-toolbar .btn {
+  margin-left: .4em;
+  margin-top: 0;
+  text-transform: uppercase;
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: transparent;
+  font-family: sans-serif;
+  font-size: 1em;
+  padding-left: .3em;
+}
+/* line 500, components\tables.less */
+.tablesaw-bar .tablesaw-toolbar .btn-select {
+  min-width: 0;
+}
+/* line 504, components\tables.less */
+.tablesaw-bar .tablesaw-toolbar .btn-select:after {
+  padding-top: .9em;
+}
+/* line 508, components\tables.less */
+.tablesaw-bar .tablesaw-toolbar select {
+  color: #888;
+  text-transform: none;
+  background: transparent;
+}
+/* line 514, components\tables.less */
+.tablesaw-toolbar ~ table {
+  clear: both;
+}
+/* line 518, components\tables.less */
+.tablesaw-toolbar .a11y-sm {
+  clip: rect(0 0 0 0);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+}
+@media (min-width: 24em) {
+  /* line 527, components\tables.less */
+  .tablesaw-toolbar .a11y-sm {
+    clip: none;
+    height: auto;
+    width: auto;
+    position: static;
+    overflow: visible;
+  }
+}
+/* line 538, components\tables.less */
+table.tablesaw tbody th {
+  font-weight: bold;
+}
+/* line 542, components\tables.less */
+table.tablesaw thead th,
+table.tablesaw thead td {
+  color: #444;
+  font-size: .9em;
+}
+/* line 548, components\tables.less */
+.tablesaw th,
+.tablesaw td {
+  line-height: 1em;
+  text-align: left;
+  vertical-align: middle;
+}
+/* line 555, components\tables.less */
+.tablesaw td,
+.tablesaw tbody th {
+  vertical-align: middle;
+  font-size: 1.17em;
+  /* 19px */
+}
+/* line 562, components\tables.less */
+.tablesaw td .btn,
+.tablesaw tbody th .btn {
+  margin: 0;
+}
+/* line 567, components\tables.less */
+.tablesaw thead {
+  border: 1px solid #e5e5e4;
+  background: #e2dfdc;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e2dfdc));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e2dfdc);
+  background-image: linear-gradient(to bottom, #ffffff, #e2dfdc);
+}
+/* line 575, components\tables.less */
+.tablesaw thead th {
+  font-weight: 100;
+  color: #777;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 #fff;
+  text-align: left;
+}
+/* line 583, components\tables.less */
+.tablesaw thead tr:first-child th {
+  font-weight: normal;
+  font-family: sans-serif;
+  border-right: 1px solid #e4e1de;
+}
+/* Table rows have a gray bottom stroke by default */
+/* line 591, components\tables.less */
+.tablesaw tbody tr {
+  border-bottom: 1px solid #dfdfdf;
+}
+/* line 595, components\tables.less */
+.tablesaw caption {
+  text-align: left;
+  margin-bottom: 0;
+  opacity: .5;
+  filter: alpha(opacity=50);
+  line-height: 2.4;
+}
+@media (min-width: 25em) {
+  /* line 604, components\tables.less */
+  .tablesaw caption {
+    margin-bottom: .6em;
+    line-height: 1.2;
+  }
+}
+/* Stack */
+/* line 612, components\tables.less */
+.tablesaw-cell-label-top {
+  text-transform: uppercase;
+  font-size: .9em;
+  font-weight: normal;
+}
+/* line 618, components\tables.less */
+.tablesaw-cell-label {
+  font-size: .65em;
+  text-transform: uppercase;
+  color: #888;
+  font-family: sans-serif;
+}
+@media (min-width: 40em) {
+  /* line 626, components\tables.less */
+  .tablesaw td {
+    line-height: 2em;
+  }
+}
+@media only all {
+  /* line 632, components\tables.less */
+  .tablesaw-swipe .tablesaw-cell-persist {
+    border-right: 1px solid #e4e1de;
+  }
+  /* line 636, components\tables.less */
+  .tablesaw-swipe .tablesaw-cell-persist {
+    -webkit-box-shadow: 3px 0 4px -1px #e4e1de;
+    box-shadow: 3px 0 4px -1px #e4e1de;
+  }
+}
+/* Table rows have a gray bottom stroke by default */
+/* line 644, components\tables.less */
+.tablesaw-stack tbody tr {
+  border-bottom: 1px solid #dfdfdf;
+}
+/* line 648, components\tables.less */
+.tablesaw-stack td .tablesaw-cell-label,
+.tablesaw-stack th .tablesaw-cell-label {
+  display: none;
+}
+/* Mobile first styles: Begin with the stacked presentation at narrow widths */
+@media only all {
+  /* Show the table cells as a block level element */
+  /* line 658, components\tables.less */
+  .tablesaw-stack td,
+  .tablesaw-stack th {
+    text-align: left;
+    display: block;
+  }
+  /* line 664, components\tables.less */
+  .tablesaw-stack tr {
+    clear: both;
+    display: table-row;
+  }
+  /* Make the label elements a percentage width */
+  /* line 671, components\tables.less */
+  .tablesaw-stack td .tablesaw-cell-label,
+  .tablesaw-stack th .tablesaw-cell-label {
+    display: block;
+    padding: 0 .6em 0 0;
+    width: 30%;
+    display: inline-block;
+  }
+  /* For grouped headers, have a different style to visually separate the levels by classing the first label in each col group */
+  /* line 681, components\tables.less */
+  .tablesaw-stack th .tablesaw-cell-label-top,
+  .tablesaw-stack td .tablesaw-cell-label-top {
+    display: block;
+    padding: .4em 0;
+    margin: .4em 0;
+  }
+  /* line 688, components\tables.less */
+  .tablesaw-cell-label {
+    display: block;
+  }
+  /* Avoid double strokes when stacked */
+  /* line 694, components\tables.less */
+  .tablesaw-stack tbody th.group {
+    margin-top: -1px;
+  }
+  /* Avoid double strokes when stacked */
+  /* line 700, components\tables.less */
+  .tablesaw-stack th.group b.tablesaw-cell-label {
+    display: none !important;
+  }
+}
+@media (max-width: 39.9375em) {
+  /* line 706, components\tables.less */
+  .tablesaw-stack thead td,
+  .tablesaw-stack thead th {
+    display: none;
+  }
+  /* line 711, components\tables.less */
+  .tablesaw-stack tbody td,
+  .tablesaw-stack tbody th {
+    clear: left;
+    float: left;
+    width: 100%;
+  }
+  /* line 718, components\tables.less */
+  .tablesaw-cell-label {
+    vertical-align: top;
+  }
+  /* line 722, components\tables.less */
+  .tablesaw-cell-content {
+    max-width: 67%;
+    display: inline-block;
+  }
+  /* line 727, components\tables.less */
+  .tablesaw-stack td:empty,
+  .tablesaw-stack th:empty {
+    display: none;
+  }
+}
+/* Media query to show as a standard table at 560px (35em x 16px) or wider */
+@media (min-width: 40em) {
+  /* line 736, components\tables.less */
+  .tablesaw-stack tr {
+    display: table-row;
+  }
+  /* Show the table header rows */
+  /* line 742, components\tables.less */
+  .tablesaw-stack td,
+  .tablesaw-stack th,
+  .tablesaw-stack thead td,
+  .tablesaw-stack thead th {
+    display: table-cell;
+    margin: 0;
+  }
+  /* Hide the labels in each cell */
+  /* line 752, components\tables.less */
+  .tablesaw-stack td .tablesaw-cell-label,
+  .tablesaw-stack th .tablesaw-cell-label {
+    display: none !important;
+  }
+}
+/* line 758, components\tables.less */
+.tablesaw-fix-persist {
+  table-layout: fixed;
+}
+@media only all {
+  /* Unchecked manually: Always hide */
+  /* line 765, components\tables.less */
+  .tablesaw-swipe th.tablesaw-cell-hidden,
+  .tablesaw-swipe td.tablesaw-cell-hidden {
+    display: none;
+  }
+}
+/* line 771, components\tables.less */
+.btn.tablesaw-columntoggle-btn span {
+  text-indent: -9999px;
+  display: inline-block;
+}
+/* line 776, components\tables.less */
+.tablesaw-columntoggle-btnwrap {
+  position: relative;
+  /* for dialog positioning */
+}
+/* line 781, components\tables.less */
+.tablesaw-columntoggle-btnwrap .dialog-content {
+  padding: .5em;
+}
+/* line 785, components\tables.less */
+.tablesaw-columntoggle tbody td {
+  line-height: 1.5;
+}
+/* Remove top/bottom margins around the fieldcontain on check list */
+/* line 791, components\tables.less */
+.tablesaw-columntoggle-popup {
+  display: none;
+}
+/* line 795, components\tables.less */
+.tablesaw-columntoggle-btnwrap.visible .tablesaw-columntoggle-popup {
+  display: block;
+  position: absolute;
+  top: 2em;
+  right: 0;
+  background-color: #fff;
+  padding: .5em .8em;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: 0 1px 2px #ccc;
+  box-shadow: 0 1px 2px #ccc;
+  border-radius: .2em;
+  z-index: 1;
+}
+/* line 809, components\tables.less */
+.tablesaw-columntoggle-popup fieldset {
+  margin: 0;
+}
+/* Hide all prioritized columns by default */
+@media only all {
+  /* line 816, components\tables.less */
+  .tablesaw-columntoggle th.tablesaw-priority-6,
+  .tablesaw-columntoggle td.tablesaw-priority-6,
+  .tablesaw-columntoggle th.tablesaw-priority-5,
+  .tablesaw-columntoggle td.tablesaw-priority-5,
+  .tablesaw-columntoggle th.tablesaw-priority-4,
+  .tablesaw-columntoggle td.tablesaw-priority-4,
+  .tablesaw-columntoggle th.tablesaw-priority-3,
+  .tablesaw-columntoggle td.tablesaw-priority-3,
+  .tablesaw-columntoggle th.tablesaw-priority-2,
+  .tablesaw-columntoggle td.tablesaw-priority-2,
+  .tablesaw-columntoggle th.tablesaw-priority-1,
+  .tablesaw-columntoggle td.tablesaw-priority-1 {
+    display: none;
+  }
+}
+/* line 832, components\tables.less */
+.tablesaw-columntoggle-btnwrap .dialog-content {
+  top: 0 !important;
+  right: 1em;
+  left: auto !important;
+  width: 12em;
+  max-width: 18em;
+  margin: -0.5em auto 0;
+}
+/* line 841, components\tables.less */
+.tablesaw-columntoggle-btnwrap .dialog-content:focus {
+  outline-style: none;
+}
+/* Preset breakpoints if "" class added to table */
+/* Show priority 1 at 320px (20em x 16px) */
+@media (min-width: 20em) {
+  /* line 850, components\tables.less */
+  .tablesaw-columntoggle th.tablesaw-priority-1,
+  .tablesaw-columntoggle td.tablesaw-priority-1 {
+    display: table-cell;
+  }
+}
+/* Show priority 2 at 480px (30em x 16px) */
+@media (min-width: 30em) {
+  /* line 859, components\tables.less */
+  .tablesaw-columntoggle th.tablesaw-priority-2,
+  .tablesaw-columntoggle td.tablesaw-priority-2 {
+    display: table-cell;
+  }
+}
+/* Show priority 3 at 640px (40em x 16px) */
+@media (min-width: 40em) {
+  /* line 868, components\tables.less */
+  .tablesaw-columntoggle th.tablesaw-priority-3,
+  .tablesaw-columntoggle td.tablesaw-priority-3 {
+    display: table-cell;
+  }
+  /* line 873, components\tables.less */
+  .tablesaw-columntoggle tbody td {
+    line-height: 2;
+  }
+}
+/* Show priority 4 at 800px (50em x 16px) */
+@media (min-width: 50em) {
+  /* line 881, components\tables.less */
+  .tablesaw-columntoggle th.tablesaw-priority-4,
+  .tablesaw-columntoggle td.tablesaw-priority-4 {
+    display: table-cell;
+  }
+}
+/* Show priority 5 at 960px (60em x 16px) */
+@media (min-width: 60em) {
+  /* line 890, components\tables.less */
+  .tablesaw-columntoggle th.tablesaw-priority-5,
+  .tablesaw-columntoggle td.tablesaw-priority-5 {
+    display: table-cell;
+  }
+}
+/* Show priority 6 at 1,120px (70em x 16px) */
+@media (min-width: 70em) {
+  /* line 899, components\tables.less */
+  .tablesaw-columntoggle th.tablesaw-priority-6,
+  .tablesaw-columntoggle td.tablesaw-priority-6 {
+    display: table-cell;
+  }
+}
+@media only all {
+  /* Unchecked manually: Always hide */
+  /* line 908, components\tables.less */
+  .tablesaw-columntoggle th.tablesaw-cell-hidden,
+  .tablesaw-columntoggle td.tablesaw-cell-hidden {
+    display: none;
+  }
+  /* Checked manually: Always show */
+  /* line 915, components\tables.less */
+  .tablesaw-columntoggle th.tablesaw-cell-visible,
+  .tablesaw-columntoggle td.tablesaw-cell-visible {
+    display: table-cell;
+  }
+}
+/* line 921, components\tables.less */
+.tablesaw-columntoggle-popup .btn-group > label {
+  display: block;
+  padding: .2em 0;
+  white-space: nowrap;
+}
+/* line 927, components\tables.less */
+.tablesaw-columntoggle-popup .btn-group > label input {
+  margin-right: .8em;
+}
+/* line 931, components\tables.less */
+.tablesaw-sortable,
+.tablesaw-sortable thead,
+.tablesaw-sortable thead tr,
+.tablesaw-sortable thead tr th {
+  position: relative;
+}
+/* line 938, components\tables.less */
+.tablesaw-sortable thead tr th {
+  padding-right: 1.6em;
+  vertical-align: top;
+}
+/* line 943, components\tables.less */
+.tablesaw-sortable th.tablesaw-sortable-head,
+.tablesaw-sortable tr:first-child th.tablesaw-sortable-head {
+  padding: 0;
+}
+/* line 948, components\tables.less */
+.tablesaw-sortable th.tablesaw-sortable-head button {
+  padding-top: .9em;
+  padding-bottom: .7em;
+  padding-left: .6em;
+  padding-right: 1.6em;
+}
+/* line 955, components\tables.less */
+.tablesaw-sortable .tablesaw-sortable-head button {
+  min-width: 100%;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+  text-transform: inherit;
+  position: relative;
+}
+/* line 967, components\tables.less */
+.tablesaw-sortable .tablesaw-sortable-head.tablesaw-sortable-ascending button:after,
+.tablesaw-sortable .tablesaw-sortable-head.tablesaw-sortable-descending button:after {
+  width: 7px;
+  height: 10px;
+  content: "\0020";
+  position: absolute;
+  right: .5em;
+}
+/* line 976, components\tables.less */
+.tablesaw-sortable .tablesaw-sortable-head.tablesaw-sortable-ascending button:after {
+  content: "↑";
+}
+/* line 980, components\tables.less */
+.tablesaw-sortable .tablesaw-sortable-head.tablesaw-sortable-descending button:after {
+  content: "↓";
+}
+/* line 984, components\tables.less */
+.tablesaw-sortable .not-applicable:after {
+  content: "--";
+  display: block;
+}
+/* line 989, components\tables.less */
+.tablesaw-sortable .not-applicable span {
+  display: none;
+}
+/* line 993, components\tables.less */
+.tablesaw-advance {
+  float: right;
+}
+/* line 997, components\tables.less */
+.tablesaw-advance.minimap {
+  margin-right: .4em;
+}
+/* line 1001, components\tables.less */
+.tablesaw-advance-dots {
+  float: left;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* line 1008, components\tables.less */
+.tablesaw-advance-dots li {
+  display: table-cell;
+  margin: 0;
+  padding: .4em .2em;
+}
+/* line 1014, components\tables.less */
+.tablesaw-advance-dots li i {
+  width: .25em;
+  height: .25em;
+  background: #555;
+  border-radius: 100%;
+  display: inline-block;
+}
+/* line 1022, components\tables.less */
+.tablesaw-advance-dots-hide {
+  opacity: .25;
+  filter: alpha(opacity=25);
+  cursor: default;
+  pointer-events: none;
+}
+/*-------------------------------------------------------------------------------
+      F.Tabs
+    -------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------------
+      G.Tags
+    -------------------------------------------------------------------------------*/
+/* line 1, components\tags.less */
+.tagscontainer {
+  height: auto;
+  min-height: 50px;
+  border-radius: 5px;
+  padding-top: 5px;
+}
+/* line 9, components\tags.less */
+.tags {
+  float: left;
+  font-size: 14px;
+  background: #e6eaeb;
+  margin: 2px 2px;
+  width: auto;
+  border-radius: 5px;
+  padding: 6px 10px;
+  display: inline-block;
+  margin-bottom: 5px;
+}

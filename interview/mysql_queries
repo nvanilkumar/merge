@@ -1,0 +1,18 @@
+What are the different tables present in mysql
+
+---Myisam
+--isam
+--innodb
+--heap
+--merge
+
+Types of index in mysql 
+--unique index, index
+--sy:mysql> CREATE  INDEX AUTHOR_INDEX
+ON tutorials_tbl (tutorial_author)
+
+table have multiple index which order query will follow
+
+Explain keyword 
+
+

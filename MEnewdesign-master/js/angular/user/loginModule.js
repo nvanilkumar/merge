@@ -1,0 +1,1 @@
+angular.module('loginModule', ['commonModule','angular-md5','ngCookies']);

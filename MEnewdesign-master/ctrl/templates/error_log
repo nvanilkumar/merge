@@ -1,0 +1,5 @@
+[28-Jun-2011 11:39:39] PHP Parse error:  syntax error, unexpected '}' in /home/meraeven/public_html/admin1/templates/manageorganisersinfo.tpl.php on line 168
+[28-Jun-2011 11:40:15] PHP Warning:  include_once() [<a href='function.include-once'>function.include-once</a>]: Unable to access MT/cGlobal.php in /home/meraeven/public_html/admin1/templates/manageorganisersinfo.tpl.php on line 4
+[28-Jun-2011 11:40:15] PHP Warning:  include_once(MT/cGlobal.php) [<a href='function.include-once'>function.include-once</a>]: failed to open stream: No such file or directory in /home/meraeven/public_html/admin1/templates/manageorganisersinfo.tpl.php on line 4
+[28-Jun-2011 11:40:15] PHP Warning:  include_once() [<a href='function.include'>function.include</a>]: Failed opening 'MT/cGlobal.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/meraeven/public_html/admin1/templates/manageorganisersinfo.tpl.php on line 4
+[28-Jun-2011 11:40:15] PHP Fatal error:  Class 'cGlobal' not found in /home/meraeven/public_html/admin1/templates/manageorganisersinfo.tpl.php on line 5

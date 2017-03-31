@@ -1,0 +1,4 @@
+vti_encoding:SR|utf8-nl
+vti_timelastmodified:TR|26 Aug 2008 09:03:50 -0000
+vti_extenderversion:SR|5.0.2.4803
+vti_backlinkinfo:VX|admin/fckeditor/_samples/html/sample09.html admin/fckeditor/_samples/html/sample08.html admin/fckeditor/_samples/html/sample11_frame.html admin/fckeditor/editor/plugins/bbcode/_sample/sample.html admin/fckeditor/_samples/html/sample05.html admin/fckeditor/_samples/html/sample07.html admin/fckeditor/_samples/html/sample12.html admin/fckeditor/_samples/html/sample14.html admin/fckeditor/_samples/html/sample13.html admin/fckeditor/_samples/html/sample06.html admin/fckeditor/_samples/html/sample04.html admin/fckeditor/_samples/html/sample10.html admin/fckeditor/_samples/html/sample02.html admin/fckeditor/_samples/html/sample03.html admin/fckeditor/_samples/html/sample01.html admin/fckeditor/_samples/adobeair/sample01.html

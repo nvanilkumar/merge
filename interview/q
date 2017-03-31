@@ -1,0 +1,11 @@
+hook point in codeigniter ---site offline, precontroller, post controller
+magic methods
+group concat in mysql
+concate_ws --- 
+However, the most noteworthy difference is that CONCAT might not return the results you are expecting for 
+cases where any of the inputs are NULL. In these cases CONCAT will return NULL whereas 
+CONCAT_WS will skip NULL values and still return a string with the result of the remaining inputs. 
+This means that in most cases you will probably want to use CONCAT_WS.
+
+
+

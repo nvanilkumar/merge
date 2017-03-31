@@ -1,0 +1,597 @@
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   .gitignore
+	modified:   application/config/config.php
+	modified:   application/config/constants.php
+	modified:   application/config/form_validation.php
+	modified:   application/config/routes.php
+	modified:   application/controllers/api/event.php
+	modified:   application/controllers/api/oauth_resource.php
+	modified:   application/controllers/api/search.php
+	modified:   application/controllers/authorize.php
+	modified:   application/controllers/confirmation.php
+	modified:   application/controllers/content.php
+	modified:   application/controllers/dashboard/configure.php
+	modified:   application/controllers/dashboard/event.php
+	modified:   application/controllers/dashboard/promote.php
+	modified:   application/controllers/event.php
+	modified:   application/controllers/home.php
+	modified:   application/controllers/microsite.php
+	modified:   application/controllers/payment.php
+	modified:   application/controllers/printpass.php
+	modified:   application/controllers/profile/index.php
+	modified:   application/controllers/seating.php
+	modified:   application/controllers/user.php
+	modified:   application/core/Input.php
+	modified:   application/handlers/banner_handler.php
+	modified:   application/handlers/booking_handler.php
+	modified:   application/handlers/category_handler.php
+	modified:   application/handlers/city_handler.php
+	modified:   application/handlers/collaborator_handler.php
+	modified:   application/handlers/common_handler.php
+	modified:   application/handlers/configure_handler.php
+	modified:   application/handlers/confirmation_handler.php
+	modified:   application/handlers/dashboard_handler.php
+	modified:   application/handlers/discount_handler.php
+	modified:   application/handlers/email_handler.php
+	modified:   application/handlers/event_handler.php
+	modified:   application/handlers/eventdetail_handler.php
+	modified:   application/handlers/eventextracharge_handler.php
+	modified:   application/handlers/eventsignup_handler.php
+	modified:   application/handlers/eventsignupticketdetail_handler.php
+	modified:   application/handlers/file_handler.php
+	modified:   application/handlers/guestlistbooking_handler.php
+	modified:   application/handlers/offlinepromoterticketmapping_handler.php
+	modified:   application/handlers/organizer_handler.php
+	modified:   application/handlers/organizerbankdetail_handler.php
+	modified:   application/handlers/payment_handler.php
+	modified:   application/handlers/paymentgateway_handler.php
+	modified:   application/handlers/promoter_handler.php
+	modified:   application/handlers/reports_handler.php
+	modified:   application/handlers/search_handler.php
+	modified:   application/handlers/seating_handler.php
+	modified:   application/handlers/seodata_handler.php
+	modified:   application/handlers/solr_handler.php
+	modified:   application/handlers/state_handler.php
+	modified:   application/handlers/subcategory_handler.php
+	modified:   application/handlers/thirdpartypayment_handler.php
+	modified:   application/handlers/ticket_handler.php
+	modified:   application/handlers/user_handler.php
+	modified:   application/helpers/common_helper.php
+	modified:   application/language/english/form_validation_lang.php
+	modified:   application/libraries/Form_validation.php
+	modified:   application/libraries/S3.php
+	modified:   application/libraries/Solrlibrary.php
+	modified:   application/libraries/acl.php
+	modified:   application/libraries/customsession.php
+	modified:   application/models/category_model.php
+	modified:   application/models/common_model.php
+	modified:   application/models/event_model.php
+	modified:   application/models/event_setting_model.php
+	modified:   application/models/eventdetail_model.php
+	modified:   application/models/oauth_clients_model.php
+	modified:   application/models/promoter_model.php
+	modified:   application/models/seodata_model.php
+	modified:   application/models/subcategory_model.php
+	modified:   application/models/venueseat_model.php
+	modified:   application/views/client_authorize_view.php
+	modified:   application/views/create_event_view.php
+	modified:   application/views/dashboard/add_bulk_discount_view.php
+	modified:   application/views/dashboard/add_discount_view.php
+	modified:   application/views/dashboard/add_promoter_view.php
+	modified:   application/views/dashboard/attendee_ticket_view.php
+	modified:   application/views/dashboard/event_home_view.php
+	modified:   application/views/dashboard/left_menu.php
+	modified:   application/views/dashboard/myevent_view.php
+	modified:   application/views/dashboard/payment_receipt_view.php
+	modified:   application/views/dashboard/ticket_options_view.php
+	modified:   application/views/dashboard/transaction_reports_view.php
+	modified:   application/views/dashboard/viral_ticket_view.php
+	modified:   application/views/event_view.php
+	modified:   application/views/home_view.php
+	modified:   application/views/includes/blog_feed.php
+	modified:   application/views/includes/bottom_banner.php
+	modified:   application/views/includes/elements/adroll_tag.php
+	modified:   application/views/includes/elements/city_search.php
+	modified:   application/views/includes/elements/event.php
+	modified:   application/views/includes/elements/event_tickets.php
+	modified:   application/views/includes/elements/home_filter.php
+	modified:   application/views/includes/elements/home_scroll_filter.php
+	modified:   application/views/includes/elements/ticket.php
+	modified:   application/views/includes/elements/wizrocket.php
+	modified:   application/views/includes/event_header.php
+	modified:   application/views/includes/events_happening.php
+	modified:   application/views/includes/footer.php
+	modified:   application/views/includes/header.php
+	modified:   application/views/includes/static/eventregistration_view.php
+	modified:   application/views/includes/static/faq_view.php
+	modified:   application/views/includes/static/terms_view.php
+	modified:   application/views/includes/top_banner.php
+	modified:   application/views/payment/ebs_prepare.php
+	modified:   application/views/printpass_view.php
+	modified:   application/views/profile/bank_details_view.php
+	modified:   application/views/profile/company_details_view.php
+	modified:   application/views/profile/left_menu.php
+	modified:   application/views/profile/personal_details_view.php
+	modified:   application/views/search_view.php
+	modified:   application/views/signup_view.php
+	modified:   application/views/templates/dashboard_template.php
+	modified:   application/views/ticketregistration_view.php
+	modified:   crons/cjCapturePayTm.php
+	modified:   crons/cjCaptureTransactions.php
+	modified:   crons/cjEMailEvent.php
+	modified:   crons/cjEventTck.php
+	modified:   crons/cjFirstTransEvent.php
+	modified:   crons/cjOrgEmail.php
+	modified:   crons/cjSalesByCity.php
+	modified:   crons/cjSalesByPerson.php
+	modified:   crons/cjTempTck.php
+	modified:   crons/cjTransactions.php
+	modified:   crons/cjTransactionsCity.php
+	modified:   crons/commondbdetails.php
+	modified:   crons/resultxml.php
+	modified:   css/public/lightbox.css
+	modified:   css/public/lightbox.min.css
+	modified:   css/public/lightbox.min.css.gz
+	modified:   css/public/me_custom.css
+	modified:   css/public/me_custom.min.css
+	modified:   css/public/me_custom.min.css.gz
+	modified:   css/public/styles-seating.css
+	modified:   css/public/styles-seating.min.css
+	modified:   css/public/styles-seating.min.css.gz
+	modified:   ctrl/AmountDepositedCOD.php
+	modified:   ctrl/AmtDepMobikwik.php
+	modified:   ctrl/CheckReg.php
+	modified:   ctrl/CheckReg_edit.php
+	modified:   ctrl/CheckTrans.php
+	modified:   ctrl/EventTickets.php
+	modified:   ctrl/MT/cCtrl.php
+	modified:   ctrl/MT/cGlobali.php
+	modified:   ctrl/MT/cSubCategories.php
+	modified:   ctrl/MoveEventsedit.php
+	modified:   ctrl/OnlyCancelTrans.php
+	modified:   ctrl/Transactionreport.php
+	modified:   ctrl/Transactionreport_Consolidate.php
+	modified:   ctrl/TransbyEvent_new.php
+	modified:   ctrl/addEventcomment.php
+	modified:   ctrl/addSEO.php
+	modified:   ctrl/add_event_gateway_text.php
+	modified:   ctrl/addextracharges.php
+	modified:   ctrl/ajax.php
+	modified:   ctrl/allinone.php
+	modified:   ctrl/assignevent.php
+	modified:   ctrl/country_edit.php
+	modified:   ctrl/currencyConversion.php
+	modified:   ctrl/customTermsAndConditions.php
+	modified:   ctrl/custom_field_event.php
+	modified:   ctrl/digital_monthly_reports.php
+	modified:   ctrl/editAttendee.php
+	modified:   ctrl/editeventsignup.php
+	modified:   ctrl/events_commision.php
+	modified:   ctrl/events_seating.php
+	modified:   ctrl/extracharges.php
+	modified:   ctrl/extracharges_edit.php
+	modified:   ctrl/includes/ajaxSeoTags.php
+	modified:   ctrl/includes/common_functions.php
+	modified:   ctrl/login.php
+	modified:   ctrl/login_org.php
+	modified:   ctrl/login_org_event.php
+	modified:   ctrl/loginchk.php
+	modified:   ctrl/manage_banner.php
+	modified:   ctrl/manage_banner_edit.php
+	modified:   ctrl/manage_organizersnamesadd.php
+	modified:   ctrl/newyeardiscounts.php
+	modified:   ctrl/nye_discounts_edit.php
+	modified:   ctrl/paymentInvoice_new.php
+	modified:   ctrl/paymentInvoice_new_accounts.php
+	modified:   ctrl/paymentInvoice_newyear.php
+	modified:   ctrl/pie.php
+	modified:   ctrl/processAjaxRequests.php
+	modified:   ctrl/qchecking.php
+	modified:   ctrl/report_cat_cre_city.php
+	modified:   ctrl/report_category_city.php
+	modified:   ctrl/report_sales_organizer.php
+	modified:   ctrl/salesres.php
+	modified:   ctrl/spot_registration.php
+	modified:   ctrl/spot_registration_reports.php
+	modified:   ctrl/subcategory_edit.php
+	modified:   ctrl/sunburn_events.php
+	modified:   ctrl/templates/AmountDeposited.tpl.php
+	modified:   ctrl/templates/AmountDepositedCOD.tpl.php
+	modified:   ctrl/templates/AmtDepMobikwik.tpl.php
+	modified:   ctrl/templates/AmtDepPaypal_tpl.php
+	modified:   ctrl/templates/AmtDepPaytm_tpl.php
+	modified:   ctrl/templates/CheckReg_edit.tpl.php
+	modified:   ctrl/templates/CheckTrans.tpl.php
+	modified:   ctrl/templates/EventTickets.tpl.php
+	modified:   ctrl/templates/MoveEvents.tpl.php
+	modified:   ctrl/templates/OnlyCancelTrans.tpl.php
+	modified:   ctrl/templates/TransbyEvent_new.tpl.php
+	modified:   ctrl/templates/addSEO.tpl.php
+	modified:   ctrl/templates/addextracharges.tpl.php
+	modified:   ctrl/templates/assignevent.tpl.php
+	modified:   ctrl/templates/customTermsAndConditions.tpl.php
+	modified:   ctrl/templates/custom_field_event.tpl.php
+	modified:   ctrl/templates/editAttendee.tpl.php
+	modified:   ctrl/templates/editeventsignup.tpl.php
+	modified:   ctrl/templates/eventchk.tpl.php
+	modified:   ctrl/templates/events_commision.tpl.php
+	modified:   ctrl/templates/events_seating.tpl.php
+	modified:   ctrl/templates/extracharges.tpl.php
+	modified:   ctrl/templates/extracharges_edit.tpl.php
+	modified:   ctrl/templates/left.tpl.php
+	modified:   ctrl/templates/login_org_event_tpl.php
+	deleted:    ctrl/templates/manage_Gallery.tpl.php
+	modified:   ctrl/templates/manage_banner.tpl.php
+	modified:   ctrl/templates/manage_banner_edit.tpl.php
+	modified:   ctrl/templates/newyeardiscounts.tpl.php
+	modified:   ctrl/templates/nye_discounts_edit.tpl.php
+	modified:   ctrl/templates/paymentInvoice_new.tpl.php
+	modified:   ctrl/templates/paymentInvoice_new_accounts.tpl.php
+	modified:   ctrl/templates/paymentsummary.tpl.php
+	modified:   ctrl/templates/qchecking.tpl.php
+	modified:   ctrl/templates/qcheckingedit.tpl.php
+	modified:   ctrl/templates/report_sales_organizer.tpl.php
+	modified:   ctrl/templates/spot_registration_reports_tpl.php
+	modified:   ctrl/templates/spot_registration_tpl.php
+	modified:   ctrl/templates/subcategory_edit.tpl.php
+	modified:   ctrl/templates/uploaddocs.tpl.php
+	modified:   ctrl/uploaddocs.php
+	modified:   ctrl/uploademailer.php
+	deleted:    dbQueries.txt
+	modified:   js/angular/user/controllers/homeControllers.js
+	modified:   js/angular/user/controllers/homeControllers.min.js
+	modified:   js/angular/user/controllers/homeControllers.min.js.gz
+	modified:   js/angular/user/controllers/loginControllers.js
+	modified:   js/angular/user/controllers/loginControllers.min.js
+	modified:   js/angular/user/controllers/loginControllers.min.js.gz
+	modified:   js/angular/user/controllers/searchControllers.js
+	modified:   js/angular/user/controllers/searchControllers.min.js
+	modified:   js/angular/user/controllers/searchControllers.min.js.gz
+	modified:   js/angular/user/controllers/signupControllers.js
+	modified:   js/angular/user/controllers/signupControllers.min.js
+	modified:   js/angular/user/controllers/signupControllers.min.js.gz
+	modified:   js/public/combined.js
+	modified:   js/public/combined.min.js
+	modified:   js/public/combined.min.js.gz
+	modified:   js/public/create_event.js
+	modified:   js/public/create_event.min.js
+	modified:   js/public/create_event.min.js.gz
+	modified:   js/public/dashboard/current_past_events.js
+	modified:   js/public/dashboard/current_past_events.min.js
+	modified:   js/public/dashboard/current_past_events.min.js.gz
+	modified:   js/public/dashboard/customscripts.js
+	modified:   js/public/dashboard/customscripts.min.js
+	modified:   js/public/dashboard/customscripts.min.js.gz
+	modified:   js/public/dashboard/discount.js
+	modified:   js/public/dashboard/discount.min.js
+	modified:   js/public/dashboard/discount.min.js.gz
+	modified:   js/public/dashboard/home.js
+	modified:   js/public/dashboard/home.min.js
+	modified:   js/public/dashboard/home.min.js.gz
+	modified:   js/public/dashboard/profile.js
+	modified:   js/public/dashboard/profile.min.js
+	modified:   js/public/dashboard/profile.min.js.gz
+	modified:   js/public/dashboard/promote.js
+	modified:   js/public/dashboard/promote.min.js
+	modified:   js/public/dashboard/promote.min.js.gz
+	modified:   js/public/delegate.js
+	modified:   js/public/delegate.min.js
+	modified:   js/public/delegate.min.js.gz
+	modified:   js/public/event.js
+	modified:   js/public/event.min.js
+	modified:   js/public/event.min.js.gz
+	modified:   js/public/home.min.js
+	modified:   js/public/login.js
+	modified:   js/public/login.min.js
+	modified:   js/public/login.min.js.gz
+	modified:   js/public/onscrollScript.js
+	modified:   js/public/onscrollScript.min.js
+	modified:   js/public/onscrollScript.min.js.gz
+	modified:   js/public/seatinglayout.js
+	modified:   js/public/seatinglayout.min.js
+	modified:   js/public/seatinglayout.min.js.gz
+	modified:   js/public/static.js
+	modified:   js/public/static.min.js
+	modified:   js/public/static.min.js.gz
+	modified:   js/public/tabcontent.min.js
+	modified:   js/public/tabcontent.min.js.gz
+	modified:   microsites/dandiya/index.php
+	modified:   microsites/deltingroup/index.php
+	modified:   microsites/holi/assets/css/BreakingNews.css
+	modified:   microsites/holi/assets/css/jquery-ui.css
+	modified:   microsites/holi/assets/fonts/glyphicons-halflings-regular.eot
+	modified:   microsites/holi/assets/fonts/glyphicons-halflings-regular.svg
+	modified:   microsites/holi/assets/fonts/glyphicons-halflings-regular.ttf
+	modified:   microsites/holi/assets/fonts/glyphicons-halflings-regular.woff
+	modified:   microsites/holi/assets/js/BreakingNews.js
+	modified:   microsites/holi/assets/js/bootstrap.min.js
+	modified:   microsites/holi/assets/js/jquery-ui.js
+	modified:   microsites/holi/index.php
+	modified:   microsites/newyear/index.php
+	modified:   microsites/sensation/css/style.min.css
+	modified:   microsites/sensation/index.php
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	application/controllers/api/eventpromocodes.php
+	application/controllers/developer/
+	application/controllers/nopage.php
+	application/controllers/payment_bypass.php
+	application/controllers/promote.php
+	application/controllers/tsfeedback.php
+	application/handlers/booking_handler.php_orig_28042016
+	application/handlers/developer_handler.php
+	application/handlers/eventpromocodes_handler.php
+	application/handlers/oauth_access_tokens_handler.php
+	application/handlers/oauth_clients_handler.php
+	application/handlers/piwik_handler.php
+	application/handlers/specialdiscount_handler.php
+	application/libraries/mpdf/ttfontdata/dejavusans.cw.dat
+	application/libraries/mpdf/ttfontdata/dejavusans.mtx.php
+	application/libraries/mpdf/ttfontdata/dejavusanscondensed.cgm
+	application/libraries/mpdf/ttfontdata/dejavusanscondensed.cw
+	application/libraries/mpdf/ttfontdata/dejavusanscondensed.z
+	application/libraries/mpdf/ttfontdata/dejavusanscondensedB.cgm
+	application/libraries/mpdf/ttfontdata/dejavusanscondensedB.cw
+	application/libraries/mpdf/ttfontdata/dejavusanscondensedB.cw127.php
+	application/libraries/mpdf/ttfontdata/dejavusanscondensedB.mtx.php
+	application/libraries/mpdf/ttfontdata/dejavusanscondensedB.z
+	application/libraries/mpdf/ttfontdata/dejavusanscondensedBI.cw.dat
+	application/libraries/mpdf/ttfontdata/dejavusanscondensedBI.cw127.php
+	application/libraries/mpdf/ttfontdata/dejavusanscondensedBI.mtx.php
+	application/libraries/mpdf/ttfontdata/dejavusanscondensedI.cgm
+	application/libraries/mpdf/ttfontdata/dejavusanscondensedI.cw
+	application/libraries/mpdf/ttfontdata/dejavusanscondensedI.cw.dat
+	application/libraries/mpdf/ttfontdata/dejavusanscondensedI.cw127.php
+	application/libraries/mpdf/ttfontdata/dejavusanscondensedI.mtx.php
+	application/libraries/mpdf/ttfontdata/dejavusanscondensedI.z
+	application/libraries/mpdf/ttfontdata/dejavusansmono.cw.dat
+	application/libraries/mpdf/ttfontdata/dejavusansmono.mtx.php
+	application/libraries/mpdf/ttfontdata/dejavuserif.cw.dat
+	application/libraries/mpdf/ttfontdata/dejavuserif.mtx.php
+	application/libraries/mpdf/ttfontdata/dejavuserifcondensedB.cw.dat
+	application/libraries/mpdf/ttfontdata/dejavuserifcondensedB.cw127.php
+	application/libraries/mpdf/ttfontdata/dejavuserifcondensedB.mtx.php
+	application/libraries/mpdf/ttfontdata/garuda.cw.dat
+	application/libraries/mpdf/ttfontdata/garuda.mtx.php
+	application/libraries/mpdf/ttfontdata/ind_bn_1_001.cw.dat
+	application/libraries/mpdf/ttfontdata/ind_bn_1_001.mtx.php
+	application/libraries/mpdf/ttfontdata/ind_gu_1_001.cw.dat
+	application/libraries/mpdf/ttfontdata/ind_gu_1_001.mtx.php
+	application/libraries/mpdf/ttfontdata/ind_hi_1_001.cw.dat
+	application/libraries/mpdf/ttfontdata/ind_hi_1_001.mtx.php
+	application/libraries/mpdf/ttfontdata/ind_kn_1_001.cw.dat
+	application/libraries/mpdf/ttfontdata/ind_kn_1_001.mtx.php
+	application/libraries/mpdf/ttfontdata/ind_ml_1_001.cw.dat
+	application/libraries/mpdf/ttfontdata/ind_ml_1_001.mtx.php
+	application/libraries/mpdf/ttfontdata/ind_or_1_001.cw.dat
+	application/libraries/mpdf/ttfontdata/ind_or_1_001.mtx.php
+	application/libraries/mpdf/ttfontdata/ind_pa_1_001.cw.dat
+	application/libraries/mpdf/ttfontdata/ind_pa_1_001.mtx.php
+	application/libraries/mpdf/ttfontdata/ind_ta_1_001.cw.dat
+	application/libraries/mpdf/ttfontdata/ind_ta_1_001.mtx.php
+	application/libraries/mpdf/ttfontdata/ind_te_1_001.cw.dat
+	application/libraries/mpdf/ttfontdata/ind_te_1_001.mtx.php
+	application/libraries/mpdf/ttfontdata/norasi.cw.dat
+	application/libraries/mpdf/ttfontdata/norasi.mtx.php
+	application/libraries/mpdf/ttfontdata/ocrb10.cw.dat
+	application/libraries/mpdf/ttfontdata/ocrb10.mtx.php
+	application/libraries/mpdf/ttfontdata/xbriyaz.cw.dat
+	application/libraries/mpdf/ttfontdata/xbriyaz.mtx.php
+	application/libraries/mpdf/ttfontdata/xbzar.cw.dat
+	application/libraries/mpdf/ttfontdata/xbzar.mtx.php
+	application/models/eventpromocodes_model.php
+	application/models/piwikrecommendations_model.php
+	application/models/specialdiscount_model.php
+	application/views/api/payNow.php
+	application/views/dashboard/deleterequest_view.php
+	application/views/includes/elements/piwikrecommendations.php
+	application/views/includes/elements/truesemantic.php
+	application/views/includes/static/developers_view.php
+	application/views/includes/static/privacypolicy_view.php
+	application/views/includes/static/support_view.php
+	application/views/microsite/holi.php
+	application/views/nehru_memorial_view.php
+	application/views/profile/api_list_view.php
+	application/views/profile/create_api_view.php
+	application/views/profile/update_api_view.php
+	application/views/truesemantic_view.php
+	crons/cjCapturePayTmOrderid.php
+	crons/cjCronSubcategoryEveCntUpdate.php
+	crons/cjEventUnpublish.php
+	crons/cjIncompleteTransMail.php
+	crons/cjSMSEvent.php
+	crons/cjSitemap.php
+	css/public/images/ui-bg_flat_75_ffffff_40x100.png
+	css/public/images/ui-bg_glass_75_dadada_1x400.png
+	ctrl/EmailSMSFun.php
+	ctrl/add_microsite_url.php
+	ctrl/addpromotionaltext.php
+	ctrl/apiEvent.php
+	ctrl/delete_request.php
+	ctrl/eventpromocodes.php
+	ctrl/includes/mpdf/ttfontdata/dejavusans.cw.dat
+	ctrl/includes/mpdf/ttfontdata/dejavusans.cw127.php
+	ctrl/includes/mpdf/ttfontdata/dejavusans.mtx.php
+	ctrl/includes/mpdf/ttfontdata/dejavusanscondensed.cgm
+	ctrl/includes/mpdf/ttfontdata/dejavusanscondensed.cw
+	ctrl/includes/mpdf/ttfontdata/dejavusanscondensed.z
+	ctrl/includes/mpdf/ttfontdata/dejavusanscondensedB.cgm
+	ctrl/includes/mpdf/ttfontdata/dejavusanscondensedB.cw
+	ctrl/includes/mpdf/ttfontdata/dejavusanscondensedB.cw127.php
+	ctrl/includes/mpdf/ttfontdata/dejavusanscondensedB.z
+	ctrl/includes/mpdf/ttfontdata/dejavusanscondensedBI.cw.dat
+	ctrl/includes/mpdf/ttfontdata/dejavusanscondensedBI.mtx.php
+	ctrl/includes/mpdf/ttfontdata/dejavusanscondensedI.cgm
+	ctrl/includes/mpdf/ttfontdata/dejavusanscondensedI.cw
+	ctrl/includes/mpdf/ttfontdata/dejavusanscondensedI.cw.dat
+	ctrl/includes/mpdf/ttfontdata/dejavusanscondensedI.mtx.php
+	ctrl/includes/mpdf/ttfontdata/dejavusanscondensedI.z
+	ctrl/includes/mpdf/ttfontdata/dejavusansmono.cw.dat
+	ctrl/includes/mpdf/ttfontdata/dejavusansmono.cw127.php
+	ctrl/includes/mpdf/ttfontdata/dejavusansmono.mtx.php
+	ctrl/includes/mpdf/ttfontdata/dejavusansmonoB.cw.dat
+	ctrl/includes/mpdf/ttfontdata/dejavusansmonoB.mtx.php
+	ctrl/includes/mpdf/ttfontdata/dejavusansmonoBI.cw.dat
+	ctrl/includes/mpdf/ttfontdata/dejavusansmonoBI.mtx.php
+	ctrl/includes/mpdf/ttfontdata/dejavusansmonoI.cw.dat
+	ctrl/includes/mpdf/ttfontdata/dejavusansmonoI.mtx.php
+	ctrl/includes/mpdf/ttfontdata/dejavuserif.cw.dat
+	ctrl/includes/mpdf/ttfontdata/dejavuserif.mtx.php
+	ctrl/includes/mpdf/ttfontdata/dejavuserifcondensed.cgm
+	ctrl/includes/mpdf/ttfontdata/dejavuserifcondensed.cw
+	ctrl/includes/mpdf/ttfontdata/dejavuserifcondensed.cw127.php
+	ctrl/includes/mpdf/ttfontdata/dejavuserifcondensed.z
+	ctrl/includes/mpdf/ttfontdata/dejavuserifcondensedB.cgm
+	ctrl/includes/mpdf/ttfontdata/dejavuserifcondensedB.cw
+	ctrl/includes/mpdf/ttfontdata/dejavuserifcondensedB.cw.dat
+	ctrl/includes/mpdf/ttfontdata/dejavuserifcondensedB.mtx.php
+	ctrl/includes/mpdf/ttfontdata/dejavuserifcondensedB.z
+	ctrl/includes/mpdf/ttfontdata/dejavuserifcondensedBI.cw.dat
+	ctrl/includes/mpdf/ttfontdata/dejavuserifcondensedBI.mtx.php
+	ctrl/includes/mpdf/ttfontdata/dejavuserifcondensedI.cw.dat
+	ctrl/includes/mpdf/ttfontdata/dejavuserifcondensedI.mtx.php
+	ctrl/includes/mpdf/ttfontdata/garuda.cw.dat
+	ctrl/includes/mpdf/ttfontdata/garuda.mtx.php
+	ctrl/includes/mpdf/ttfontdata/ind_bn_1_001.cw.dat
+	ctrl/includes/mpdf/ttfontdata/ind_bn_1_001.mtx.php
+	ctrl/includes/mpdf/ttfontdata/ind_gu_1_001.cw.dat
+	ctrl/includes/mpdf/ttfontdata/ind_gu_1_001.mtx.php
+	ctrl/includes/mpdf/ttfontdata/ind_hi_1_001.cw.dat
+	ctrl/includes/mpdf/ttfontdata/ind_hi_1_001.mtx.php
+	ctrl/includes/mpdf/ttfontdata/ind_kn_1_001.cw.dat
+	ctrl/includes/mpdf/ttfontdata/ind_kn_1_001.mtx.php
+	ctrl/includes/mpdf/ttfontdata/ind_ml_1_001.cw.dat
+	ctrl/includes/mpdf/ttfontdata/ind_ml_1_001.mtx.php
+	ctrl/includes/mpdf/ttfontdata/ind_or_1_001.cw.dat
+	ctrl/includes/mpdf/ttfontdata/ind_or_1_001.mtx.php
+	ctrl/includes/mpdf/ttfontdata/ind_pa_1_001.cw.dat
+	ctrl/includes/mpdf/ttfontdata/ind_pa_1_001.mtx.php
+	ctrl/includes/mpdf/ttfontdata/ind_ta_1_001.cw.dat
+	ctrl/includes/mpdf/ttfontdata/ind_ta_1_001.mtx.php
+	ctrl/includes/mpdf/ttfontdata/ind_te_1_001.cw.dat
+	ctrl/includes/mpdf/ttfontdata/ind_te_1_001.mtx.php
+	ctrl/includes/mpdf/ttfontdata/norasi.cw.dat
+	ctrl/includes/mpdf/ttfontdata/norasi.mtx.php
+	ctrl/includes/mpdf/ttfontdata/ocrb.cw.dat
+	ctrl/includes/mpdf/ttfontdata/ocrb.mtx.php
+	ctrl/includes/mpdf/ttfontdata/ocrb10.cw.dat
+	ctrl/includes/mpdf/ttfontdata/ocrb10.mtx.php
+	ctrl/includes/mpdf/ttfontdata/xbriyaz.cgm
+	ctrl/includes/mpdf/ttfontdata/xbriyaz.cw
+	ctrl/includes/mpdf/ttfontdata/xbriyaz.cw.dat
+	ctrl/includes/mpdf/ttfontdata/xbriyaz.cw127.php
+	ctrl/includes/mpdf/ttfontdata/xbriyaz.mtx.php
+	ctrl/includes/mpdf/ttfontdata/xbriyaz.z
+	ctrl/includes/mpdf/ttfontdata/xbriyazB.cw.dat
+	ctrl/includes/mpdf/ttfontdata/xbriyazB.cw127.php
+	ctrl/includes/mpdf/ttfontdata/xbriyazB.mtx.php
+	ctrl/includes/mpdf/ttfontdata/xbriyazBI.cw.dat
+	ctrl/includes/mpdf/ttfontdata/xbriyazBI.mtx.php
+	ctrl/includes/mpdf/ttfontdata/xbzar.cgm
+	ctrl/includes/mpdf/ttfontdata/xbzar.cw
+	ctrl/includes/mpdf/ttfontdata/xbzar.cw.dat
+	ctrl/includes/mpdf/ttfontdata/xbzar.cw127.php
+	ctrl/includes/mpdf/ttfontdata/xbzar.mtx.php
+	ctrl/includes/mpdf/ttfontdata/xbzar.z
+	ctrl/includes/mpdf/ttfontdata/xbzarB.cw.dat
+	ctrl/includes/mpdf/ttfontdata/xbzarB.mtx.php
+	ctrl/mappingSEO.php
+	ctrl/metoorgefforts.php
+	ctrl/piecat.php
+	ctrl/report_date_event_organizer.php
+	ctrl/report_sales_category.php
+	ctrl/report_sales_revenue.php
+	ctrl/report_sales_revenue_upcoming.php
+	ctrl/search_by_organizer.php
+	ctrl/templates/addpromotionaltext_tpl.php
+	ctrl/templates/api_event_edit.php
+	ctrl/templates/delete_requests.tpl.php
+	ctrl/templates/manage_Gallery.tpl.html
+	ctrl/templates/mappingSEO.tpl.php
+	ctrl/templates/metoorgefforts.tpl.php
+	ctrl/templates/report_date_event_organizer.tpl.php
+	ctrl/templates/report_sales_category.tpl.php
+	ctrl/templates/report_sales_revenue.tpl.php
+	ctrl/templates/report_sales_revenue_upcoming.tpl.php
+	ctrl/templates/search_by_organizer_tpl.php
+	gitstatus25052016.txt
+	images/static/holievents-top-banner.jpg
+	images/static/me-logo-200.png
+	js/public/dashboard/deleterequest.js
+	js/public/dashboard/deleterequest.min.js
+	js/public/dashboard/deleterequest.min.js.gz
+	js/public/tabcontent.js
+	js/public/tinymce/plugins/jbimages/
+	microsites/dashberlin/
+	microsites/holi/assets/css/bootstrap.css
+	microsites/holi/assets/css/bootstrap.min.css.gz
+	microsites/holi/assets/css/entypo.css
+	microsites/holi/assets/css/flaticon.css
+	microsites/holi/assets/css/fonts.css
+	microsites/holi/assets/css/style.css
+	microsites/holi/assets/css/style.min.css
+	microsites/holi/assets/css/style.min.css.gz
+	microsites/holi/assets/fonts/Lato-Bold.svg
+	microsites/holi/assets/fonts/Lato.svg
+	microsites/holi/assets/fonts/PTSans-Bold.svg
+	microsites/holi/assets/fonts/PTSans-Regular.svg
+	microsites/holi/assets/fonts/Pacifico.svg
+	microsites/holi/assets/fonts/entypo97a0.eot
+	microsites/holi/assets/fonts/entypo97a0.svg
+	microsites/holi/assets/fonts/entypo97a0.ttf
+	microsites/holi/assets/fonts/entypo97a0.woff
+	microsites/holi/assets/fonts/flaticon97a0.eot
+	microsites/holi/assets/fonts/flaticon97a0.svg
+	microsites/holi/assets/fonts/flaticon97a0.ttf
+	microsites/holi/assets/fonts/flaticon97a0.woff
+	microsites/holi/assets/fonts/glyphicons-halflings-regulard41d.eot
+	microsites/holi/assets/img/elements/
+	microsites/holi/assets/img/holi-2016-default.jpg
+	microsites/holi/assets/js/BreakingNews.min.js
+	microsites/holi/assets/js/bootstrap.min.js.gz
+	microsites/holi/assets/js/common.js
+	microsites/holi/assets/js/common.min.js
+	microsites/holi/assets/js/common.min.js.gz
+	microsites/holi/assets/js/common1.js
+	microsites/holi/assets/js/common1.min.js
+	microsites/holi/assets/js/common1.min.js.gz
+	microsites/holi/assets/js/google.map.js
+	microsites/holi/assets/js/imagesloaded.pkgd.min.js
+	microsites/holi/assets/js/imagesloaded.pkgd.min.js.gz
+	microsites/holi/assets/js/jquery-1.11.1.min.js
+	microsites/holi/assets/js/jquery-1.11.1.min.js.gz
+	microsites/holi/assets/js/jquery.cookie.js
+	microsites/holi/assets/js/jquery.validate.min.js
+	microsites/holi/assets/js/js.js
+	microsites/holi/assets/js/masonry.min.js
+	microsites/holi/assets/js/masonry.min.js.gz
+	microsites/holi/assets/js/smooth-scroll.js
+	microsites/holi/assets/js/smooth-scroll.min.js.gz
+	microsites/holi/assets/js/switcher.js
+	microsites/holi/index-bkp.html
+	microsites/sbicard/
+	microsites/sensation/images/Mr-White.jpg
+	microsites/sensation/images/afrojack.jpg
+	microsites/sensation/images/axwell.jpg
+	microsites/sensation/images/laidbackluke.jpg
+	microsites/sensation/images/lostfrequencies.jpg
+	microsites/shivkhera/
+	microsites/uba/
+	results.xml
+	results1.xml
+	results2.xml
+	results_funmango.xml
+	robots.txt
+	sitemap-city.xml
+	sitemap.xml
+	sitemap/
+
+no changes added to commit (use "git add" and/or "git commit -a")

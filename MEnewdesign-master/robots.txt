@@ -1,0 +1,10 @@
+User-Agent: *
+Disallow: 
+Allow: /event
+
+User-Agent: Googlebot
+Disallow: /dashboard
+Disallow: /api
+Disallow: /blog
+Sitemap: http://www.meraevents.com/sitemap.xml
+#Sitemap: http://www.meraevents.com/sitemap-city.xml
