@@ -1,0 +1,67 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Customer
+ *
+ * @ORM\Table(name="customer", uniqueConstraints={@ORM\UniqueConstraint(name="phone_number", columns={"phone_number"})})
+ * @ORM\Entity
+ */
+class Customer
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=10, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="first_name", type="string", length=30, nullable=false)
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last_name", type="string", length=30, nullable=false)
+     */
+    private $lastName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="company", type="string", length=50, nullable=false)
+     */
+    private $company;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone_number", type="string", length=20, nullable=false)
+     */
+    private $phoneNumber;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="acc_code", type="integer", nullable=false)
+     */
+    private $accCode;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="customer_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $customerId;
+
+
+}

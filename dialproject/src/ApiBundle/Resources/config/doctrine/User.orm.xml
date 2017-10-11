@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ApiBundle\Entity\User" table="user">
+    <indexes>
+      <index name="role_id" columns="role_id"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="email" columns="email"/>
+      <unique-constraint name="extension" columns="extension"/>
+    </unique-constraints>
+    <id name="userId" type="integer" column="user_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fullName" type="string" column="full_name" length="30" nullable="false"/>
+    <field name="email" type="string" column="email" length="60" nullable="false"/>
+    <field name="password" type="string" column="password" length="150" nullable="false"/>
+    <field name="salt" type="string" column="salt" length="150" nullable="true"/>
+    <field name="gender" type="string" column="gender" nullable="true"/>
+    <field name="extension" type="integer" column="extension" nullable="false"/>
+    <field name="pin" type="integer" column="pin" nullable="false"/>
+    <field name="status" type="string" column="status" nullable="false"/>
+    <field name="addedOn" type="datetime" column="added_on" nullable="true"/>
+    <field name="updatedOn" type="datetime" column="updated_on" nullable="true"/>
+    <field name="isDeleted" type="boolean" column="is_deleted" nullable="true"/>
+    <field name="lastLogin" type="datetime" column="last_login" nullable="true"/>
+    <field name="astriskLogin" type="boolean" column="astrisk_login" nullable="true"/>
+    <field name="webLogin" type="boolean" column="web_login" nullable="true"/>
+    <field name="hangupAgent" type="boolean" column="hangup_agent" nullable="true"/>
+    <many-to-one field="role" target-entity="Roles">
+      <join-columns>
+        <join-column name="role_id" referenced-column-name="role_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

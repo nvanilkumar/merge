@@ -1,0 +1,112 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * User
+ *
+ * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="email", columns={"email"}), @ORM\UniqueConstraint(name="extension", columns={"extension"})}, indexes={@ORM\Index(name="role_id", columns={"role_id"})})
+ * @ORM\Entity
+ */
+class User
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="full_name", type="string", length=30, nullable=false)
+     */
+    private $fullName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=60, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=20, nullable=false)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gender", type="string", nullable=true)
+     */
+    private $gender;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="extension", type="integer", nullable=false)
+     */
+    private $extension;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pin", type="integer", nullable=false)
+     */
+    private $pin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", nullable=false)
+     */
+    private $status;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="added_on", type="datetime", nullable=true)
+     */
+    private $addedOn;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_on", type="datetime", nullable=true)
+     */
+    private $updatedOn;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_deleted", type="boolean", nullable=true)
+     */
+    private $isDeleted;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="last_login", type="datetime", nullable=true)
+     */
+    private $lastLogin;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="user_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $userId;
+
+    /**
+     * @var \AppBundle\Entity\Roles
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Roles")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="role_id", referencedColumnName="role_id")
+     * })
+     */
+    private $role;
+
+
+}

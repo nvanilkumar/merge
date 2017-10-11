@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+* {padding: 0;	margin: 0;}
+@-webkit-keyframes autofill { to {color: #666; background: transparent; }}
+input:-webkit-autofill {-webkit-animation-name: autofill; -webkit-animation-fill-mode: both;}
+body {font-family: 'Open Sans', sans-serif; font-size: 12px; font-weight: 400; color: #4c4441;}
+a:active {outline:0;}
+h1,h2, h3, h4, h5, h6 { line-height:1.1em; color:#666; margin-bottom: 20px; font-weight:400;}
+body.login_bg { background: url(../img/login-bg.jpg) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; }
+.login_box { width:500px; margin:80px auto 50px; padding:40px 0px; background-color: rgb(255, 255, 255); box-shadow: 0px 4px 13px 0px rgba(8, 68, 85, 0.16);}
+.login_logo {width: 224px; margin:0px auto 30px;}
+.login_box .row { margin:0px 40px;}
+.login_box .login_text {font-size:22px; font-weight:400; margin:0px; margin-bottom:30px; width:50%; float:left;}
+.login_box .register-text {font-size:22px; font-weight:400; margin:0px; margin-bottom:30px; color:#f58525; text-align:right; width:50%; float:left;}
+.login_box .register-text a { text-decoration:none; color:#f58525; }
+.login_box .info-heading {padding:10px 40px; color:#46565a; text-transform: uppercase; text-align: center; font-size:18px; background:#f2f9fb; font-weight:400; width:100%; float:left; margin-bottom:35px;}
+.form-group {overflow:hidden;}
+.login_box label {font-size: 11px; color:#6d7682; font-weight: 600; text-transform: uppercase; line-height: 2.4;}
+.login_box .textbox-control {border:0px; border:1px solid #d9dfe9; padding-left:10px; padding-right:10px; outline:none; height:32px;}
+.login_box .form-group, .login_box .form-group .btn {text-transform:uppercase; font-size:12px;}
+.forgot-text a {color:#0cb6e8; text-decoration:none;}
+.btn {margin-bottom: 10px; padding:10px 25px; border-radius:0px; outline:none; text-transform:uppercase; letter-spacing: 1px; font-weight:600;}
+.theme_blue, .theme_blue:focus, .theme_blue:hover, .theme_blue:active {background-color: #0cb6e8; color: #ffffff; border: 0px; font-size: 11px; outline: none; }
+.btn i {margin-right:5px;}
+.no-mar {margin:0px!important;}
+.marb15 {margin-bottom: 15px!important;}
+.no-pad {padding: 0px!important;}
+
+.login_box .checkbox { padding-left: 20px; margin-top:5px; margin-bottom:0px;}
+.login_box .checkbox label { display: inline-block; position: relative; padding-left: 5px; line-height:1.6;}
+.login_box .checkbox label::before { content: ""; display: inline-block; position: absolute; width: 17px; height: 17px; left: 0; margin-left: -20px; border: 1px solid #c3b9b6; background-color: #fff; -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out; -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out; transition: border 0.15s ease-in-out, color 0.15s ease-in-out; }
+.login_box .checkbox label::after {display: inline-block; position: absolute; width: 16px; height: 16px; left: 0; top: 0; margin-left: -20px; padding-left: 3px; padding-top: 0px;}
+.login_box .checkbox input[type="checkbox"] { opacity: 0; }
+.login_box .checkbox input[type="checkbox"]:focus + label::before { outline: 5px auto -webkit-focus-ring-color; outline-offset: -2px; }
+.login_box .checkbox input[type="checkbox"]:checked + label::after { font-family: 'FontAwesome'; content: "\f00c"; }
+.login_box .checkbox input[type="checkbox"]:disabled + label { opacity: 0.65; }
+.login_box .checkbox input[type="checkbox"]:disabled + label::before { background-color: #eeeeee; cursor: not-allowed; }
+.login_box .checkbox.checkbox-circle label::before { border-radius: 50%; }
+.login_box .checkbox.checkbox-inline { margin-top: 0; }
+	
+.login_box .checkbox-info input[type="checkbox"]:checked + label::before {
+  background-color: #5bc0de;
+  border-color: #5bc0de; }
+.login_box .checkbox-info input[type="checkbox"]:checked + label::after {
+  color: #fff; }
+.alert {padding:12px 15px!important;}
+.footer {text-transform: uppercase; color: #fff; font-size: 11px;}

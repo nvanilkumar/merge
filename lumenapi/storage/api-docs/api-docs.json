@@ -1,0 +1,751 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "MTC Project API",
+        "description": "This is an  API List for MTC",
+        "version": "1/.01"
+    },
+    "host": "localhost/lumenapi/public/",
+    "basePath": "api/v1/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "events/list": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "Get the Events list",
+                "description": "To get the user specific active events list",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "login user id",
+                        "required": true,
+                        "type": "integer",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "events list"
+                    },
+                    "404": {
+                        "description": "No data available"
+                    }
+                }
+            }
+        },
+        "events/attende/confirmation": {
+            "post": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "To Change the Event user status",
+                "description": "To Change the user status related to given event",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "formData",
+                        "description": "login user id",
+                        "required": true,
+                        "type": "integer",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "status",
+                        "in": "formData",
+                        "description": "event related user status",
+                        "required": true,
+                        "type": "string",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "event_id",
+                        "in": "formData",
+                        "description": "Selected Event Id",
+                        "required": true,
+                        "type": "integer",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "updated status"
+                    },
+                    "404": {
+                        "description": "Invalid login details (or) event details"
+                    }
+                }
+            }
+        },
+        "events/{event_id}": {
+            "get": {
+                "tags": [
+                    "Events"
+                ],
+                "summary": "To get the specific event related details",
+                "description": "To get the specific event related details",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "event_id",
+                        "in": "path",
+                        "description": "event_id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "login user id",
+                        "required": true,
+                        "type": "integer",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "event details"
+                    },
+                    "404": {
+                        "description": "Invalid event details"
+                    }
+                }
+            }
+        },
+        "links": {
+            "get": {
+                "tags": [
+                    "Menu Links"
+                ],
+                "summary": "Get the menu links list",
+                "description": "To get the menu links list",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "links list"
+                    },
+                    "404": {
+                        "description": "No data available"
+                    }
+                }
+            }
+        },
+        "surveys/list": {
+            "get": {
+                "tags": [
+                    "Surveys"
+                ],
+                "summary": "Get the survey list",
+                "description": "To get the user specific active survey list",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "login user id",
+                        "required": true,
+                        "type": "integer",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "survey list"
+                    },
+                    "404": {
+                        "description": "No data available"
+                    }
+                }
+            }
+        },
+        "surveys/status": {
+            "post": {
+                "tags": [
+                    "Surveys"
+                ],
+                "summary": "To Change the user related survey status",
+                "description": "To Change the user related survey status",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "formData",
+                        "description": "login user id",
+                        "required": true,
+                        "type": "integer",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "status",
+                        "in": "formData",
+                        "description": "event related user status",
+                        "required": true,
+                        "type": "string",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "survey_id",
+                        "in": "formData",
+                        "description": "Selected Survey Id",
+                        "required": true,
+                        "type": "integer",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "updated status"
+                    },
+                    "404": {
+                        "description": "Invalid user id or survey id details"
+                    }
+                }
+            }
+        },
+        "categories/list": {
+            "get": {
+                "tags": [
+                    "Message Board"
+                ],
+                "summary": "Get the Categories list",
+                "description": "To get the Categories list",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "categories list"
+                    },
+                    "404": {
+                        "description": "No data available"
+                    }
+                }
+            }
+        },
+        "topics/list": {
+            "get": {
+                "tags": [
+                    "Message Board"
+                ],
+                "summary": "Get the Category Related Topic list",
+                "description": "To get the Category Related Topic list",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "query",
+                        "description": "Category id",
+                        "type": "integer",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Current Page",
+                        "type": "integer",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Records per page",
+                        "type": "integer",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "topic_name",
+                        "in": "query",
+                        "description": "Topic Name",
+                        "type": "string",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Topic list"
+                    },
+                    "404": {
+                        "description": "No data available"
+                    }
+                }
+            }
+        },
+        "topics/create": {
+            "put": {
+                "tags": [
+                    "Message Board"
+                ],
+                "summary": "To insert the topic details",
+                "description": "To insert category specific the topic details",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Create Topic Object",
+                        "required": true,
+                        "schema": {
+                            "required": [
+                                "category_id",
+                                "topic_name",
+                                "topic_description",
+                                "user_id"
+                            ],
+                            "properties": {
+                                "category_id": {
+                                    "type": "integer"
+                                },
+                                "topic_name": {
+                                    "type": "string"
+                                },
+                                "topic_description": {
+                                    "type": "string"
+                                },
+                                "user_id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully inserted"
+                    },
+                    "500": {
+                        "description": "missing property name"
+                    }
+                }
+            }
+        },
+        "topics/{topic_id}/reply": {
+            "post": {
+                "tags": [
+                    "Message Board"
+                ],
+                "summary": "To Send the topic related Comment",
+                "description": "To Send the topic related Comment",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "topic_id",
+                        "in": "path",
+                        "description": "selected topic id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "formData",
+                        "description": "login user id",
+                        "required": true,
+                        "type": "integer",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "comment_description",
+                        "in": "formData",
+                        "description": "Commented text",
+                        "required": true,
+                        "type": "string",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully inserted"
+                    },
+                    "401": {
+                        "description": "Invalid topic id"
+                    }
+                }
+            }
+        },
+        "topics/{topic_id}": {
+            "get": {
+                "tags": [
+                    "Message Board"
+                ],
+                "summary": "Get the Topic list",
+                "description": "To get the Topic list",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "topic_id",
+                        "in": "path",
+                        "description": "topic id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Current Page",
+                        "type": "integer",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "page_size",
+                        "in": "query",
+                        "description": "Records per page",
+                        "type": "integer",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "topic details"
+                    },
+                    "404": {
+                        "description": "No data available"
+                    }
+                }
+            }
+        },
+        "comments/review/{comment_id}": {
+            "get": {
+                "tags": [
+                    "Message Board"
+                ],
+                "summary": "Change the comment status",
+                "description": "To change the comment status",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "comment_id",
+                        "in": "path",
+                        "description": "comment_id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully marked comment for reviewed "
+                    },
+                    "404": {
+                        "description": "Invalid comment id"
+                    }
+                }
+            }
+        },
+        "devicetokens/create": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "To insert the user device token",
+                "description": "To insert the user specific active device token",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Device token Object",
+                        "required": true,
+                        "schema": {
+                            "required": [
+                                "device_token_id",
+                                "device_type",
+                                "user_id"
+                            ],
+                            "properties": {
+                                "device_token_id": {
+                                    "type": "string"
+                                },
+                                "device_type": {
+                                    "type": "string"
+                                },
+                                "user_id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully inserted"
+                    },
+                    "500": {
+                        "description": "missing property name"
+                    }
+                }
+            }
+        },
+        "login": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "summary": "Login Check",
+                "description": "To check User login related details",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "formData",
+                        "description": "username of the user",
+                        "required": true,
+                        "type": "string",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "login password",
+                        "required": true,
+                        "type": "string",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully logged in"
+                    },
+                    "401": {
+                        "description": "Invalid login details"
+                    }
+                }
+            }
+        },
+        "users/forgotpassword": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "summary": "Forgot Password",
+                "description": "To send the password reset link to user email",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_name",
+                        "in": "formData",
+                        "description": "Login user id",
+                        "required": true,
+                        "type": "integer",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully sent the email",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Invalid user name details"
+                    }
+                }
+            }
+        },
+        "users/changepassword": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "summary": "To change the user Password",
+                "description": "To change the user login password",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "formData",
+                        "description": "login user id",
+                        "required": true,
+                        "type": "integer",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "old_password",
+                        "in": "formData",
+                        "description": "Old password",
+                        "required": true,
+                        "type": "string",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "new_password",
+                        "in": "formData",
+                        "description": "New password",
+                        "required": true,
+                        "type": "string",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully sent the email"
+                    },
+                    "401": {
+                        "description": "Invalid user id details"
+                    }
+                }
+            }
+        },
+        "chat/users": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get the chat rooms list",
+                "description": "To get the chat rooms list",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Chat users related information"
+                    },
+                    "404": {
+                        "description": "No data available"
+                    }
+                }
+            }
+        },
+        "dashboard/{user_id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Dashboard details",
+                "description": "Get the user related dashboard details",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "user_id",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Dashboard details"
+                    },
+                    "404": {
+                        "description": "No data available"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

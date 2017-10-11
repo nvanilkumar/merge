@@ -1,0 +1,24 @@
+<table class="table table-bordered"> <thead> <tr> <th>Customer Name</th> <th>Phone number</th> <th>Acc code</th> </tr> </thead><tbody><tr> <td>{{ camp.title~' '~camp.first_name~' '~camp.last_name }}</td> <td>{{ camp.phone_number }}</td> <td>{{ camp.acc_code }}</td> </tr></tbody> </table>
+<p class="list-group-item-text">
+    <label class="radio-inline">
+        <input type="radio" class="change-call-status" name="cust_{{ camp.cd_id }}" id="" value="3" {% if camp.ds_id == 3 %}checked="checked"{% endif %}> Answered
+    </label>
+    <label class="radio-inline">
+        <input type="radio" class="change-call-status" name="cust_{{ camp.cd_id }}" id="" value="1" {% if camp.ds_id == 1 %}checked="checked"{% endif %}> Busy
+    </label>
+    <label class="radio-inline">
+        <input type="radio" class="change-call-status" name="cust_{{ camp.cd_id }}" id="" value="2" {% if camp.ds_id == 2 %}checked="checked"{% endif %}> Call back
+    </label>
+    <label class="radio-inline">
+        <input type="radio" class="change-call-status" name="cust_{{ camp.cd_id }}" id="" value="4" {% if camp.ds_id == 4 %}checked="checked"{% endif %}> DND
+    </label>
+    <label class="radio-inline">
+        <input type="radio" class="change-call-status" name="cust_{{ camp.cd_id }}" id="" value="5" {% if camp.ds_id == 5 %}checked="checked"{% endif %}> No Answer
+    </label>
+    <label class="radio-inline">
+        <input type="radio" class="change-call-status" name="cust_{{ camp.cd_id }}" id="" value="6" {% if camp.ds_id == 6 %}checked="checked"{% endif %}> Unreachable
+    </label>
+    <label class="radio-inline">
+        <input type="radio" class="change-call-status" name="cust_{{ camp.cd_id }}" id="" value="7" {% if camp.ds_id == 7 %}checked="checked"{% endif %}> Voicemail
+    </label>
+</p>

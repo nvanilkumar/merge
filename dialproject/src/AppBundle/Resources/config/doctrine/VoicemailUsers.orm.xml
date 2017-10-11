@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\VoicemailUsers" table="voicemail_users">
+    <indexes>
+      <index name="mailbox_context" columns="mailbox,context"/>
+    </indexes>
+    <id name="uniqueid" type="integer" column="uniqueid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="customerId" type="string" column="customer_id" length="11" nullable="false"/>
+    <field name="context" type="string" column="context" length="50" nullable="false"/>
+    <field name="mailbox" type="string" column="mailbox" length="11" nullable="false"/>
+    <field name="password" type="string" column="password" length="5" nullable="false"/>
+    <field name="fullname" type="string" column="fullname" length="150" nullable="false"/>
+    <field name="email" type="string" column="email" length="50" nullable="false"/>
+    <field name="pager" type="string" column="pager" length="50" nullable="false"/>
+    <field name="tz" type="string" column="tz" length="10" nullable="false"/>
+    <field name="attach" type="string" column="attach" length="4" nullable="false"/>
+    <field name="saycid" type="string" column="saycid" length="4" nullable="false"/>
+    <field name="dialout" type="string" column="dialout" length="10" nullable="false"/>
+    <field name="callback" type="string" column="callback" length="10" nullable="false"/>
+    <field name="review" type="string" column="review" length="4" nullable="false"/>
+    <field name="operator" type="string" column="operator" length="4" nullable="false"/>
+    <field name="envelope" type="string" column="envelope" length="4" nullable="false"/>
+    <field name="sayduration" type="string" column="sayduration" length="4" nullable="false"/>
+    <field name="saydurationm" type="boolean" column="saydurationm" nullable="false"/>
+    <field name="sendvoicemail" type="string" column="sendvoicemail" length="4" nullable="false"/>
+    <field name="deleted" type="string" column="deleted" length="4" nullable="false"/>
+    <field name="nextaftercmd" type="string" column="nextaftercmd" length="4" nullable="false"/>
+    <field name="forcename" type="string" column="forcename" length="4" nullable="false"/>
+    <field name="forcegreetings" type="string" column="forcegreetings" length="4" nullable="false"/>
+    <field name="hidefromdir" type="string" column="hidefromdir" length="4" nullable="false"/>
+    <field name="stamp" type="datetime" column="stamp" nullable="false"/>
+  </entity>
+</doctrine-mapping>

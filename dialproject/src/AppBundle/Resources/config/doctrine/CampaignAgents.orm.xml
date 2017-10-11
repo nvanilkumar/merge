@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\CampaignAgents" table="campaign_agents">
+    <indexes>
+      <index name="campaign_id" columns="campaign_id"/>
+      <index name="user_id" columns="user_id"/>
+    </indexes>
+    <id name="caId" type="integer" column="ca_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="campaign" target-entity="Campaign">
+      <join-columns>
+        <join-column name="campaign_id" referenced-column-name="campaign_id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="user" target-entity="User">
+      <join-columns>
+        <join-column name="user_id" referenced-column-name="user_id"/>
+      </join-columns>
+    </many-to-one>
+    <field name="pdfReport" type="string" column="pdf_report" length="150" nullable="true"/>
+  </entity>
+</doctrine-mapping>

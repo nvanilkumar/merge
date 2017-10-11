@@ -1,0 +1,69 @@
+{% extends extend_view %}
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-heading text-center"><i class="fa fa-users"></i> Edit Campaign
+                </h3>
+            </div>
+        </div>
+
+        <div class="add_campaign_box">
+            <form class="form-horizontal" method="post" id="form-admin-edit-campaign" enctype= "multipart/form-data">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-3">campaign name <span class="reqire">*</span></label>
+
+                            <input type="text" class="textbox-control col-md-9" name="campaign_name" value="{% if app.request.get('campaign_name')!='' %}{{ app.request.get('campaign_name') }}{% elseif campaign.campaignName is defined %}{{ campaign.campaignName  }}{% endif %}" id="" placeholder="Campaign Name">
+                            {% if error.campaign_name is defined %}<label class="error">{{ error.campaign_name }}</label>{% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3">From Date <span class="reqire">*</span></label>
+                            <input type="text" class="textbox-control col-md-3" id="date_start" name="from_date" value="{% if app.request.get('from_date')!='' %}{{ app.request.get('from_date') }}{% elseif campaign.fromDate is defined %}{{ campaign.fromDate | date('m/d/Y') }}{% endif %}" placeholder="From Date" readonly>
+                            {% if error.from_date is defined %}<label class="error">{{ error.from_date }}</label>{% endif %}
+
+                            <label class="col-md-3 text-center">end date <span class="reqire">*</span></label>
+
+                            <input type="text" class="textbox-control col-md-3" id="date_end" name="to_date" value="{% if app.request.get('to_date')!='' %}{{ app.request.get('to_date') }}{% elseif campaign.toDate is defined %}{{ campaign.toDate | date('m/d/Y') }}{% endif %}" placeholder="To Date" readonly>
+                            {% if error.to_date is defined %}<label class="error">{{ error.to_date }}</label>{% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3">From Time <span class="reqire">*</span></label>
+
+                            <input type="text" class="textbox-control col-md-3" id="time_start" name="from_time" value="{% if app.request.get('from_time')!='' %}{{ app.request.get('from_time') }}{% elseif campaign.fromTime is defined %}{{ campaign.fromTime | date('H:i:s')  }}{% endif %}" placeholder="From Time" readonly>
+                            {% if error.from_time is defined %}<label class="error">{{ error.from_time }}</label>{% endif %}
+                            <label class="col-md-3 text-center">to Time <span class="reqire">*</span></label>
+
+                            <input type="text" class="textbox-control col-md-3" id="time_end" name="to_time" value="{% if app.request.get('to_time')!='' %}{{ app.request.get('to_time') }}{% elseif campaign.toTime is defined %}{{ campaign.toTime | date('H:i:s')  }}{% endif %}" placeholder="To Time" readonly>
+                            {% if error.to_time is defined %}<label class="error">{{ error.to_time }}</label>{% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3">retry count <span class="reqire">*</span></label>
+
+                            <input type="number" class="textbox-control col-md-9" id="retry" name="retry_count" value="{% if app.request.get('retry_count')!='' %}{{ app.request.get('retry_count') }}{% elseif campaign.retryCount is defined %}{{ campaign.retryCount  }}{% endif %}" placeholder="Retry Count" >
+                            {% if error.retry_count is defined %}<label class="error">{{ error.retry_count }}</label>{% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3"> recorded voicemail message </label>
+                            <input type="file" name="voice_file" class="textbox-control col-md-9"  accept="">
+
+                            {% if error.voice_file is defined %}<label class="error">{{ error.voice_file }}</label>{% endif %}
+                        </div>
+                        <div class="form-group pull-right">
+                            <a class="btn btn-default theme_grey" href="{{ url('_admin_campaigns_management')}}">
+                                <i class="fa fa-arrow-circle-o-left"></i> Back to Campaigns
+                            </a>
+                            <button type="submit" class="btn btn-default theme_blue"><i class="fa fa-check"></i>Save Campaign</button>
+
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>                 
+
+    </div>    
+
+{% endblock%}

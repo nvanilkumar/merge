@@ -1,0 +1,32 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CampaignType
+ *
+ * @ORM\Table(name="campaign_type")
+ * @ORM\Entity
+ */
+class CampaignType
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="campaign_type", type="string", length=30, nullable=false)
+     */
+    private $campaignType;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ct_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $ctId;
+
+
+}

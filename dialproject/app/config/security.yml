@@ -1,0 +1,68 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    access_denied_url: 'access_denied'
+    role_hierarchy:
+        ROLE_AGENT:  ROLE_AGENT,
+        ROLE_ADMIN:  ROLE_ADMIN
+    
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+            cost: 12
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        main_provider:
+            entity: 
+                class: AppBundle\Entity\User
+                property: email
+        admin_secured_area:
+            entity: 
+                class: AppBundle\Entity\User
+                property: email  
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            pattern: ^/
+            anonymous: ~
+            provider:  main_provider
+            form_login:
+                check_path:     _login_check
+                login_path:     _home
+                use_referer:    false
+                username_parameter: _username
+                password_parameter: _password
+                success_handler:     login_success_handler
+            remember_me:
+                key:      "%secret%"
+                lifetime: 31536000
+                path:     /
+                domain:   ~ 
+            logout:
+                path:   _logout
+                target: _home
+                success_handler:     logout_success_handler
+                invalidate_session: false
+        admin_secured_area:
+            pattern:   ^/_admin
+            anonymous: ~
+            provider: admin_secured_area
+            form_login:
+                login_path: _admin
+                check_path: _admin_login_check
+                default_target_path: _admin
+    access_control:
+        - { path: ^/agent, roles: [ROLE_AGENT,ROLE_ADMIN]}
+        - { path: ^/admin, roles: [ROLE_ADMIN]}
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: ~
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html

@@ -1,0 +1,243 @@
+{% extends extend_view %}
+{% block content %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-heading"><i class="fa fa-users"></i> <span>Campaigns</span> / Campaign Name
+
+                    {#  <a class="btn theme_blue pull-right" href="{{ url('_admin_create_campaign')}}">
+                          <i class="fa fa-plus" aria-hidden="true"></i> Add New Campaign
+                      </a> 
+                      &nbsp;#} 
+                    <a class="btn theme_blue pull-right" href="{{ url('_admin_campaigns_management')}}">
+                        <i class="fa fa-angle-double-left" aria-hidden="true"></i> Back to Campaigns
+                    </a>
+                </h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="row">
+
+                        <div class="col-md-8">
+                            <span class="card_heading">{{ campaign.campaignName }}</span>
+                        </div>
+                        <div class="col-md-4 text-right">
+
+                            {% if campaign.campaignStatus == 'active' %}
+                                <a href="javascript:void(0);" class="btn btn-success active_button" >
+                                    Active 
+                                {% elseif campaign.campaignStatus == 'inactive' %}
+                                    <a href="javascript:void(0);" class="btn btn-inactive active_button" >
+                                        Inactive 
+                                    {% endif %}
+
+                                </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 left_text">
+                            Dates
+                        </div>
+                        <div class="col-md-8 right_text">
+                            <span class="text-bold">{{ campaign.fromDate|date('d-M-Y') }}</span> to <span class="text-bold">{{ campaign.toDate|date('d-M-Y') }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 left_text">
+                            Timings
+                        </div>
+                        <div class="col-md-8 right_text">
+                            <span class="text-bold">{{ campaign.fromTime|date('g:i a') }}</span> to <span class="text-bold">{{ campaign.toTime|date('g:i a') }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 left_text">
+                            Created On
+                        </div>
+                        <div class="col-md-8 right_text">
+                            {{ campaign.addedOn|date('d-M-Y  g:i:s a') }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 left_text">
+                            Last Updated
+                        </div>
+                        <div class="col-md-8 right_text">
+                            {{ campaign.updatedOn|date('d-M-Y  g:i:s a') }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <a href="{{ url('_admin_edit_campaign',{'campaign_id':campaign.campaignId}) }}" class="btn theme_blue marb-0" >
+                                <i class="fa fa-pencil" aria-hidden="true"></i> Edit Campaign
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="card_heading">Statistics <a href="#"><i class="fa fa-refresh text_blue"></i></a></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="chart-responsive">
+                                <canvas id="pieChart" height="150"></canvas>
+                            </div>
+                            <p class="stat_count">{{totalCalls}}</p>
+                            <p class="stat_text">Total Calls</p>
+                        </div>
+                        <div class="col-md-3">
+
+                        </div>
+                        <div class="col-md-5 col-md-offset-1">
+                            {% for dailStatus  in dailStatastics %}
+                                <div style="width: 100%; border-radius: 10px; background: #66cc33; margin-bottom: 15px; 
+                                     height: 16px; color: #fff; font-size: 12px; padding: 0px 10px; line-height: 16px;">
+                                    <span>{{dailStatus.dial_status}}</span>
+                                    <span class="pull-right">5</span>
+                                </div>
+                            {% endfor %}    
+                            <div style="width: 100%; border-radius: 10px; background: #66cc33; margin-bottom: 15px; height: 16px; color: #fff; font-size: 12px; padding: 0px 10px; line-height: 16px;"><span>Busy</span><span class="pull-right">5</span></div>
+                            <div style="width: 100%; border-radius: 10px; background: #46565a; margin-bottom: 15px; height: 16px; color: #fff; font-size: 12px; padding: 0px 10px; line-height: 16px;"><span>Complete</span><span class="pull-right">5</span></div>
+                            <div style="width: 100%; border-radius: 10px; background: #9da8b8; margin-bottom: 15px; height: 16px; color: #fff; font-size: 12px; padding: 0px 10px; line-height: 16px;"><span>No Answer</span><span class="pull-right">5</span></div>
+                            <div style="width: 100%; border-radius: 10px; background: #ff5877; margin-bottom: 15px; height: 16px; color: #fff; font-size: 12px; padding: 0px 10px; line-height: 16px;"><span>Unreachable</span><span class="pull-right">5</span></div>
+                            <div style="width: 100%; border-radius: 10px; background: #fbaf5d; margin-bottom: 15px; height: 16px; color: #fff; font-size: 12px; padding: 0px 10px; line-height: 16px;"><span>Voicemail</span><span class="pull-right">5</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-2">
+                                Customers (15)
+                            </div>
+                            <div class="col-md-1 text-right">
+                                <label>Show</label>
+                            </div>
+                            <select class="select-control col-md-1"> 
+                                <option>10</option>
+                                <option></option>
+                                <option></option>
+                                <option></option>
+                            </select>
+                            <div class="col-md-1">
+                                <label>entries</label>
+                            </div>
+                            <div class="col-md-offset-5 col-md-2 text-right">
+                                <label>Sort By:</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+
+
+                            <table class="table table-striped table-border" id="cust_status">
+                                <thead>
+                                    <tr>
+                                        <th>Member Name </th>
+                                        <th>Phone Number </th>
+                                        <th>Company </th>
+                                        <th>Acc Code </th>
+                                            {% if isComplete is defined %}
+                                            <th>Status </th>
+                                            <th>Duration </th>
+                                            {% endif %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for customer in campaignData %}
+                                        <tr>
+                                            {% if isComplete is defined %}
+                                                <td><a href="#" id="view_campaign">{{ customer.title }} {{ customer.first_name }} {{ customer.last_name }}</a></td>
+                                                <td>{{ customer.phone_number }}</td>
+                                                <td>{{ customer.company }}</td>
+                                                <td>{{ customer.acc_code }}</td>
+                                                <td>
+                                                    {{ customer.dial_status }}
+                                                </td>
+                                                <td>{{ customer.duration }}</td>
+                                            {% else %}
+                                                <td><a href="#" id="view_campaign">{{ customer.customer.title }} {{ customer.customer.firstName }} {{ customer.customer.lastName }}</a></td>
+                                                <td>{{ customer.customer.phoneNumber }}</td>
+                                                <td>{{ customer.customer.company }}</td>
+                                                <td>{{ customer.customer.accCode }}</td>
+                                            {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+
+                        </div><!-- /.col-sm-12 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> 
+
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script>
+
+        var pieDataAll
+        ={{ paiArray|json_encode|raw }} ;
+                //-------------
+                //- PIE CHART -
+                //-------------
+                // Get context with jQuery - using jQuery's .get() method.
+                var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
+        var pieChart = new Chart(pieChartCanvas);
+        var PieData = pieDataAll;
+        var pieOptions = {
+            //Boolean - Whether we should show a stroke on each segment
+            segmentShowStroke: true,
+            //String - The colour of each segment stroke
+            segmentStrokeColor: "#fff",
+            //Number - The width of each segment stroke
+            segmentStrokeWidth: 1,
+            //Number - The percentage of the chart that we cut out of the middle
+            percentageInnerCutout: 50, // This is 0 for Pie charts
+            //Number - Amount of animation steps
+            animationSteps: 100,
+            //String - Animation easing effect
+            animationEasing: "easeOutBounce",
+            //Boolean - Whether we animate the rotation of the Doughnut
+            animateRotate: true,
+            //Boolean - Whether we animate scaling the Doughnut from the centre
+            animateScale: false,
+            //Boolean - whether to make the chart responsive to window resizing
+            responsive: true,
+            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+            maintainAspectRatio: false,
+            //String - A legend template
+
+            tooltipTemplate: "<%=value %> <%=label%> users"
+        };
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        pieChart.Doughnut(PieData, pieOptions);
+        $(document).ready(function () {
+            $('#cust_status').DataTable();
+        });
+
+    </script>
+{% endblock%}
+

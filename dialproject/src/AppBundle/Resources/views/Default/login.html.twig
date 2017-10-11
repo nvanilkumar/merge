@@ -1,0 +1,72 @@
+{% block content %}
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <title>{{ site_name }}</title>
+            <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+            <!-- Bootstrap 3.3.4 -->
+            <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+            <!-- Login Page CSS -->
+            <link rel="stylesheet" href="{{ asset('assets/css/login-styles.css')}}" type="text/css" />
+        </head>
+        <body class="login_bg">
+            {% for flash_message in app.session.flashBag.get('notice') %}
+                <div class="flash-notice">
+                    {{ flash_message }}
+                </div>
+            {% endfor %}
+            <div class="login_box">
+                <!-- /.login-logo -->
+                    <div class="login_logo"><a href="#"><img src="{{ asset('assets/img/login-logo.jpg')}}" alt="logo"/></a></div>
+                  <div class="row no-mar">
+                    <div class="info-heading">log in</div>
+                  </div>
+                    {% if error %}
+                    <div class="row">    
+                        <div class="alert alert-danger">
+                            {{ error.message|trans({},'validators') }}
+                        </div>
+                    </div>    
+                    {% endif %}
+                    <form action="{{ path("_login_check") }}" method="post">
+                        <div class="row marb15">
+    				<label class="col-md-4">email address</label>
+                                <input type="text" class="textbox-control col-md-8" placeholder="Email Address" name="_username" value="{{ last_username }}"/>
+                                
+  			</div>
+                        <div class="row marb15">
+    				<label class="col-md-4">password</label>
+                                <input type="password" class="textbox-control col-md-8" placeholder="" name="_password"/>
+                                 
+  			</div>
+                        <div class="row marb15">
+                            <div class="col-md-4"></div>
+                            <div class="checkbox icheck col-md-4">
+                                <input id="checkbox1" type="checkbox" name="_remember_me" checked />
+                                <label for="checkbox1">remember me</label>
+                            </div>
+                           {# <label class="col-md-4 no-pad text-right forgot-text"><a href="#">forgot password?</a></label>#}
+                        </div>     
+                        <div class="row marb15">
+                            <div class="col-md-12 no-pad">
+                                <!--<button type="submit" class="btn btn-primary btn-block btn-flat">Log In</button> -->
+                                <button type="submit" class="btn btn-default theme_blue pull-right" name="save"><i class="fa fa-check"></i>log in</button>
+  			    </div>
+                        </div>  
+                    </form>
+                <!-- /.login-box-body -->
+            </div>
+            
+        <!-- footer -->
+        <footer  class="footer">
+            <div class="container">
+		<div class="row marb20">
+                    <div class="col-md-12 text-center">Copyright © 2017 Global Link Communications, All Rights Reserved</div>
+		</div>
+            </div>
+	</footer>
+        </body>
+    </html
+{% endblock %}    

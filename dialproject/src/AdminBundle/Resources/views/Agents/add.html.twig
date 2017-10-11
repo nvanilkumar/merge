@@ -1,0 +1,101 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-8">
+                &nbsp;
+            </div>
+            <div class="col-md-4 text-right">
+                <a href="{{ url('_admin_agents_management') }}" class="btn btn-warning">Back to Agents <i class="fa fa-angle-double-right" aria-hidden="true"></i> </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="box box-info">
+                {% if mode=='add' %}
+                    <form class="form-horizontal" method="post"  name="form-add-agents" id="form-add-agents" enctype="multipart/form-data" >
+                        <div class="box-header with-border">
+                            <h3 class="box-title ">Add New Agent</h3>
+                        </div>
+                    {% else %}
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Edit Agent Information</h3>
+                        </div>
+                        <form class="form-horizontal" method="post" id="form-edit-agents"  id="form-edit-agents"  enctype="multipart/form-data" >
+                        {% endif %}
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Agent Name <span class="text-red">*</span></label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="" name="aname" placeholder="Agent name" value="{% if app.request.get('aname')!='' %}{{ app.request.get('aname') }}{% elseif user.fullName is defined %}{{ user.fullName  }}{% endif %}" >
+                                    {% if error.aname is defined %}<label class="error">{{ error.aname }}</label>{% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Email <span class="text-red">*</span></label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="" name="email" placeholder="Email" value="{% if app.request.get('email')!='' %}{{ app.request.get('email') }}{% elseif user.email is defined %}{{ user.email  }}{% endif %}" >
+                                    {% if error.email is defined %}<label class="error">{{ error.email }}</label>{% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Password {% if mode=='add' %}<span class="text-red">*</span>{% endif %}</label>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control" id="" name="password" placeholder="Password">
+                                    {% if error.password is defined %}<label class="error">{{ error.password }}</label>{% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Extension <span class="text-red">*</span></label>
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control" id="" name="extension" placeholder="Extension" value="{% if app.request.get('extension')!='' %}{{ app.request.get('extension') }}{% elseif user.extension is defined %}{{ user.extension  }}{% endif %}"          {% if mode=='edit' %}readonly{%endif%}>
+                                    {% if error.extension is defined %}<label class="error">{{ error.extension }}</label>{% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">PIN <span class="text-red">*</span></label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="" name="pin" placeholder="Pin coded" value="{% if app.request.get('pin')!='' %}{{ app.request.get('pin') }}{% elseif user.pin is defined %}{{ user.pin  }}{% endif %}" >
+                                    {% if error.pin is defined %}<label class="error">{{ error.pin }}</label>{% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Gender <span class="text-red">*</span></label>
+                                <div class="col-sm-6">
+                                    <select id="gender" name="gender" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value='male' {% if app.request.get('gender')!='' %}{% elseif user.gender is defined and user.gender=='male' %}{{ 'Selected' }}{% endif %}>Male</option>
+                                        <option value='female' {% if app.request.get('gender')!='' %}{% elseif user.gender is defined and user.gender=='female' %}{{ 'Selected'  }}{% endif %}>Female</option>
+                                    </select>
+                                    {% if error.gender is defined %}<label class="error">{{ error.gender }}</label>{% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Status <span class="text-red">*</span></label>
+                                <div class="col-sm-6">
+                                    <select id="status" name="status" class="form-control">
+                                        <option value="">Select</option>
+                                        <option value='active' {% if app.request.get('status')!='' %}{{ app.request.get('status') }}{% elseif user.status is defined and user.status=='active'  %}{{ 'Selected' }}{% endif %}>Active</option>
+                                        <option  value='inactive'  {% if app.request.get('status')!='' %}{{ app.request.get('status') }}{% elseif user.status is defined and user.status=='inactive' %}{{ 'Selected' }}{% endif %}>Inactive</option>
+                                    </select>
+                                    {% if error.status is defined %}<label class="error">{{ error.status }}</label>{% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">&nbsp;</label>
+                                <div class="col-sm-6">
+                                    <button type="submit" class="btn btn-info">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block include_js %}
+    <script src="{{asset('assets/js/agents.js')}}" type="text/javascript"></script>
+{% endblock%}

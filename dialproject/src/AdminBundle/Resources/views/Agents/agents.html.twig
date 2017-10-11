@@ -1,0 +1,85 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">Agent Management</h3>
+            <div class="pull-right">
+                <a href="{{ url('_admin_agents_add') }}"  <button type="submit" class="btn btn-warning btn-sm" id="create_agent"><i class="fa fa-plus"></i> Create Agent</button></a>
+            </div>
+        </div>
+        <div class="box-body table-responsive">
+            <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th style="width:2%;"><input type="checkbox" name="checkall" value="yes" id="checkAll"/></th>
+                        <th style="width:20%;">Agent Name</th>
+                        <th style="width:13%;">Extension</th>
+                        <th style="width:10%;">Email Address</th>
+                        <th style="width:10%;" class="text-center">Campaigns</th>
+                        <th style="width:6%;">Status</th>
+                        <th style="width:10%;">Added On</th>
+                        <th style="width:10%;" class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for agent in agents %}
+                        <tr>
+                        <tr data="{{ agent.userId }}"> 
+                            <td><input type="checkbox" data-id="{{ agent.userId }}" name="check[]" class="minimal" value="{{ agent.userId }}"/></td>
+                            <td>{{ agent.fullName }}</td>
+                            <td>{{ agent.extension }}</td>  
+                            <td>{{ agent.email }}</td>
+                            <td class="text-center">
+                                {% set agentCampaignCount = agentCampaignCount(agent.userId) %}
+                                <span class="badge {% if agentCampaignCount ==0 %} bg-grey {% else %}bg-aqua {% endif%}">{{ agentCampaignCount }}</span>
+                            </td>
+                            <td class="text-center">       <span 
+                                    {% if agent.status == 'active' %}
+                                        class="label label-success"
+                                    {% elseif agent.status == 'inactive' %}
+                                        class="label label-danger"
+                                    {% endif %}
+                                    >{{ agent.status|capitalize  }}</span>
+
+                            <td> {{agent.addedOn|date('d-m-Y') }}</td>
+                            <td class="text-center"><a  href="{{ url('_admin_agents_edit',{'eid':agent.userId}) }}" class="btn btn-primary btn-xs" id="edit_agent" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fa fa-edit"></i></a>
+                                <button class="agent-delete btn btn-danger btn-xs margin-left" data-toggle="tooltip" data-placement="bottom"  id="" title="Delete"><i class="fa fa-trash" ></i></button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% if agents is empty %}
+                <div class="empty-message">
+                    <p>Looks like there are no agents added, To add a agent click Create Agent button below.</p>
+                    <a href="{{ url('_admin_agents_add') }}"  <button type="submit" class="btn btn-warning"><i class="fa fa-plus"></i> Create Agent</button></a>
+                </div>
+            {% endif%}
+        </div>
+        <!-- /.box-body -->
+        {% if agents is not empty %}
+            <div class="box-footer">
+                <button type="submit" class="agent-delete-all btn btn-danger"><i class="fa fa-trash"></i> Delete Agent(s)</button>
+                <nav class="text-center">
+                    <ul class="pagination">
+                        {% if paginate is defined and paginate|length>1 %}
+                            <nav>
+                                <ul class="pagination">
+                                    {% for pg in paginate %}
+                                        <li {% if pg.text==page %}class='active'{% endif %} >{% if pg.url is defined %}<a href="{{ pg.url }}">{{ pg.text }}</a>{% else %}<a>{{ pg.text }}</a>{% endif %}</li>
+                                            {% endfor %}
+                                </ul>
+                            </nav>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        {% endif%}
+        <!-- /.box-footer-->
+    </div>
+{% endblock%}
+
+{% block include_js %}
+    <script src="{{asset('assets/js/agents.js')}}" type="text/javascript"></script>
+{% endblock%}
+

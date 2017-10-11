@@ -1,0 +1,267 @@
+object(PAMI\Message\Event\UnknownEvent)#11 (6) {
+  ["rawContent":protected]=>
+  string(349) "Event: AgentLogin
+Privilege: agent,all
+Channel: SIP/1000-00000009
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 1000
+CallerIDName: <unknown>
+ConnectedLineNum: 1000
+ConnectedLineName: <unknown>
+Language: en
+AccountCode: 
+Context: scopPBX_incoming
+Exten: 1000
+Priority: 3
+Uniqueid: 1475594374.16
+Linkedid: 1475594374.16
+Agent: 1000"
+  ["channelVariables":protected]=>
+  array(1) {
+    ["sip/1000-00000009"]=>
+    array(0) {
+    }
+  }
+  ["lines":protected]=>
+  array(0) {
+  }
+  ["variables":protected]=>
+  array(0) {
+  }
+  ["keys":protected]=>
+  array(17) {
+    ["event"]=>
+    string(10) "AgentLogin"
+    ["privilege"]=>
+    string(9) "agent,all"
+    ["channel"]=>
+    string(17) "SIP/1000-00000009"
+    ["channelstate"]=>
+    string(1) "6"
+    ["channelstatedesc"]=>
+    string(2) "Up"
+    ["calleridnum"]=>
+    string(4) "1000"
+    ["calleridname"]=>
+    string(9) "<unknown>"
+    ["connectedlinenum"]=>
+    string(4) "1000"
+    ["connectedlinename"]=>
+    string(9) "<unknown>"
+    ["language"]=>
+    string(2) "en"
+    ["accountcode"]=>
+    string(0) ""
+    ["context"]=>
+    string(16) "scopPBX_incoming"
+    ["exten"]=>
+    string(4) "1000"
+    ["priority"]=>
+    string(1) "3"
+    ["uniqueid"]=>
+    string(13) "1475594374.16"
+    ["linkedid"]=>
+    string(13) "1475594374.16"
+    ["agent"]=>
+    string(4) "1000"
+  }
+  ["createdDate":protected]=>
+  int(1475594384)
+}
+array(1) {
+  [1000]=>
+  array(5) {
+    ["callerid"]=>
+    string(4) "1000"
+    ["cust_phone"]=>
+    string(11) "27832783457"
+    ["cd_id"]=>
+    string(1) "1"
+    ["campaign_id"]=>
+    string(1) "1"
+    ["campaign_type"]=>
+    string(20) "Dialing With Preview"
+  }
+}
+
+
+
+object(PAMI\Message\Event\UnknownEvent)#16 (6) {
+  ["rawContent":protected]=>
+  string(349) "Event: AgentLogin
+Privilege: agent,all
+Channel: SIP/1000-0000000a
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 1000
+CallerIDName: <unknown>
+ConnectedLineNum: 1000
+ConnectedLineName: <unknown>
+Language: en
+AccountCode: 
+Context: scopPBX_incoming
+Exten: 1000
+Priority: 3
+Uniqueid: 1475594759.18
+Linkedid: 1475594759.18
+Agent: 1000"
+  ["channelVariables":protected]=>
+  array(1) {
+    ["sip/1000-0000000a"]=>
+    array(0) {
+    }
+  }
+  ["lines":protected]=>
+  array(0) {
+  }
+  ["variables":protected]=>
+  array(0) {
+  }
+  ["keys":protected]=>
+  array(17) {
+    ["event"]=>
+    string(10) "AgentLogin"
+    ["privilege"]=>
+    string(9) "agent,all"
+    ["channel"]=>
+    string(17) "SIP/1000-0000000a"
+    ["channelstate"]=>
+    string(1) "6"
+    ["channelstatedesc"]=>
+    string(2) "Up"
+    ["calleridnum"]=>
+    string(4) "1000"
+    ["calleridname"]=>
+    string(9) "<unknown>"
+    ["connectedlinenum"]=>
+    string(4) "1000"
+    ["connectedlinename"]=>
+    string(9) "<unknown>"
+    ["language"]=>
+    string(2) "en"
+    ["accountcode"]=>
+    string(0) ""
+    ["context"]=>
+    string(16) "scopPBX_incoming"
+    ["exten"]=>
+    string(4) "1000"
+    ["priority"]=>
+    string(1) "3"
+    ["uniqueid"]=>
+    string(13) "1475594759.18"
+    ["linkedid"]=>
+    string(13) "1475594759.18"
+    ["agent"]=>
+    string(4) "1000"
+  }
+  ["createdDate":protected]=>
+  int(1475594769)
+}
+array(1) {
+  [1000]=>
+  array(5) {
+    ["callerid"]=>
+    string(4) "1000"
+    ["cust_phone"]=>
+    string(11) "27832783457"
+    ["cd_id"]=>
+    string(1) "1"
+    ["campaign_id"]=>
+    string(1) "1"
+    ["campaign_type"]=>
+    string(20) "Dialing With Preview"
+  }
+}
+
+
+
+object(PAMI\Message\Event\UnknownEvent)#25 (6) {
+  ["rawContent":protected]=>
+  string(349) "Event: AgentLogin
+Privilege: agent,all
+Channel: SIP/1000-0000000b
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 1000
+CallerIDName: <unknown>
+ConnectedLineNum: 1000
+ConnectedLineName: <unknown>
+Language: en
+AccountCode: 
+Context: scopPBX_incoming
+Exten: 1000
+Priority: 3
+Uniqueid: 1475594884.20
+Linkedid: 1475594884.20
+Agent: 1000"
+  ["channelVariables":protected]=>
+  array(1) {
+    ["sip/1000-0000000b"]=>
+    array(0) {
+    }
+  }
+  ["lines":protected]=>
+  array(0) {
+  }
+  ["variables":protected]=>
+  array(0) {
+  }
+  ["keys":protected]=>
+  array(17) {
+    ["event"]=>
+    string(10) "AgentLogin"
+    ["privilege"]=>
+    string(9) "agent,all"
+    ["channel"]=>
+    string(17) "SIP/1000-0000000b"
+    ["channelstate"]=>
+    string(1) "6"
+    ["channelstatedesc"]=>
+    string(2) "Up"
+    ["calleridnum"]=>
+    string(4) "1000"
+    ["calleridname"]=>
+    string(9) "<unknown>"
+    ["connectedlinenum"]=>
+    string(4) "1000"
+    ["connectedlinename"]=>
+    string(9) "<unknown>"
+    ["language"]=>
+    string(2) "en"
+    ["accountcode"]=>
+    string(0) ""
+    ["context"]=>
+    string(16) "scopPBX_incoming"
+    ["exten"]=>
+    string(4) "1000"
+    ["priority"]=>
+    string(1) "3"
+    ["uniqueid"]=>
+    string(13) "1475594884.20"
+    ["linkedid"]=>
+    string(13) "1475594884.20"
+    ["agent"]=>
+    string(4) "1000"
+  }
+  ["createdDate":protected]=>
+  int(1475594895)
+}
+array(1) {
+  [1000]=>
+  array(5) {
+    ["callerid"]=>
+    string(4) "1000"
+    ["cust_phone"]=>
+    string(11) "27132758989"
+    ["cd_id"]=>
+    string(1) "4"
+    ["campaign_id"]=>
+    string(1) "1"
+    ["campaign_type"]=>
+    string(20) "Dialing With Preview"
+  }
+}
+
+
+

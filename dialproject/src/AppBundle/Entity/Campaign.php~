@@ -1,0 +1,147 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Campaign
+ *
+ * @ORM\Table(name="campaign", indexes={@ORM\Index(name="ct_id", columns={"ct_id"})})
+ * @ORM\Entity
+ */
+class Campaign
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="campaign_name", type="string", length=50, nullable=false)
+     */
+    private $campaignName;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="from_date", type="datetime", nullable=false)
+     */
+    private $fromDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="to_date", type="datetime", nullable=false)
+     */
+    private $toDate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="from_time", type="datetime", nullable=false)
+     */
+    private $fromTime;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="to_time", type="datetime", nullable=false)
+     */
+    private $toTime;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="monday", type="boolean", nullable=false)
+     */
+    private $monday;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="tuesday", type="boolean", nullable=false)
+     */
+    private $tuesday;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="wednesday", type="boolean", nullable=false)
+     */
+    private $wednesday;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="thursday", type="boolean", nullable=false)
+     */
+    private $thursday;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="friday", type="boolean", nullable=false)
+     */
+    private $friday;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="saturday", type="boolean", nullable=false)
+     */
+    private $saturday;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="sunday", type="boolean", nullable=false)
+     */
+    private $sunday;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="campaign_status", type="string", nullable=true)
+     */
+    private $campaignStatus;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="added_on", type="datetime", nullable=false)
+     */
+    private $addedOn;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_on", type="datetime", nullable=false)
+     */
+    private $updatedOn;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_deleted", type="boolean", nullable=true)
+     */
+    private $isDeleted;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="campaign_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $campaignId;
+
+    /**
+     * @var \AppBundle\Entity\CampaignType
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CampaignType")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ct_id", referencedColumnName="ct_id")
+     * })
+     */
+    private $ct;
+
+
+}

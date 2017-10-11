@@ -1,0 +1,6 @@
+_agent_page:
+    resource: "@AgentBundle/Controller/DefaultController.php"
+    type:     annotation
+_agent_get_campaign_data:
+    resource: "@AgentBundle/Controller/AjaxController.php"
+    type:     annotation

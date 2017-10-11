@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\QueueMember" table="queue_member">
+    <id name="uniqueid" type="integer" column="uniqueid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="membername" type="string" column="membername" length="40" nullable="true"/>
+    <field name="queueName" type="string" column="queue_name" length="50" nullable="true"/>
+    <field name="interface" type="string" column="interface" length="128" nullable="true"/>
+    <field name="penalty" type="boolean" column="penalty" nullable="true"/>
+    <field name="paused" type="boolean" column="paused" nullable="true"/>
+  </entity>
+</doctrine-mapping>

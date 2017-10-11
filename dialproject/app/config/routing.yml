@@ -1,0 +1,22 @@
+widget:
+    resource: "@WidgetBundle/Controller/"
+    prefix:   /widget
+
+api:
+    resource: "@ApiBundle/Controller/"
+    type:     annotation
+    prefix:   /dialerapi
+
+app:
+    resource: "@AppBundle/Resources/config/routing.yml"
+    prefix:   /
+
+agent:
+    resource: "@AgentBundle/Resources/config/routing.yml"
+    prefix:   /
+
+admin:
+    resource: "@AdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+

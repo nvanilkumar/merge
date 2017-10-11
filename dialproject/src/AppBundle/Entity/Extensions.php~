@@ -1,0 +1,64 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Extensions
+ *
+ * @ORM\Table(name="extensions")
+ * @ORM\Entity
+ */
+class Extensions
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="app", type="string", length=20, nullable=false)
+     */
+    private $app;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="appdata", type="string", length=50, nullable=false)
+     */
+    private $appdata;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="context", type="string", length=20)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $context;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="exten", type="string", length=20)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $exten;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="priority", type="boolean")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $priority;
+
+
+}

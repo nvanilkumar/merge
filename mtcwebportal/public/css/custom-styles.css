@@ -1,0 +1,242 @@
+@charset "utf-8";
+/* CSS Document */
+html {font-size: 14px; height: 100%;}
+body {background-color: #f8f8f8; color: #3f4952;}
+td {word-break:break-all;}
+.main-wrap {min-height: 100vh; margin-bottom: -50px; padding-bottom: 4vh;}
+/* Login styles starts here */
+.login-bg {background:#1d81c4;}
+.login-page {width: 400px;  padding: 40px 0px;  margin: auto;}
+.changepassword {width: 400px;  padding: 0px;  margin: auto; max-height: 100%; }
+.changepassword .circle {width:25%;}
+.login-pad {padding:30px 40px!important;}
+.login-page .circle {width:25%;}
+.login-page .input-field {margin-top:0px;}
+.login-page .input-field .prefix ~ input {width: calc(100% - 4rem)!important;}
+.login-page-links {font-size: 14px; margin: 8px 0px;}
+.nopad {padding:0px!important;}
+.nomar {margin:0px!important;}
+/* Login styles ends here */
+
+/* common styles starts here */
+.main-heading {margin:0px 0px 10px; font-size: 24px; color:#1d81c4;}
+.min-height {min-height: 425px;}
+.fixed-action-btn {position: absolute;}
+.logo-div {width: 130px; margin: 0px; padding: 15px; height: 120px; position: absolute;}
+.menu-div {margin-left: 150px; margin-right: 250px; position: absolute;}
+.userlogin-div {width: 250px; padding:10px; position: absolute; right: 0px;}
+.userlogin-link {line-height: 16px; float: right; letter-spacing: 1px; background: #39a0e5; border-radius:50px; margin-top: 20px; padding:5px 20px; font-size: 11px; text-align: right;}
+.user-links {color: #004788; font-weight: normal;}
+.nav-wrapper #nav-mobile {margin:20px auto; overflow: hidden; height: 80px;}
+nav {height: 120px!important;}
+.nav-wrapper {background:#1d81c4!important; height:120px!important;}
+.brand-logo {padding: 14px 0px 10px!important; line-height: 0!important;}
+nav ul li a{ color:#80c9fa!important; letter-spacing: 1px!important; padding: 0 12px;}
+nav ul a {text-align: center; text-transform: uppercase; font-size: 12px;}
+nav ul a:hover {background-color: rgba(0,0,0,0.0)!important; color:#fff!important;}
+nav ul li a.active {background-color: rgba(0,0,0,0); color: #fff!important;}
+nav ul a .material-icons {font-size: 24px; line-height: 42px; width: 100%; text-align: center; height: 24px!important;}
+.pulse-bg {background: #fbbe5d!important;}
+.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav{    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);}
+.fixed-action-btn {top: 76px; width: 56px;}
+.fixed-action-btn ul {top:90px;}
+.btn-floating i {font-size: 20px!important;}
+.bluegrey2 {background-color: #657583!important;}
+.mar-20 {margin:20px;}
+.mar-t-0{margin-top: 0px!important;}
+.pad-l-0{padding-left: 0px!important;}
+.pad-l-20{padding-left:20px!important;}
+.pad-l-40{padding-left:40px!important;}
+.pad-r-15{padding-right:15px!important;}
+.pad-r-20{padding-right:20px!important;}
+.mar-b-0 {margin-bottom: 0px!important;}
+.mar-t-20 {margin-top: 20px!important;}
+.mar-l-40{margin-left:40px!important;}
+.mar-r-40{margin-right:40px!important;}
+.themeblue {background-color: #1d81c4!important;}
+table [type="checkbox"] + label {padding-left: 0px; height: 18px;}
+table .filled-in[type="checkbox"]:not(:checked) + label::after {width: 16px; height: 16px;}
+table .filled-in[type="checkbox"]:checked + label::before {width: 5px; height: 9px;}
+table .filled-in[type="checkbox"]:checked + label::after {width: 16px; height: 16px;}
+/*.login-div {padding:0px 20px; background: #39a0e5; border-radius: 50px; height: 40px; float: right; margin: 10px 0px;}
+.login-text {min-width: 160px; float: left; height: 40px;}
+.login-name { color: #fff; font-size: 11px; float: left; height: 15px; line-height: 26px; text-align: right; width:100%;}
+.login-links { color: #fff; font-size: 11px; float: left; height: 15px; line-height: 28px; text-align: right; width:100%;}
+.login-links a {color: #004788;}
+.login-links a:hover, .login-links a:focus, .login-links a:active {color: #005bae;}
+.login-avathar {float: right; width: 32px; margin-left: 10px;}*/
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {background-color:#1d81c4!important;}
+[type="checkbox"].filled-in:checked+label:after {border: 2px solid #1d81c4!important; background-color: #1d81c4!important;}
+[type="radio"]:not(:checked)+label, [type="radio"]:checked+label, [type="checkbox"]+label {margin-right: 20px;}
+.dataTables_wrapper .dataTables_paginate {padding-top:20px;}
+input:not([type]):focus:not([readonly]), input[type=text]:focus:not([readonly]), input[type=password]:focus:not([readonly]), input[type=email]:focus:not([readonly]), input[type=url]:focus:not([readonly]), input[type=time]:focus:not([readonly]), input[type=date]:focus:not([readonly]), input[type=datetime]:focus:not([readonly]), input[type=datetime-local]:focus:not([readonly]), input[type=tel]:focus:not([readonly]), input[type=number]:focus:not([readonly]), input[type=search]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly])
+{border-bottom: 1px solid #1d81c4!important; box-shadow: 0 1px 0 0 #1d81c4!important;}
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after
+{border: 2px solid #1d81c4!important;}
+.dropdown-content li>a, .dropdown-content li>span {color:#1d81c4!important;}
+.dashboard-heading{margin:20px 0 20px;}
+.dashboard-content{margin:0px 0 30px;}
+.dashboard-box {width:100%; float:left; background-color: #f8f8f8; border-top:1px solid #ebebeb; border-bottom:1px solid #ebebeb; padding:20px; color:#005bae;}
+.dashboard-box2 {width:100%; float:left; padding:20px; color:#005bae;}
+.dashboard-box h5, .dashboard-box2 h5{margin:10px 0px 20px; font-size: 18px; color: #3f4952;}
+.left-divider {border-right:1px solid #ebebeb;}
+.dashboard-box i, .dashboard-box2 i {font-size: 18px; color:#bbbbbb;}
+.box-icon-text{font-size: 36px; margin: 0px;}
+.box-tile-text{color:#657583; font-size: 12px; margin:0px 0px 10px 30px;}
+.bluecolor1 {color:#004788;}
+.bluecolor2 {color:#005bae;}
+.bluecolor3 {color:#006cce;}
+.bluecolor4 {color:#1d81c4;}
+.bluecolor5 {color:#39a0e5;}
+.select-wrapper input.select-dropdown {height: 2rem!important; line-height: 2rem!important;}
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea 
+{height: 2rem!important; line-height: 2rem!important; color: #9e9e9e!important; margin-bottom: 10px!important;}
+.input-field label {top:0.3rem;}
+input:focus:not([type]):not([readonly]) + label, input[type="text"]:focus:not([readonly]) + label, input[type="password"]:focus:not([readonly]) + label, input[type="email"]:focus:not([readonly]) + label, input[type="url"]:focus:not([readonly]) + label, input[type="time"]:focus:not([readonly]) + label, input[type="date"]:focus:not([readonly]) + label, input[type="datetime"]:focus:not([readonly]) + label, input[type="datetime-local"]:focus:not([readonly]) + label, input[type="tel"]:focus:not([readonly]) + label, input[type="number"]:focus:not([readonly]) + label, input[type="search"]:focus:not([readonly]) + label, textarea.materialize-textarea:focus:not([readonly]) + label{color:#1d81c4!important;}
+.backdrop{background-color: #657583!important;}
+nav .dropdown-content {top:100px!important; width: 180px!important;}
+nav .dropdown-content li {min-height:36px; line-height: 18px;}
+nav .dropdown-content li>a, nav .dropdown-content li>span {font-size: 11px; height: 42px; line-height: 18px; text-align: left; letter-spacing: 1px!important;}
+nav .dropdown-content li:hover, nav .dropdown-content li.active, nav .dropdown-content li.selected {background-color: #1d81c4!important;}
+.cardlist .material-icons { font-size: 18px!important; font-weight: bold; padding-right: 10px; line-height: 24px;}
+div.error {position: relative; top: -1rem; left: 0rem; font-size: 0.8rem; color: #ff0000; padding-top:10px;}
+[type="radio"]:not(:checked)+label, [type="radio"]:checked+label, [type="checkbox"]+label {left:0rem!important;}
+[type="radio"]+label:before, [type="radio"]+label:after {margin:4px 0px!important;}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover
+{background: #1d81c4!important; color:#ffffff !important; padding:0.3em 0.7em!important; border: none;}
+table.striped>tbody>tr>td .material-icons{font-size:18px!important; color:#1d81c4!important;}
+.waves-effect input[type="button"], .waves-effect input[type="reset"], .waves-effect input[type="submit"] {outline: none;}
+.alert .card-content {padding:14px;}
+.oopserror-heading {font-size: 130px; text-transform: none; font-size: 100px; line-height: 1em; text-transform: uppercase; letter-spacing: -2px; font-weight: 500; font-style: normal; color: #000; text-align: center;}
+.oopserror-content {width: 300px; margin:auto; text-align: center; font-size: 16px; color: #ccc;}
+
+/*chat styles starts here */
+#contact-list {padding: 0px!important;}
+.chat .collection {margin: 0px!important;}
+.chat .collection .collection-item.avatar {min-height: 42px!important; padding-left: 60px!important;}
+.collection .collection-item.avatar .circle {width:28px; height:28px; padding:5px; font-size: 1rem; text-align: center; color: #fff; line-height: 20px;}
+.chat .fixed-action-btn {top:20px; right:120px; height:56px;}
+.chat .modal .modal-content {padding:0px;}
+.chat .btn-floating.btn-large {padding:7px;}
+.chat nav ul a {padding:20px 15px!important; line-height: 0px!important;}
+.chat .collection .collection-item {background-color: #f8f8f8; border-bottom:1px solid #e8e8e8;}
+.chat nav .brand-logo {padding: 15px 15px!important;}
+.chat .section {padding-top: 2rem; padding-bottom: 1rem;}
+.chat .contact-title{line-height: 22px!important; font-size: 13px!important;}
+.chat .active-user {background-color:#63bb52; border-radius: 50px; width: 10px; height: 10px; float: right; margin-top: 8px;}
+.chat .inactive-user {background-color:#ccc; border-radius: 50px; width: 10px; height: 10px; float: right; margin-top: 8px;}
+.chat .red {background-color: #e54b93!important;}
+.chat .red.darken-1 {background-color: #1d81c4!important;}
+.chat .blue-text{color:#ccc!important;}
+.chat .card-panel-left {overflow: hidden; height:430px;}
+.chat .card-panel-left:hover {overflow-y: auto; overflow-x:hidden;}
+.chat .card-panel {margin:0px;}
+.chat .hieght-350 {height: 330px!important; overflow: hidden;}
+.chat .hieght-350:hover { overflow-y: scroll; overflow-x: hidden;}
+.chat .fixed-height {height: 430px;}
+.chat .hieght-400 {height: 400px; overflow: hidden;}
+.chat .hieght-400:hover { overflow-y: scroll; overflow-x: hidden;}
+.chat input[type=text], input[type=text]:disabled {margin-bottom:0px;}
+.chat .collection .collection-item {border-right: 1px solid #e0e0e0;}
+.chat .collection {border-top:none; border-right: none;}
+.chat #contact-list .collection .collection-item.selected {border-right:none;}
+.chat .send-message {width: 100%; height: 50px; display: table; background: none; line-height: 18px; border-top:1px solid #eee;}
+.chat .serch {height: 46px; display: table; background: #f8f8f8!important; line-height: 18px; border-bottom:1px solid #eee; width:100%;}
+.chat .send-to {height: 46px; display: table; background: #f8f8f8; line-height: 18px; border-bottom:1px solid #eee; width:100%;}
+.chat #totext {background:#fff!important;}
+.chat .message-text {padding: 0px; display: table-cell; vertical-align: middle;}
+.chat .serch .no-resize-bar {border:1px solid #ccc; border-radius:50px; width:94%; padding:0 15px 0 10px; height:30px; line-height:36px; margin:6px 5px 1px; background:#fff;}
+.chat .no-resize-bar {resize: none; font-size: 14px; border: none; padding:10px 0px 10px 20px; outline: none;	line-height:28px; width:100%; overflow:hidden;}
+.chat .compose-button {display: table-cell; vertical-align: middle; text-align: center; width: 10%; padding:0px; line-height: 0px; padding-right:5px;}
+.chat .btn-floating {background-color:#00bcd4!important;	width:30px; height:30px; line-height:24px;}
+.chat .send-button {display: table-cell; vertical-align: middle; text-align: center; width: 9%; padding:0px; line-height: 0px; padding-right: 5px;}
+.chat .btn-send {padding:6px 4px;}
+.chat .btn-send img { width: 15px;}
+.chat .container .row {margin:0px!important;}
+.chat .msg_container_base{background: #fff; margin: 0;}
+.cht .top-bar {background: #666; color: #fff; padding: 10px; position: relative; overflow: hidden;}
+.chat .msg_receive{padding-left:0; margin-left:0; background:#f8f8f8!important;}
+.chat .base_receive .s8 { float: left; margin-left: 0px!important;}
+.chat .msg_sent{padding-bottom:20px !important; margin-right:0; background:#E4DFDA!important;}
+.chat .messages {background: #e5e5e5; padding: 10px; border-radius: 2px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); max-width:100%;}
+.chat .messages > p {font-size: 13px; margin: 0 0 0.2rem 0;}
+.chat .messages > time {font-size: 11px; color: #999;}
+.chat .msg_container {padding: 10px; overflow: hidden; display: flex;}
+.chat .msg_sent > time{float: right;}
+.chat .msg_container_base::-webkit-scrollbar-track{-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); background-color: #f8f8f8;}
+.chat .msg_container_base::-webkit-scrollbar{width: 5px; background-color: #f8f8f8;}
+.chat .msg_container_base::-webkit-scrollbar-thumb{-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); background-color: #ccc;}
+.chat .base_sent .row .col.s8 {margin-left: 0px!important;}
+/*chat styles starts here */
+
+input:-webkit-autofill,input:-webkit-autofill:hover, input:-webkit-autofill:focus input:-webkit-autofill, 
+textarea:-webkit-autofill, textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus, select:-webkit-autofill,
+select:-webkit-autofill:hover, select:-webkit-autofill:focus { 
+-webkit-box-shadow: 0 0 0px 1000px #fff inset; transition: background-color 5000s ease-in-out 0s;}
+
+#card-alert button {background: none; border: none; position: absolute; top: 15px; right: 10px; font-size: 20px; color: #fff;}
+
+.alertmsg{padding: 10px 24px !important;}
+.alertClose{top:5px !important;}
+.alertModal{max-height: 70% !important; width: 30% !important;}
+.paginate_button {padding: 0.3em 0.7em!important; border: none!important;}
+.paginate_button:hover {background: #1d81c4!important; color: #ffffff !important; padding: 0.3em 0.7em!important; border: none!important;}
+.next:hover, .previous:hover {background: none!important; color: #333!important; box-shadow:none!important;}
+
+.topics-main .card-content {padding: 24px 0px!important;}
+.topic-heading{margin-top:0px; margin-bottom:10px; padding-left:20px; font-size: 22px; color:#1d81c4;}
+.topic-desc{padding:0px 20px; color: #333!important; margin-bottom: 10px!important; font-size: 16px;}
+.topic-creat-info{margin-bottom: 20px!important; padding:0px 20px; font-size: 12px; color: #999!important;}
+.topic-head-strip{background-color: #d3edff; color: #000; width: 100%; height: 30px; padding:5px 0px; float:left; margin-bottom: 10px; margin-top: 20px;}
+.topic-row {padding: 0 20px;}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {color:#333!important;}
+
+/* footer styles starts here */
+.page-footer {padding-top: 0px!important; background-color: #d9e1e7; color: #8499ac!important;width: 100%;float: left; height: 50px;}
+.page-footer .footer-copyright {background-color: rgba(51,51,51,0);  color: #8499ac!important; font-size: 12px;}
+/* footer styles ends here */
+
+/* common styles ends here */
+.chat-user-select{color: #80b9d6!important; background-color: #ffffff!important; border-right: none!important;}
+
+/* media query styles starts here */
+@media (max-width: 1260px) {
+nav ul li a {padding:0px 5px; font-size: 12px;}
+}
+
+@media (max-width: 1160px) {
+nav ul li a {padding:0px 4px; font-size: 11px;}
+}
+
+@media only screen and (max-width: 992px) {
+    nav .brand-logo {
+    left: 10%;
+}
+nav ul li a {
+    padding: 0px 4px;
+    font-size: 10px;
+}
+.row .col.m8 {
+    width: 72%;
+}
+}
+
+@media only screen and (max-width: 892px) {
+nav ul li a {
+    padding: 0px 2px;
+    font-size: 9px;
+}
+}
+
+@media only screen and (max-width: 768px) {
+    .hide-on-med-and-down {
+        display:none!important;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .hide-on-med-and-down {
+        display:block!important;
+    }
+}
+

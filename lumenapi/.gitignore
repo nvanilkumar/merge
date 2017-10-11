@@ -1,0 +1,4 @@
+/vendor
+/storage/framework
+.env
+nbproject/private/private.xml

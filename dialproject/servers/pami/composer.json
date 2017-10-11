@@ -1,0 +1,8 @@
+{  
+    "require": {  
+        "marcelog/pami": "dev-master",
+		"educoder/pest": "1.0.0",
+			
+  "react/zmq": "0.2.*|0.3.*"
+    }  
+} 

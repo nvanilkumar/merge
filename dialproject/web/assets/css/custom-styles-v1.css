@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+
+* {margin:0px; padding:0px;}
+body {padding-top: 60px; font-family: 'Open Sans', sans-serif; background: #f4f4f4;}
+.header {background:#0cb6e8; position: fixed; top: 0; right: 0; left: 0; z-index: 1030;	min-height: 60px; margin-bottom: 20px; display: block; color:#ffffff; box-shadow: 0 2px 10px 0 rgba(12,182,232,0.50); font-size:14px;}
+a {color: #fff;}
+.logo {height: 60px; width: 60px; float: left; margin: 0px;}
+.navbar-nav>li>a {font-size:13px; color:#bff1ff; padding-top: 18px!important; padding-bottom: 18px!important; text-transform: uppercase; font-weight: 600;}
+.navbar-nav>li>a:focus, .navbar-nav>li>a:hover {border-bottom: 4px solid #cef0f9; background: none; color:#fff;}
+.navbar-nav>li>a i {margin-right: 5px; vertical-align: top; line-height: 18px;}
+.logout_text {float:left; color:#fff; padding:21px 0px; text-transform: uppercase; font-size: 12px;	font-weight: 600;}
+.profile-avathar {margin: 11px 0px 11px 10px; width: 40px; height: 38px; float: left;}
+
+.page-heading {font-size:36px; font-weight: 200; color:#78878b; margin:60px 0px 30px;}
+.alert {padding: 10px; padding-right: 35px;}
+.alert-theme-grn {background: #e6f9df; border: 1px solid #d9e9d2; color:#1c480c; font-size: 12px; float: right; font-weight: 600; line-height: 20px;}
+.page-heading i {color:#0cb6e8;}
+.page-heading span {color:#0cb6e8; font-size: 24px; font-weight: 400;}
+.campaign_box { border: 1px solid #f8f8fb; border-radius: 5px; width: 100%; padding: 35px 30px; overflow: hidden;}
+.campaign_box:hover { box-shadow: 0 1px 20px 0 rgba(56,107,184,0.30); border-radius: 5px;}
+.campaign_box_hover { box-shadow: 0 1px 20px 0 rgba(56,107,184,0.30); border-radius: 5px;}
+.campaign_inner {font-size: 16px; font-weight: 400; color:#46565a; margin: 16px 0px; float: left;}
+.campaign_inner i {font-size: 30px; margin-right: 10px; float: left;}
+.campaign_inner span { float: left; line-height: 32px; }
+.campaign_count {font-size: 48px; font-weight: 200; float: right;}
+.stat_count {font-size: 48px; font-weight: 200; color:#ff5877; text-align: center; margin-top: 20px;}
+.stat_text {font-size: 14px; font-weight: 500; color:#78878b; text-align: center;}
+
+.font_blue {color:#0cb6e8;}
+.font_green {color:#66cc33;}
+.font_grey {color:#46565a;}
+
+.table-heading {color:#78878b; font-weight: 600; font-size: 18px; margin:30px 0px;}
+.table-heading i {margin-right: 10px;}
+.table-border {border:1px solid #d9dfe9;}
+.table-striped>thead>tr {background-color:#ebeff4; color:#7c8590; font-size:11px; font-weight:400;	text-transform: uppercase;}
+.table>thead>tr>th {border-bottom: 1px solid #d9dfe9; padding:15px;}
+.table-striped>tbody>tr:nth-of-type(odd) {background:none;}
+.table-striped>tbody>tr:nth-of-type(even) {background-color:#f7f9fb; border:none;}
+.table>tbody>tr>td {border-top:none; border-bottom: 1px solid #d9dfe9; padding:10px; font-size:12px; font-weight: 400; color: #6d7682;}
+.table>tfoot>tr>th {padding: 10px 25px; text-align: right;}
+
+.btn {margin-bottom: 10px; padding:10px 15px; border-radius:0px; outline:none; text-transform:uppercase; letter-spacing: 1px; font-weight:600;}
+.theme_blue, .theme_blue:focus, .theme_blue:hover, .theme_blue:active {background-color: #0cb6e8; color: #ffffff; border: 0px; font-size: 11px; outline: none; }
+.theme_grey, .theme_grey:focus, .theme_grey:hover, .theme_grey:active {background-color: #c1c9d5; color: #ffffff; border: 0px; font-size: 11px; outline: none; }
+.theme_pink, .theme_pink:focus, .theme_pink:hover, .theme_pink:active {margin-bottom:0px; background-color: #ff5877; color: #ffffff; border: 0px; font-size: 11px; outline: none; }
+.theme_orange, .theme_orange:focus, .theme_orange:hover, .theme_orange:active {margin-bottom:0px; background-color: #ff921d; color: #ffffff; border: 0px; font-size: 11px; outline: none; }
+.btn i {margin-right:5px; color: #ffffff;}
+.form-group {overflow: hidden;}
+.setting_box {width:520px; margin:auto; padding:40px 40px 10px 40px; margin-bottom: 50px; box-shadow: 0 1px 20px 0 rgba(56,107,184,0.30); border-radius: 5px;}
+.setting_box .form-group, .add_campaign_box .form-group {margin-bottom: 20px!important;}
+.setting_box label, .add_campaign_box label {padding: 0px!important;}
+.add_campaign_box {width:680px; margin:auto; padding:40px 40px 10px 40px; margin-bottom: 50px; box-shadow: 0 1px 20px 0 rgba(56,107,184,0.30); border-radius: 5px;}
+label {font-size: 11px; color:#6d7682; font-weight: 600; text-transform: uppercase; line-height: 2.4;}
+.textbox-control, .select-control {border:0px; border:1px solid #d9dfe9; padding-left:10px; padding-right:10px; outline:none; height:32px;}
+span.reqire {color:#ff5877;}
+.live_campaign {padding: 40px 20px; width: 100%; border: 1px solid #e9edf4; border-radius: 5px; overflow: hidden;}
+.record_text {color: #7c8590; text-align: center; font-weight: 600; padding-top: 10px;}
+.prog_green {background-color: #ffffff; box-shadow: 0 1px 20px 0 rgba(56,107,184,0.30); border-radius: 4px; margin-top: 8px; margin-bottom: 0px;}
+.prog_green .progress-bar {background-color: #66cc33; box-shadow: none;}
+
+.table_filter_div {border-left:1px solid #d9dfe9; border-top: 1px solid #d9dfe9; border-right: 1px solid #d9dfe9; background-color: #fff; padding: 20px; overflow: hidden; }
+.table_filter_div select {text-transform: uppercase; font-weight: 700; font-size: 11px;}
+.table_filter_div .btn {margin-bottom: 0px; }
+.table_filter_div .btn-light-grey {background: #9da8b8; color:#fff; padding: 5px 10px; font-size: 12px;}
+.text_blue {color: #0cb6e8;} .table i {font-size: 18px;}
+i.text_green {color:#66cc33;}
+i.text_orange {color:fbaf5d;}
+i.font_14 {font-size: 14px; vertical-align: bottom; margin-right: 5px;}
+table a.text_blue, table a.text_blue:hover {text-decoration: none; color: #0cb6e8;} 
+table .btn {padding: 2px 4px; border-radius: 3px; font-size: 11px; text-transform: capitalize; margin-bottom: 0px;}
+
+.btn-complete, .btn-complete:hover, .btn-complete:active {background-color: #46565a; border-color: #46565a; color:#fff;}
+.btn-inactive, .btn-inactive:hover, .btn-inactive:active {background-color: #ff5877; border-color: #ff5877; color:#fff;}
+
+.checkbox { padding-left: 20px; margin-top:5px; margin-bottom:0px;}
+.checkbox label { display: inline-block; position: relative; padding-left: 5px; line-height:1.6;}
+.checkbox label::before { content: ""; display: inline-block; position: absolute; width: 17px; height: 17px; left: 0; margin-left: -20px; border: 1px solid #c3b9b6; background-color: #fff; -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out; -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out; transition: border 0.15s ease-in-out, color 0.15s ease-in-out; }
+.checkbox label::after {display: inline-block; position: absolute; width: 16px; height: 16px; left: 0; top: 0; margin-left: -20px; padding-left: 3px; padding-top: 1px;}
+.checkbox input[type="checkbox"] { opacity: 0; }
+.checkbox input[type="checkbox"]:focus + label::before { outline: 5px auto -webkit-focus-ring-color; outline-offset: -2px; }
+.checkbox input[type="checkbox"]:checked + label::after { font-family: 'FontAwesome'; content: "\f00c"; }
+.checkbox input[type="checkbox"]:disabled + label { opacity: 0.65; }
+.checkbox input[type="checkbox"]:disabled + label::before { background-color: #eeeeee; cursor: not-allowed; }
+.checkbox.checkbox-circle label::before { border-radius: 50%; }
+.checkbox.checkbox-inline { margin-top: 0; }
+
+table td .checkbox {padding-left:25px;}
+
+.card {
+    background: #ffffff;
+    border-radius: 2px;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+.card_heading {font-size: 16px; font-weight: 600; color: #78878b; margin-bottom: 25px; float:left;}
+.card_heading i { margin-left: 10px;}
+
+.card .left_text {font-size: 13px; color:#78878b; margin-bottom: 16px; padding-right: 0px;}
+.card .right_text {font-size: 13px; color:#46565a; margin-bottom: 16px; text-align: right; padding-left: 0px;}
+
+.marb-0 {margin-bottom: 0px;}
+.marb-20 {margin-bottom: 20px;}
+.cust_head {font-weight: 600; font-size: 18px; color: #78878b; margin-top: 5px; }
+.browse_textbox {border-radius: 0px; outline: none; font-size: 12px; height: 35px;}
+
+.active_button{padding: 2px 4px; font-size: 11px; text-transform: capitalize; border-radius: 4px;}

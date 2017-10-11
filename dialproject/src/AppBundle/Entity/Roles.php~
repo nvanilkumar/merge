@@ -1,0 +1,32 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Roles
+ *
+ * @ORM\Table(name="roles", uniqueConstraints={@ORM\UniqueConstraint(name="role", columns={"role"})})
+ * @ORM\Entity
+ */
+class Roles
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="role", type="string", length=20, nullable=false)
+     */
+    private $role;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="role_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $roleId;
+
+
+}

@@ -1,0 +1,176 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-heading"><i class="fa fa-users"></i> Campaign Management
+                    <a class="btn theme_blue pull-right" href="{{ url('_admin_create_campaign')}}">
+                        <i class="fa fa-plus-circle"></i>add campaign 
+                    </a>
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table_filter_div">
+                    <form method="post" id="form-campaign-management">
+                        {% if campaigns is not empty %}
+                            <select name="action" class="select-control col-md-2">
+                                <option value="">Select Action</option>
+                                <option value="completed">Mark as Completed</option>
+                                <option value="active">Mark as Active</option>
+                                <option value="inactive">Mark as Inactive</option>
+                                <option value="delete">Delete</option>
+                            </select>
+
+                            <div class="col-md-1">
+                                <button type="submit" class="btn btn-light-grey">submit</button>
+                            </div>
+                        {% endif%}
+
+                        <div class="col-md-offset-5 col-md-2 text-right">
+                            <label>Sort By:</label>
+                        </div>
+
+                        <select name="campagins_status" aria-controls="campagins" id="status_select" class="select-control col-md-2 pull-right">
+                            <option value="All">All</option>
+                            <option value="Completed" {% if status=='Completed' %} {{"selected"}}{%endif%}>Completed</option>
+                            <option value="LiveCampaign" {% if status=='LiveCampaign' %} {{"selected"}}{%endif%}>Live Campaign</option>
+                            <option value="active" {% if status=='active' %} {{"selected"}}{%endif%}>Active</option>
+                            <option value="inactive" {% if status=='inactive' %} {{"selected"}}{%endif%}>Inactive</option>
+                        </select> 
+                </div>
+            </div>
+        </div>
+        {% if error.campaingchek is defined %}
+            <label class="error">{{ error.campaingchek }}</label>
+        {% endif %}
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-striped table-border">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="checkbox"> </div>
+                            </th>
+                            <th>campaign name</th>
+                            <th>customers</th>
+                            <th>status</th>
+                            <th>created on</th>
+
+                            <th>reports</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for campaign in campaigns %}
+                            <tr>
+
+                                <td>
+                                    <div class="checkbox">
+                                        <input type="checkbox" name="campaigns[]" value="{{ campaign.campaignId }}" id="checkbox{{ campaign.campaignId }}"/>
+                                        <label for="checkbox{{ campaign.campaignId }}"> </label>
+                                    </div>
+                                </td>
+                                <td><a href="{{ url('_admin_view_campaign',{ campaign_id:campaign.campaignId})}}" class="text_blue">{{ campaign.campaignName }}</a></td>
+
+                                {% set customerCampaignCount = customerCampaignCount(campaign.campaignId) %}
+                                <td><span class="badge themelightblue">{{ customerCampaignCount}}</span></td>
+
+                                <td>
+                                    {% if campaign.campaignStatus == 'inactive' %}
+                                        <a href="#" class="btn btn-inactive">Inactive</a>
+
+                                    {% else %}
+                                        {% if campaign.isComplete == 1%}
+                                            <a href="#" class="btn btn-complete">Completed</a> 
+
+                                        {% elseif campaign.isRunning == 1 %}
+                                            <a href="javascript:void(0);" class="btn btn-success">Live Campaign</a>
+
+                                        {% else %}
+                                            <span class="label label-warning">Active</span>
+                                        {% endif %}
+                                    {% endif %}
+                                </td>
+                                <td>{{ campaign.addedOn|date('m-d-Y')  }}</td>
+                                <td>
+                                    {% if campaign.pdfReport != '' %}
+                                        <a target="_blank" href="{{ url('_generic_download_act',{'filename':campaign.pdfReport})}}" class="text_blue" id="edit_agent" data-toggle="tooltip" data-placement="bottom" title="Download Report">
+                                            <i class="fa fa-download font_14"></i> Download Report
+                                        </a>
+
+                                    {% endif %}
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+
+
+
+                    </tbody>
+
+                </table>
+                {% if campaigns is empty %}
+                    <div class="empty-message">
+                        <p>Looks like there are no campaigns added, To add a campaign click Create Campaign button below.</p>
+                        <a href="{{ url('_admin_create_campaign')}}" class="btn btn-warning"><i class="fa fa-plus"></i> Create Campaign</a>
+                    </div>
+                {% endif%}
+                <div id="campaigns-error"></div>
+
+            </div><!-- /.col-sm-12 -->
+        </div>
+
+
+
+
+    </form>
+</div>
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $('#campagins').DataTable();
+        $("#status_select").change(function () {
+            var status = $(this).val();
+            url = "{{url('_admin_campaigns_management', {"status":"status"}) }}";
+            url = url.replace("status", status);
+            window.location = url;
+            /*
+             var status=$(this).val();
+             alert(status);
+             $.ajax({
+             url: "{{url('_admin_ajax_campaing_status_filter')}}",
+             type: "GET",
+             data: "status=" + status,
+             success: function (response)
+             {
+             console.log(response);
+             
+             
+             var row='<tr>';
+             $.each(response, function(j, e) {
+             console.log(e);
+             row+='<td>'+e+'</td>';
+             
+             row+='</tr>';
+             $('#campagins tbody').append(row);
+             });
+             
+             
+             } });*/
+        });
+
+
+
+    });
+</script>
+<style type="text/css">
+    .dataTables_length, #campagins_filter{
+        display: none;
+    }
+</style>
+{% endblock%}

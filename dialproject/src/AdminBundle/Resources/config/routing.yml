@@ -1,0 +1,15 @@
+_admin_homepage:
+    resource: "@AdminBundle/Controller/DefaultController.php"
+    type:     annotation
+_admin_agents:
+    resource: "@AdminBundle/Controller/AgentsController.php"
+    type:     annotation
+_admin_campaigns:
+    resource: "@AdminBundle/Controller/CampaignsController.php"
+    type:     annotation
+_admin_ajax:
+    resource: "@AdminBundle/Controller/AjaxController.php"
+    type:     annotation
+_api_v1_campaings:
+    resource: "@AdminBundle/Controller/ApiController.php"
+    type:     annotation

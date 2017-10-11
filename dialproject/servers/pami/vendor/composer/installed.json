@@ -1,0 +1,302 @@
+[
+    {
+        "name": "psr/log",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-fig/log.git",
+            "reference": "5277094ed527a1c4477177d102fe4c53551953e0"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-fig/log/zipball/5277094ed527a1c4477177d102fe4c53551953e0",
+            "reference": "5277094ed527a1c4477177d102fe4c53551953e0",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2016-09-19 16:02:08",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Psr\\Log\\": "Psr/Log/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }
+        ],
+        "description": "Common interface for logging libraries",
+        "homepage": "https://github.com/php-fig/log",
+        "keywords": [
+            "log",
+            "psr",
+            "psr-3"
+        ]
+    },
+    {
+        "name": "marcelog/pami",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/marcelog/PAMI.git",
+            "reference": "31b052e0bc1fefe2853a2024bc3b2e4a0e7b3d9f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/marcelog/PAMI/zipball/31b052e0bc1fefe2853a2024bc3b2e4a0e7b3d9f",
+            "reference": "31b052e0bc1fefe2853a2024bc3b2e4a0e7b3d9f",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "psr/log": ">= 1.0.0"
+        },
+        "require-dev": {
+            "codeclimate/php-test-reporter": "dev-master",
+            "evert/phpdoc-md": "~0.1.1",
+            "marcelog/pagi": "2.*",
+            "monolog/monolog": "1.*",
+            "phing/phing": "2.*",
+            "phpdocumentor/phpdocumentor": "2.*",
+            "phpmd/phpmd": "2.*",
+            "phpunit/phpunit": "4.*",
+            "satooshi/php-coveralls": "1.0.1",
+            "sebastian/phpcpd": "*",
+            "squizlabs/php_codesniffer": "2.*"
+        },
+        "time": "2016-04-26 11:22:15",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "PAMI\\": "src/PAMI"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache2"
+        ],
+        "authors": [
+            {
+                "name": "Marcelo Gornstein",
+                "email": "marcelog@gmail.com",
+                "homepage": "http://marcelog.github.com/",
+                "role": "Developer"
+            }
+        ],
+        "description": "Asterisk Manager Interface (AMI) client for PHP, event driven, object oriented",
+        "homepage": "http://marcelog.github.com/PAMI",
+        "keywords": [
+            "action",
+            "ami",
+            "asterisk",
+            "client",
+            "event",
+            "manager",
+            "monitor",
+            "telephony",
+            "voip"
+        ]
+    },
+    {
+        "name": "educoder/pest",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/educoder/pest.git",
+            "reference": "7c4d24d6aafc4ebac711c73cc8797d9b1779525b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/educoder/pest/zipball/7c4d24d6aafc4ebac711c73cc8797d9b1779525b",
+            "reference": "7c4d24d6aafc4ebac711c73cc8797d9b1779525b",
+            "shasum": ""
+        },
+        "require": {
+            "lib-curl": "*",
+            "php": ">=5.2"
+        },
+        "time": "2013-11-17 12:58:01",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                ""
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Matt Zukowski",
+                "email": "matt@zukowski.ca"
+            },
+            {
+                "name": "Donald Sipe",
+                "email": "donald.sipe@gmail.com"
+            }
+        ],
+        "description": "A proper REST client for PHP.",
+        "homepage": "https://github.com/educoder/pest"
+    },
+    {
+        "name": "react/event-loop",
+        "version": "v0.4.2",
+        "version_normalized": "0.4.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/reactphp/event-loop.git",
+            "reference": "164799f73175e1c80bba92a220ea35df6ca371dd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/reactphp/event-loop/zipball/164799f73175e1c80bba92a220ea35df6ca371dd",
+            "reference": "164799f73175e1c80bba92a220ea35df6ca371dd",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "suggest": {
+            "ext-event": "~1.0",
+            "ext-libev": "*",
+            "ext-libevent": ">=0.1.0"
+        },
+        "time": "2016-03-08 02:09:32",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.5-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "React\\EventLoop\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "Event loop abstraction layer that libraries can use for evented I/O.",
+        "keywords": [
+            "asynchronous",
+            "event-loop"
+        ]
+    },
+    {
+        "name": "evenement/evenement",
+        "version": "v2.0.0",
+        "version_normalized": "2.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/igorw/evenement.git",
+            "reference": "f6e843799fd4f4184d54d8fc7b5b3551c9fa803e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/igorw/evenement/zipball/f6e843799fd4f4184d54d8fc7b5b3551c9fa803e",
+            "reference": "f6e843799fd4f4184d54d8fc7b5b3551c9fa803e",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "time": "2012-11-02 14:49:47",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Evenement": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Igor Wiedler",
+                "email": "igor@wiedler.ch",
+                "homepage": "http://wiedler.ch/igor/"
+            }
+        ],
+        "description": "Événement is a very simple event dispatching library for PHP",
+        "keywords": [
+            "event-dispatcher",
+            "event-emitter"
+        ]
+    },
+    {
+        "name": "react/zmq",
+        "version": "v0.3.0",
+        "version_normalized": "0.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/reactphp/zmq.git",
+            "reference": "2865e3b23000751ed443d3f108da2735abf80716"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/reactphp/zmq/zipball/2865e3b23000751ed443d3f108da2735abf80716",
+            "reference": "2865e3b23000751ed443d3f108da2735abf80716",
+            "shasum": ""
+        },
+        "require": {
+            "evenement/evenement": "~2.0",
+            "ext-zmq": "*",
+            "php": ">=5.4.0",
+            "react/event-loop": "0.4.*"
+        },
+        "require-dev": {
+            "ext-pcntl": "*"
+        },
+        "time": "2014-05-25 17:54:51",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "React\\ZMQ": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "ZeroMQ bindings for React.",
+        "keywords": [
+            "zeromq",
+            "zmq"
+        ]
+    }
+]

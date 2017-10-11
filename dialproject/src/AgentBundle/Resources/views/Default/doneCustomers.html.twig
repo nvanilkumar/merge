@@ -1,0 +1,68 @@
+
+{% if campdata is defined %}
+    {% if campdata|length == 0 %}
+       
+    {% else %}
+        {% for camp in campdata %}
+            <div class="col-lg-3 col-sm-6"  id="list-item-{{ camp.cd_id }}">
+
+                <div class="card hovercard" >
+
+
+                    <div class="info">
+                        <div class="title">
+                            <a target="" href="#">{{ camp.title~' '~camp.first_name~' '~camp.last_name }}</a>
+                        </div>
+                        <div class="desc">{{ camp.phone_number }}</div>
+                        <div class="desc">{{ camp.acc_code }}</div>
+                        <div class="desc">{{ camp.company }}</div>
+                    </div>
+                    <div class="bottom">
+                        
+                        <label class="radio-inline ">
+                            <input type="radio" class="change-call-status" name="cust_{{ camp.cd_id }}" id="" value="3" {% if camp.ds_id == 3 %}checked="checked"{% endif %}>
+                            {% if camp.ds_id == 3 %}<strong class="text-success">Answered</strong>{% else %}
+                            <span class="text-success">Answered</span>{% endif %}
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" class="change-call-status" name="cust_{{ camp.cd_id }}" id="" value="1" {% if camp.ds_id == 1 %}checked="checked"{% endif %}> 
+                            {% if camp.ds_id == 1 %}<strong class="text-muted">Busy</strong>{% else %}
+                            <span class="text-muted">Busy</span>{% endif %}
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" class="change-call-status" name="cust_{{ camp.cd_id }}" id="" value="2" {% if camp.ds_id == 2 %}checked="checked"{% endif %}> 
+                            {% if camp.ds_id == 2 %}<strong class="text-warning">Call back</strong>{% else %}
+                            <span class="text-warning">Call back</span>{% endif %}
+                            
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" class="change-call-status" name="cust_{{ camp.cd_id }}" id="" value="4" {% if camp.ds_id == 4 %}checked="checked"{% endif %}> 
+                            {% if camp.ds_id == 4 %}<strong class="text-muted">DND</strong>{% else %}
+                            <span class="text-muted">DND</span>{% endif %}
+                            
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" class="change-call-status" name="cust_{{ camp.cd_id }}" id="" value="5" {% if camp.ds_id == 5 %}checked="checked"{% endif %}> 
+                            {% if camp.ds_id == 5 %}<strong class="text-danger">No Answer</strong>{% else %}
+                            <span class="text-danger">No Answer</span>{% endif %}
+                            
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" class="change-call-status" name="cust_{{ camp.cd_id }}" id="" value="6" {% if camp.ds_id == 6 %}checked="checked"{% endif %}> 
+                            {% if camp.ds_id == 6 %}<strong class="text-danger">Unreachable</strong>{% else %}
+                            <span class="text-danger">Unreachable</span>{% endif %}
+                            
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" class="change-call-status" name="cust_{{ camp.cd_id }}" id="" value="7" {% if camp.ds_id == 7 %}checked="checked"{% endif %}> 
+                            {% if camp.ds_id == 7 %}<strong class="text-info">Voicemail</strong>{% else %}
+                            <span class="text-info">Voicemail</span>{% endif %}
+                            
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endif %}

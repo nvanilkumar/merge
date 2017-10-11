@@ -1,0 +1,20 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 192.168.36.100
+    database_port: 3306
+    database_name: scopdial37
+    database_user: root
+    database_password: telastic2010
+    from_email_address: praveen.govind@cestechservices.com
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: scopdial
+    site_name: SocpDial
+    amihost: 192.168.36.134
+    amiuser: admin
+    amipassword: 123456
+    recordingsftphost: 41.87.218.57
+    recordingsusername: astrecordings
+    recordingsftppassword: tms88in##

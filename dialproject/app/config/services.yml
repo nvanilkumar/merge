@@ -1,0 +1,21 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    helper_handler:
+        class: AdminBundle\Services\HelperHandler
+        arguments: ["@request_stack","@doctrine.orm.entity_manager","@doctrine"]
+    redis_handler:
+        class: AdminBundle\Services\RedisHandler
+        arguments: ["@request_stack","@doctrine.orm.entity_manager","@doctrine", @service_container]
+    campaign_model:
+        class: AdminBundle\Model\CampaignModel
+        arguments: ["@request_stack","@doctrine.orm.entity_manager","@doctrine"]    
+
+
+

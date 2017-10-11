@@ -1,0 +1,54 @@
+parameters:
+    #    home.example.class: Home\HomeBundle\Example
+     app.authentication.handler.login_success_handler.class: AppBundle\Security\Authentication\Handler\LoginSuccessHandler
+     app.authentication.handler.logout_success_handler.class: AppBundle\Security\Authentication\Handler\LogoutSuccessHandler
+     my.oauth_aware.user_provider.service: AppBundle\Services\OAuthUserProvider
+services:
+#    home.example:
+#        class: %home.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    login_success_handler:
+        class: %app.authentication.handler.login_success_handler.class%
+        arguments: [@router, @security.context,@service_container,@session]
+        tags:
+        - { name: 'monolog.logger', channel: 'security' }
+    logout_success_handler: 
+        class: %app.authentication.handler.logout_success_handler.class%
+        arguments: [@router,@security.context,@session]
+    emails_handler:
+        class: AppBundle\Services\EmailsHandler
+        arguments: [@mailer,%from_email_address%]    
+    common_handler:
+        class: AdminBundle\Services\CommonHandler
+        arguments: ["@doctrine.orm.entity_manager", "@security.context", "@router",'@security.context']
+    vendor.twig.vendor_extension:
+        class: AppBundle\Twig\VendorExtension
+        arguments: [@doctrine]
+        tags:
+            - { name: twig.extension }
+    app.command.campaigncron:
+        class: AppBundle\Command\CampaigncronCommand
+        arguments: ["@doctrine.orm.entity_manager",'@service_container']
+        tags:
+            -  { name: console.command }     
+    app.command.postcampaigncron:
+        class: AppBundle\Command\PostCampaigncronCommand
+        arguments: ["@doctrine.orm.entity_manager",'@service_container','%kernel.root_dir%','@ijanki_ftp']
+        tags:
+            -  { name: console.command }
+    app.command.failedCallCommand:
+        class: AppBundle\Command\FailedCallHandleCommand
+        arguments: ["@doctrine.orm.entity_manager",'@service_container','%kernel.root_dir%','@ijanki_ftp']
+        tags:
+            -  { name: console.command }
+    app.command.calloriginator:
+        class: AppBundle\Command\CallOriginatorCommand
+        arguments: ["@doctrine.orm.entity_manager",'@service_container']
+        tags:
+            -  { name: console.command }        
+    app.command.callcustomer:
+        class: AppBundle\Command\CallCustomerCommand
+        arguments: ["@doctrine.orm.entity_manager",'@service_container']
+        tags:
+            -  { name: console.command }        
+     

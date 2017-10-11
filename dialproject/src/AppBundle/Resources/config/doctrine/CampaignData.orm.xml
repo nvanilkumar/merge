@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\CampaignData" table="campaign_data">
+    <indexes>
+      <index name="FK3F89467D39F80F52" columns="campaign_id"/>
+      <index name="customer_id" columns="customer_id"/>
+      <index name="ds_id" columns="ds_id"/>
+    </indexes>
+    <id name="cdId" type="integer" column="cd_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="dsId" type="integer" column="ds_id" nullable="true"/>
+    <field name="retryCount" type="integer" column="retry_count" nullable="false"/>
+    <field name="maxRetryCount" type="integer" column="max_retry_count" nullable="false"/>
+    <field name="assignedTo" type="integer" column="assigned_to" nullable="true"/>
+    <field name="skippedBy" type="integer" column="skipped_by" nullable="true"/>
+    <field name="updatedOn" type="integer" column="updated_on" nullable="true"/>
+    <field name="callRecordingFile" type="string" column="call_recording_file" nullable="true"/>
+    <many-to-one field="customer" target-entity="Customer">
+      <join-columns>
+        <join-column name="customer_id" referenced-column-name="customer_id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="campaign" target-entity="Campaign">
+      <join-columns>
+        <join-column name="campaign_id" referenced-column-name="campaign_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
