@@ -1,0 +1,136 @@
+
+<form name='admin-add-department' method="post" class="form-horizontal"     id="{% if mode=='add' %}{{'admin-add-department'}}{% else %}{{'admin-edit-department'}}{% endif %}"  action="{% if mode=='add' %}{{url('_ajax_add_department')}}{% else %}{{url('_ajax_edit_department')}}{% endif %}">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {% if mode=='add' %}
+            <h4 class="modal-title" id="myModalLabel">Add new department</h4>
+        {% else %}
+            <h4 class="modal-title" id="myModalLabel">Edit department</h4>
+        {% endif %}    
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-sm-12 ">
+                <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">Department</label>
+                    <div class="col-sm-9">
+
+                        <input type="text" class="form-control" dir='rtl' autocomplete="off" id="fieldata" maxlength="100" placeholder="قسم" name="Department"  value="{%if app.request.get('Department')!=''%}{{app.request.get('Department')}}{% elseif dapartment.department is defined %}{{dapartment.department}}{% endif %}">
+
+                        <input type ='hidden' name='deptid' id='deptid' value="{% if dapartment.deptid is defined %}{{dapartment.deptid}}{% endif %}">
+                        <div class="error" id='message'></div>
+
+
+                    </div>
+                </div>   
+
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        {% if mode=='add' %}
+            <button type="submit" class="btn btn-primary form-submiters">Add</button>
+        {% else %}
+            <button type="submit" class="btn btn-primary form-submiters">Save changes</button>
+        {% endif %} 
+    </div>
+</form>
+
+<script>
+    $(document).ready(function () {
+        jQuery.validator.addMethod("noSpace", function (value, element) {
+            return value.indexOf(" ") < 0 && value != "";
+        }, "No space please and don't leave it empty");
+        $('body').on('click', '.form-submiters', function () {
+            $('#message').html('');
+        });
+        $("#admin-add-department").validate({
+            rules: {
+                Department: {required: true
+                }
+            },
+            messages: {
+                Department: {required: "Please enter a Department"}
+            },
+            submitHandler: function (form) {
+                $.ajax({
+                    type: $(form).attr('method'),
+                    url: $(form).attr('action'),
+                    data: $(form).serialize(),
+                    dataType: 'json'
+                })
+                        .done(function (response) {
+
+                            if (response.status == "success") {
+                                $('#myModal').modal('hide');
+                                $('#all-departments').prepend(response.response);
+                                flashmessage(response.message, response.status);
+                                location.reload('{{ url('_admin_departments') }}');
+                            }
+                            else {
+                                $('#fieldata').val('');
+                                $('#message').html(response.response);
+                            }
+
+                        });
+                return false;
+            },
+            errorPlacement: function (error, element) {
+
+                error.appendTo(element.parent());
+                //error.prependTo(element.parent());
+            },
+            invalidHandler: function (form, validation) {
+                $('div.form-error').remove();
+            }
+        });
+
+        $("#admin-edit-department").validate({
+            rules: {
+                Department: {required: true},
+            },
+            messages: {
+                Department: {required: "Please enter a Department"}
+            },
+            submitHandler: function (form) {
+
+
+                $.ajax({
+                    type: $(form).attr('method'),
+                    url: $(form).attr('action'),
+                    data: $(form).serialize(),
+                    dataType: 'json'
+                })
+                        .done(function (response) {
+                            $('#myModal').modal('hide');
+                            if (response.status == "success") {
+                                var deptid = $('#deptid').val();
+                                $('#dep-' + deptid).html(response.response);
+                                flashmessage(response.message, response.status);
+                            }
+                            else {
+                                $('#fieldata').val('');
+                                $('#message').html(response.response);
+                            }
+
+                        });
+                return false;
+            },
+            errorClass: "form-error",
+            errorPlacement: function (error, element) {
+
+                error.appendTo(element.parent());
+                //error.prependTo(element.parent());
+            },
+            invalidHandler: function (form, validation) {
+                $('div.form-error').remove();
+            }
+        });
+
+    });
+</script>
+
+
+

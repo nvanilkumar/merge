@@ -1,0 +1,53 @@
+<div class="box">
+    <div class="box-body">
+        <table class="table table-bordered table-responsive table-striped">
+            <thead>
+                <tr>
+                    <th rowspan='' width="30%" class='text-right' >{{ 'entrainings.Title'|trans }}</th>
+                    <th rowspan='' width="20%" class='text-right'>{{ 'entrainings.Department'|trans }}</th>
+                    <th rowspan='' width="20%" class='text-right'>{{ 'entrainings.Teacher'|trans }}</th>
+                    <th rowspan='' width="15%" class='text-right'>{{ 'entrainings.Status'|trans }}</th>
+                    <th rowspan='' width="15%" class='text-right'>{{ 'entrainings.Certificate'|trans }}</th>
+                    <th rowspan='' width="5%">&nbsp;</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                {% for training in trainings %}
+                    <tr data="">
+                        <td class="text-right custom-wrap"><a href="{{ url('_view_training',{'tid':training.tid}) }}">{{ training.training_title }}</a></td>
+                        <td class="text-right custom-wrap">{{ training.department }} </td>
+                        <td class="text-right custom-wrap"><a href="{% if training.role=='ROLE_STUDENT' %}{{ url('_profile_student',{'uid':training.userid}) }}{% else %}{{ url('_profile_teacher',{'uid':training.userid}) }}{% endif %}">{{ training.lname~' '~training.fname }}</a>  </td>
+                        <td class="text-right custom-wrap">
+                            {% if training.training_status == 'complete' %} 
+                                <span class="label label-success">{{ 'entrainings.Complete'|trans }}</span>
+                            {% else %}
+                                <span class="label label-danger">{{ 'entrainings.Inomplete'|trans }}</span>
+                            {% endif %}
+                        </td>
+                        <td class="text-right custom-wrap">
+                            {% if training.certificate_status == 'issued' %} 
+                                <span class="label label-success">{{ 'entrainings.Issued'|trans }}</span> <br/>
+                                <a href="{{ url('_rendered_outbnd_pdf') }}"> {{ 'entrainings.Download'|trans }} <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                </a>
+                            {% elseif training.certificate_status == 'requested' %}
+                                <span class="label label-warning">{{ 'entrainings.Requested'|trans }}</span>    
+                            {% else %}
+                                <span class="label label-danger">{{ 'entrainings.NotIssued'|trans }}</span>
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            <a href="{{ url('_assesment_training',{'tid':training.tid}) }}" class="btn btn-xs btn-default"><i class="fa fa-newspaper-o"></i></a> 
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr class='well'>
+                    <td colspan='6'><a href='{{ url('_enrolled_trainings') }}'> {{ 'account.Viewall'|trans }}</a></td>
+                </tr>
+            <tfoot>
+        </table>
+    </div>
+</div>

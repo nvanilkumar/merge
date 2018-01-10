@@ -1,0 +1,20 @@
+{% extends 'AdminBundle:Emails:Template.html.twig' %}
+{% block content %}
+
+    
+    
+    
+    <p> {{message}}</p>
+   
+    {% if trainingurl is defined %}
+        <a href="{{trainingurl}}" > رابط التدريب</a>
+    {% endif %}
+    
+     {% if workshop is defined %}
+        <a href="{{workshop}}" > رابط رشة عمل</a>
+    {% endif %}
+ 
+    
+     
+     
+{% endblock %}    

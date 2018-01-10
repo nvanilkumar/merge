@@ -1,0 +1,110 @@
+{% extends extend_view %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h4>Training Assesment</h4>
+                        </div>
+                        <div class="col-lg-6">
+                            <strong>Total Marks :</strong> 50 | <strong><a  href="{{ url('_admin_add_new_desc') }}" data-toggle="modal"  data-target="#myModal"  class=""><i class="fa fa-graduation-cap"></i>
+                                    Cut-off Marks:</a></strong> 20 
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class='row'>
+                                    <div class='col-lg-8'>
+                                        <h3 class="panel-title">Multiple Choice Questions</h3>
+                                    </div>
+                                    <div class='col-lg-4'>
+                                        <a  href="{{ url('_admin_add_new_mcq',{'trainingid':234}) }}" data-toggle="modal"  data-target="#myModal"  class="btn btn-success "><i class="fa fa-plus"></i> Add new </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <ul>
+                                    <li class=''>
+
+                                        Some Question Realted ? <span class='pull-right'> <a href="{{ url('_admin_add_new_mcq',{'trainingid':234,'mcqid':1}) }}" data-toggle="modal"  data-target="#myModal" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href='javascript:;' class="delete btn btn-xs btn-danger"><i class="fa fa-trash"></i></a></span>
+                                        <ol>
+                                            <li>Option 1</li>
+                                            <li>Option 2</li>
+                                            <li>Option 3</li>
+                                            <li>Option 4 <span class='green-text'><i class="fa fa-check"></i></span></li>
+                                        </ol>
+
+                                    </li>
+                                    <li>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat ?<span class='pull-right'> <a href="{{ url('_admin_add_new_mcq',{'trainingid':234,'mcqid':2}) }}" data-toggle="modal"  data-target="#myModal" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href='javascript:;' class="delete btn btn-xs btn-danger"><i class="fa fa-trash"></i></a></span>
+                                        <ol>
+                                            <li>Option 1</li>
+                                            <li>Option 2 <span class='green-text'><i class="fa fa-check"></i></span></li>
+                                            <li>Option 3</li>
+                                            <li>Option 4 </li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class='row'>
+                                    <div class='col-lg-8'>
+                                        <h3 class="panel-title">True or False Questions</h3>
+                                    </div>
+                                    <div class='col-lg-4'>
+                                        <a  href="{{ url('_admin_add_new_tf',{'trainingid':234}) }}" data-toggle="modal"  data-target="#myModal"  class="btn btn-success "><i class="fa fa-plus"></i> Add new </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <ul>
+                                    <li>
+
+                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <span class='pull-right'> <a href="{{ url('_admin_add_new_tf',{'trainingid':234,'tfid':1}) }}" data-toggle="modal"  data-target="#myModal" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href='javascript:;' class="delete btn btn-xs btn-danger"><i class="fa fa-trash"></i></a></span>
+                                        <ol>
+                                            <li>True</li>
+                                            <li>False <span class='green-text'><i class="fa fa-check"></i></span></li>
+                                        </ol>
+
+                                    </li>
+                                    <li>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat ?<span class='pull-right'> <a href="{{ url('_admin_add_new_tf',{'trainingid':234,'tfid':2}) }}" data-toggle="modal"  data-target="#myModal" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href='javascript:;' class="delete btn btn-xs btn-danger"><i class="fa fa-trash"></i></a></span>
+                                        <ol>
+                                            <li>True <span class='green-text'><i class="fa fa-check"></i></span></li>
+                                            <li>False</li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#myModal").on("show.bs.modal", function (e) {
+            var link = $(e.relatedTarget);
+            $(this).find(".modal-content").load(link.attr("href"));
+        });
+    </script>
+
+{% endblock %} 

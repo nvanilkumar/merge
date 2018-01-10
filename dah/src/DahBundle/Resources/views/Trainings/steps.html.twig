@@ -1,0 +1,89 @@
+{% if training is defined and training.status == 'inactive' and mode != 'add' %}
+    {% if checkIsVideo(training.tid)=='yes' and checkIsAsses(training.tid)=='yes' %}
+        <div role="alert" class="alert alert-info">
+            {{ 'addtraining.Yourtrainingisunderreviewandwewilllistitin'|trans }} <strong>"{{ 'addtraining.trainingPrograms'|trans }}"</strong> {{ 'addtraining.sectiononcecompleted'|trans }}
+        </div>
+    {% else %}
+        <div role="alert" class="alert alert-warning">
+            {{ 'addtraining.PleasecompletethefollowingbeforethisTraininggetspublished'|trans }}  <strong>{{ 'addtraining.Note'|trans }}</strong> 
+            <ul><li><s>{{ 'addtraining.Traininginfo'|trans }}</s></li>
+                <li>
+                    {% if checkIsVideo(training.tid)=='yes' %}
+                    <s>{{ 'addtraining.TrainingVideos'|trans }}</s>
+                    {% else %}
+                    {{ 'addtraining.TrainingVideos'|trans }}
+                {% endif %}
+
+                </li>
+                {% if training is defined and training.assesment == 'yes' %}
+                    <li>
+                        {% if checkIsAsses(training.tid)=='yes' %}
+                        <s>{{ 'addtraining.Trainingassessment'|trans }}</s>
+                        {% else %}
+                        {{ 'addtraining.Trainingassessment'|trans }}
+                    {% endif %}
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    {% endif %}
+{% endif %}
+<ul class="nav nav-tabs nav-justified">
+
+    <li role="presentation" class="{% if activetab is defined and activetab == 'training' %}active{% endif %} {% if tablevel is defined and tablevel < 1 %}disabled{% endif %}">
+        {% if tablevel is defined and tablevel < 1 %}
+            {{ 'addtraining.Traininginfo'|trans }}
+        {% else %}
+            <a href="{% if trainingurl is defined %}{{ trainingurl }}{% else %}javascript:;{% endif %}">{{ 'addtraining.Traininginfo'|trans }}</a>
+        {% endif %}
+    </li>
+    <li role="presentation" class="{% if activetab is defined and activetab == 'video' %}active{% endif %} {% if tablevel is defined and tablevel < 2 %}disabled{% endif %}">
+        {% if tablevel is defined and tablevel < 1 %}
+            {{ 'addtraining.Videos'|trans }}
+        {% else %}
+            <a href="{% if videourl is defined %}{{ videourl }}{% else %}javascript:;{% endif %}">{{ 'addtraining.Videos'|trans }}</a>
+        {% endif %}
+    </li>  
+    {% if training is defined and training.assesment == 'yes' %}
+        <li role="presentation" class="{% if activetab is defined and activetab == 'assesment' %}active{% endif %} {% if tablevel is defined and tablevel < 3 %}disabled{% endif %}">
+            {% if tablevel is defined and tablevel < 1 %}
+                {{ 'addtraining.Assessment'|trans }}
+            {% else %}
+                <a href="{% if assesmenturl is defined %}{{ assesmenturl }}{% else %}javascript:;{% endif %}">{{ 'addtraining.Assessment'|trans }}</a>
+            {% endif %}
+        </li>
+    {% endif %}  
+    {#{% if invitetab is defined and invitetab == 'yes' %}
+         <li role="presentation" class="{% if activetab is defined and activetab == 'invite' %}active{% endif %} {% if tablevel is defined and tablevel < 4 %}disabled{% endif %}">
+             {% if tablevel is defined and tablevel < 1 %}
+                 Invite students
+             {% else %}
+                 <a href="{% if inviteurl is defined %}{{ inviteurl }}{% else %}javascript:;{% endif %}">Invite students</a>
+             {% endif %}
+         </li>
+     {% endif %} #}
+    {% if training is defined and training.status == 'active' %}
+        {% if enrolltab is defined and enrolltab == 'yes' %}
+            <li role="presentation" class="{% if activetab is defined and activetab == 'enrollment' %}active{% endif %} {% if tablevel is defined and tablevel < 4 %}disabled{% endif %}">
+                {% if tablevel is defined and tablevel < 1 %}
+                    {{ 'addtraining.Enrolledstudents'|trans }}
+                {% else %}
+                    <a href="{% if inviteurl is defined %}{{ enrollurl }}{% else %}javascript:;{% endif %}">{{ 'addtraining.Enrolledstudents'|trans }}</a>
+                {% endif %}
+            </li>
+        {% endif %} 
+    {% endif %} 
+    {% if training is defined and training.status == 'active' %}
+        {% if enrolltab is defined and enrolltab == 'yes' %}
+    <li role="presentation" class="{% if activetab is defined and activetab == 'material' %}active{% endif %} {% if tablevel is defined and tablevel < 5 %}disabled{% endif %}">
+        {% if tablevel is defined and tablevel < 1 %}
+            {{ 'addtraining.TrainingMaterial'|trans }}
+        {% else %}
+            <a href="{% if materialurl is defined %}{{ materialurl }}{% else %}javascript:;{% endif %}">{{ 'addtraining.TrainingMaterial'|trans }}</a>
+        {% endif %}
+       
+    </li>
+        {% endif %} 
+        {% endif %}
+</ul>
+<br/>

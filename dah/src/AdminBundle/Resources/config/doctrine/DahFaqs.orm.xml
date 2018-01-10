@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahFaqs" table="dah_faqs">
+    <id name="faqid" type="bigint" column="faqid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="question" type="text" column="question" length="65535" nullable="true"/>
+    <field name="answer" type="text" column="answer" length="65535" nullable="true"/>
+    <field name="addedOn" type="bigint" column="added_on" nullable="true"/>
+    <field name="updatedOn" type="bigint" column="updated_on" nullable="true"/>
+    <field name="status" type="string" column="status" nullable="true"/>
+  </entity>
+</doctrine-mapping>

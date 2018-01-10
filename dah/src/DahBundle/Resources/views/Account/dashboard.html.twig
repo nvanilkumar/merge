@@ -1,0 +1,125 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12 col-lg-3 pull-right">
+                {% if user.role=='ROLE_TEACHER' %}
+                    {% include 'DahBundle:Account:leftTeacher.html.twig' %}
+                {% elseif user.role=='ROLE_STUDENT' %}
+                    {% include 'DahBundle:Account:left.html.twig' %}
+                {% endif %}
+
+            </div>
+            <div class="col-md-9 big-col col-sm-8 col-lg-9 col-xs-12 pull-right">
+                <div class="page-header">
+                    <h2>{{ 'account.Dashboard'|trans }}</h2>
+                </div>
+                {% if user.role=='ROLE_TEACHER' %}
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="panel panel-default panel-styled">
+                                <div class="panel-heading"><h4>{{ 'account.ActiveTrainings'|trans }}</h4></div>
+                                <div class="panel-body panel-body-count text-center"><h1>{{ getUserActiveTrainingCount(user.uid) }}</h1></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="panel panel-default panel-styled">
+                                <div class="panel-heading"><h4>{{ 'account.EnrolledStudents'|trans }}</h4></div>
+                                <div class="panel-body panel-body-count text-center"><h1>{{ getUserOwnedTrainingEnCount(user.uid) }}</h1></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="panel panel-default panel-styled">
+                                <div class="panel-heading"><h4>{{ 'account.TotalViews'|trans }}</h4></div>
+                                <div class="panel-body panel-body-count text-center"><h1>{{ getUserTviewCount(user.uid) }}</h1></div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="row row-eq-height">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="panel panel-default panel-styled ">
+                            <div class="panel-heading"><h4>{{ 'account.LatestTrainings'|trans }}</h4></div>
+                            {% if trainings|length>0 %}
+                            <ul class="list-group" style="padding: 0px!important;">
+                                {% for training in trainings %}
+                                <li class="list-group-item"><a href="{{ url('_view_training',{'tid':training.tid}) }}">{{ training.training_title|striptags|truncate(70, true, "...")|raw }}</a></li>
+                                {% endfor %}
+                            </ul>
+                            {% else %}
+                            <div class="panel-body">
+                                <div class="empty-content">
+                                    {{ 'account.Nolatesttrainingsfound'|trans }}
+                                </div>
+                            </div>
+                            {% endif %}
+                            <div class="panel-footer"><a href="{{ url('_trainingslist') }}"> {{ 'account.Viewall'|trans }} <i class="fa fa-angle-double-left"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="panel panel-default panel-styled">
+                            <div class="panel-heading"><h4>{{ 'account.FeaturedTrainings'|trans }}</h4></div>
+                            {% if poptrainings|length>0 %}
+                            <ul class="list-group" style="padding: 0px!important;">
+                                {% for training in poptrainings %}
+                                <li class="list-group-item"><a href="{{ url('_view_training',{'tid':training.tid}) }}">{{ training.training_title|striptags|truncate(70, true, "...")|raw }}</a></li>
+                                {% endfor %}
+                            </ul>
+                            {% else %}
+                            <div class="panel-body">
+                                <div class="empty-content">
+                                    {{ 'account.Nofeaturedtrainingsfound'|trans }}
+                                </div>
+                            </div>
+                            {% endif %}
+                            <div class="panel-footer"><a href="{{ url('_trainingslist') }}"> {{ 'account.Viewall'|trans }} <i class="fa fa-angle-double-left"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-eq-height">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="panel panel-default panel-styled">
+                            <div class="panel-heading"><h4>{{ 'account.LatestNews'|trans }}</h4></div>
+                            {% if news|length>0 %}
+                            <ul class="list-group" style="padding: 0px!important;">
+                                {% for n in news %}
+                                <li class="list-group-item"><a href="{{ url('_view_news',{'newsid':n.newsid}) }}">{{ n.news_title|striptags|truncate(70, true, "...")|raw }}</a></li>
+                                {% endfor %}
+                            </ul>
+                            {% else %}
+                            <div class="panel-body">
+                                <div class="empty-content">
+                                    {{ 'account.Nolatestnewsfound'|trans }}
+                                </div>
+                            </div>
+                            {% endif %}
+                            <div class="panel-footer"><a href="{{ url('_news') }}"> {{ 'account.Viewall'|trans }} <i class="fa fa-angle-double-left"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="panel panel-default panel-styled">
+                            <div class="panel-heading"><h4>{{ 'account.LatestWorkshops'|trans }}</h4></div>
+                           {% if workshops|length>0 %}
+                            <ul class="list-group" style="padding: 0px!important;">
+                                {% for workshop in workshops %}
+                                <li class="list-group-item"><a href="{{ url('_view_workshop',{'wid':workshop.wid}) }}">{{ workshop.workshop_title|striptags|truncate(70, true, "...")|raw }}</a></li>
+                                {% endfor %}
+                            </ul>
+                            {% else %}
+                            <div class="panel-body">
+                                <div class="empty-content">
+                                    {{ 'account.Nolatestworkshopfound'|trans }}
+                                </div>
+                            </div>
+                            {% endif %}
+                            <div class="panel-footer"><a href="{{ url('_workshops') }}"> {{ 'account.Viewall'|trans }} <i class="fa fa-angle-double-left"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+               
+
+            </div>
+            
+        </div>
+    </div>
+{% endblock %}

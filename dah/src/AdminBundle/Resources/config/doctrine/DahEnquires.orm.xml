@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahEnquires" table="dah_enquires">
+    <id name="enquiryId" type="integer" column="enquiry_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name" type="string" column="name" length="100" nullable="true"/>
+    <field name="email" type="string" column="email" length="100" nullable="true"/>
+    <field name="message" type="text" column="message" length="65535" nullable="true"/>
+    <field name="status" type="string" column="status" nullable="true"/>
+    <field name="receivedOn" type="integer" column="received_on" nullable="true"/>
+  </entity>
+</doctrine-mapping>

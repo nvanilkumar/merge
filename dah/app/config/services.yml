@@ -1,0 +1,51 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+#    service_name:
+#        class: AppBundle\Directory\ClassName
+#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    common_handler:
+        class: AdminBundle\Services\CommonHandler
+        arguments: [ "@router", "@session","@doctrine.orm.entity_manager",'@security.context']
+    security_listener:
+        class: AdminBundle\EventListener\SecurityListener
+        arguments: ['@security.context', '@session',"@doctrine.orm.entity_manager","@request_stack"]
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login, method: onSecurityInteractiveLogin }
+    logout_listener:
+        class:  AdminBundle\EventListener\LogoutListener
+        arguments:  ['@security.context',"@doctrine.orm.entity_manager","@router"]
+    emails_handler:
+        class: AdminBundle\Services\EmailsHandler
+        arguments: [@mailer,"@doctrine"]
+    helper_handler:
+        class: AdminBundle\Services\HelperHandler
+        arguments: ["@request_stack","@doctrine.orm.entity_manager","@doctrine"]
+    app.twig_extension:
+        class: AdminBundle\Twig\AdminExtension
+        public: true
+        arguments: [@doctrine]
+        tags:
+            - { name: twig.extension }  
+    app.locale_listener:
+        class: AdminBundle\EventListener\LocaleListener
+        arguments: ['%kernel.default_locale%']
+        tags:
+            - { name: kernel.event_subscriber }      
+    app.command.newsletter_command:
+        class: AdminBundle\Command\NewsletterCommand
+        arguments: [@mailer,"@doctrine.orm.entity_manager",'@service_container']
+        tags:
+            -  { name: console.command }
+    app.command.workshoprem_command:
+        class: AdminBundle\Command\WorkshopremCommand
+        arguments: [@mailer,"@doctrine.orm.entity_manager",'@service_container']
+        tags:
+            -  { name: console.command }
+    twig.extension.text:
+            class: Twig_Extensions_Extension_Text
+            tags:
+                - { name: twig.extension }        

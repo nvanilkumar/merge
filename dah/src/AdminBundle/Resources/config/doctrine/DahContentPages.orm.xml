@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahContentPages" table="dah_content_pages">
+    <id name="pageid" type="integer" column="pageid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="pageName" type="string" column="page_name" length="100" nullable="true"/>
+    <field name="pageTitle" type="string" column="page_title" length="250" nullable="true"/>
+    <field name="pageUrl" type="string" column="page_url" length="100" nullable="true"/>
+    <field name="pageSubtitle" type="string" column="page_subtitle" length="250" nullable="true"/>
+    <field name="pageContent" type="text" column="page_content" nullable="true"/>
+    <field name="pageImage" type="string" column="page_image" length="50" nullable="true"/>
+    <field name="pageMetaTitle" type="string" column="page_meta_title" length="250" nullable="true"/>
+    <field name="pageMetaKeyword" type="string" column="page_meta_keyword" length="250" nullable="true"/>
+    <field name="pageMetaDescription" type="string" column="page_meta_description" length="250" nullable="true"/>
+    <field name="addedOn" type="integer" column="added_on" nullable="true"/>
+    <field name="updatedOn" type="integer" column="updated_on" nullable="true"/>
+  </entity>
+</doctrine-mapping>

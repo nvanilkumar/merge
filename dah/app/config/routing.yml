@@ -1,0 +1,20 @@
+dah:
+    resource: "@DahBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+admin:
+    resource: "@AdminBundle/Controller/"
+    type:     annotation
+    prefix:   /dah-admin
+
+admin_login_check:
+   path: /dah-admin/login_check 
+   
+adminlogout:
+    path: /dah-admin/logout
+login_check:
+   path: login_check 
+   
+logout:
+    path: logout    

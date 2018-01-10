@@ -1,0 +1,92 @@
+{% extends extend_view %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                <div class="page-header"><h4>Training Assesment</h4></div>
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="panel panel-default grey-bg">
+                            <div class="panel-body">
+                                <form class="form-inline" method="POST" action="">
+                                    <div class="form-group">
+                                        <label for="">Keyword</label>
+                                        <input type="text" class="form-control" id="" name="keyword" placeholder="Keyword" value="{% if app.request.get('keyword')!='' %}{{ app.request.get('keyword') }}{% endif %}">
+                                    </div> &nbsp;
+                                    <div class="form-group">
+                                        <label for="">Department</label>
+                                        <select class="form-control">
+                                            <option>Select Department</option>
+                                        </select>
+                                    </div>
+                                    &nbsp;
+                                    <button type="submit" class="btn btn-primary" id="" name="" value="">Search</button>
+                                    <button type="submit" class="btn btn-default" id="clear" name="reset" value="Reset" >Clear</button>
+                                </form>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col-lg-12">
+                        <h5>Showing <strong>1-2</strong> of <strong>2</strong> Trainings</h5>
+                        <table class="table table-bordered table-responsive table-striped">
+                            <thead>
+                                <tr>
+
+                                    <th>Training title</th>
+                                    <th>Department</th>
+                                    <th>Type</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr data="">
+                                    <td><a href="{{ url('_admin_create_assesment',{'trainingid':23}) }}">Introduction to Big Data</a></td>
+                                    <td>Information Technology </td>
+                                    <td class="text-center"><i class="fa fa-lock" title="Private Training"></i> </td>
+                                    <td class="text-center"> <a href="{{ url('_admin_create_assesment',{'trainingid':23}) }}" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="javascript:;" class="delete btn btn-xs btn-danger" ><i class="fa fa-trash"></i></a> 
+                                    </td>
+                                </tr>
+                                <tr data="">
+                                    <td ><a href="{{ url('_admin_create_assesment',{'trainingid':345}) }}">Foundation of Psycology</a></td>
+                                    <td >Psycology </td>
+                                    <td class="text-center"><i class="fa fa-unlock" title="Public Training"></i> </td>
+                                    <td class="text-center"> <a href="{{ url('_admin_create_assesment',{'trainingid':345}) }}" class="btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href="javascript:;" class="delete btn btn-xs btn-danger" ><i class="fa fa-trash"></i></a> 
+                                    </td>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-12">
+                        <nav class="text-center">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %} 

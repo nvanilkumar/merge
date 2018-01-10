@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahStudentInfo" table="dah_student_info">
+    <indexes>
+      <index name="FK_dah_teachers_info_uid" columns="uid"/>
+      <index name="FK_dah_teachers_info_dep" columns="depid"/>
+    </indexes>
+    <id name="tinfoid" type="integer" column="tinfoid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="uid" type="integer" column="uid" nullable="true"/>
+    <field name="depid" type="integer" column="depid" nullable="true"/>
+    <field name="bio" type="text" column="bio" length="65535" nullable="true"/>
+    <field name="position" type="string" column="position" length="150" nullable="true"/>
+    <field name="exp" type="string" column="exp" length="50" nullable="true"/>
+    <field name="qualification" type="string" column="qualification" length="150" nullable="true"/>
+    <field name="phone" type="string" column="phone" length="30" nullable="true"/>
+    <field name="school" type="string" column="school" length="250" nullable="true"/>
+    <field name="location" type="string" column="location" length="250" nullable="true"/>
+    <field name="updatedOn" type="integer" column="updated_on" nullable="true"/>
+  </entity>
+</doctrine-mapping>

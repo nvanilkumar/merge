@@ -1,0 +1,63 @@
+{% extends extend_view %}
+{% block content %}
+    <link href="{{ asset('assets/monthly/css/monthly.css') }}" rel="stylesheet" type="text/css">
+    <link href='{{ asset('assets/fullcalendar/fullcalendar.css') }}' rel='stylesheet' />
+    <link href='{{ asset('assets/fullcalendar/fullcalendar.print.css') }}' rel='stylesheet' media='print' />
+    <script src='{{ asset('assets/fullcalendar/lib/moment.min.js') }}'></script>
+    <script src='{{ asset('assets/fullcalendar/lib/jquery.min.js') }}'></script>
+    <script src='{{ asset('assets/fullcalendar/fullcalendar.min.js') }}'></script>
+    <script src='{{ asset('assets/fullcalendar/lang-all.js') }}'></script>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12 col-lg-3 pull-right">
+                {% if user.role=='ROLE_TEACHER' %}
+                    {% include 'DahBundle:Account:leftTeacher.html.twig' %}
+                {% elseif user.role=='ROLE_STUDENT' %}
+                    {% include 'DahBundle:Account:left.html.twig' %}
+                {% endif %}
+            </div>
+            <div class="col-md-9 big-col col-sm-8 col-lg-9 col-xs-12 pull-right">
+                <div class="page-header">
+                    <h2>{{ 'account.Calender'|trans }}</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div id='script-warning'>
+                        </div>
+                        <div id='loading'>...{{ 'account.loading'|trans }}</div>
+                        <div id='calendar'></div>
+                    </div>
+                </div>
+            </div>           
+        </div>
+    </div>
+    <script>
+
+        $(document).ready(function () {
+
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek'
+                },
+                defaultDate: '2016-05-12',
+                editable: false,
+                eventLimit: true, // allow "more" link when too many events
+                isRTL: true,
+                lang: "ar",
+                events: {
+                    url: '{{ url('_xmlout') }}',
+                    error: function () {
+                        $('#script-warning').show();
+                    }
+                },
+                loading: function (bool) {
+                    $('#loading').toggle(bool);
+                }
+            });
+
+        });
+
+    </script>
+{% endblock %}

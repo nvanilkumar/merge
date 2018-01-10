@@ -1,0 +1,98 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                <div class="page-header">
+                    <h2>Browse Training</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-4 col-xs-12 col-lg-3 pull-right">
+                        <div class="well">
+                            <form>
+                                <div class="form-group">
+                                    <label for="">{{ 'addtraining.Department'|trans }}</label>
+                                    <select class="form-control" name="department">
+                                        <option value="">{{ 'training.SelectDepartment'|trans }}</option>
+                                        {% for dept in departments %}
+                                            <option value='{{ dept.deptid }}' {% if app.request.get('department')!='' and app.request.get('department')==dept.deptid  %}selected='selected'{% endif %}>{{ dept.department }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Keyword</label>
+                                    <input type="text" class="form-control" name="keyword" value="{% if app.request.get('keyword')!='' %}{{ app.request.get('keyword') }}{% endif %}" placeholder="{{ 'training.Searchfor'|trans }}...">
+
+                                </div>
+
+                                <button type="submit" class="btn btn-default"><i class="fa  fa-search"></i> {{ 'account.Search'|trans }}</button>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="col-md-9 big-col col-sm-8 col-lg-9 col-xs-12 pull-right ">
+
+                        {% if trainings|length>0 %}
+                            <div class="row">
+                                {% for training in trainings %}
+
+                                    <div class="col-md-6 pull-right">
+                                        <div class="training-list">
+                                            {% if training.featured == 1 %}
+                                                <div class="ribbon"></div>
+                                            {% endif %}
+                                            <div class="row">
+                                                <div class="col-md-3 col-sm-12 col-xs-12 pull-right">
+                                                    <a href='{{ url('_profile_teacher',{'uid':training.uid}) }}'> <img class='thumbnail' src="{% if training.avatar is defined and training.avatar!='' %}{{ asset('uploads/')~training.avatar }}{% else %}{{ asset('assets/img/default-user-female.png') }}{% endif %}" width="100%" height="auto" /> </a>
+                                                </div>
+                                                <div class="col-md-9 col-sm-12 col-xs-12 pull-right">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <h4 class=" custom-wrap"><a href="{{ url('_view_training',{'tid':training.tid}) }}">{{ training.training_title|striptags|truncate(25, true, "...")|raw }}</a></h4>
+                                                            <span class="newstextcolor custom-wrap">{{ training.department }}</span>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 pull-right">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <p class="custom-wrap">
+                                                                {{ training.training_description|striptags|truncate(200, true, "...")|raw }} </p>
+                                                            <div class="row">
+                                                                <div class="col-md-4 pull-right"><a href="{{ url('_view_training',{'tid':training.tid}) }}" class="btn btn-block btn-xs btn-success">{{ 'training.ReadMore'|trans }}</a></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="col-md-12 general-empty-content">No latest trainings found.</div>
+                        {% endif %}
+                        {% if paginate is defined and paginate|length>1 %}
+                            <nav class="text-center">
+                                <ul class="pagination">
+
+
+                                    {% for pg in paginate %}
+                                        <li {% if pg.text==page %}class='active'{% endif %} >{% if pg.url is defined %}<a href="{{ pg.url }}">{{ pg.text }}</a>{% else %}<a>{{ pg.text }}</a>{% endif %}</li>
+                                            {% endfor %}
+                                </ul>
+                            </nav>
+                        {% endif %} 
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

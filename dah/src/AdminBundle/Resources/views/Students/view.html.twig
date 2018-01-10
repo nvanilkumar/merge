@@ -1,0 +1,58 @@
+{% extends extend_view %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <h4>View Student</h4>
+                        </div>
+                        <div class="col-lg-2">
+                            {% if student.status == 'active' and  student.is_active == 1 %}
+                                <td><a href="javascript:;" data="active" class="status btn btn-xs btn-success"><i class="fa fa-circle"></i> Active</a></td>
+                            {% else %}
+                                <td><a href="javascript:;" data="inactive" class="status btn btn-xs btn-danger"><i class="fa fa-circle-o"></i> Inactive</a></td>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="well well-sm">
+
+                            <div class="text-center">
+                                <img alt="" class="img-thumbnail" src="{% if student.avatar is defined and student.avatar!='' %}{{ asset('uploads/')~student.avatar }}{% else %}{{ asset('assets/img/default-user-female.png') }}{% endif %}">
+                            </div>
+                            <div class="info">
+                                <div class="title">
+                                    <h4>{% if student.fname is defined and student.lname is defined %}{{ student.fname~' '~student.lname }}{% endif %}</h4>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <dl class="dl-horizontal">
+                            <dt>Full name :</dt>
+                            <dd>{% if student.fname is defined and student.lname is defined %}{{ student.fname~' '~student.lname }}{% endif %}</dd>
+                            <dt>Email :</dt> 
+                            <dd>{% if student.email is defined  %}{{ student.email }}{% endif %}</dd> 
+
+                            <dt>Last Login :</dt>
+                            <dd>1 Hour ago</dd>
+                        </dl>
+                    </div>
+
+                </div>
+                
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %} 

@@ -1,0 +1,144 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                {% if mode=='add' %}
+                    <div class="page-header"><h4>Add new training</h4></div>
+                {% else %}
+                    <div class="page-header"><h4>Edit training</h4></div>
+                {% endif %}
+                <div class="row">
+                    <form class="form-horizontal" method="post" id="admin-add-new-page-form"  enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Training title <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+
+                                <input type="text" class="form-control " dir='rtl' id="" placeholder="" name="trainingTitle" value="{% if app.request.get('trainingTitle')!='' %}{{ app.request.get('trainingTitle') }}{% elseif training.trainingTitle is defined %}{{ training.trainingTitle  }}{% endif %}">
+                                {% if error.trainingTitle is defined %}<div class="form-error-content">{{ error.trainingTitle }}</div>{% endif %}
+                            </div>
+                        </div>   
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Department <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+                                <select class='form-control' dir='rtl' name='department'>
+                                    <option value=''>Select</option>
+                                    {% for department in departments %}
+                                        <option value='{{ department.deptid }}' {% if app.request.get('department')!='' and app.request.get('department') == department.deptid %}selected='selected'{% elseif training.deptid.deptid is defined and training.deptid.deptid == department.deptid %}selected='selected'{% endif %} >{{ department.department }}</option>
+                                    {% endfor %}
+                                </select>
+
+
+                                {% if error.department is defined %}<div class="form-error-content">{{ error.department }}</div>{% endif %}
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Training description <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+
+                                <textarea class="form-control ckeditor " dir='rtl' name="trainingDescription">{% if app.request.get('trainingDescription')!='' %}{{ app.request.get('trainingDescription') }}{% elseif training.trainingDescription  is defined %}{{ training.trainingDescription  }}{% endif %}</textarea>
+                                {% if error.trainingDescription is defined %}<div class="form-error-content">{{ error.trainingDescription }}</div>{% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Asign Teacher/Trainer <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+                                <select class='form-control' dir='rtl' name='teacher'>
+                                    <option value=''>Select</option>
+                                    {% for teacher in teachers %}
+                                        <option value='{{ teacher.uid }}' {% if app.request.get('teacher')!='' and app.request.get('teacher') == teacher.uid %}selected='selected'{% elseif training.uid.uid is defined and training.uid.uid == teacher.uid %}selected='selected'{% endif %} >{{ teacher.lname~' '~teacher.fname }}</option>
+                                    {% endfor %}
+                                </select>
+
+
+                                {% if error.teacher is defined %}<div class="form-error-content">{{ error.teacher }}</div>{% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Meta title</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="" placeholder="Meta title" name="trainingMetaTitle" 
+                                       value="{% if app.request.get('trainingMetaTitle')!='' %}{{ app.request.get('trainingMetaTitle') }}{% elseif training.trainingMetaTitle is defined %}{{ training.trainingMetaTitle  }}{% endif %}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Meta keywords</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="" placeholder="Meta keywords" name="trainingMetaKeyword" 
+                                       value="{% if app.request.get('trainingMetaKeyword')!='' %}{{ app.request.get('trainingMetaKeyword') }}{% elseif training.trainingMetaKeyword is defined %}{{ training.trainingMetaKeyword  }}{% endif %}">
+                            </div>
+                        </div>   
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Meta description</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control " id="" name="trainingMetaDescription">{% if app.request.get('trainingMetaDescription')!='' %}{{ app.request.get('trainingMetaDescription') }}{% elseif training.trainingMetaDescription  is defined%}{{training.trainingMetaDescription }}{%endif%}</textarea>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Visibility <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+                                <label class="radio-inline">
+                                    <input type="radio" id="" value="yes" name='public' {% if app.request.get('public')!='' and app.request.get('public') == 'yes' %}checked='checked'{% elseif training.public is defined and training.public == 'yes' %}checked='checked'{% endif %} > Public
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" id="" value="no" name='public' {% if app.request.get('public')!='' and app.request.get('public') == 'no' %}checked='checked'{% elseif training.public is defined and training.public == 'no' %}checked='checked'{% endif %} > Private
+                                </label>   
+                                {% if error.public is defined %}<div class="form-error-content">{{ error.public }}</div>{% endif %}
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Assesment <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+                                <label class="radio-inline">
+                                    <input type="radio" id="" value="yes" name='assesment' {% if app.request.get('assesment')!='' and app.request.get('assesment') == 'yes' %}checked='checked'{% elseif training.assesment is defined and training.assesment == 'yes' %}checked='checked'{% endif %} > Yes
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" id="" value="no" name='assesment' {% if app.request.get('assesment')!='' and app.request.get('assesment') == 'no' %}checked='checked'{% elseif training.assesment is defined and training.assesment == 'no' %}checked='checked'{% endif %} > No
+                                </label>   
+                                {% if error.assesment is defined %}<div class="form-error-content">{{ error.assesment }}</div>{% endif %}
+                            </div>
+                        </div>                       
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-8">
+                                <button type="submit" class="btn btn-primary" name="submit" value="submit" >Save and continue</button>
+                            </div>
+                        </div>
+
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#myModal").on("show.bs.modal", function (e) {
+            var link = $(e.relatedTarget);
+            $(this).find(".modal-content").load(link.attr("href"));
+        });
+        CKEDITOR.replace('trainingDescription', {
+            contentsLangDirection: 'rtl',
+            language: 'ar',
+        });
+    </script>
+    <script type='text/javascript'>
+       
+    </script>
+{% endblock %} 

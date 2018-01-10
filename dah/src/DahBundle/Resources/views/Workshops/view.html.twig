@@ -1,0 +1,301 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                <div class="page-header">
+                    <div class="row">
+
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 pull-right">
+                            <h2 class="newstextcolor custom-wrap">{{ workshop.workshopTitle }} </h2>
+
+                            <h4 class=" custom-wrap" dir="ltr"><i class="fa fa-calendar" aria-hidden="true"></i> {% if workshop.fromDate > 0 and workshop.toDate > 0 %}
+                                <strong>{{ workshop.fromDate|date('d M Y') }}</strong> to <strong>{{ workshop.toDate|date('d M Y') }}</strong>
+                                {% elseif workshop.fromDate > 0 %}
+                                    <strong>{{ workshop.fromDate|date('d M Y') }}</strong> 
+                                    {% else %}
+                                        N/A
+                                        {% endif %}</h4>
+
+                                    </div>
+                                    {# <div class="col-md-2 col-sm-12 col-xs-12 col-lg-2 pull-right">
+                                         <a href="{{ url('_trainingslist') }}" class="btn btn-primary"> Back to Trainings <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                                     </div>#}
+                                </div>
+
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-4 col-sm-5 col-xs-12 col-lg-4 pull-right">
+                                    <div class="well">
+                                        <h4 class="page-header custom-wrap" >{{ workshop.workshopSubtitle }}</h4>
+                                        {% if workshop.workshopVenue is defined and workshop.workshopVenue != '' %}
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th class="text-right">
+                                                        <i class="fa fa-map-marker fa-2x pull-right"></i>&nbsp;{{ workshop.workshopVenue }}
+                                                    </th>
+                                                </tr>
+
+                                            </table>
+                                        {% endif %}
+                                        {% if workshop.deptid.department is defined %}
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th class="text-right">
+                                                        {{ 'workshop.Department'|trans }}
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-right">
+                                                        {{ workshop.deptid.department }}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        {% endif %}
+                                        {% if workshop.workshopSchedule is defined and workshop.workshopSchedule != '' %}
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th class="text-right">
+                                                        {{ 'workshop.Schedule'|trans }}
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-right">
+                                                        {{ workshop.workshopSchedule|raw }}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        {% endif %}
+                                        {% if workshop.SpeakersInfo is defined and workshop.SpeakersInfo != '' %}
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th class="text-right">
+                                                        {{ 'workshop.Speakers'|trans }}
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-right">
+                                                        {{ workshop.SpeakersInfo|raw }}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        {% endif %}
+                                        {% if materials|length > 0 %}
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th class="text-right">
+                                                        {{ 'account.WorkshopMaterial'|trans }}
+                                                    </th>
+                                                </tr>
+                                                {% for material in materials %}
+                                                <tr>
+                                                    <td class="text-right">
+                                                        <a class="" href="{{ url('_generic_download_act',{'filename':material.materialupload})  }}" target="_blank" >{% if material.ftitle != '' %}{{ material.ftitle }}{% else %}Untitled{% endif %}</a>
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                            </table>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8 big-col col-sm-7 col-lg-8 col-xs-12 pull-right ">      
+                                    {% if workshop.workshopContent is defined and workshop.workshopContent != '' %}
+                                        <div class="row">
+                                            <div class="col-md-12 pull-right">{{ workshop.workshopContent|raw }}</div>
+                                        </div>
+                                    {% endif %}
+
+                                    <div class="row">
+                                        {% if app.user %}
+                                            {% if app.user.role=='ROLE_STUDENT' %}
+                                                <div class="col-md-12 pull-right">
+                                                    <button type="submit" class="btn btn-lg btn-info" data-wid='{{ workshop.wid }}' id='enroll-workshop-logged-in' ><i class="fa fa-bookmark" aria-hidden="true" ></i> {{ 'workshop.EnrollNow'|trans }}</button> 
+                                                </div>
+                                            {% endif %}
+
+                                        {% else %}
+                                            <div class="col-md-12 pull-right">
+                                                <button type="submit" class="btn btn-lg btn-info"  data-toggle="modal" data-target="#enrollNow"><i class="fa fa-bookmark" aria-hidden="true" ></i> {{ 'workshop.EnrollNow'|trans }}</button> 
+                                            </div>
+                                        {% endif %}
+
+                                    </div>
+                                        <hr/>
+                                    <div class="row">
+                                        {% if workshop.public is defined and workshop.public == 'yes' %}
+                                         <script src="{{ asset('assets/js/jwplayer/jwplayer.js') }}"></script>
+                                        {% for video in videos %}
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        {% if  video.video_title != '' %}{{ video.video_title }}{% else %} {{ 'training.UntitledVideo'|trans }} {% endif %}
+                                                    </h4>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="col-md-12 video-player">
+                                                        <div class="" id="videoID-{{ video.tvid }}"></div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <p>{{ video.video_desc }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script type='text/javascript'>
+                                                jwplayer('videoID-{{ video.tvid }}').setup({
+                                                    flashplayer: '{{ asset('assets/js/jwplayer/player.swf') }}',
+                                                    file: '{{ asset('uploads/'~video.video) }}',{# file: '{{ asset('uploads/vid_bf6ab081987348145e0b08bdb24040e7.mp4') }}',#}
+                                                    image: "{% if video.video_thumbnail!='' %}{{ asset('uploads/'~video.video_thumbnail) }}{% else %}{{ asset('assets/img/btn-videoplayoverlay.png') }}{% endif %}",
+                                                    "width": "100%",
+                                                    events: {
+                                                        onPlay: function (callback) {
+                                                        }
+                                                    }
+                                                });
+                                            </script>
+                                        {% endfor %}
+                                        {% endif %}
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="enrollNow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                                <h4 class="modal-title" id="myModalLabel">{{ 'workshop.EnrollNow'|trans }}</h4>
+                            </div>
+                            <form method="post" class="form-horizontal" id="enroll-workshop-form" >
+                                <div class="modal-body" id="">
+
+                                    <p class=' red-text'>{{ 'workshop.ByenrollingtothisWorkshopyouareagreeingtoreceiveemailsandremaindersaboutthisWorkshop'|trans }}</p>
+                                    <div id='enrollNowMessages'></div>
+                                    <div class="form-group">
+
+                                        <div class="col-sm-9">
+
+                                            <input type="text" class="form-control" dir='rtl' id="" placeholder="First Name" maxlength='100' name="fname" value="">
+                                        </div>
+                                        <label for="" class="col-sm-3 control-label"><span class="red-text">*</span> {{ 'account.FirstName'|trans }}</label>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <div class="col-sm-9">
+
+                                            <input type="text" class="form-control" dir='rtl' id="" placeholder="Last Name" maxlength='100' name="lname" value="">
+                                        </div>
+                                        <label for="" class="col-sm-3 control-label"><span class="red-text">*</span> {{ 'account.LastName'|trans }}</label>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <div class="col-sm-9">
+
+                                            <input type="text" class="form-control" dir='ltr' id="" placeholder="Email" maxlength='200' name="email" value="">
+                                        </div>
+                                        <label for="" class="col-sm-3 control-label"><span class="red-text">*</span> {{ 'account.EmailID'|trans }}</label>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <div class="col-sm-9">
+
+                                            <input type="text" class="form-control" dir='rtl' id="" placeholder="Phone number" maxlength='15' name="phone" value="">
+                                        </div>
+                                        <label for="" class="col-sm-3 control-label"><span class="red-text">*</span> {{ 'account.Phonenumber'|trans }}</label>
+                                    </div>
+
+                                </div>
+                                <input type='hidden' name='wid' value='{{ workshop.wid }}' />
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" id='close-enroll-model' data-dismiss="modal">{{ 'workshop.Cancel'|trans }}</button>
+                                    <button type="submit" class="btn btn-primary" data-wid="{{ workshop.wid }}"  >{{ 'workshop.Enroll'|trans }}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                                <script>
+        $('body').on('click', '.close-video', function () {
+            var vidid = $(this).attr('data-vidid');
+            jwplayer(vidid).stop();
+        });
+        function toggleChevron(e) {
+            $(e.target)
+                    .prev('.panel-heading')
+                    .find("i.indicator")
+                    .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+        }
+        $('#accordion').on('hidden.bs.collapse', toggleChevron);
+        $('#accordion').on('shown.bs.collapse', toggleChevron);
+
+        (function ($) {
+            var elements = $('.video-player > div, .video-player object'),
+                    playerIds = [];
+            elements.each(function (i, player) {
+                console.log(player.id);
+                playerIds.push(player.id);
+            });
+            $.each(playerIds, function (i, id) {
+                jwplayer(id).onPlay(function () {
+                    $.each(playerIds, function (x, pid) {
+                        if (id === pid)
+                            return true;
+                        jwplayer(pid).stop();
+                    });
+                });
+            });
+        })(jQuery);
+    </script>
+                <script type='text/javascript'>
+                    $('body').on('click', '#enroll-workshop-logged-in', function () {
+
+                        //$('#enrollNow').modal('hide');
+                        var wid = $(this).attr('data-wid');
+                        var dis = $(this);
+                        dis.html('Enrolling....');
+                        dis.addClass('disabled');
+                        //alert(enroll_to_workshop_url);
+                        //  dis.removeAttr('id');
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '{{ url('enroll_to_workshop') }}',
+                            data: {'wid': wid},
+                            dataType: 'json'
+                        })
+                                .done(function (response) {
+
+                                    if (response.status == "success") {
+                                        $('#enrollNowMessagesTraining').html(response.message);
+                                        timeout = setTimeout(function () {
+                                            $('#enrollNowTraining').modal('hide');
+                                        }, 5000);
+                                        flashmessage(response.message, response.status);
+                                        dis.html('<i class="fa fa-bookmark" aria-hidden="true" ></i> {{ 'workshop.EnrollNow'|trans }}');
+                                        dis.removeClass('disabled');
+                                        // dis.addAttr('id','enroll-workshop-logged-in');
+                                    }
+                                    else {
+                                        $('#enrollNowMessagesTraining').html(response.message);
+                                        // setTimeout(function () {
+                                        //     $('#newsletter-messages').html('');
+                                        // }, 5000);
+
+                                        flashmessage(response.message, response.status);
+                                        dis.html('<i class="fa fa-bookmark" aria-hidden="true" ></i> {{ 'workshop.EnrollNow'|trans }}');
+                                        dis.removeClass('disabled');
+                                        //  dis.addAttr('id','enroll-workshop-logged-in');
+                                    }
+
+                                });
+                    });
+                </script>
+                {% endblock %}

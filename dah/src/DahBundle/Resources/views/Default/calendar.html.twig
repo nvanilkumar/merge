@@ -1,0 +1,105 @@
+{% extends extend_view %}
+{% block content %}
+    <link href="{{ asset('assets/monthly/css/monthly.css') }}" rel="stylesheet" type="text/css">
+    <link href='{{ asset('assets/fullcalendar/fullcalendar.css') }}' rel='stylesheet' />
+    <link href='{{ asset('assets/fullcalendar/fullcalendar.print.css') }}' rel='stylesheet' media='print' />
+    <script src='{{ asset('assets/fullcalendar/lib/moment.min.js') }}'></script>
+    <script src='{{ asset('assets/fullcalendar/lib/jquery.min.js') }}'></script>
+    <script src='{{ asset('assets/fullcalendar/fullcalendar.min.js') }}'></script>
+    <script src='{{ asset('assets/fullcalendar/lang-all.js') }}'></script>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 pull-right">
+                            <h2 class="custom-wrap">{{ 'footer.Calendar'|trans }}</h2>
+                        </div>
+                        {# <div class="col-md-2 col-sm-12 col-xs-12 col-lg-2 pull-right">
+                             <a href="{{ url('_trainingslist') }}" class="btn btn-primary"> Back to Trainings <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                         </div>#}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-5 col-xs-12 col-lg-4 pull-right">
+                        <div class="panel panel-default panel-styled ">
+                            <div class="panel-heading"><h4>{{ 'account.LatestTrainings'|trans }}</h4></div>
+                                    {% if trainings|length>0 %}
+                                <ul class="list-group" style="padding: 0px!important;">
+                                    {% for training in trainings %}
+                                        <li class="list-group-item"><a href="{{ url('_view_training',{'tid':training.tid}) }}">{{ training.training_title|striptags|truncate(70, true, "...")|raw }}</a></li>
+                                        {% endfor %}
+                                </ul>
+                            {% else %}
+                                <div class="panel-body">
+                                    <div class="empty-content">
+                                        {{ 'account.Nolatesttrainingsfound'|trans }}.
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="panel-footer"><a href="{{ url('_trainingslist') }}"> {{ 'account.Viewall'|trans }} <i class="fa fa-angle-double-left"></i></a></div>
+                        </div>
+                        <div class="panel panel-default panel-styled">
+                            <div class="panel-heading"><h4>{{ 'account.LatestNews'|trans }}</h4></div>
+                                    {% if news|length>0 %}
+                                <ul class="list-group" style="padding: 0px!important;">
+                                    {% for n in news %}
+                                        <li class="list-group-item"><a href="{{ url('_view_news',{'newsid':n.newsid}) }}">{{ n.news_title|striptags|truncate(70, true, "...")|raw }}</a></li>
+                                        {% endfor %}
+                                </ul>
+                            {% else %}
+                                <div class="panel-body">
+                                    <div class="empty-content">
+                                        {{ 'account.Nolatestnewsfound'|trans }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="panel-footer"><a href="{{ url('_news') }}"> {{ 'account.Viewall'|trans }} <i class="fa fa-angle-double-left"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 big-col col-sm-7 col-lg-8 col-xs-12 pull-right "> 
+                        <div class="row row-spacing">
+                            <div class="col-md-12">
+                                <div id='script-warning'>
+                                </div>
+                                <div id='loading'>...{{ 'account.loading'|trans }}</div>
+                                <div id='calendar'></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        $(document).ready(function () {
+
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek'
+                },
+                defaultDate: '2016-05-12',
+                editable: false,
+                eventLimit: true, // allow "more" link when too many events
+                isRTL: true,
+                lang: "ar",
+                events: {
+                    url: '{{ url('_xmlout') }}',
+                    error: function () {
+                        $('#script-warning').show();
+                    }
+                },
+                loading: function (bool) {
+                    $('#loading').toggle(bool);
+                }
+            });
+
+        });
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahQuestionOptions" table="dah_question_options">
+    <indexes>
+      <index name="FK_dah_question_options" columns="qid"/>
+    </indexes>
+    <id name="opid" type="integer" column="opid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="options" type="text" column="options" nullable="true"/>
+    <many-to-one field="qid" target-entity="DahTrainingQuestions">
+      <join-columns>
+        <join-column name="qid" referenced-column-name="qid"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

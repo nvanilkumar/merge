@@ -1,0 +1,126 @@
+{% extends extend_view %}
+{% block content %}
+    <!-- HERO UNIT -->
+    <section class="hero-unit-slider no-margin">
+        <div id="carousel-hero" class="slick-carousel">
+            <div class="main-background"> 
+
+                <div class="row row1">
+                    <div class="col-md-8 col-sm-2 col-xs-1"></div>
+                    {% if app.user %}
+                        <div class="col-md-3 col-sm-8 col-xs-10" style='height: 267px; width: 301px;' ></div>
+                    {% else %}
+                        <div class="col-md-3 col-sm-8 col-xs-10 login-opacity">
+
+                            <div class="login-box-body">
+                                <p class="login-right">{{ 'home.login.header'|trans }}</p>
+                                <div class="box-login">
+                                    <br />
+                                    {% if error is defined and error!='' %}
+                                        <div class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                            {% if error.message=='Bad credentials.' %}{{ 'common.invalidCredentials'|trans }}{% elseif error.message=='User account is disabled.' %}{{ 'common.Useraccountisdisabled'|trans }}{% else %}{{ error.message }}{% endif %}
+                                        </div>
+                                    {% endif %}
+                                    <form action="{{ url('login_check') }}" method="post" id='member-logiform' >
+                                        <div class="form-group has-feedback">
+                                            <input type="text" class="form-control" dir="ltr" name="_email" value="{% if app.request.get('_email')!='' %}{{ app.request.get('_email') }}{% endif %}" placeholder="{{ 'home.login.email'|trans }}"/>
+                                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <input type="password"  name="_password" dir="ltr" class="form-control" placeholder="{{ 'home.login.password'|trans }}"/>
+                                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-8" >    
+                                                <div class="checkbox icheck">
+                                                    <label> {{ 'home.login.rememberMe'|trans }}</label> <input type="checkbox" name="_remember_me" value="yes"  />
+                                                </div>                        
+                                            </div><!-- /.col -->
+                                            <div class="col-xs-4">
+                                                <button type="submit" class="btn btn-primary btn-block btn-flat">{{ 'home.login.signIn'|trans }}</button>
+                                            </div><!-- /.col -->
+                                        </div>
+                                    </form>
+                                </div>
+                                <br />
+                                <div class="row" >
+                                    <div class="col-md-6 col-sm-6 col-xs-6" style="text-align:left;">
+                                        <a href="{{ url('_user_forgotpassword') }}" class="text-center">{{ 'home.login.forgotPassword'|trans }}</a>            
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6" style="text-align:right;">    
+                                        <a href="{{ url('_choose_user_type') }}" data-toggle="modal"  data-target="#myModal"  >{{ 'home.login.newMembership'|trans }}</a> 	
+                                    </div>         
+
+                                </div><!-- /.social-auth-links -->
+                                <br />
+
+                            </div>
+
+                        </div>
+                    {% endif %}
+
+                    <div class="col-md-1 col-sm-2 col-xs-1"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END HERO UNIT -->
+    <!-- MAIN FEATURES -->
+    <section>
+        <div class="row" style="margin:0px!important;">
+            <div class="col-md-3 col-sm-6 cat-div-col-1" style="text-align:center; color:#FFF"><i class="fa fa-fw fa-gear fa-3x "></i>
+                <br><br><h3 class="feature-heading"><a href="{{ url('_pages',{'link':'Useful-Research'}) }}">{{ 'home.features.usefulResearchandJournal'|trans }}</a></h3></div>
+            <div class="col-md-3 col-sm-6 cat-div-col-2" style="text-align:center; color:#FFF"><i class="fa fa-fw fa-file-text-o fa-3x "></i>
+                <br><br><h3 class="feature-heading"><a href="{{ url('_pages',{'link':'Teacher-Diploma'}) }}">{{ 'home.features.teacherDiploma'|trans }}</a></h3></div>
+            <div class="col-md-3 col-sm-6 cat-div-col-3" style="text-align:center; color:#FFF"><i class="fa fa-fw fa-graduation-cap fa-3x "></i>
+                <br><br><h3 class="feature-heading"><a href="{{ url('_pages',{'link':'Principals-Diploma'}) }}">{{ 'home.features.principalsDiploma'|trans }}</a></h3></div>
+            <div class="col-md-3 col-sm-6 cat-div-col-4" style="text-align:center; color:#FFF"><i class="fa fa-fw fa-paperclip fa-3x "></i>
+                <br><br><h3 class="feature-heading"><a href="{{ url('_pages',{'link':'Experienced-Summit'}) }}">{{ 'home.features.experiencedSummit'|trans }}</a></h3></div>
+        </div>
+    </section>
+    <!-- END MAIN FEATURES -->
+    <!-- INTRO -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" style="text-align:center;">
+                    {% if page.pageImage is defined and page.pageImage!='' %}
+                        <img src="{{ asset('uploads/'~page.pageImage) }}"  align="center" />
+                    {% endif %}
+                    {% if page.pageTitle is defined and page.pageTitle!='' %}
+                        <h2> {{ page.pageTitle }} </h2>
+                    {% endif %}
+                    {% if page.pageSubtitle is defined and page.pageSubtitle!='' %}
+                        <h4 class="help-block"> {{ page.pageSubtitle }} </h4>
+                    {% endif %}
+                    {% if page.pageContent is defined and page.pageContent!='' %}
+                        {{ page.pageContent|raw }}
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END INTRO -->
+    <!-- RECENT WORKS -->
+    {#<section class="recent-works">
+        <div class="container">
+            <div class="clearfix"></div>
+            <div class="portfolio-static">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="col-md-12" style="background-color:#f2a633; min-height:300px;"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-12" style="background-color:#287e7a; min-height:300px;"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-12" style="background-color:#334878; min-height:300px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>#}
+    <!-- END RECENT WORKS -->
+
+{% endblock %}

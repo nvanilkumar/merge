@@ -1,0 +1,54 @@
+<?php
+
+namespace AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DahDepartments
+ *
+ * @ORM\Table(name="dah_departments")
+ * @ORM\Entity
+ */
+class DahDepartments
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="department", type="string", length=100, nullable=false)
+     */
+    private $department;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", nullable=false)
+     */
+    private $status;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="added_on", type="integer", nullable=false)
+     */
+    private $addedOn;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="updated_on", type="integer", nullable=false)
+     */
+    private $updatedOn;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="deptid", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $deptid;
+
+
+}
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahNewsletterMessageQueue" table="dah_newsletter_message_queue">
+    <indexes>
+      <index name="FK_dah_newsletter_message_queue" columns="newsid"/>
+    </indexes>
+    <id name="nqid" type="integer" column="nqid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="email" type="string" column="email" length="150" nullable="true"/>
+    <field name="status" type="string" column="status" nullable="true"/>
+    <field name="publishdate" type="integer" column="publishdate" nullable="true"/>
+    <many-to-one field="newsid" target-entity="DahNews">
+      <join-columns>
+        <join-column name="newsid" referenced-column-name="newsid"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

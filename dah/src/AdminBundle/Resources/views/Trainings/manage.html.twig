@@ -1,0 +1,234 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                <div class="page-header">
+                    <div class="row">
+                        <h4 class='col-sm-8'>Manage Trainings</h4>
+                        <div class="col-sm-4 text-right">
+                            <a  href="{{ url('_admin_add_new_training') }}"  class="btn btn-success"><i class="fa fa-plus"></i> Add new Training</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default grey-bg">
+                            <div class="panel-body">
+                                <form class="form-inline" method="get" action="">
+                                    <div class="form-group">
+                                        <label for="">Keyword</label>
+                                        <input type="text" class="form-control" id="" name="keyword" placeholder="Keyword" value="{% if app.request.get('keyword')!='' %}{{ app.request.get('keyword') }}{% endif %}">
+                                    </div> &nbsp;
+                                    <div class="form-group">
+                                        <label for="">Department</label>
+                                        <select class="form-control">
+                                            <option>Select Department</option>
+                                        </select>
+                                    </div>
+                                    &nbsp;
+                                    <button type="submit" class="btn btn-primary" id="" name="" value="">Search</button>
+                                    <button type="submit" class="btn btn-default" id="clear" name="reset" value="Reset" >Clear</button>
+                                </form>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col-lg-12">
+                        {% if range is defined and totalpages is defined%}
+                            <h5>Showing <strong>{{range}}</strong> of <strong>{{totalpages}}</strong> Trainings</h5>
+                        {%endif%}
+                        <table class="table table-bordered table-responsive table-striped">
+                            <thead>
+                                <tr>
+                                    <th rowspan='2' width="20%" >Title</th>
+                                    <th rowspan='2' width="12%">Department</th>
+                                    <th rowspan='2' class="text-center" width="10%">Type</th>
+                                    <th colspan='2' width="13%">Student Enrollment Status</th>
+                                    <th rowspan='2' width="4%">Need assesment</th>
+                                    <th rowspan='2' width="4%">Videos</th>
+                                    <th rowspan='2' width="32%">Actions</th>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">Enrolled</th>
+                                    <th class="text-center">Certificate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for training in trainings %}
+                                    <tr data="{{ training.tid }}">
+                                        <td class="text-right custom-wrap"><a href="{{ url('_view_training',{'tid':training.tid}) }}" target="_blank">{{ training.training_title }}</a></td>
+                                        <td class="text-right custom-wrap">{{ training.department }} </td>
+                                        {% if training.public == 'no' %}
+                                            <td class="text-center"><i class="fa fa-lock" title="Private Training"></i></td>
+                                            {% else %}
+                                            <td class="text-center"><i class="fa fa-unlock" title="Public Training"></i></td>
+                                            {% endif %}
+                                        <td class="text-center"><a href="{{ url('_admin_students_enrollment',{'tid':training.tid}) }}">{{ getUserTrainingEnrollCount(training.tid) }}</a></td>
+                                        <td class="text-center"><a href="{{ url('_admin_students_enrollment',{'tid':training.tid}) }}">{{ getUserTrainingCertCount(training.tid) }}</a></td>
+                                        <td class="text-right custom-wrap">
+                                            {% if training.assesment=='yes' %}
+                                                <span class="label label-success">Yes</span> 
+                                            {% else %}
+                                                <span class="label label-danger">No</span> 
+                                            {% endif %}
+                                        </td>
+                                        <td class="text-right custom-wrap">
+                                            {% if checkIsVideo(training.tid)=='yes' %}
+                                                <span class="label label-success">Yes</span> 
+                                            {% else %}
+                                                <span class="label label-danger">No</span> 
+                                            {% endif %}
+                                        </td>
+                                        <td class="actionMenuBar">
+                                            <a href="{{ url('_admin_edit_training',{'tid':training.tid}) }}" class="btn btn-xs btn-default" title='Edit Training'><i class="fa fa-pencil"></i></a> 
+                                            <a href="javascript:;" data-tid="{{ training.tid }}" class="delete btn btn-xs btn-danger" title='Delete Training'><i class="fa fa-trash"></i></a> {% if training.assesment=='yes' %}<a href="{{ url('_admin_create_assesment',{'tid':training.tid}) }}" class="btn btn-xs btn-default" title='Training Assessment'><i class="fa fa-newspaper-o"></i></a> {% endif %}
+                                            <a href="{{ url('_admin_upload_videos',{'tid':training.tid}) }}" class="btn btn-xs btn-default" title='Upload Training Video'><i class="fa fa-video-camera"></i></a> 
+                                             <a href="{{ url('_admin_upload_material',{'tid':training.tid}) }}" class="btn btn-xs btn-default" title='Upload Training Material'><i class="fa fa-file"></i></a> 
+                                            <a href="javascript:;" data-tid="{{ training.tid }}" class="change-publish-status btn btn-xs {% if training.status=='active' %}btn-success{% else %}btn-danger{% endif %}">{% if training.status=='active' %}<i class="fa fa-check-circle-o" aria-hidden="true" title='Deactive'></i>{% else %}<i class="fa fa-circle-o" title='Active' aria-hidden="true" ></i>{% endif %}</a>
+                                            <a href="javascript:;" data-tid="{{ training.tid }}" class="change-featured-status btn btn-xs {% if training.featured==1 %}btn-warning{% else %}btn-default{% endif %}">{% if training.featured==1 %}<i class="fa fa-star" aria-hidden="true"  title='Unfavourite'></i>{% else %}<i class="fa fa-star-o" aria-hidden="true" title='Favourite'></i>{% endif %}</a>
+                                             <a href="{{ url('_admin_training_invitation',{'tid':training.tid}) }}" class="btn btn-xs btn-default" title='Training Invitation'><i class="fa fa-envelope-o"></i></a>
+                                            
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-12">
+                        {% if paginate is defined and paginate|length>1 %}
+                            <nav class="text-center">
+                                <ul class="pagination">
+
+
+                                    {% for pg in paginate %}
+                                        <li {% if pg.text==page %}class='active'{% endif %} >{% if pg.url is defined %}<a href="{{ pg.url }}">{{ pg.text }}</a>{% else %}<a>{{ pg.text }}</a>{% endif %}</li>
+                                            {% endfor %}
+                                </ul>
+                            </nav>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#myModal").on("show.bs.modal", function (e) {
+            var link = $(e.relatedTarget);
+            $(this).find(".modal-content").load(link.attr("href"));
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+
+
+
+
+
+
+
+
+            $('body').on('click', '.delete', function () {
+
+                if (confirm("Are you sure , you want to delete?"))
+                {
+                    var contentid = $(this).parent('td').parent('tr').attr("data");
+                    var d = $(this).parent('td').parent('tr').find('td:eq(0)').text();
+                    $.ajax({
+                        url: "{{ url('training_delete') }}",
+                        type: "POST",
+                        data: "contentid=" + contentid + "&pageName=" + d,
+                        success: function (response)
+                        {
+                            if (response.status == "success")
+                            {
+                                flashmessage(response.message, response.status);
+                                $('tr[data=' + contentid + ']').remove();
+                                location.reload();
+                            }
+
+                        }});
+                }
+            });
+
+            $('body').on('click', '.change-publish-status', function () {
+
+                    var contentid = $(this).parent('td').parent('tr').attr("data");
+                    var d = $(this).parent('td').parent('tr').find('td:eq(0)').text();
+                    var dis = $(this);
+                    $.ajax({
+                        url: "{{ url('training_status') }}",
+                        type: "POST",
+                        data: "tid=" + contentid ,
+                        success: function (response)
+                        {
+                            if (response.status == "success")
+                            {
+                                flashmessage(response.message, response.status);
+                               // $('tr[data=' + contentid + ']').remove();
+                                //location.reload();
+                                if(response.response.status=='active')
+                                {
+                                    dis.html('<i class="fa fa-check-circle-o" aria-hidden="true"></i>');
+                                    dis.removeClass('btn-danger');
+                                    dis.addClass('btn-success');
+                                }
+                                else
+                                {
+                                    dis.html('<i class="fa fa-circle-o" aria-hidden="true"></i>');
+                                    dis.removeClass('btn-success');
+                                    dis.addClass('btn-danger');
+                                }
+                            }
+
+                        }});
+            });
+
+             $('body').on('click', '.change-featured-status', function () {
+
+                    var contentid = $(this).parent('td').parent('tr').attr("data");
+                    var d = $(this).parent('td').parent('tr').find('td:eq(0)').text();
+                    var dis = $(this);
+                    $.ajax({
+                        url: "{{ url('training_featured') }}",
+                        type: "POST",
+                        data: "tid=" + contentid ,
+                        success: function (response)
+                        {
+                            if (response.status == "success")
+                            {
+                                flashmessage(response.message, response.status);
+                               // $('tr[data=' + contentid + ']').remove();
+                                //location.reload();
+                                if(response.response.status==1)
+                                {
+                                    dis.html('<i class="fa fa-star" aria-hidden="true"></i>');
+                                    dis.removeClass('btn-default');
+                                    dis.addClass('btn-warning');
+                                }
+                                else
+                                {
+                                    dis.html('<i class="fa fa-star-o" aria-hidden="true"></i>');
+                                    dis.removeClass('btn-warning');
+                                    dis.addClass('btn-default');
+                                }
+                            }
+
+                        }});
+            });
+
+
+
+
+
+        });
+    </script>
+{% endblock %} 

@@ -1,0 +1,108 @@
+<form method="post" class="form-horizontal" id="add-mcq-form" action="">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {% if mode == 'add' %}
+            <h4 class="modal-title" id="myModalLabel">{{ 'entrainings.AddnewMCQ'|trans }}</h4>
+        {% else %}
+            <h4 class="modal-title" id="myModalLabel">{{ 'entrainings.EditMCQ'|trans }}</h4>
+        {% endif %}
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-sm-12 ">
+                <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">{{ 'addtraining.Question'|trans }}</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" dir='rtl' id="" placeholder="Question(Arabic)" name="question" value="">
+                    </div>
+                </div>   
+                <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">{{ 'common.Options'|trans }}:</label>
+                    <div class="col-sm-9">                     
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-9">
+
+                        <div class="input-group">
+                            <span class="input-group-addon"><input type="radio" name="correctoption" id="" value="1"></span>
+                            <input type="text" class="form-control" aria-label="" name="option[]" value="" data-value="1" >
+                            <span class="input-group-addon"><a href="javascript:;" id="add-option-control"><i class="glyphicon glyphicon-plus"></i></a></span>
+                        </div>
+                    </div>
+                </div>
+                <div id="options-add-div">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'common.Close'|trans }}</button>
+        <button type="submit" id="butt" class="btn btn-primary">{{ 'common.SaveChanges'|trans }}</button>
+    </div>
+</form>
+<script type="text/javascript">
+    var count = 1;
+    var optiondiv = '<div class="form-group"><label for="" class="col-sm-3 control-label"></label><div class="col-sm-9"><div class="input-group"> <span class="input-group-addon"><input type="radio" name="correctoption" id="" value="1"></span><input type="text" class="form-control" aria-label="" name="option[]" value="" data-value="1" > <span class="input-group-addon"><i class="glyphicon glyphicon-minus"></i></span></div></div></div>';
+    $('body').on('click','#add-option-control',function(){
+        count++;
+        $('#options-add-div').append('<div class="form-group"><label for="" class="col-sm-3 control-label"></label><div class="col-sm-9"><div class="input-group"> <span class="input-group-addon"><input type="radio" name="correctoption" id="" value="'+count+'"></span><input type="text" class="form-control" aria-label="" name="option[]" value="" data-value="'+count+'" > <span class="input-group-addon"><i class="glyphicon glyphicon-minus"></i></span></div></div></div>')
+    });
+    $(document).ready(function () {
+        $("#add-mcq-form").validate({
+            rules: {
+                question: {required: true
+                },
+                'option[]': {required: true}
+            },
+            messages: {
+                question: {required: var_fieldnotblank},
+                'option[]': {required: var_fieldnotblank}
+            },
+            submitHandler: function (form) {
+                alert('reached submit');
+                return false;
+                $.ajax({
+                    type: $(form).attr('method'),
+                    url: $(form).attr('action'),
+                    data: $(form).serialize(),
+                    dataType: 'json'
+                })
+                        .done(function (response) {
+
+                            if (response.status == "success") {
+                                $('#add-contact-form')[0].reset();
+                                $('#contact-messages').html('<div class="alert alert-success" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' + response.message + '</div>');
+                                timeout = setTimeout(function () {
+                                    $('#newsletter-messages').html('');
+                                }, 5000);
+                                //flashmessage(response.message, response.status);
+                            }
+                            else {
+                                $('#add-contact-form')[0].reset();
+                                $('#contact-messages').html('<div class="alert alert-danger" role="alert"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' + response.message + '</div>');
+                                timeout = setTimeout(function () {
+                                    $('#newsletter-messages').html('');
+                                }, 5000);
+                                // flashmessage(response.message,  response.status);
+                            }
+
+                        });
+                return false;
+            },
+            errorPlacement: function (error, element) {
+
+                error.appendTo(element.parent());
+                //error.prependTo(element.parent());
+            },
+            invalidHandler: function (form, validation) {
+                $('div.form-error').remove();
+            }
+        });
+    });
+</script>
+
+
+
+

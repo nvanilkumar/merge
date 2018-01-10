@@ -1,0 +1,11 @@
+{% extends 'AdminBundle:Emails:Template.html.twig' %}
+{% block content %}
+
+    <h3>مرحبا, {{ fname }}</h3>
+    <p class="lead">شكرا لتسجيلك في احد برامج مركز المعلم القدوة  <a href="{{ url('_view_workshop',{'wid':wid}) }}">{{ workshop_title }}</a>.</p>
+    <p>يبدأ الحدث من {% if from_date > 0 and to_date > 0 %}<strong>{{ from_date|date('d M Y') }}</strong> to <strong>{{ to_date|date('d M Y') }}</strong>{% elseif from_date > 0 %}<strong>{{ from_date|date('d M Y') }}</strong>  {% else %} N/A {% endif %} و سيعقد في {{ workshop_venue }}
+    
+    </p>
+    <p>شكرا لكم و نراكم في الحدث!</p>
+    <br/>
+{% endblock %}    

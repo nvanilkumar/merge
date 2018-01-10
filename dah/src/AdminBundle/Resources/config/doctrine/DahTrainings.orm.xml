@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahTrainings" table="dah_trainings">
+    <indexes>
+      <index name="FK_dah_workshops" columns="deptid"/>
+      <index name="FK_dah_trainings_uid" columns="uid"/>
+    </indexes>
+    <id name="tid" type="integer" column="tid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="trainingTitle" type="string" column="training_title" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="trainingDescription" type="text" column="training_description" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="trainingMetaTitle" type="string" column="training_meta_title" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="trainingMetaKeyword" type="string" column="training_meta_keyword" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="trainingMetaDescription" type="string" column="training_meta_description" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="addedOn" type="integer" column="added_on" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="updatedOn" type="integer" column="updated_on" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="public" type="string" column="public" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">yes</option>
+      </options>
+    </field>
+    <field name="assesment" type="string" column="assesment" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">no</option>
+      </options>
+    </field>
+    <field name="status" type="string" column="status" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">inactive</option>
+      </options>
+    </field>
+    <field name="tview" type="integer" column="tview" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="featured" type="boolean" column="featured" nullable="true">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <many-to-one field="uid" target-entity="DahUsers" fetch="LAZY">
+      <join-columns>
+        <join-column name="uid" referenced-column-name="uid"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="deptid" target-entity="DahDepartments" fetch="LAZY">
+      <join-columns>
+        <join-column name="deptid" referenced-column-name="deptid"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,24 @@
+{% for question in questions %}
+    <li class='question-rec-{{ question.qid }}'>
+
+        <div class="col-md-3">
+            <span class=''> <a href="javascript:;" data-qid="{{ question.qid }}" class="edit-question btn btn-xs btn-default" title="Edit"><i class="fa fa-pencil"></i></a> <a href='javascript:;' data-qid="{{ question.qid }}"  class="delete-question btn btn-xs btn-danger" title="Delete"><i class="fa fa-trash"></i></a></span>
+        </div>
+        <div class="col-md-9">
+            <strong> {{ question.question|raw }}</strong>
+        </div>
+        {% set opt = getQOptions(question.qid) %}
+        {% if opt|length > 0 %}
+            <ol type="a">
+                {% for option in opt %}
+                    <li>{{ option.options }}</li>
+                    {% endfor %}
+            </ol>
+            <div class="well well-sm">
+                {% for option in opt %}
+                    <label class=""> {{ option.options }}  <input type="radio" value="{{ option.options }}" id="" name="qopt[{{ question.qid }}]" {{ getQOptionChecked(question.qid,option.opid) }} /></label>&nbsp;
+                    {% endfor %}
+            </div>
+        {% endif %}
+    </li>
+{% endfor %}

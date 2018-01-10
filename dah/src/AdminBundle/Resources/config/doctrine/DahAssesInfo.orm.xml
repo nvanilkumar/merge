@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahAssesInfo" table="dah_asses_info">
+    <indexes>
+      <index name="FK_dah_asses_info" columns="tid"/>
+    </indexes>
+    <id name="ainid" type="integer" column="ainid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="totalmarks" type="integer" column="totalmarks" nullable="true"/>
+    <field name="cutoff" type="integer" column="cutoff" nullable="true"/>
+    <many-to-one field="tid" target-entity="DahTrainings">
+      <join-columns>
+        <join-column name="tid" referenced-column-name="tid"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

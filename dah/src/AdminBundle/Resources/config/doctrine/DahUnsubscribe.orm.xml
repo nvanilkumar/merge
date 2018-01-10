@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahUnsubscribe" table="dah_unsubscribe">
+    <id name="unsubid" type="integer" column="unsubid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="email" type="string" column="email" length="255" nullable="true"/>
+    <field name="addedOn" type="integer" column="added_on" nullable="true"/>
+  </entity>
+</doctrine-mapping>

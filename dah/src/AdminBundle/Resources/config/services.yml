@@ -1,0 +1,10 @@
+services:
+    admin.locale_listener:
+        class: AdminBundle\EventListener\LocaleListener
+        arguments: ['%kernel.default_locale%']
+        tags:
+            - { name: kernel.event_subscriber }
+#    admin.example:
+#        class: AdminBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
+

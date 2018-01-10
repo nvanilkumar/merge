@@ -1,0 +1,117 @@
+{% extends extend_view %}
+{% block content %}
+    <!-- HERO UNIT -->
+    <section class="hero-unit-slider no-margin">
+        <div id="carousel-hero" class="slick-carousel">
+            <div class="main-background1">
+                <div class="background-image"><br>
+                    <br>
+                    <h2>{{ 'account.EnrolledWorkshops'|trans }}</h2>
+                    <br/>
+                    <div class="row padding-row">
+                        <div class="col-md-2 small-col col-sm-4 col-xs-12 col-lg-2">
+                            {% if user.role=='ROLE_TEACHER' %}
+                                {% include 'DahBundle:Account:leftTeacher.html.twig' %}
+                            {% elseif user.role=='ROLE_STUDENT' %}
+                                {% include 'DahBundle:Account:left.html.twig' %}
+                            {% endif %}
+                        </div>
+                        <div class="col-md-10 big-col col-sm-8 col-lg-10 col-xs-12 ">
+
+                            <div class="box">
+                                <div class="box-body">
+                                    {% if range is defined and totalpages is defined%}
+                                        <h5>Showing <strong>{{range}}</strong> of <strong>{{totalpages}}</strong> {{ 'common.workshops'|trans }}</h5>
+                                    {%endif%}
+                                    <table class="table table-bordered table-responsive table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th rowspan='' width="30%" class='text-right' >{{ 'mytrainings.Title'|trans }}</th>
+                                                <th rowspan='' width="20%" class='text-right'>{{ 'mytrainings.Department'|trans }}</th>
+                                                <th width="20%" class="text-center">{{ 'mytrainings.Date'|trans }}</th>
+                                                <th rowspan='' width="15%" class='text-right'>{{ 'addtraining.Status'|trans }}</th>
+                                            </tr>
+
+                                        </thead>
+                                        <tbody>
+                                            {% for training in trainings %}
+                                                <tr data="">
+                                                    <td class="text-right custom-wrap"><a href="{{ url('_view_workshop',{'wid':training.wid}) }}">{{ training.workshop_title }}</a></td>
+                                                    <td class="text-right custom-wrap">{{ training.department }} </td>
+                                                    <td class="text-center custom-wrap">
+                                                        {% if training.from_date > 0 and training.to_date > 0 %}
+                                                            <strong>{{ training.from_date|date('d M Y') }}</strong> to <strong>{{ training.to_date|date('d M Y') }}</strong>
+                                                        {% elseif training.from_date > 0 %}
+                                                            <strong>{{ training.from_date|date('d M Y') }}</strong> 
+                                                        {% else %}
+                                                            N/A
+                                                        {% endif %}
+                                                    </td>
+                                                    <td class="text-right custom-wrap">
+                                                        {% if training.certificate_status == 'issued' %} 
+                                                            <span class="label label-success">Issued</span> <br/>
+                                                            <a href="{{ url('_rendered_outbnd_pdf') }}"> {{ 'entrainings.Download'|trans }} <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                                                            </a>
+                                                        {% elseif training.certificate_status == 'requested' %}
+                                                            <span class="label label-warning">{{ 'mytrainings.RequestSent'|trans }}</span>    
+                                                        {% else %}
+                                                            <span class="label label-danger">{{ 'mytrainings.NotIssued'|trans }}</span>
+                                                        {% endif %}
+                                                    </td>
+
+
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div><!-- /.box-body -->
+                                <div class="box-footer clearfix">
+                                    {% if paginate is defined and paginate|length>1 %}
+                                        <nav class="text-center">
+                                            <ul class="pagination">
+
+
+                                                {% for pg in paginate %}
+                                                    <li {% if pg.text==page %}class='active'{% endif %} >{% if pg.url is defined %}<a href="{{ pg.url }}">{{ pg.text }}</a>{% else %}<a>{{ pg.text }}</a>{% endif %}</li>
+                                                        {% endfor %}
+                                            </ul>
+                                        </nav>
+                                    {% endif %} 
+                                </div>
+                            </div> 
+                        </div>
+
+                    </div>
+                    <br>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END HERO UNIT -->
+    <br/>
+    <script type="text/javascript">
+        $('body').on('click', '.delete-training', function () {
+            var tid = $(this).attr('data-tid');
+            if (!confirm("Are you sure , you want to delete?"))
+            {
+                return false;
+            }
+            $.ajax({
+                url: "{{ url('_training_delete') }}",
+                dataType: 'json',
+                type: "POST",
+                data: "tid=" + tid,
+                success: function (response)
+                {
+                    if (response.status == "success")
+                    {
+                        flashmessage(response.message, 'success');
+                        location.reload();
+                    }
+
+                }});
+        });
+    </script>
+{% endblock %}

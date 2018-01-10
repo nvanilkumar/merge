@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahWorkshops" table="dah_workshops">
+    <indexes>
+      <index name="FK_dah_workshops" columns="deptid"/>
+    </indexes>
+    <id name="wid" type="integer" column="wid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="workshopTitle" type="string" column="workshop_title" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="workshopSubtitle" type="string" column="workshop_subtitle" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="workshopContent" type="text" column="workshop_content" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="workshopVenue" type="string" column="workshop_venue" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="workshopImage" type="string" column="workshop_image" length="50" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="fromDate" type="integer" column="from_date" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="toDate" type="integer" column="to_date" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="workshopSchedule" type="text" column="workshop_schedule" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="speakersInfo" type="text" column="speakers_info" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="workshopMetaTitle" type="string" column="workshop_meta_title" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="workshopMetaKeyword" type="string" column="workshop_meta_keyword" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="workshopMetaDescription" type="string" column="workshop_meta_description" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="addedOn" type="integer" column="added_on" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="updatedOn" type="integer" column="updated_on" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="public" type="string" column="public" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">yes</option>
+      </options>
+    </field>
+    <many-to-one field="deptid" target-entity="DahDepartments" fetch="LAZY">
+      <join-columns>
+        <join-column name="deptid" referenced-column-name="deptid"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

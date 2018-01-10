@@ -1,0 +1,158 @@
+{% extends extend_view %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                <div class="page-header"><h4>Add new training</h4></div>
+                <div class="row">
+
+
+                    <form class="form-horizontal" method="post" id="admin-add-new-page-form" action="{{ url('_admin_trainings') }}" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Training name</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="" placeholder="Page name" name="pageName" 
+                                       value="{% if app.request.get('pageName')!='' %}{{ app.request.get('pageName') }}{% elseif content_page.pageName is defined %}{{ content_page.pageName  }}{% endif %}">
+                            </div>
+                        </div>   
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Department</label>
+                            <div class="col-sm-8">
+                                <select class='form-control' name='department'>
+                                    <option value=''>Select</option>
+                                    <option value='Literature'>Literature</option>
+                                </select>
+
+
+                                {% if error.department is defined %}<div class="form-error-content">{{ error.department }}</div>{% endif %}
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Training description</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control ckeditor" name="pageDescription"> 
+                                    {% if app.request.get('pageDescription')!='' %}{{ app.request.get('pageDescription') }}{% elseif content_page.pageDescription  is defined %}{{ content_page.pageDescription  }}{% endif %} 
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label" >Page image</label>
+                            <div class="col-sm-8">
+
+                                <input type="file" class="" id="imageUpload"  name="manualUpload">
+                                <input type="hidden" id="uploaded-file" name="uploadedFile" value="{%if app.request.get('uploadedFile')!=''%}{{app.request.get('uploadedFile')}}{%  elseif content_page.pageImage  is defined %}{{ content_page.pageImage  }}{% endif %} " />
+
+                                <div id="uploaded-image-holder">
+                                    {%if app.request.get('uploadedFile')!=''%}     
+                                        <img src="{{ asset('uploads/')~app.request.get('uploadedFile') }}" alt="..." class="img-thumbnail">
+                                    {%  elseif content_page.pageImage  is defined and content_page.pageImage!='' %}
+                                        <img src="{{ asset('uploads/')~content_page.pageImage }}" alt="..." class="img-thumbnail">
+                                    {% endif %} 
+                                </div>
+                            </div>
+                        </div>    
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Meta title</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="" placeholder="Meta title" name="metaTitle" 
+                                       value="{% if app.request.get('metaTitle')!='' %}{{ app.request.get('metaTitle') }}{% elseif content_page.metaTitle is defined %}{{ content_page.metaTitle  }}{% endif %}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Meta keywords</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="" placeholder="Meta keywords" name="metaKeywords" 
+                                       value="{% if app.request.get('metaKeywords')!='' %}{{ app.request.get('metaKeywords') }}{% elseif content_page.metaKeywords is defined %}{{ content_page.metaKeywords  }}{% endif %}">
+                            </div>
+                        </div>   
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Meta description</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control " id="" name="metaDescription">{% if app.request.get('metaDescription')!='' %}{{ app.request.get('metaDescription') }}{% elseif content_page.metaDescription  is defined%}{{content_page.metaDescription }}{%endif%}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Training videos</label>
+                            <div class="col-sm-8">
+                                <div class='row'>
+                                    <div class='col-sm-6'>
+                                        <div class="thumbnail">
+                                            <div  id='video-example1'></div>
+                                            <div class="caption">
+                                                <h4>Chapter 1: Youtube video</h4>
+                                                <p><a href="#" class="btn btn-primary" role="button">Delete</a> </p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class='col-sm-6'>
+                                        <div class="thumbnail">
+                                            <div  id='video-example2'></div>
+                                            <div class="caption">
+                                                <h4>Chapter 2: Uploaded video</h4>
+                                                <p><a href="#" class="btn btn-primary" role="button">Delete</a> </p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="col-sm-6">
+                                        <a class="thumbnail" href="{{ url('_admin_add_new_video') }}" data-toggle="modal"  data-target="#myModal"> <img alt="100%x180"   src="{{ asset('assets/img/add-icon2.png') }}" data-holder-rendered="true"> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-8">
+                                <button type="submit" class="btn btn-primary" name="submit" value="submit" >Save training</button>
+                            </div>
+                        </div>
+
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#myModal").on("show.bs.modal", function (e) {
+            var link = $(e.relatedTarget);
+            $(this).find(".modal-content").load(link.attr("href"));
+        });
+    </script>
+    <script type='text/javascript'>
+        jwplayer('video-example1').setup({
+            flashplayer: '{{ asset('assets/js/jwplayer/player.swf') }}',
+            file: 'https://www.youtube.com/watch?v=-5wpm-gesOY',
+            height: '100',
+            width: '220',
+            //'playlist.position': 'right',
+            //'playlist.size': 80
+        });
+        jwplayer('video-example2').setup({
+            flashplayer: '{{ asset('assets/js/jwplayer/player.swf') }}',
+            file: '{{ asset('assets/videos/magento.mp4') }}',
+            height: '100',
+            width: '220',
+            //'playlist.position': 'right',
+            //'playlist.size': 80
+        });
+
+    </script>
+{% endblock %} 

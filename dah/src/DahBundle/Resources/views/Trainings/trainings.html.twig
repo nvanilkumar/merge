@@ -1,0 +1,111 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12 col-lg-3 pull-right">
+                {% if user.role=='ROLE_TEACHER' %}
+                    {% include 'DahBundle:Account:leftTeacher.html.twig' %}
+                {% elseif user.role=='ROLE_STUDENT' %}
+                    {% include 'DahBundle:Account:left.html.twig' %}
+                {% endif %}
+
+            </div>
+            <div class="col-md-9 big-col col-sm-8 col-lg-9 col-xs-12 pull-right">
+                <div class="page-header">
+
+                    <div class="row">
+                        <div class="col-md-3 big-col col-sm-4 col-lg-3 col-xs-12 text-left">
+                            <a class="btn btn-success " href="{{ url('_add_new_trainings') }}"><i class="fa fa-plus" aria-hidden="true"></i> {{ 'mytrainings.AddTraining'|trans }} </a>
+                        </div>
+                        <div class="col-md-9 big-col col-sm-8 col-lg-9 col-xs-12 ">
+                            <h2>{{ 'account.MyTrainings'|trans }}  </h2>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        {% if range is defined and totalpages is defined%}
+                            <h5>{{ 'common.Showing'|trans }} <strong>{{range}}</strong> of <strong>{{totalpages}}</strong> {{ 'account.Trainings'|trans }}</h5>
+                        {%endif%}
+                        <table class="table table-bordered table-responsive table-striped">
+                            <thead>
+                                <tr>
+                                    <th rowspan='2' width="30%" >{{ 'mytrainings.Title'|trans }}</th>
+                                    <th rowspan='2' width="20%">{{ 'mytrainings.Department'|trans }}</th>
+                                    <th rowspan='2' class="text-center" width="10%">{{ 'mytrainings.Type'|trans }}</th>
+                                    <th colspan='2' width="25%">{{ 'mytrainings.StudentEnrollmentStatus'|trans }}</th>
+                                    <th rowspan='2' width="15%">&nbsp;</th>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">{{ 'mytrainings.Enrolled'|trans }}</th>
+                                    <th class="text-center">{{ 'mytrainings.Certificate'|trans }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if trainings|length==0 %}
+                                    <tr>
+                                        <td colspan='6' class="general-empty-content">{{ 'recadded.TherearenoTrainingsinthissection'|trans }}</td>
+                                    </tr>
+                                {% else %}
+                                    {% for training in trainings %}
+                                        <tr data="">
+                                            <td class="text-right custom-wrap"><a href="{{ url('_edit_training',{'tid':training.tid}) }}">{{ training.training_title }}</a></td>
+                                            <td class="text-right custom-wrap">{{ training.department }} </td>
+                                            {% if training.public == 'no' %}
+                                                <td class="text-center"><i class="fa fa-lock" title="Private Training"></i></td>
+                                                {% else %}
+                                                <td class="text-center"><i class="fa fa-unlock" title="Public Training"></i></td>
+                                                {% endif %}
+                                            <td class="text-center"><a href="{{ url('_enrollment_trainings',{'tid':training.tid}) }}">{{ getUserTrainingEnrollCount(training.tid) }}</a></td>
+                                            <td class="text-center"><a href="{{ url('_enrollment_trainings',{'tid':training.tid}) }}">{{ getUserTrainingCertCount(training.tid) }}</a></td>
+                                            <td>
+                                                <a href="{{ url('_edit_training',{'tid':training.tid}) }}" class="btn btn-xs btn-default" title="Edit Training"><i class="fa fa-pencil"></i></a> <a href="javascript:;" data-tid="{{ training.tid }}" class="delete-training btn btn-xs btn-danger"><i class="fa fa-trash" title="Delete Training"></i></a> <a href="{{ url('_createassesment_trainings',{'tid':training.tid}) }}" class="btn btn-xs btn-default" title="Create Assessment"><i class="fa fa-newspaper-o"></i></a> 
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% endif %}
+                            </tbody>
+                        </table>
+                        {% if paginate is defined and paginate|length>1 %}
+                            <nav class="text-center">
+                                <ul class="pagination">
+
+
+                                    {% for pg in paginate %}
+                                        <li {% if pg.text==page %}class='active'{% endif %} >{% if pg.url is defined %}<a href="{{ pg.url }}">{{ pg.text }}</a>{% else %}<a>{{ pg.text }}</a>{% endif %}</li>
+                                            {% endfor %}
+                                </ul>
+                            </nav>
+                        {% endif %} 
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script type="text/javascript">
+        $('body').on('click', '.delete-training', function () {
+            var tid = $(this).attr('data-tid');
+            if (!confirm("Are you sure , you want to delete?"))
+            {
+                return false;
+            }
+            $.ajax({
+                url: "{{ url('_training_delete') }}",
+                dataType: 'json',
+                type: "POST",
+                data: "tid=" + tid,
+                success: function (response)
+                {
+                    if (response.status == "success")
+                    {
+                        flashmessage(response.message, 'success');
+                        location.reload();
+                    }
+
+                }});
+        });
+    </script>
+{% endblock %}

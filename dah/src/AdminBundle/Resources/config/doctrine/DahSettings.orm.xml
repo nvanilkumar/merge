@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahSettings" table="dah_settings">
+    <id name="settingid" type="integer" column="settingid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="email" type="string" column="email" length="100" nullable="true"/>
+    <field name="phone" type="string" column="phone" length="255" nullable="true"/>
+    <field name="linkedin" type="string" column="linkedin" length="255" nullable="true"/>
+    <field name="twitter" type="string" column="twitter" length="255" nullable="true"/>
+    <field name="facebook" type="string" column="facebook" length="255" nullable="true"/>
+    <field name="googlePlus" type="string" column="google_plus" length="255" nullable="true"/>
+    <field name="blackboard" type="string" column="blackboard" length="255" nullable="true"/>
+    <field name="updateOn" type="integer" column="update_on" nullable="true"/>
+    <field name="address" type="text" column="address" length="65535" nullable="true"/>
+  </entity>
+</doctrine-mapping>

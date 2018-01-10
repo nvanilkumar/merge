@@ -1,0 +1,61 @@
+{% extends extend_view %}
+{% block content %}
+    <!-- HERO UNIT -->
+    <section class="hero-unit-slider no-margin">
+        <div id="carousel-hero" class="slick-carousel">
+            <div class="main-background1">
+                <div class="background-image"><br>
+                    <h2>{{ 'signup.UserRegistration'|trans }}</h2>
+                    <br>
+                    <form role="form" method="post" id="student-reg-form" >
+                        <div class="row row-spacing">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4"><input type="text" class="form-control" maxlength="100" name="fname" value="{% if app.request.get('fname')!='' %}{{ app.request.get('fname') }}{% endif %}" id="" placeholder="{{ 'signup.FirstName'|trans }}">
+                            {% if error.fname is defined %}<div class="form-error-content">{{ error.fname }}</div>{% endif %}
+                            </div>
+                            <div class="col-md-4 text-left">{{ 'signup.FirstName'|trans }}:</div>                            
+                        </div>
+                        <div class="row row-spacing">
+                             <div class="col-md-4"></div>
+                            <div class="col-md-4"><input type="text" class="form-control" maxlength="100" name="lname" value="{% if app.request.get('lname')!='' %}{{ app.request.get('lname') }}{% endif %}" id="" placeholder="{{ 'signup.LastName'|trans }}">
+                            {% if error.lname is defined %}<div class="form-error-content">{{ error.lname }}</div>{% endif %}
+                            </div>
+                            <div class="col-md-4 text-left">{{ 'signup.LastName'|trans }}:</div>
+                           <br>
+                        </div>
+                        <div class="row row-spacing">
+                             <div class="col-md-4"></div>
+                            <div class="col-md-4"><input type="email" class="form-control" maxlength="150" name="email" value="{% if app.request.get('email')!='' %}{{ app.request.get('email') }}{% endif %}" id="" placeholder="{{ 'common.email'|trans }}">
+                            {% if error.email is defined %}<div class="form-error-content">{{ error.email }}</div>{% endif %}
+                            </div>
+                            <div class="col-md-4 text-left">{{ 'common.email'|trans }}:</div>                           
+                        </div>
+                        <div class="row row-spacing">
+                           <div class="col-md-4"></div>
+                            <div class="col-md-4 "><input type="password" class="form-control" maxlength="25" minlength="3" name="password" id="password-id" placeholder="{{ 'common.password'|trans }}">
+                            {% if error.password is defined %}<div class="form-error-content">{{ error.password }}</div>{% endif %}
+                            </div>
+                             <div class="col-md-4 text-left">{{ 'common.password'|trans }}:</div>                           
+                        </div>
+                        <div class="row row-spacing">
+                           <div class="col-md-4"></div>
+                            <div class="col-md-4"><input type="password" class="form-control" maxlength="25" minlength="3" name="cpassword" id="" placeholder="{{ 'common.confirmPassword'|trans }}">
+                            {% if error.cpassword is defined %}<div class="form-error-content">{{ error.cpassword }}</div>{% endif %}
+                            </div>
+                             <div class="col-md-4 text-left">{{ 'common.confirmPassword'|trans }}:</div>                           
+                        </div>
+                        <div class="row row-spacing">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">        <button type="submit" class="btn btn-primary">{{ 'common.submit'|trans }}</button>    <p class="help-block">{{ 'common.byclickingsubmityouagree'|trans }} <a href="{{ url('_pages',{'link':'terms-of-condition'}) }}" target="_blank" >{{ 'common.termsandcondition'|trans }}</a>.</p>        </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <br><br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END HERO UNIT -->
+    <br/>
+
+{% endblock %}

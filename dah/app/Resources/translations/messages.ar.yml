@@ -1,0 +1,340 @@
+common:
+    settings: إعدادات
+    logout: خروج
+    account: حساب
+    dashboard: لوحة القيادة
+    changePassword: تغيير كلمة 
+    darAlHekma: دار الحكمة
+    controlPanel: لوحة التحكم
+    password: كلمه السر
+    oldPassword: كلمة المرور القديمة
+    newPassword: كلمة السر الجديدة
+    confirmPassword: تأكيد كلمة المرور
+    submit: عرض
+    email: البريد الإلكتروني
+    username: اسم المستخدم
+    contact: اتصال
+    news: أخبار
+    workshops: ورش عمل
+    trainingPrograms: برامج التدريب
+    home: قاعدة
+    DARALHEKMA.: دار الحكمة.
+    Close: غلق
+    TeacherTrainer: المعلم / المدرب
+    Student: طالب علم
+    invalidCredentials: بيانات الاعتماد غير صالحة .
+    Useraccountisdisabled: يرجى التحقق من حسابك .
+    byclickingsubmityouagree: بالنقر على تقديم فإنك توافق على
+    termsandcondition: الأحكام والشروط
+    fieldnotblank: هذه الخانة لا يمكن ان تكون فارغة
+    validemail: رجاء قم بإدخال بريد الكتروني صحيح
+    passwordlimitmin3: يجب أن يحتوي على كلمة المرور أتلست 3 أحرف
+    passwordlimit4: كلمة المرور يجب ألا تتجاوز أكثر من 25 حرفا
+    passwordmismatch: عدم تطابق كلمه المرور
+    fieldlimit100: هذا الحقل لا يمكن أن يتجاوز أكثر من 100 حرف
+    Select: اختار
+    passwordResetMessage: أدخل عنوان البريد الإلكتروني المرتبط بحسابك الخاص بك، ثم انقر فوق إرسال. سنرسل لك رابطا لصفحة حيث يمكنك بسهولة إعادة تعيين كلمة المرور الخاصة بك
+    ForgotPassword: هل نسيت كلمة المرور
+    Thisemailisnotregistered: لم يتم تسجيل هذا البريد الإلكتروني معنا.
+    ResetPassword: اعادة تعيين كلمة السر
+    LatestNews: أحدث الأخبار
+    Continue: Continue
+    BrokenLink: Broken Link
+    TeacherProfile: المعلم الشخصي
+    StudentProfile:  الشخصي للطالب
+    BasicInformation: معلومات اساسية
+    PopularTrainings: التدريب شعبية
+    Search: بحث
+    HelpSection: قسم المساعدة
+    MaximumMarks: علامات القصوى
+    SubmitAssessment: Submit Assessment
+    Options: خيارات
+    Thissectionisunderconstruction: هذا القسم هو قيد الإنشاء
+    SaveChanges: حفظ التغييرات
+    CorrectOption: الخيار الصحيح
+    Showing: عرض
+admin:
+  header:
+    viewSite: عرض الموقع
+  leftmenu:
+    content: محتوى
+    departments: الإدارات
+    manageTrainings: التدريب مدير
+    pages: الصفحات
+    faqs: الأسئلة الأكثر شيوعا
+    users: المستخدمين
+    manageTeachersTrainers: إدارة المعلمين / المدربين
+    manageStudents: إدارة الطلاب
+    certificatesIssued: إصدار الشهادات
+    security: أمن
+    activityLog: سجل النشاط
+dashboard:
+    totalTrainings: مجموع الدورات التدريبية
+    totalTrainersTeachers: المدربون الكلي / المعلمين
+    totalStudents: مجموع الطلاب
+    certificatesIssued: إصدار الشهادات     
+    
+home:
+    login:
+        header: تسجيل الدخول 
+        email: البريد الإلكتروني
+        password: كلمه السر
+        rememberMe: تذكرنى
+        signIn: تسجيل الدخول
+        forgotPassword: هل نسيت كلمة المرور
+        newMembership: عضوية جديدة 
+    features:
+        usefulResearchandJournal: مفيد للبحوث ومجلة
+        teacherDiploma: دبلوم المعلمين
+        principalsDiploma: دبلوم مدير المدرسة
+        experiencedSummit: قمة خبرة 
+footer:
+    usefullinks: روابط مفيدة
+    aboutUs: معلومات عنا
+    news: أخبار
+    community: مجتمع
+    career: المشوار المهني، مهنة
+    blog: مدونة
+    pressKit: الملف الصحفي
+    faq: أسئلة مكررة
+    terms: شروط
+    privacyPolicy: سياسة الخصوصية
+    contactUs: اتصل بنا
+    newsletter: نشرة
+    getthelatestupdatefromusbysubscribingtoournewsletter: الحصول على التحديث الأخير منا عن طريق الاشتراك في النشرة الإخبارية
+    getConnected: الحصول على اتصال
+    allRightReserved: جميع الحقوق محفوظة 
+    SUBSCRIBE: الاشتراك
+    yourName: اسمك
+    yourEmail: بريدك الالكتروني
+    yourMessage: رسالتك
+    YOUWANTTOKNOWMOREINFORMATION: أنت تريد معرفة المزيد من المعلومات؟
+    SENDUSAMAIL: أرسل لنا على البريد!
+    Phone: هاتف
+    Email: البريد الإلكتروني
+    Calendar: تقويم
+server:
+    messages:
+        somethingWentWrong: حدث خطأ أثناء إرسال الاستعلام الخاص بك. حاول مرة اخرى.
+        Pleaseentervaliddetails: يرجى إدخال تفاصيل صالحة.
+        thankyouforcontacting: أشكركم على الاتصال بنا. سيكون لدينا المشرف الحصول قريبا بالرد عليك.
+        Pleaseentervalidemail: الرجاء إدخال بريد إلكتروني صحيح.
+        Youhavealreadysubscribetoournewsletter: لقد اشترك بالفعل في النشرة الإخبارية.
+        Thankyouforsubscribingtoournewsletter: شكرا لك على الاشتراك في النشرة الإخبارية.
+        Theaccountverificationlinkisinvalidorexpired: رابط التحقق من الحساب غير صالح أو منتهية الصلاحية
+        Userverifiedsuccessfully: المستخدم التحقق بنجاح
+        ThePasswordresetlinkisinvalidorexpired: رابط إعادة تعيين كلمة مرور غير صالحة أو منتهية الصلاحية
+        Pleaseenteravalidpassword: الرجاء إدخال كلمة السر الصحيحة
+        Passwordchangedsuccessfully: تم تغيير الرقم السري بنجاح
+chooseuser:
+    PleaseChooseYourAccounttype: الرجاء اختيار نوع الحساب لتسجيل 
+signup:
+    UserRegistration: تسجيل المستخدم
+    FirstName: الاسم الاول
+    LastName: الكنية 
+    Thisemailisalreadyregistered: عنوان البريد الإلكترونى هذا مسجل بالفعل
+    Department: قسم
+    APasswordresetlinkwassenttoyourregisteredemailaddress: تم إرسال رابط إعادة تعيين كلمة المرور إلى عنوان بريدك الإلكتروني المسجل.
+    YourEmailwasRegisteredsuccessfullywithus: تم تسجيل بريدك الإلكتروني بنجاح معنا.
+    ClickHere: انقر هنا
+    toSignin: لتسجيل الدخول
+    brokenlink: يا هناك، رابط إعادة تعيين كلمة المرور التي تحاول الوصول إليه هو إما غير صالحة أو منتهية الصلاحية. الرجاء النقر على الاستمرار في تسجيل الدخول
+account:
+    account: تقرير
+    logout: خروج
+    MyTrainings: بلدي التدريب
+    Trainings: دورات تدريبية
+    Workshops: ورش عمل
+    Settings: إعدادات
+    Dashboard: لوحة القيادة
+    BasicInformation: معلومات اساسية
+    EducationalInformation: معلومات التربوية
+    FirstName: الاسم الاول
+    LastName: الكنية
+    EmailID: عنوان الايميل
+    School: مدرسة
+    Location: موقع
+    Position: موضع
+    Phonenumber: رقم الهاتف
+    ProfileImage: الصورة الشخصية
+    UploadCv: تحميل السيرة الذاتية
+    DownloadMyCv: تحميل سيرتي الذاتية
+    Department: قسم
+    Bio: السيرة الذاتية
+    TotalYearsofExperience: مجموع سنوات الخبره
+    Qualification: المؤهل العلمي
+    Submit: عرض
+    ActiveTrainings: التدريب الفعال
+    EnrolledStudents: الطلاب المسجلين
+    TotalViews: عدد المشاهدات
+    LatestTrainings: أحدث الدورات التدريبية
+    FeaturedTrainings: دورات تدريبية مميزة
+    Viewall: مشاهدة الكل
+    LatestNews: أحدث الأخبار
+    LatestWorkshops: أحدث ورش العمل
+    Nolatesttrainingsfound: لا توجد أحدث الدورات التدريبية 
+    Nolatestnewsfound: لم يتم العثور على آخر الأخبار
+    Password: كلمه السر
+    ConfirmPassword: تأكيد كلمة المرور
+    Manager: مدير
+    Teacher: مدرس
+    Mentor: الناصح
+    loading: جار التحميل
+    EnterEmailId: البريد الإلكتروني أدخل
+    Calender: رزنامة
+    ChangePassword: تغيير كلمة السر
+    AccountSettings: إعدادت الحساب
+    OldPassword: كلمة المرور القديمة
+    NewPassword: كلمة السر الجديدة
+    SchoolCollegeName: المدرسة اسم / كلية
+    SchoolCollegeLocated: مدرسة / كلية تقع في
+    Search: بحث
+    Nofeaturedtrainingsfound: لم يتم العثور على دورات تدريبية مميزة
+    Nolatestworkshopfound: لا أحدث ورشة عمل وجدت
+    YourResult: النتيجة الخاص بك هو !!!
+    TotalEnrollments: مجموع التسجيلات
+    TotalCertificatesissued: إجمالي الشهادات الصادرة
+    TotalFeaturedtrainings: مجموع التدريب المميز
+    WorkshopMaterial: المواد ورشة عمل
+    EnrolledWorkshops: ورش العمل المسجلين
+    Requestforcertificate: طلب شهادة
+mytrainings:
+    Title: عنوان
+    Department: قسم
+    Type: اكتب
+    StudentEnrollmentStatus: طالب انتساب الحالة
+    Enrolled: التحق
+    Certificate: شهادة
+    AddTraining: إضافة التدريب
+    TrainingEnrollement: التدريب التحاق
+    RequestSent: تم ارسال الطلب
+    NoEnrollmentforthistraining: لا القيد لهذا التدريب
+    Date: تاريخ
+addtraining:
+    Add: إضافة
+    Save: حفظ
+    AttachMaterial: نعلق المواد
+    Title: عنوان
+    Traininginfo: معلومات التدريب
+    TrainingMaterial: مواد تدريبية
+    Videos: فيديوهات
+    Assessment: تقدير
+    Enrolledstudents: الطلاب المسجلين
+    Addnewtraining: إضافة جديدة للتدريب
+    Trainingtitle: عنوان التدريب
+    Department: قسم
+    Trainingdescription: وصف التدريب
+    Visibility: رؤية
+    Public: عامة
+    Private: خاص
+    Saveandcontinue: الحفظ والمتابعة
+    Upload: تحميل
+    UploadVideos: تحميل فيديو
+    Videotitle: عنوان مقطع الفيديو
+    Videodescription: وصف الفيديو
+    Videothumbnail: الفيديو المصغرة
+    Close: قريب
+    AddTF: إضافة صواب / خطأ السؤال
+    EditTF: تعديل صواب / خطأ السؤال
+    AddMCQ: Add MCQ
+    Question: سؤال
+    SaveChanges: حفظ التغييرات
+    CutOff: قطع
+    TotalMarks: مجموع الدرجات
+    Pleasechoosecorrectoptionsandclicksave: من فضلك اختار صحيح خيارات ثم انقر فوق حفظ
+    User: مستخدم
+    Status: الحالة
+    Email: البريد الإلكتروني
+    Issued: نشر
+    Complete: كامل
+    Requested: طلب
+    NotIssued: لم يصدر
+    Yes: نعم فعلا
+    No: لا
+    True: صحيح
+    False: خاطئة
+    BacktoTrainings: العودة إلى التدريب
+    TrainersProfile: Trainer's Profile
+    AddTrueandFalseQuestion: إضافة سؤال الصواب والخطأ
+    AddMultipleChoiceQuestion: إضافة سؤال اختيار متعدد
+    Yourtrainingisunderreviewandwewilllistitin: التدريب الخاص بك هو قيد الاستعراض ، وسوف نقوم بإدراج ذلك في
+    sectiononcecompleted: كملت القسم مرة واحدة .
+    TrainingVideos: فيديو تدريب
+    Trainingassessment: تقييم التدريب
+    PleasecompletethefollowingbeforethisTraininggetspublished: يرجى إكمال ما يلي قبل ان يحصل على نشر هذا التدريب .
+    Note: :ملاحظة
+entrainings:
+    True: صحيح
+    False: خاطئة
+    EnrolledTrainings: التدريب المسجلين
+    Title: عنوان
+    Department: قسم
+    Teacher: مدرس
+    Status: الحالة
+    Certificate: شهادة
+    Issued: نشر
+    Complete: كامل
+    Requested: طلب
+    NotIssued: لم يصدر
+    Download: تحميل
+    HelpSection: قسم المساعدة
+    MaximumMarks: علامات القصوى
+    Submitassessment: تقديم التقييم
+    Incomplete: غير مكتمل
+    Looksliketheresnoassessmentforthistraining: ا يوجد تقييم  لهذا و الدورة
+    GotoMytrainings:  اذهب الى درواتي
+    BrowseTraining: استعراض الدورات 
+    AddnewMCQ:   إضافة اختيار جديد
+    EditMCQ:  تعديل سؤال اختياري 
+    TrainersProfile: ملف المتدرب 
+workshop:
+    Duration: مدة
+    Department: قسم
+    Description: وصف
+    Venue: مكان
+    EnrollNow: تسجيل الآن
+    ByenrollingtothisWorkshopyouareagreeingtoreceiveemailsandremaindersaboutthisWorkshop: من خلال التسجيل في ورشة العمل هذه ، فإنك توافق على استقبال رسائل البريد الإلكتروني و بقايا حول هذا رشة عمل.
+    Cancel: إلغاء
+    Enroll: تسجل
+    ThankyouforenrollingtothisWorkshop: الشكر للتسجيل في هذه الورشة
+    Youarealreadyenrolledforthisworkshop: كنت مسجلا بالفعل ل هذه الورشة
+    Schedule: جدول
+    Speakers: المتحدث
+training:
+    Searchfor: البحث عن
+    SelectDepartment: قسم اختار
+    ReadMore: اقرأ أكثر
+    By: بواسطة
+    Warning: تحذير!
+    Thisisaprivatetrainingyoumust: هذا تدريب خاص يجب ان تدخل كلمة المرور 
+    login: تسجيل الدخول
+    signup: signup
+    toviewthistraining: لعرض هذا التدريب.
+    EnrollNow: تسجيل الآن
+    UntitledVideo: فيديو بدون اسم
+    ByenrollingtothisTrainingyouareagreeingtoreceiveemailsandremaindersaboutthisTraining: من خلال التسجيل في هذا التدريب ، فإنك توافق على استقبال رسائل البريد الإلكتروني و بقايا حول هذا التدريب.
+    Cancel: إلغاء
+    Enroll: تسجل
+    ThankyouforenrollingtothisTraining: الشكر للتسجيل في هذا التدريب
+    YouarealreadyenrolledforthisTraining: كنت مسجلا بالفعل لهذا التدريب
+emails:
+    ContactInfo: معلومات الاتصال
+    HiAdmin: Hi, Admin
+    AEnquiryrequestwasreceivedfrom: A Enquiry request was received from
+    withemailaddress: مع عنوان البريد الإلكتروني
+    Message: Message
+    Hi: مرحبا
+    Ouradminhascreatedaaccountwithyouremail: Our admin has created a account with your email
+    andaloginpassword: و كلمة السر للدخول
+    PleaseverifyyouraccountandloginwithgivencredentialsYouanchangeyourpasswordonceyoulogin: يرجى التحقق من حسابك و الدخول مع تفاصيل محددة. يمكنك تغيير كلمة المرور الخاصة بك بمجرد دخولك.
+    ArequestwasreceivedhopefullyfromyoutoresetyourpasswordPleasegotothispagetoresetyourpasswordandbeabletoaccessthesite: A request was received, hopefully from you, to reset your password. Please go to this page to reset your password and be able to access the site.
+    ResetPassword: اعادة تعيين كلمة السر
+    copybelowlinkinyouraddressbarifabovebuttonisnotworking: copy below link in your address bar if above button is not working.
+    WelcometoDarAl-HekmaUniversity: مرحبا بكم في جامعة دار الحكمة !
+    Pleaseclickonthebuttonbelowtoactivateyouraccountandstartveiwingtrainings: Please click on the button below to activate your account and start veiwing trainings.
+    VerifyUser: Verify User
+    TrainingLink: رابط التدريب
+    WorkshopLink: رابط رشة عمل
+recadded:
+    AccountInformation: معلومات الحساب
+    TherearenoTrainingsinthissection: لا توجد دورات تدريبية في هذا القسم

@@ -1,0 +1,51 @@
+{% extends extend_view %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <h4>Student Assesment results : {{ training.trainingTitle }}</h4>
+                        </div>
+                        <div class="col-sm-3 text-right">
+                            <a  href="{{ url('_admin_trainings') }}"  class="btn btn-success"><i class="fa fa-arrow-left"></i> Back to trainings</a>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="well text-info">
+                            <h5><strong>Maximum marks</strong> : {{ assesmentres.maxMarks }}</h5>
+                            <h5><strong>Correct options</strong> : {{ assesmentres.correct }}</h5>
+                            <h5><strong>Not attempted</strong> : {{ assesmentres.unassigned }}</h5>
+                            <h5><strong>Result</strong> : {{ assesmentres.result|capitalize }}</h5>
+                            <h5><strong>No. of attempts</strong> : {{ assesmentres.attemptNo }}</h5>
+                            <h5><strong>Last assesment on</strong> : {{ assesmentres.lastAssesOm|date('d M Y') }}</h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        {%for assesment in assesments %}
+                            <div class="well">
+                                <p class="question"><strong>Question:</strong> {{ assesment.qid.question }}</p>
+                                {% if assesment.res == 'correct' %}
+                                    <p class="text-success"><strong>Answer:</strong> {{ assesment.opid.options }}</p>
+                                {% else %}
+                                    <p class="text-danger"><strong>Answer:</strong> {{ assesment.opid.options }}</p>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %} 

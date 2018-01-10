@@ -1,0 +1,171 @@
+{% extends extend_view %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                {% if mode == 'add' %}
+                    <div class="page-header"><h4>Add News</h4></div>
+                {% else %}
+                    <div class="page-header"><h4>Edit News</h4></div>
+                {% endif %}
+                <div class="row">
+
+
+                    <form class="form-horizontal" method="post" id="admin-add-news-form" action="" enctype="multipart/form-data">
+
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">News title <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+
+                                <input type="text" class="form-control" dir="rtl" id="link-gen-title" maxlength="250" placeholder="News title" name="newsTitle" value="{% if app.request.get('newsTitle')!='' %}{{ app.request.get('newsTitle') }}{% elseif news.newsTitle  is defined %}{{ news.newsTitle  }}{% endif %}">
+
+                                {% if error.newsTitle is defined %}<div class="form-error-content">{{ error.newsTitle }}</div>{% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Sub title</label>
+                            <div class="col-sm-8">
+
+                                <input type="text" class="form-control" dir="rtl" id="" maxlength="250" placeholder="Subtitle" name="subTitle" value="{% if app.request.get('subTitle')!='' %}{{ app.request.get('subTitle') }}{% elseif news.NewsSubtitle  is defined %}{{ news.NewsSubtitle  }}{% endif %}">
+
+                                {% if error.subTitle is defined %}<div class="form-error-content">{{ error.subTitle }}</div>{% endif %}
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">News</label>
+                            <div class="col-sm-8">
+
+                                <textarea class="form-control ckeditor " dir='rtl' name="newsContent">{% if app.request.get('newsContent')!='' %}{{ app.request.get('newsContent') }}{% elseif news.newsContent  is defined %}{{ news.newsContent  }}{% endif %}</textarea>
+                                {% if error.newsContent is defined %}<div class="form-error-content">{{ error.newsContent }}</div>{% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Future publish date</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id='datepicker' maxlength="20" autocomplete="off" placeholder="dd-mm-yyyy" name="futureDate" value="{% if app.request.get('futureDate')!='' %}{{ app.request.get('futureDate') }}{% elseif news.futureDate is defined and news.futureDate > 0 %}{{ news.futureDate|date('d-m-Y')  }}{% endif %}">
+                                {% if error.futureDate is defined %}<div class="form-error-content">{{ error.futureDate }}</div>{% endif %}
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label" >News Image</label>
+                            <div class="col-sm-8">
+
+                                <input type="file" class="" id="imageUpload"  name="manualUpload" accept='image/*'>
+                                <input type="hidden" id="uploaded-file" name="uploadedFile" value="{%if app.request.get('uploadedFile')!=''%}{{app.request.get('uploadedFile')}}{%  elseif news.newsImage  is defined %}{{ news.newsImage  }}{% endif %} "  />
+
+                                <div id="uploaded-image-holder">
+                                    {%if app.request.get('uploadedFile')!=''%}     
+                                    {%  elseif news.newsImage  is defined and news.newsImage!='' %}
+                                        <img src="{{ asset('uploads/')~news.newsImage }}" alt="..." class="img-thumbnail">
+                                    {% endif %} 
+                                </div>
+                                {% if error.manualUpload is defined %}<div class="form-error-content">{{ error.manualUpload }}</div>{% endif %}
+                            </div>
+                        </div>    
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Meta title</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="" placeholder="Meta title" maxlength="250" name="metaTitle" 
+                                       value="{% if app.request.get('metaTitle')!='' %}{{ app.request.get('metaTitle') }}{% elseif news.newsMetaTitle is defined %}{{ news.newsMetaTitle  }}{% endif %}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Meta keywords</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="" placeholder="Meta keywords" maxlength="250" name="metaKeywords" 
+                                       value="{% if app.request.get('metaKeywords')!='' %}{{ app.request.get('metaKeywords') }}{% elseif news.newsMetaKeyword is defined %}{{ news.newsMetaKeyword  }}{% endif %}">
+                            </div>
+                        </div>   
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Meta description</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control " id="" maxlength="250" name="metaDescription">{% if app.request.get('metaDescription')!='' %}{{ app.request.get('metaDescription') }}{% elseif news.newsMetaDescription  is defined%}{{news.newsMetaDescription }}{%endif%}</textarea>
+                            </div>
+                        </div>  
+                        <div class="form-group ">
+                            <label for="" class="col-sm-3 control-label"></label>
+                            <div class="col-sm-8 ">
+                                <label>
+                                    <input type="checkbox" name="newsletter" value="yes" {% if app.request.get('newsletter')!='' %}checked="checked"{% elseif news.newsletter  is defined and news.newsletter=='yes' %}checked="checked"{%endif%} > Send as Newsletter
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-8">
+                                <button type="submit" class="btn btn-primary" name="submit" value="submit" >Save news</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        CKEDITOR.replace('newsContent', {
+            contentsLangDirection: 'rtl',
+            language: 'ar',
+        });
+    </script>
+    <script type="text/javascript">
+        $('#datepicker').datepicker({
+            format: 'dd-mm-yyyy',
+            startDate: '0d'
+        });
+    </script>
+    <script>
+
+
+        $(document).ready(function () {
+
+
+
+            jQuery.validator.addMethod("noSpace", function (value, element) {
+                return value.indexOf(" ") < 0 && value != "";
+            }, "No space please and don't leave it empty");
+
+            jQuery.validator.addMethod("uriLink", function (value, element) {
+                // allow any non-whitespace characters as the host part
+                return this.optional(element) || /^[a-zA-Z0-9\-\_]{4,50}$/.test(value);
+            }, 'Please enter a valid link (minimum 4 characters and maximum 50 characters and spaces are not allowed).');
+
+            $("#admin-add-news-form").validate({
+                ignore: [],
+                rules: {
+                    newsTitle: {required: true,
+                    }
+                },
+                messages: {
+                    newsTitle: {required: "Please enter news title",
+                    }
+
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                },
+                errorPlacement: function (error, element) {
+                    if (element.attr("name") == "pageLink") {
+                        error.appendTo(element.parent().parent());
+                    } else {
+                        error.appendTo(element.parent());
+                    }
+
+                    //error.prependTo(element.parent());
+                },
+                invalidHandler: function (form, validation) {
+                    $('div.form-error').remove();
+                }
+            });
+
+        });
+
+    </script>
+
+{% endblock %} 

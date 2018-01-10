@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahWorkshopEnrollment" table="dah_workshop_enrollment">
+    <indexes>
+      <index name="FK_dah_workshop_enrollment" columns="wid"/>
+      <index name="FK_dah_workshop_enrollment_uid" columns="uid"/>
+    </indexes>
+    <id name="enid" type="integer" column="enid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fname" type="string" column="fname" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="lname" type="string" column="lname" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="email" type="string" column="email" length="200" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="phone" type="string" column="phone" length="30" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="certificateStatus" type="string" column="certificate_status" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="default">notIssued</option>
+      </options>
+    </field>
+    <many-to-one field="uid" target-entity="DahUsers" fetch="LAZY">
+      <join-columns>
+        <join-column name="uid" referenced-column-name="uid"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="wid" target-entity="DahWorkshops" fetch="LAZY">
+      <join-columns>
+        <join-column name="wid" referenced-column-name="wid"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,85 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                <div class="page-header">
+                    <h2>{{ 'common.workshops'|trans }}</h2>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-4 col-xs-12 col-lg-3 pull-right">
+                        <div class="well">
+
+                            <form>
+
+                                <div class="form-group">
+                                    <label for="">Keyword</label>
+                                    <input type="text" class="form-control" name="keyword" value="{% if app.request.get('keyword')!='' %}{{ app.request.get('keyword') }}{% endif %}" placeholder="{{ 'training.Searchfor'|trans }}...">
+
+                                </div>
+
+                                <button type="submit" class="btn btn-default"><i class="fa  fa-search"></i> {{ 'common.Search'|trans }}</button>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div class="col-md-9 big-col col-sm-8 col-lg-9 col-xs-12 pull-right ">
+                        <div class="row">
+                            {% if workshops|length>0 %}
+                                <div class="col-md-12">
+                                    <ul class="event-list">
+                                        {% for workshop in workshops %}
+                                            <li>
+                                                <time datetime="">
+                                                    {% if workshop.from_date > 0 %}
+                                                        <strong></strong>
+                                                        <span class="day">{{ workshop.from_date|date('d') }}</span>
+                                                        <span class="month">{{ workshop.from_date|date('M') }}</span>
+                                                        <span class="year">{{ workshop.from_date|date('Y') }}</span>
+                                                    {% else %}
+                                                        <span class="day">N/A</span>
+                                                    {% endif %}
+
+                                                </time>
+                                                <div class="info">
+                                                    <h2 class="title"><a href="{{ url('_view_workshop',{'wid':workshop.wid}) }}">{{ workshop.workshop_title }}</a></h2>
+                                                    <p class="desc"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ workshop.workshop_venue }}</p>
+                                                </div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+
+                            {% else %}
+                                <div class="row">
+                                    <div class="col-md-12 general-empty-content">{{ 'account.Nolatestworkshopfound'|trans }}</div>
+                                </div>
+                            {% endif %}
+                        </div>
+                        {% if paginate is defined and paginate|length>1 %}
+                            <nav class="text-center">
+                                <ul class="pagination">
+
+
+                                    {% for pg in paginate %}
+                                        <li {% if pg.text==page %}class='active'{% endif %} >{% if pg.url is defined %}<a href="{{ pg.url }}">{{ pg.text }}</a>{% else %}<a>{{ pg.text }}</a>{% endif %}</li>
+                                            {% endfor %}
+                                </ul>
+                            </nav>
+                        {% endif %} 
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

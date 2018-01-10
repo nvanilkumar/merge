@@ -1,0 +1,154 @@
+{% extends extend_view %}
+{% block content %}
+    <!-- HERO UNIT -->
+    <section class="hero-unit-slider no-margin">
+        <div id="carousel-hero" class="slick-carousel">
+            <div class="main-background1">
+                <div class="background-image"><br>
+                    <h2>{{ 'common.TeacherProfile'|trans }}</h2>
+                    <br>
+                    <div class="row padding-row">
+                        <div class="col-md-1 pull-right"></div>
+
+                        <div class="col-md-10 pull-right">
+                            <!-- Custom Tabs -->
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs right-to-left">
+                                    <li class="active"><a href="#tab_1" data-toggle="tab"><strong>{{ 'common.BasicInformation'|trans }}</strong></a></li>
+                                    <li><a href="#tab_2" data-toggle="tab"><strong>{{ 'account.EducationalInformation'|trans }}</strong></a></li>
+                                        {% if trainings|length > 0 %}
+                                        <li><a href="#tab_3" data-toggle="tab"><strong>{{ 'common.PopularTrainings'|trans }}</strong></a></li>
+                                        {% endif %}
+                                </ul>
+                                <div class="tab-content"  style="border:1px solid #DDD; border-top:0px;">
+                                    <div class="tab-pane active" id="tab_1">
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <img class="thumbnail" src="{% if user.avatar is defined and user.avatar!='' %}{{ asset('uploads/')~user.avatar }}{% else %}{{ asset('assets/img/default-user-female.png') }}{% endif %}" width="250px" height="auto"><br>
+                                            </div>
+                                            <div class="col-md-8"><br>
+                                                <div class="row">
+                                                    <div class="col-md-1 pull-right hidden-xs"></div>
+                                                    <div class="col-md-3 col-xs-4 pull-right"><strong>{{ 'account.FirstName'|trans }} :</strong></div>
+                                                    <div class="col-md-7 col-xs-7 pull-right">{{ user.fname }} </div>
+                                                </div><br>
+                                                <div class="row">
+                                                    <div class="col-md-1 pull-right hidden-xs"></div>
+                                                    <div class="col-md-3 col-xs-4 pull-right"><strong>{{ 'account.LastName'|trans }} :</strong></div>
+                                                    <div class="col-md-7  col-xs-7 pull-right">{{ user.lname }}</div>
+                                                </div><br>
+                                                <div class="row">
+                                                    <div class="col-md-1 pull-right hidden-xs"></div>
+                                                    <div class="col-md-3 col-xs-4 pull-right"><strong>{{ 'account.EmailID'|trans }} :</strong></div>
+                                                    <div class="col-md-7 col-xs-7  pull-right">{{ user.email }}</div>
+                                                </div><br>
+                                                {% if userinfo.school is defined and userinfo.school!='' %}
+                                                    <div class="row">
+                                                        <div class="col-md-1 pull-right hidden-xs"></div>
+                                                        <div class="col-md-3 col-xs-4 pull-right"><strong>{{ 'account.School'|trans }} :</strong></div>
+                                                        <div class="col-md-7 col-xs-7  pull-right">{{ userinfo.school }}</div>
+                                                    </div><br>
+                                                {% endif %}
+                                                {% if userinfo.location is defined and userinfo.location!='' %}
+                                                    <div class="row">
+                                                        <div class="col-md-1 pull-right hidden-xs"></div>
+                                                        <div class="col-md-3 col-xs-4 pull-right"><strong>{{ 'account.Location'|trans }} :</strong></div>
+                                                        <div class="col-md-7 col-xs-7  pull-right">{{ userinfo.location }}</div>
+                                                    </div><br>
+                                                {% endif %}
+
+                                            </div>
+                                        </div><br>
+
+                                        <br>
+                                    </div><!-- /.tab-pane -->
+
+                                    <div class="tab-pane" id="tab_2">
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <img class="thumbnail" src="{% if user.avatar is defined and user.avatar!='' %}{{ asset('uploads/')~user.avatar }}{% else %}{{ asset('assets/img/default-user-female.png') }}{% endif %}" width="250px" height="auto"><br>
+                                            </div>
+                                            <div class="col-md-8"><br>
+                                                {% if userinfo.position is defined and userinfo.position!='' %}
+                                                    <div class="row">
+                                                        <div class="col-md-1 pull-right hidden-xs"></div>
+                                                        <div class="col-md-3 col-xs-4 pull-right"><strong>{{ 'account.Position'|trans }} :</strong></div>
+                                                        <div class="col-md-7 col-xs-7  pull-right">{{ userinfo.position }}</div>
+                                                    </div><br>
+                                                {% endif %}
+                                                {% if userinfo.exp is defined and userinfo.exp!='' %}
+                                                    <div class="row">
+                                                        <div class="col-md-1 pull-right hidden-xs"></div>
+                                                        <div class="col-md-3 col-xs-4 pull-right"><strong>{{ 'account.TotalYearsofExperience'|trans }} :</strong></div>
+                                                        <div class="col-md-7 col-xs-7  pull-right">{{ userinfo.exp }}</div>
+                                                    </div><br>
+                                                {% endif %}
+                                                {% if userinfo.qualification is defined and userinfo.qualification!='' %}
+                                                    <div class="row">
+                                                        <div class="col-md-1 pull-right hidden-xs"></div>
+                                                        <div class="col-md-3 col-xs-4 pull-right"><strong>{{ 'account.Qualification'|trans }} :</strong></div>
+                                                        <div class="col-md-7 col-xs-7  pull-right">{{ userinfo.qualification }}</div>
+                                                    </div><br>
+                                                {% endif %}
+                                                {% if userinfo.bio is defined and userinfo.bio!='' %}
+                                                    <div class="row">
+                                                        <div class="col-md-1 pull-right hidden-xs"></div>
+                                                        <div class="col-md-3 col-xs-4 pull-right"><strong>{{ 'account.Bio'|trans }} :</strong></div>
+                                                        <div class="col-md-7 col-xs-7  pull-right">{{ userinfo.bio|raw }}</div>
+                                                    </div><br>
+                                                {% endif %}
+
+                                            </div>
+                                        </div><br>
+
+                                        <br>
+                                    </div>
+                                    {% if trainings|length > 0 %}
+                                        <div class="tab-pane" id="tab_3">
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <table class="table table-bordered ">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="text-right" width="60%">{{ 'account.Trainings'|trans }}</th>
+                                                                <th class="text-right" width="40%">{{ 'account.Department'|trans }}</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {% for training in trainings %}
+                                                            <tr>
+                                                                <td> <a href="{{ url('_view_training',{'tid':training.tid}) }}">{{ training.training_title }}</a></td>
+                                                                <td>{{ training.department }}</td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div><br>
+
+                                            <br>
+                                        </div>
+
+                                    {% endif %}
+                                    <!-- /.tab-pane -->
+                                </div><!-- /.tab-content -->
+                            </div><!-- nav-tabs-custom -->
+                        </div>
+
+
+
+                        <div class="col-md-1"></div>  
+
+
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END HERO UNIT -->
+    <br/>
+{% endblock %}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahTrainingKey" table="dah_training_key">
+    <indexes>
+      <index name="FK_dah_training_key_qid" columns="qid"/>
+      <index name="FK_dah_training_key" columns="opid"/>
+    </indexes>
+    <id name="keyid" type="integer" column="keyid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <many-to-one field="qid" target-entity="DahTrainingQuestions">
+      <join-columns>
+        <join-column name="qid" referenced-column-name="qid"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="opid" target-entity="DahQuestionOptions">
+      <join-columns>
+        <join-column name="opid" referenced-column-name="opid"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

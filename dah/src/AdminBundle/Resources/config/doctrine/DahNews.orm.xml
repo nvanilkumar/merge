@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahNews" table="dah_news">
+    <id name="newsid" type="integer" column="newsid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="newsTitle" type="string" column="news_title" length="250" nullable="true"/>
+    <field name="newsSubtitle" type="string" column="news_subtitle" length="250" nullable="true"/>
+    <field name="newsContent" type="text" column="news_content" nullable="true"/>
+    <field name="newsImage" type="string" column="news_image" length="50" nullable="true"/>
+    <field name="futureDate" type="integer" column="future_date" nullable="true"/>
+    <field name="newsletter" type="string" column="newsletter" nullable="true"/>
+    <field name="newsMetaTitle" type="string" column="news_meta_title" length="250" nullable="true"/>
+    <field name="newsMetaKeyword" type="string" column="news_meta_keyword" length="250" nullable="true"/>
+    <field name="newsMetaDescription" type="string" column="news_meta_description" length="250" nullable="true"/>
+    <field name="addedOn" type="integer" column="added_on" nullable="true"/>
+    <field name="updatedOn" type="integer" column="updated_on" nullable="true"/>
+  </entity>
+</doctrine-mapping>

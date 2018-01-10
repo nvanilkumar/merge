@@ -1,0 +1,62 @@
+{% extends extend_view %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                <div class="page-header"><h4>Dashboard</h4></div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="panel panel-default text-center stats-panel squared">
+                            <div class="panel-heading"><h4>Total Trainings</h4></div>
+                            <div class="panel-body">
+                                <h2><a href="{{ url('_admin_trainings') }}">{{ getTrainingsCount() }}</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="panel panel-default text-center stats-panel squared">
+                            <div class="panel-heading"><h4>Total Trainers/Teachers</h4></div>
+                            <div class="panel-body">
+                                <h2><a href="{{ url('_admin_teachers') }}">{{ getTeachersCount() }}</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="panel panel-default text-center stats-panel squared">
+                            <div class="panel-heading"><h4>Total Students</h4></div>
+                            <div class="panel-body">
+                                <h2><a href="{{ url('_admin_students') }}">{{ getStudentsCount() }}</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="panel panel-default text-center stats-panel squared">
+                            <div class="panel-heading"><h4>Total Published News</h4></div>
+                            <div class="panel-body">
+                                <h2><a href="{{ url('_admin_news') }}">{{ getNewsCount() }}</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="panel panel-default text-center stats-panel squared">
+                            <div class="panel-heading"><h4>Total Workshops</h4></div>
+                            <div class="panel-body">
+                                <h2><a href="{{ url('_admin_workshop') }}">{{ getWorkshopsCount() }}</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <div class="panel panel-default text-center stats-panel squared">
+                            <div class="panel-heading"><h4>Certificates Issued</h4></div>
+                            <div class="panel-body">
+                                <h2><a href="{{ url('_admin_certificates') }}">0</a></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'AdminBundle:Emails:Template.html.twig' %}
+{% block content %}
+
+    <h3>مرحبا, {{ name }}</h3>
+    <h4>مرحبا بكم في جامعة دار الحكمة </h4>
+    <p class="lead">هذا هو لتأكيد أن حسابك مع البريد الإلكتروني <strong>{{ email }}</strong> هو الآن نشط.<br/>إن نسيت كلمة المرور الخاصة بك، يمكنك إعادة تعيينها عن طريق البريد الإليكتروني. </p>
+
+
+
+    <br/>
+    <br/>
+{% endblock %}    

@@ -1,0 +1,56 @@
+{% extends extend_view %}
+{% block content %}
+    <!-- HERO UNIT -->
+    <section class="hero-unit-slider no-margin">
+        <div id="carousel-hero" class="slick-carousel">
+            <div class="main-background1">
+                <div class="background-image"><br>
+                    <br>
+                    <h2>{{ 'addtraining.Addnewtraining'|trans }}</h2>
+                    <br/>
+                    <div class="row padding-row">
+                        <div class="col-md-2 small-col col-sm-4 col-xs-12 col-lg-2">
+                            {% if user.role=='ROLE_TEACHER' %}
+                                {% include 'DahBundle:Account:leftTeacher.html.twig' %}
+                            {% elseif user.role=='ROLE_STUDENT' %}
+                                {% include 'DahBundle:Account:left.html.twig' %}
+                            {% endif %}
+                        </div>
+                        <div class="col-md-10 big-col col-sm-8 col-lg-10 col-xs-12 ">
+                            {% include 'DahBundle:Trainings:steps.html.twig' %}
+                            <div class="box">
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <form class="form-horizontal" method="post" id="" action=''  enctype="multipart/form-data">
+
+                                                <div class="form-group">
+                                                    <div class="col-sm-8">
+                                                        <span id="helpBlock" class="help-block">{{ 'common.Thissectionisunderconstruction'|trans }}</span>
+                                                    </div>
+                                                    <label for="" class="col-sm-3 control-label"></label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class=" col-sm-8">
+                                                        <a href="{{ url('_trainings') }}" class="btn btn-primary" >Go to My trainings</a>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-body -->
+                            </div> 
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END HERO UNIT -->
+    <br/>
+    
+
+{% endblock %}

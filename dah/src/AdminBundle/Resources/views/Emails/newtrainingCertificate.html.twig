@@ -1,0 +1,17 @@
+{% extends 'AdminBundle:Emails:Template.html.twig' %}
+{% block content %}
+
+    <h3>مرحبا, {{ name }}</h3>
+    <h4>مرحبا بكم في جامعة دار الحكمة </h4>
+    <p class="lead">شكرا لتسجيلك في احد برامج مركز المعلم القدوة   {{ training }}</a></p>
+    <p>يرجي اتباع الرابط التالي للحصول علي شهادة حضورك للبرنامج.  </p>
+
+
+    <a href="{{ url('_generic_download_act',{'filename':file})}}" class="btn" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; color: #FFF; font-size: 12px; text-decoration: none; font-weight: bold; display: block; text-align: center; background-color: #34495e !important; margin: 0 0 10px; padding: 3px 7px;">تحميل</a>
+    <p>أو نسخ الرابط أدناه في شريط العنوان الخاص بك إذا فوق زر لا يعمل</p>
+    <p class="callout">
+        {{ url('_generic_download_act',{'filename':file})}}
+    </p>
+    <br/>
+    <br/>
+{% endblock %}    

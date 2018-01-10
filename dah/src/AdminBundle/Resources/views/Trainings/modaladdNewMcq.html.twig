@@ -1,0 +1,79 @@
+<form method="post" class="form-horizontal" id="view-profile-form" action="{{ url('_admin_create_assesment') }}">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {% if mode == 'add' %}
+            <h4 class="modal-title" id="myModalLabel">Add new MCQ</h4>
+        {% else %}
+            <h4 class="modal-title" id="myModalLabel">Edit MCQ</h4>
+        {% endif %}
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-sm-12 ">
+                <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">Question</label>
+                    <div class="col-sm-9">
+                        
+                        <input type="text" class="form-control" dir='rtl' id="" placeholder="Question(Arabic)" name="trainingName" value="">
+                    </div>
+                </div>   
+                <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">Option 1</label>
+                    <div class="col-sm-9">
+                        
+                        <input type="text" class="form-control" id="" dir='rtl' placeholder="Option 1(Arabic)" name="trainingName" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">Option 2</label>
+                    <div class="col-sm-9">
+                        
+                        <input type="text" class="form-control" id="" dir='rtl' placeholder="Option 2(Arabic)" name="trainingName" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">Option 3</label>
+                    <div class="col-sm-9">
+                        
+                        <input type="text" class="form-control" id="" dir='rtl' placeholder="Option 3(Arabic)" name="trainingName" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">Option 4</label>
+                    <div class="col-sm-9">
+                        
+                        <input type="text" class="form-control" id="" dir='rtl' placeholder="Option 4(Arabic)" name="trainingName" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">Correct Option</label>
+                    <div class="col-sm-9">
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 4
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+    </div>
+</form>
+
+
+
+
+

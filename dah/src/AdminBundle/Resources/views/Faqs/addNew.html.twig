@@ -1,0 +1,92 @@
+{% extends extend_view %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                {% if mode=='add'  %}
+                    <div class="page-header"><h4>Add new FAQ</h4></div>
+                {% else %}
+                    <div class="page-header"><h4>Edit FAQ</h4></div>
+                {% endif %}
+                <div class="row">
+                    <form class="form-horizontal" method="post" id="admin-add-faq-form" action="" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Question <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+
+                                <textarea class="form-control  " dir='rtl' name="question" id="question">{% if app.request.get('question')!='' %}{{ app.request.get('question') }}{% elseif faq.question  is defined %}{{ faq.question  }}{% endif %}</textarea>
+                                {% if error.question is defined %}<div class="form-error-content">{{ error.question }}</div>{% endif %}
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label">Answer <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+
+                                <textarea class="form-control  " dir='rtl' name="answer" id="answer">{% if app.request.get('answer')!='' %}{{ app.request.get('answer') }}{% elseif faq.answer  is defined %}{{ faq.answer  }}{% endif %}</textarea>
+                                {% if error.answer is defined %}<div class="form-error-content">{{ error.answer }}</div>{% endif %}
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-8">
+                                <button type="submit" class="btn btn-primary" name="submit" id="faq-submit" value="submit" >Save FAQ</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        //CKEDITOR.replace('question', {
+        //    contentsLangDirection: 'rtl',
+        //    language: 'ar',
+       // });
+
+        //CKEDITOR.replace('answer', {
+        //    contentsLangDirection: 'rtl',
+        //    language: 'ar',
+        //    height: 500
+        //});
+
+        /*
+         $("#admin-add-faq-form").validate({
+         ignore: [],
+         rules: {
+         question: {
+         required: true,
+         },
+         answer: {
+         required: true,
+         }
+         },
+         messages: {
+         question: {required: "Please enter question"},
+         answer: {required: "Please enter answer"},
+         
+         
+         },
+         submitHandler: function (form) {
+         form.submit();
+         },
+         errorPlacement: function (error, element) {
+         if (element.attr("name") == "pageLink") {
+         error.appendTo(element.parent().parent());
+         } else {
+         error.appendTo(element.parent());
+         }
+         
+         //error.prependTo(element.parent());
+         },
+         invalidHandler: function (form, validation) {
+         $('div.form-error').remove();
+         }
+         });
+         
+         */
+    </script>
+{% endblock %} 

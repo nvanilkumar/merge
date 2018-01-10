@@ -1,0 +1,131 @@
+{% for video in videos %}
+    <div class="col-md-12" id="thumbnail-{{ video.tvid }}">
+        <div class="thumbnail">
+            <a href="#" class="thumbnail player"  data-toggle="modal" data-target="#videoMod-{{ video.tvid }}">
+                <img src="{% if video.video_thumbnail!='' %}{{ asset('uploads/'~video.video_thumbnail) }}{% else %}{{ asset('assets/img/btn-videoplayoverlay.png') }}{% endif %}" width="350" height="200" alt="...">
+                <div class="play-icon"><img src="{{ asset('assets/img/movie_play_blue.png') }}" width="100"  alt="..."></div>
+            </a>
+            <div class="caption">
+                <div class="form-group">
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="videoTitle[{{ video.tvid }}]" id="video-title-{{ video.tvid }}" maxlength="250" placeholder="No Title" value="{{ video.video_title }}">
+                    </div>
+                    <input type="hidden" name="tvid[]" value="{{ video.tvid }}" /> 
+                    <label for="" class="col-sm-3 control-label">{{ 'addtraining.Videotitle'|trans }} </label>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-8">
+                        <textarea class="form-control " dir='rtl' name="videoDesc[{{ video.tvid }}]">{% if video.video_desc  is defined %}{{ video.video_desc  }}{% endif %}</textarea>
+                    </div>
+                    <label for="" class="col-sm-3 control-label">{{ 'addtraining.Videodescription'|trans }} </label>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-8">
+                        <input type="file" name="videoThumbnail[{{ video.tvid }}]"  accept='image/*' />
+                    </div>
+                    <label for="" class="col-sm-3 control-label">{{ 'addtraining.Videothumbnail'|trans }} </label>
+                </div>
+
+                <br/>
+                <a href="javascript:;" class="delete-video btn btn-xs btn-danger" data-tvid="{{ video.tvid }}" ><i class="fa fa-trash"></i></a>
+                    {# <a href="javascript:;" class="save-title btn btn-xs btn-success" data-tvid="{{ video.tvid }}" ><i class="fa fa-check"></i></a>#}
+            </div>
+        </div>
+
+    </div>
+{% endfor %}
+<script src="{{ asset('assets/js/jwplayer/jwplayer.js') }}"></script>
+{% for video in videos %}
+    <div class="modal fade" id="videoMod-{{ video.tvid }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">{{ video.video_title }}</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="videoID-{{ video.tvid }}"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default close-video" data-vidid="videoID-{{ video.tvid }}" data-dismiss="modal">{{ 'addtraining.Close'|trans }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type='text/javascript'>
+        //jwplayer('video-example1').setup({
+        //   flashplayer: '{{ asset('assets/js/jwplayer/player.swf') }}',
+        //   file: 'https://www.youtube.com/watch?v=-5wpm-gesOY',
+        //   height: '100',
+        //   width: '200',
+        //'playlist.position': 'right',
+        //'playlist.size': 80
+        //});
+        jwplayer('videoID-{{ video.tvid }}').setup({
+            flashplayer: '{{ asset('assets/js/jwplayer/player.swf') }}',
+            file: '{{ asset('uploads/'~video.video) }}',{# file: '{{ asset('uploads/vid_bf6ab081987348145e0b08bdb24040e7.mp4') }}',#}
+            "width": "100%",
+//height: '100',
+            //width: '200',
+            //'playlist.position': 'right',
+            //'playlist.size': 80
+        });
+
+
+
+    </script>
+{% endfor %}
+<script>
+    $('body').on('click', '.close-video', function () {
+        var vidid = $(this).attr('data-vidid');
+        jwplayer(vidid).stop();
+    });
+    $('body').on('click', '.save-title', function () {
+        var tvid = $(this).attr('data-tvid');
+        var tis = $(this);
+        var title = $('#video-title-' + tvid).val();
+        //alert(title);
+        //return false;
+        tis.addClass('disabled');
+        $.ajax({
+            url: "{{ url('_edit_video_titles') }}",
+            dataType: 'json',
+            type: "POST",
+            // data: "tvid=" + tvid+",title="+title,
+            data: JSON.stringify({"tvid": tvid, "title": title}),
+            success: function (response)
+            {
+                tis.removeClass('disabled');
+                if (response.status == "success")
+                {
+
+                    $('#video-title-' + tvid).val(response.response);
+                }
+
+            }});
+
+
+
+    });
+
+    $('body').on('click', '.delete-video', function () {
+        var tvid = $(this).attr('data-tvid');
+        if (!confirm(var_sureyouwanttodelete))
+        {
+            return false;
+        }
+        $.ajax({
+            url: "{{ url('video_delete') }}",
+            dataType: 'json',
+            type: "POST",
+            data: "tvid=" + tvid,
+            success: function (response)
+            {
+                if (response.status == "success")
+                {
+
+                    $('#thumbnail-' + tvid).remove();
+                }
+
+            }});
+    });
+</script>

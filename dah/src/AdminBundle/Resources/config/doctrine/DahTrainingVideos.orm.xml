@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahTrainingVideos" table="dah_training_videos">
+    <indexes>
+      <index name="FK_dah_training_videos" columns="tid"/>
+    </indexes>
+    <id name="tvid" type="integer" column="tvid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="videoTitle" type="string" column="video_title" length="255" nullable="true"/>
+    <field name="video" type="string" column="video" length="255" nullable="true"/>
+    <field name="videoUrl" type="string" column="video_url" length="255" nullable="true"/>
+    <field name="videoDesc" type="text" column="video_desc" nullable="true"/>
+    <field name="videoThumbnail" type="string" column="video_thumbnail" length="255" nullable="true"/>
+    <field name="status" type="string" column="status" nullable="true"/>
+    <many-to-one field="tid" target-entity="DahTrainings">
+      <join-columns>
+        <join-column name="tid" referenced-column-name="tid"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,10 @@
+{% extends 'AdminBundle:Emails:Template.html.twig' %}
+{% block content %}
+
+    <h3>مرحبا, {{ name }}</h3>
+    <h4>مرحبا بكم في جامعة دار الحكمة </h4>
+    <p class="lead">شكرا لتسجيلك في احد برامج مركز المعلم القدوة  <a href="{{ url('_view_workshop',{'wid':wid}) }}">{{ workshop }}</a></p>
+    <p>سوف نوافيكم بمستجدات المركز وبرامجه.  </p>
+    <br/>
+    <br/>
+{% endblock %}    

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahTrainingQuestions" table="dah_training_questions">
+    <indexes>
+      <index name="FK_dah_training_questions" columns="tid"/>
+    </indexes>
+    <id name="qid" type="integer" column="qid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="question" type="text" column="question" nullable="true"/>
+    <field name="marks" type="integer" column="marks" nullable="true"/>
+    <field name="status" type="string" column="status" nullable="true"/>
+    <field name="qtype" type="string" column="qtype" nullable="true"/>
+    <many-to-one field="tid" target-entity="DahTrainings">
+      <join-columns>
+        <join-column name="tid" referenced-column-name="tid"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

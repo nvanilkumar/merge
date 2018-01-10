@@ -1,0 +1,99 @@
+{% extends extend_view %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h4>Upload Videos</h4>
+                        </div>
+                        <div class="col-lg-6">{#
+                            <strong>Total Marks :</strong> 50 | <strong><a  href="{{ url('_admin_add_new_desc') }}" data-toggle="modal"  data-target="#myModal"  class=""><i class="fa fa-graduation-cap"></i>
+                                    Cut-off Marks:</a></strong> 20 #}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-8">
+                        <form class="form-horizontal" method="post" id="" action=''  enctype="multipart/form-data">
+
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                    <input type="file" name="manualUpload" id="file_upload_1" />
+                                </div>
+                                <label for="" class="col-sm-3 control-label"></label>
+
+                            </div>
+                            {#<div class="form-group">
+                                <div class=" col-sm-8">
+                                    <button type="button" class="btn btn-primary" id="process-upload" name="submit" value="submit" >Upload</button>
+                                </div>
+                            </div>#}
+                            <hr/>
+                            <div class="row" id="videos-strip">
+                                {% include 'AdminBundle:Workshop:videoStrip.html.twig' %}
+                            </div>
+                            {% if videos|length > 0 %}
+                                <div class="form-group">
+                                    <div class=" col-sm-8">
+                                        <button type="submit" class="btn btn-primary" id="" name="submit" value="submit" >Save</button>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#myModal").on("show.bs.modal", function (e) {
+            var link = $(e.relatedTarget);
+            $(this).find(".modal-content").load(link.attr("href"));
+        });
+    </script>
+    <script src="{{ asset('assets/js/uploadify/jquery.uploadify.min.js') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#file_upload_1").uploadify({
+                height: 30,
+                swf: '{{ asset('assets/js/uploadify/uploadify.swf') }}',
+                uploader: '{{ url('_admin_video_work_uploadify') }}',
+                width: 250,
+                'height'   : 40,
+                'fileSizeLimit': '900MB',
+                'fileTypeExts': '*.mp4; *.webm; *.flv',
+                'fileTypeDesc': 'Please choose mp4/webm/flv files',
+                'queueSizeLimit': 5,
+                'fileObjName': 'manualUpload',
+                auto: true,
+                'buttonClass': 'btn btn-info',
+                'buttonText': 'Choose Video <i class="fa fa-cloud-upload" aria-hidden="true"></i>',
+                'multi': false,
+                'debug': false,
+                'formData': {'wid' : {{ wid }} },
+                'onQueueComplete': function (queueData) {
+                    location.reload();
+                }
+
+            });
+        });
+
+        $('body').on('click', '#process-upload', function () {
+            $("#file_upload_1").uploadify('upload', '*');
+        });
+    </script>
+
+{% endblock %} 

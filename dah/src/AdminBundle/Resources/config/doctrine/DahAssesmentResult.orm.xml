@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahAssesmentResult" table="dah_assesment_result">
+    <indexes>
+      <index name="FK_dah_assesment_result_uid" columns="uid"/>
+      <index name="FK_dah_assesment_result_tid" columns="tid"/>
+    </indexes>
+    <id name="darid" type="integer" column="darid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="maxMarks" type="integer" column="max_marks" nullable="true"/>
+    <field name="correct" type="integer" column="correct" nullable="true"/>
+    <field name="unassigned" type="integer" column="unassigned" nullable="true"/>
+    <field name="result" type="string" column="result" nullable="true"/>
+    <field name="attemptNo" type="integer" column="attempt_no" nullable="true"/>
+    <field name="lastAssesOm" type="bigint" column="last_asses_om" nullable="true"/>
+    <many-to-one field="uid" target-entity="DahUsers">
+      <join-columns>
+        <join-column name="uid" referenced-column-name="uid"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="tid" target-entity="DahTrainings">
+      <join-columns>
+        <join-column name="tid" referenced-column-name="tid"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

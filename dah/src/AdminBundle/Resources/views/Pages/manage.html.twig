@@ -1,0 +1,187 @@
+{% extends extend_view %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                <div class="page-header ">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h4>Pages</h4> 
+                        </div>
+                        <div class="col-sm-4 text-right"><a  href="{{ url('_admin_add_new_page') }}"   class="btn btn-success "><i class="fa fa-plus"></i> Add new page</a></div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="panel panel-default grey-bg">
+                            <div class="panel-body">
+                                <form class="form-inline"  action="" name="admin-page-search" id="admin-page-search">
+                                    <div class="form-group">
+                                        <label for="">Keyword</label>
+                                        <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Keyword" value="{% if app.request.get('keyword')!='' %}{{ app.request.get('keyword') }}{% endif %}">
+                                    </div> &nbsp;
+
+                                    <button type="submit" class="btn btn-primary" id="search-submit" name="" value="">Search</button>
+                                    <button type="submit" class="btn btn-default" id="clear" name="reset" value="Reset" >Clear</button>
+                                    <div class="error" id="errormessgaes"></div>
+                                </form>
+                            </div>
+                        </div> 
+                    </div>
+
+                    <div class="col-lg-12">
+
+                     	{% if range is defined and totalpages is defined%}
+                        <h5>Showing <strong>{{range}}</strong> of <strong>{{totalpages}}</strong> Pages</h5>
+                        {%endif%}
+                        <table class="table table-bordered table-responsive table-striped">
+                            <thead>
+                                <tr>
+                                    <th width="31%">Page name</th>
+                                    <th width="30%">Page title</th>
+                                    <th  width="30%">Subtitle</th>
+                                    <th  width="10%">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% if pages|length ==0  %}
+                                    <tr>
+                                        <td  colspan="4" align='center'>{{'NO Search Results Found'}}</td>
+                                    </tr>
+                                {%else%}
+                                    {%for page in pages %}
+                                        <tr data="{{page.pageid}}">
+                                            <td>
+                                                {% if page.page_url == 'home' %}
+                                                    <a href="{{ url('_home') }}" target="_blank" >{{page.page_name}}</a>
+                                                {% else %}
+                                                    <a href="{{ url('_pages',{ 'link' :page.page_url }) }}" target="_blank" >{{page.page_name}}</a>
+                                                {% endif %}
+                                            </td>
+                                            <td>{{page.page_title}} </td>
+                                            <td>{{ page.page_subtitle|length > 30 ? page.page_subtitle|slice(0, 30) ~ ' ...' : page.page_subtitle  }} </td>
+                                            <td> <a href="{{ url('_admin_edit_page',{ 'pageid' :page.pageid }) }}" class="btn btn-xs btn-default" title='Edit Page'><i class="fa fa-pencil"></i></a> 
+                                                    {% if page.page_name!='home' and page.page_name!='about us' and page.page_name!='terms of condition' and page.page_name!='privacy policy' and page.page_name !='contact'%}
+                                                    <a href="javascript:;" class="delete btn btn-xs btn-danger" title='Delete Page'><i class="fa fa-trash"></i></a> 
+                                                    {% endif %}
+
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {%endif%}
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-12">
+                        <nav class="text-center">
+                            {% if paginate is defined and paginate|length>1 %}
+                                <ul class="pagination">
+
+
+                                    {% for pg in paginate %}
+                                        <li {% if pg.text==page %}class='active'{% endif %} >{% if pg.url is defined %}<a href="{{ pg.url }}">{{ pg.text }}</a>{% else %}<a>{{ pg.text }}</a>{% endif %}</li>
+                                            {% endfor %}
+                                </ul>
+                            </nav>
+                        {% endif %} 
+
+                        </li>
+
+
+
+                        </ul>
+                        </nav>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var key = $('#keyword').val().trim();
+            $('body').on('click', '#search-submit', function () {
+                var key = $('#keyword').val().trim();
+                if (key == '') {
+                    $('#keyword').val('');
+                    $('#errormessgaes').html(' Please enter keyword to search');
+                    return false;
+                }
+            });
+
+
+
+
+
+
+
+
+            $('body').on('click', '.delete', function () {
+
+                if (confirm("Are you sure , you want to delete?"))
+                {
+                    var contentid = $(this).parent('td').parent('tr').attr("data");
+                    var d = $(this).parent('td').parent('tr').find('td:eq(0)').text();
+                    $.ajax({
+                        url: "{{ url('page_delete') }}",
+                        type: "POST",
+                        data: "contentid=" + contentid + "&pageName=" + d,
+                        success: function (response)
+                        {
+                            if (response.status == "success")
+                            {
+ flashmessage(response.message, response.status);
+                                $('tr[data=' + contentid + ']').remove();
+                                location.reload('_admin_pages');
+                            }
+
+                        }});
+                }
+            });
+
+
+                $('body').on('click','.status',function(){
+                 
+                    var faqid= $(this).parent('td').parent('tr').attr("data");
+                     var status=$(this).attr("data");
+                     var ele = $(this);
+                          $.ajax({
+                          url: "{{ url('faq_status') }}",
+                          type:"POST",
+                          data:"status="+status+"&&faqid="+faqid,
+                          success:function(response)
+                          {
+                           
+                              if(response.status=="success")
+                              {
+                                 
+                                  if(response.response.status=='active')
+                                  {
+                                
+                                     ele.html('<i class="fa fa-circle"></i>');
+                                     ele.attr('data',response.response.status);
+                                  }
+                                  else
+                                  {
+                                      ele.html('<i class="fa fa-circle-o"></i>');
+                                      ele.attr('data',response.response.status);
+                                  }
+                                  
+                              
+                              }
+                              
+                          }});  
+               });
+
+
+
+
+        });
+    </script>
+{% endblock %} 

@@ -1,0 +1,230 @@
+{% extends extend_view %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                {% if mode == 'add' %}
+                    <div class="page-header"><h4>Add new Workshop</h4></div>
+                {% else %}
+                    <div class="page-header"><h4>Edit Workshop</h4></div>
+                {% endif %}
+                <div class="row">
+
+
+                    <form class="form-horizontal" method="post" id="admin-add-new-workshop-form" action="" enctype="multipart/form-data">
+
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Workshop title <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+
+                                <input type="text" class="form-control" dir="rtl" id="link-gen-title" maxlength="250" placeholder="Workshop title" name="workshopTitle" value="{% if app.request.get('workshopTitle')!='' %}{{ app.request.get('workshopTitle') }}{% elseif workshop.workshopTitle  is defined %}{{ workshop.workshopTitle  }}{% endif %}">
+
+                                {% if error.workshopTitle is defined %}<div class="form-error-content">{{ error.workshopTitle }}</div>{% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Sub title</label>
+                            <div class="col-sm-8">
+
+                                <input type="text" class="form-control" dir="rtl" id="" placeholder="Subtitle" maxlength="250" name="workshopSubtitle" value="{% if app.request.get('workshopSubtitle')!='' %}{{ app.request.get('workshopSubtitle') }}{% elseif workshop.workshopSubtitle  is defined %}{{ workshop.workshopSubtitle  }}{% endif %}">
+
+                                {% if error.workshopSubtitle is defined %}<div class="form-error-content">{{ error.workshopSubtitle }}</div>{% endif %}
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Department  </label>
+                            <div class="col-sm-8">
+                                <select dir='rtl' class='form-control' name='department'>
+                                    <option value=''>Select</option>
+                                    {% for department in departments %}
+                                        <option value='{{ department.deptid }}' {% if app.request.get('department')!='' and app.request.get('department')== department.deptid %}selected="selected"{% elseif workshop.deptid.deptid is defined and workshop.deptid.deptid == department.deptid %}selected="selected"{% endif %} >{{ department.department }}</option>
+                                    {% endfor %}
+                                </select>
+                                {% if error.department is defined %}<div class="form-error-content">{{ error.department }}</div>{% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Description</label>
+                            <div class="col-sm-8">
+
+                                <textarea class="form-control ckeditor " dir='rtl' name="workshopContent">{% if app.request.get('workshopContent')!='' %}{{ app.request.get('workshopContent') }}{% elseif workshop.workshopContent  is defined %}{{ workshop.workshopContent  }}{% endif %}</textarea>
+                                {% if error.workshopContent is defined %}<div class="form-error-content">{{ error.workshopContent }}</div>{% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Duration</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control datepicker" id='datepickerfrom'  placeholder="From date" maxlength="11" name="fromDate" value="{% if app.request.get('fromDate')!='' %}{{ app.request.get('fromDate') }}{% elseif workshop.fromDate is defined and workshop.fromDate > 0 %}{{ workshop.fromDate|date('d-m-Y')  }}{% endif %}">
+                                {% if error.fromDate is defined %}<div class="form-error-content">{{ error.fromDate }}</div>{% endif %}
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control datepicker" id="datepickerto"  placeholder="To date" maxlength="11" name="toDate" value="{% if app.request.get('toDate')!='' %}{{ app.request.get('toDate') }}{% elseif workshop.toDate is defined and workshop.toDate > 0 %}{{ workshop.toDate|date('d-m-Y')  }}{% endif %}">
+                                {% if error.toDate is defined %}<div class="form-error-content">{{ error.toDate }}</div>{% endif %}
+                            </div>
+                        </div> 
+
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Workshop Venue <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="" placeholder="Workshop Venue"  maxlength="250" name="workshopVenue" 
+                                       value="{% if app.request.get('workshopVenue')!='' %}{{ app.request.get('workshopVenue') }}{% elseif workshop.workshopVenue is defined %}{{ workshop.workshopVenue  }}{% endif %}">
+                                {% if error.workshopVenue is defined %}<div class="form-error-content">{{ error.workshopVenue }}</div>{% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Schedule</label>
+                            <div class="col-sm-8">
+
+                                <textarea class="form-control ckeditor " dir='rtl' name="workshopSchedule">{% if app.request.get('workshopSchedule')!='' %}{{ app.request.get('workshopSchedule') }}{% elseif workshop.workshopSchedule  is defined %}{{ workshop.workshopSchedule  }}{% endif %}</textarea>
+                                {% if error.workshopSchedule is defined %}<div class="form-error-content">{{ error.workshopSchedule }}</div>{% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Speakers Info</label>
+                            <div class="col-sm-8">
+
+                                <textarea class="form-control ckeditor " dir='rtl' name="speakersInfo">{% if app.request.get('speakersInfo')!='' %}{{ app.request.get('speakersInfo') }}{% elseif workshop.speakersInfo  is defined %}{{ workshop.speakersInfo  }}{% endif %}</textarea>
+                                {% if error.speakersInfo is defined %}<div class="form-error-content">{{ error.speakersInfo }}</div>{% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Visibility <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+                                <label class="radio-inline">
+                                    <input type="radio" id="" value="yes" name='public' {% if app.request.get('public')!='' and app.request.get('public') == 'yes' %}checked='checked'{% elseif workshop.public is defined and workshop.public == 'yes' %}checked='checked'{% endif %} > Public
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" id="" value="no" name='public' {% if app.request.get('public')!='' and app.request.get('public') == 'no' %}checked='checked'{% elseif workshop.public is defined and workshop.public == 'no' %}checked='checked'{% endif %} > Private
+                                </label>   
+                                {% if error.public is defined %}<div class="form-error-content">{{ error.public }}</div>{% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Meta title</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="" placeholder="Meta title"  maxlength="250" name="workshopMetaTitle" 
+                                       value="{% if app.request.get('workshopMetaTitle')!='' %}{{ app.request.get('workshopMetaTitle') }}{% elseif workshop.workshopMetaTitle is defined %}{{ workshop.workshopMetaTitle  }}{% endif %}">
+                                {% if error.workshopMetaTitle is defined %}<div class="form-error-content">{{ error.workshopMetaTitle }}</div>{% endif %}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Meta keywords</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="" placeholder="Meta keywords"  maxlength="250" name="workshopMetaKeywords" 
+                                       value="{% if app.request.get('workshopMetaKeywords')!='' %}{{ app.request.get('workshopMetaKeywords') }}{% elseif workshop.workshopMetaKeyword is defined %}{{ workshop.workshopMetaKeyword  }}{% endif %}">
+                                {% if error.workshopMetaKeywords is defined %}<div class="form-error-content">{{ error.workshopMetaKeywords }}</div>{% endif %}
+                            </div>
+                        </div>   
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Meta description</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control " id=""  maxlength="250" name="workshopMetaDescription">{% if app.request.get('workshopMetaDescription')!='' %}{{ app.request.get('workshopMetaDescription') }}{% elseif workshop.workshopMetaDescription  is defined%}{{workshop.workshopMetaDescription }}{%endif%}</textarea>
+                                {% if error.workshopMetaDescription is defined %}<div class="form-error-content">{{ error.workshopMetaDescription }}</div>{% endif %}
+                            </div>
+                        </div>   
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-8">
+                                <button type="submit" class="btn btn-primary" name="submit" value="submit" >Save workshop</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        CKEDITOR.replace('workshopContent', {
+            contentsLangDirection: 'rtl',
+            language: 'ar',
+        });
+        CKEDITOR.replace('workshopSchedule', {
+            contentsLangDirection: 'rtl',
+            language: 'ar',
+        });
+        CKEDITOR.replace('speakersInfo', {
+            contentsLangDirection: 'rtl',
+            language: 'ar',
+        });
+    </script>
+    <script type="text/javascript">
+        $('#datepickerfrom').datepicker({
+            format: 'dd-mm-yyyy',
+            startDate: '0d',
+            todayHighlight: true,
+        });
+        $('#datepickerto').datepicker({
+            format: 'dd-mm-yyyy',
+            startDate: '0d'
+        });
+    </script>
+    <script>
+
+
+        $(document).ready(function () {
+
+
+
+            jQuery.validator.addMethod("noSpace", function (value, element) {
+                return value.indexOf(" ") < 0 && value != "";
+            }, "No space please and don't leave it empty");
+
+            jQuery.validator.addMethod("uriLink", function (value, element) {
+                // allow any non-whitespace characters as the host part
+                return this.optional(element) || /^[a-zA-Z0-9\-\_]{4,50}$/.test(value);
+            }, 'Please enter a valid link (minimum 4 characters and maximum 50 characters and spaces are not allowed).');
+
+            $("#admin-add-new-workshop-form").validate({
+                ignore: [],
+                rules: {
+                    workshopTitle: {required: true,
+                    },
+                    workshopVenue: {required: true,
+                    }
+                },
+                messages: {
+                    workshopTitle: {required: "Please enter workshop title",
+                    },
+                    workshopVenue: {required: "Please enter workshop venue",
+                    }
+
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                },
+                errorPlacement: function (error, element) {
+                    if (element.attr("name") == "pageLink") {
+                        error.appendTo(element.parent().parent());
+                    } else {
+                        error.appendTo(element.parent());
+                    }
+
+                    //error.prependTo(element.parent());
+                },
+                invalidHandler: function (form, validation) {
+                    $('div.form-error').remove();
+                }
+            });
+        });
+
+    </script>
+    <script type='text/javascript'>
+        var videodiv = $('#video-div').wrap('<div/>').parent().html();
+
+
+        $('body').on('click', '#add-video-button', function () {
+            $('#video-container-div').append(videodiv);
+        });
+
+    </script>
+{% endblock %} 

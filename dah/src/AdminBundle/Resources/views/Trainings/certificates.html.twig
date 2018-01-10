@@ -1,0 +1,126 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                <div class="page-header">
+                    <div class="row">
+                        <div class='col-sm-8'>
+                            <h4>Certificates</h4>
+                        </div>
+                        <div class="col-sm-4 text-right">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default grey-bg squared">
+                            <div class="panel-body">
+                                <form class="form-inline" method="POST" action="">
+                                    <div class="form-group">
+                                        <label for="">Keyword &nbsp;</label>
+                                        <input type="text" class="form-control" id="" name="keyword" placeholder="Keyword" value="{% if app.request.get('keyword')!='' %}{{ app.request.get('keyword') }}{% endif %}">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="" name="" value="">Search</button>
+                                    <button type="submit" class="btn btn-default" id="clear" name="reset" value="Reset" >Clear</button>
+                                </form>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col-lg-12">
+                        <h5>Showing <strong>1-10</strong> of <strong>38</strong> Students</h5>
+                        <table class="table table-bordered table-striped"> 
+                            <thead> 
+                                <tr>
+                                    <th width="5%"><input type="checkbox" id="checkAll"/></th>
+
+                                    <th width="35%">Student</th>
+                                    <th width="35%">Training</th>
+                                    <th width="10%">Certificate</th>
+                                    <th width="5%">View</th>
+                                </tr> 
+                            </thead> 
+                            <tbody> 
+                                {% for student in students %}
+                                    <tr> 
+                                        <td>
+                                            {% if student.issued=='no' %}
+                                                <input type="checkbox" />
+                                            {% endif %}
+                                        </td>
+                                        <td><a href='{{ url('_admin_view_student',{'uid':student.uid}) }}'>{{ student.fullname }}</a></td>
+                                        <td><a href='{{ url('_admin_edit_training',{'trainingid':679}) }}'>{{ student.training }}</a></td>
+                                            {% if student.issued=='yes' %}
+                                            <td class=""> <a href="javascript:;" title="" class="btn btn-xs btn-success"><i class="fa fa-check"></i> Yes</a></td> 
+                                        {% else %}
+                                            <td class=""> <a href="javascript:;" title="" class="btn btn-xs btn-danger"><i class="fa fa-times"></i> No</a></td> 
+
+                                        {% endif %}
+                                        {% if student.issued=='yes' %}
+                                            <td> <a href='{{ url('_admin_view_certificate',{'certid':34}) }}'><i class="fa fa-newspaper-o"></i></a> </td>
+                                                {% else %}
+                                            <td>&nbsp;</td>
+                                        {% endif %}
+                                    </tr> 
+                                {% endfor %}
+                            </tbody> 
+                        </table>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="panel panel-default grey-bg squared">
+                            <div class="panel-body">
+                                <form class="form-inline" method="POST" action="">
+                                    <div class="form-group">
+                                        <label for="">Mark as &nbsp;</label>
+                                        <select class='form-control'>
+                                            <option value=''>Select</option>
+                                            <option value='issued'>Issued</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="" name="" value="">Submit</button>
+                                </form>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col-lg-12">
+                        <nav class="text-center">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#myModal").on("show.bs.modal", function (e) {
+            var link = $(e.relatedTarget);
+            $(this).find(".modal-content").load(link.attr("href"));
+        });
+        $("#checkAll").change(function () {
+            $("input:checkbox").prop('checked', $(this).prop("checked"));
+        });
+    </script>
+{% endblock %}

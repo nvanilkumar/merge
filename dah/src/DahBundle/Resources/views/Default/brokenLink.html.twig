@@ -1,0 +1,31 @@
+{% extends extend_view %}
+{% block content %}
+    <!-- HERO UNIT -->
+    <section class="hero-unit-slider no-margin">
+        <div id="carousel-hero" class="slick-carousel">
+            <div class="main-background1">
+                <div class="background-image"><br>
+                   <h2><i class="fa fa-exclamation" ></i> {{ 'common.BrokenLink'|trans }}</h2>
+                    <br>
+                    <form role="form" method="POST" action="{{ url('_home') }}" >
+                        <div class="row row-spacing">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4"><p class="help-block text-center">{{ 'signup.brokenlink'|trans }}</p>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row row-spacing">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">        <button type="submit" class="btn btn-primary">{{ 'common.Continue'|trans }}</button>            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <br><br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END HERO UNIT -->
+    <br/>
+
+{% endblock %}

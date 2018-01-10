@@ -1,0 +1,17 @@
+{% extends 'AdminBundle:Emails:Template.html.twig' %}
+{% block content %}
+
+    <h3>مرحبا, {{ name }}</h3>
+    <h4>مرحبا بكم في جامعة دار الحكمة </h4>
+    <p class="lead">لرجاء النقر على الزر أدناه لتنشيط حسابك والبدء في عرض دورات تدريبية</p>
+
+
+
+    <a href="{{ url('_verifyuser',{'code':code})}}" class="btn" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; color: #FFF; font-size: 12px; text-decoration: none; font-weight: bold; display: block; text-align: center; background-color: #34495e !important; margin: 0 0 10px; padding: 3px 7px;">التحقق من المستخدم</a>
+    <p>في حال عدم عمله الرجاء نسخ الرابط ادناه في شريط العنوان الخاص بك. </p>
+    <p class="callout">
+        {{ url('_verifyuser',{'code': code })}}
+    </p>
+    <br/>
+    <br/>
+{% endblock %}    

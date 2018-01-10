@@ -1,0 +1,60 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                <div class="page-header">
+                    <h2>{{ 'common.LatestNews'|trans }}</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-4 col-xs-12 col-lg-3 pull-right">
+                        <div class="well">
+                            <form>
+                                <div class="form-group">
+                                    <label for="">Keyword</label>
+                                    <input type="text" class="form-control" name="keyword" value="{% if app.request.get('keyword')!='' %}{{ app.request.get('keyword') }}{% endif %}" placeholder="{{ 'training.Searchfor'|trans }}...">
+                                </div>
+                                <button type="submit" class="btn btn-default"><i class="fa  fa-search"></i>  {{ 'account.Search'|trans }}</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-9 big-col col-sm-8 col-lg-9 col-xs-12 pull-right ">
+                        <div class="row">
+                            {% if news|length>0 %}
+                                {% for n in news %}
+                                    <div class='col-md-6'>
+                                        <div class='thumbnail'>  
+                                            <img src='{% if n.news_image is defined and n.news_image != '' %}{{ asset('uploads/')~n.news_image }}{% else %}{{ asset('assets/img/news_paper_icon.png') }}{% endif %}' width="100%" height="200px" />  
+                                            <div class='newscaption'>  
+                                                <h4 class=''><a href="{{ url('_view_news',{'newsid':n.newsid}) }}">{{ n.news_title }}</a></h4>  
+                                            </div>  
+                                        </div>  
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+
+                                <div class="col-md-12 general-empty-content"> {{ 'account.Nolatestnewsfound'|trans }}</div>
+
+                            {% endif %}
+                        </div>
+                        {% if paginate is defined and paginate|length>1 %}
+                            <nav class="text-center">
+                                <ul class="pagination">
+                                    {% for pg in paginate %}
+                                        <li {% if pg.text==page %}class='active'{% endif %} >{% if pg.url is defined %}<a href="{{ pg.url }}">{{ pg.text }}</a>{% else %}<a>{{ pg.text }}</a>{% endif %}</li>
+                                    {% endfor %}
+                                </ul>
+                            </nav>
+                        {% endif %} 
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

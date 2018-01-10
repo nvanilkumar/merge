@@ -1,0 +1,169 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12 col-lg-3 pull-right">
+                {% if user.role=='ROLE_TEACHER' %} 
+                    {% include 'DahBundle:Account:leftTeacher.html.twig' %}
+                {% elseif user.role=='ROLE_STUDENT' %}
+                    {% include 'DahBundle:Account:left.html.twig' %}
+                {% endif %} 
+
+            </div>
+            <div class="col-md-9 big-col col-sm-8 col-lg-9 col-xs-12 pull-right">
+                <div class="page-header">
+                    <h2>{{ 'addtraining.TrainingMaterial'|trans }}</h2>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        {% include 'DahBundle:Trainings:steps.html.twig' %}
+                        <div class="col-md-offset-2 col-md-8 col-md-offset-2 addForm" style="margin-bottom: 15px;">
+                            <button onclick="myFunction()" class="btn btn-success">{{ 'addtraining.Add'|trans }}</button>
+                        </div>
+                        <div class="col-md-offset-2 col-md-8 col-md-offset-2 ">
+                            <form class="form-horizontal" method="post" id="materialUp" action=''  enctype="multipart/form-data" role="form">
+                                <div id="into" style="margin-bottom: 10px; padding: 20px 0px 10px 20px; border:1px solid #bdc3c7;">
+                                    <div class="form-group">
+                                        <div class="col-sm-8">
+                                            <input type="text" name="ftitle[]" id="ftitle" class="form-control" placeholder="{{ 'addtraining.Title'|trans }}"/>
+                                        </div>
+                                        <label for="" class="col-sm-3 control-label">{{ 'addtraining.Title'|trans }}</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-8">
+                                            <input type="file" name="materialupload[]" id="materialupload"/>
+                                            {% if error.materialupload is defined %}<div class="form-error-content">{{ error.materialupload }}</div>{% endif %}
+                                        </div>
+                                        <label for="" class="col-sm-3 control-label">{{ 'addtraining.AttachMaterial'|trans }}</label>
+                                    </div>
+                                </div>
+                                <div>
+                                    {% for material in materials %}
+                                        <div style="padding: 20px 0px 10px 20px; border:1px solid #bdc3c7; margin-bottom: 15px;">
+                                            <div class="materialEdit">
+                                                <div class="form-group col-sm-8 tm" style="padding-right:0px;">
+                                                    <a class="label label-warning editMaterial"><i class='fa fa-pencil'></i> Edit</a> 
+                                                </div>                                                                                  
+                                                <div class="editBtn">
+                                                    <div class="form-group">
+                                                        <div class="col-sm-8">
+                                                            <input type="text" name="uftitle[{{ material.id }}]"  value="{{ material.ftitle }}" class="form-control" placeholder="Edit Training Title here...."/>
+                                                            <input type="hidden" name="uploadid[{{ material.id }}]"  value="{{ material.id }}" class="form-control" />
+                                                            <input type="hidden" name="ustatus[{{ material.id }}]"  class="form-control" id="ustatus_{{ material.id }}" value="0"/>
+                                                        </div>
+                                                        <label for="" class="col-sm-3 control-label">Title</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-8 ">
+                                                            <input type="file" name="umaterialupload[{{ material.id }}]" id="umaterialupload" />                                   
+                                                        </div>
+                                                        <label for="" class="col-sm-3 control-label">Material Upload</label>
+                                                    </div>
+                                                </div></div>
+                                            <div class="form-group">
+                                                <div class="col-sm-8 ">
+                                                    <a class="matDownload" style="color: #000;" title="Download Material" href="{{ url('_generic_download_act',{'filename':material.materialupload})  }}" target="_blank" ><i class="fa fa-download" aria-hidden="true"></i>
+                                                        {% if material.ftitle != '' %}{{ material.ftitle }}{% else %}Untitled{% endif %}</a>                                
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-sm-8 remv update_class" data-id="{{ material.id }}">
+                                                    <button class='delete btn btn-xs btn-danger' type='button' title="Delete Material">
+                                                        <i class='fa fa-trash'></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>    
+                                                    
+                                    {% endfor %} 
+                                </div>  
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-primary" id="" name="submit" value="submit" >{{ 'addtraining.Save'|trans }}</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% block stylesheets %}
+        <script src="{{ asset('assets/js/jquery.validate.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/additional-methods.min.js"></script>
+        <style type="text/css">
+            .editBtn{
+                display:none;
+            }
+        </style>
+    {% endblock %}
+    <script type="text/javascript">
+    
+    var x = 1;
+    var mydiv = document.getElementById("into").innerHTML;
+    function myFunction() {
+        var btn = document.createElement("div");
+
+
+        btn.setAttribute("id", "rowid" + x);
+        btn.innerHTML = mydiv + "<div class='remv text-left' style='margin-bottom:10px;'><button class='delete btn btn-xs btn-danger' type='button'  title='Delete' onclick='removeelm(" + x + ");'><i class='fa fa-trash'></i></button></div><hr>"
+        document.getElementById("into").appendChild(btn);
+        //alert(x);
+        //console.log(btn);
+        x++;
+    }
+    function removeelm(id) {
+        var newid = "rowid" + id;
+        var ele = document.getElementById(newid);
+        var element = document.getElementById("into");
+        var cnf = confirm(var_wanttoremovethisrow);
+        if (cnf == true) {
+            element.removeChild(ele);
+        }
+    }
+    $(".editMaterial").click(function () {
+                                    //alert("hi");
+        $(this).parent(".tm").parent(".materialEdit").find('.editBtn').toggle();
+                                    //.$('.editBtn').toggle();
+    });
+
+    $(".update_class").click(function () {
+        $(this).hide();
+        $(this).prev().hide();
+        $(this).prev().prev().hide();
+        var statusid = $(this).data("id");
+        $("#ustatus_" + statusid).val(1);
+    }); 
+$(document).ready(function () {
+    $("#materialUp").validate({
+            ignore: [],
+            rules: {
+                'materialupload[]': {
+                    required: true,
+                    extension: 'docx|doc|pdf'
+                }
+            },
+            messages: {
+                'materialupload[]': {
+                    required: var_Pleaseattachatm,
+                    extension: var_attachonlyPdfDocDocx
+                }
+            },
+            errorPlacement: function (error, element) {
+
+                error.appendTo(element.parent());
+                //error.prependTo(element.parent());
+            },
+            invalidHandler: function (form, validation) {
+                $('div.form-error').remove();
+            }
+    });
+});
+    </script>
+
+{% endblock %}

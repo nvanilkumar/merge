@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahUserAssesmentResults" table="dah_user_assesment_results">
+    <indexes>
+      <index name="FK_dah_user_assesment_results_uid" columns="uid"/>
+      <index name="FK_dah_user_assesment_results_tid" columns="tid"/>
+      <index name="FK_dah_user_assesment_results_qid" columns="qid"/>
+      <index name="FK_dah_user_assesment_results_opid" columns="opid"/>
+    </indexes>
+    <id name="duaid" type="integer" column="duaid">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="res" type="string" column="res" nullable="true"/>
+    <many-to-one field="uid" target-entity="DahUsers">
+      <join-columns>
+        <join-column name="uid" referenced-column-name="uid"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="tid" target-entity="DahTrainings">
+      <join-columns>
+        <join-column name="tid" referenced-column-name="tid"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="qid" target-entity="DahTrainingQuestions">
+      <join-columns>
+        <join-column name="qid" referenced-column-name="qid"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="opid" target-entity="DahQuestionOptions">
+      <join-columns>
+        <join-column name="opid" referenced-column-name="opid"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

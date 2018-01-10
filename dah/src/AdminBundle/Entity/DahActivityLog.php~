@@ -1,0 +1,52 @@
+<?php
+
+namespace AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DahActivityLog
+ *
+ * @ORM\Table(name="dah_activity_log", indexes={@ORM\Index(name="adminid", columns={"adminid"})})
+ * @ORM\Entity
+ */
+class DahActivityLog
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="message", type="text", length=65535, nullable=true)
+     */
+    private $message;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="logged_on", type="integer", nullable=true)
+     */
+    private $loggedOn;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="logid", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     */
+    private $logid;
+
+    /**
+     * @var \AdminBundle\Entity\DahAdmin
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="AdminBundle\Entity\DahAdmin")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="adminid", referencedColumnName="adminid")
+     * })
+     */
+    private $adminid;
+
+
+}
+

@@ -1,0 +1,14 @@
+{% extends 'AdminBundle:Emails:Template.html.twig' %}
+{% block content %}
+
+    <h3>{{ news_title }}</h3>
+    <h4 style="color:#999999;">{{ news_subtitle }}</h4>
+    <img src="{{ asset('uploads/'~news_image,absolute=true) }}" width="320px" style="max-width: 100%" />
+    <p class="lead">{{ news_content|raw }}</p>
+
+
+
+    
+    <br/>
+    <br/>
+{% endblock %}    

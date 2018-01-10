@@ -1,0 +1,516 @@
+{% extends extend_view %}
+{% block content %}
+<div class="container">
+<div class="row">
+<div class="col-md-3 col-sm-4 col-xs-12 col-lg-3 pull-right">
+    {% if user.role=='ROLE_TEACHER' %}
+        {% include 'DahBundle:Account:leftTeacher.html.twig' %}
+    {% elseif user.role=='ROLE_STUDENT' %}
+        {% include 'DahBundle:Account:left.html.twig' %}
+    {% endif %}
+
+</div>
+<div class="col-md-9 big-col col-sm-8 col-lg-9 col-xs-12 pull-right">
+    <div class="page-header">
+        <h2>Training Assesment</h2>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            {% include 'DahBundle:Trainings:steps.html.twig' %}
+
+            <div class="row">
+
+                <div class="col-md-12"><a href="javascript:;" id="add-tf-control"  class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> {{ 'addtraining.AddTrueandFalseQuestion'|trans }}</a>  <a href="javascript:;" id="add-mcq-control"  class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> {{ 'addtraining.AddMultipleChoiceQuestion'|trans }}</a></div>
+
+            </div>
+            <div class="spacer10"></div>
+            <div class="panel panel-default add-mcq-form-panel hide">
+                <form method="post" class="form-horizontal" id="add-mcq-form" action="{{ url('_ajax_add_mcq') }}">
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-12 ">
+                                <div class="form-group">       
+                                    <div class="col-sm-9">
+                                        <div class="">
+                                            <input type="hidden" name="tid" value="{{ training.tid }}" />
+                                            <input type="hidden" id="mcq-qid-control" name="qid" value="" />
+                                            <input type="hidden" name="formType" value="mcq" />
+                                            <input type="text" class="form-control " dir='rtl' id="mcq-question-control" placeholder="{{ 'addtraining.Question'|trans }}" name="question" value="">
+                                        </div>
+                                    </div>
+                                    <label for="" class="col-sm-3 control-label">{{ 'addtraining.Question'|trans }}</label>
+                                </div>
+                                <div class="form-group">
+                                   <div class="col-sm-1"> <label for="answer" class="radio-inline" style="padding-bottom:15px;"> <input type="radio" name="answer" id="" value="" title="Answer"> </label></div>
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control mcq-question-text" aria-label="" id="add-mcq-option-1" name="option[]" value="" data-value="1" >
+                                            <span class="input-group-addon"><a href="javascript:;" id="add-option-control"><i class="glyphicon glyphicon-plus"></i></a></span>
+                                        </div>
+                                    </div>
+                                    
+                                     <label for="" class="col-sm-3 control-label">{{ 'common.Options'|trans }}</label>
+                                </div>
+                                <div id="options-add-div">
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="panel-footer">
+                        <button type="button" class="btn btn-default" id="add-mcq-control-close">{{ 'addtraining.Close'|trans }}</button>
+                        <button type="submit" id="butt" class="btn btn-primary">{{ 'addtraining.Save'|trans }}</button>
+                    </div>
+                </form>
+                <script type="text/javascript">
+                    var count = 1;
+                    var cnt = 1;
+                    var optiondiv = '<div class="form-group"><label for="" class="col-sm-3 control-label"></label><div class="col-sm-8"><div class="input-group"> <span class="input-group-addon"><input type="radio" name="correctoption" id="" value="1"></span><input type="text" class="form-control mcq-question-text" aria-label="" name="option[]" value="" data-value="1" > <span class="input-group-addon"><i class="glyphicon glyphicon-minus"></i></span></div></div><div class="col-sm-1"> <label class="radio-inline"> <input type="radio" name="answer" id="" value=""> </label></div></div>';
+                    $('body').on('click', '#add-option-control', function () {
+                        if (cnt < 10) {
+                            count++;
+                            cnt++;
+                            $('#options-add-div').append('<div class="form-group" style="padding:0px 15px;"><div class="col-sm-1"> <label class="radio-inline" style="padding-bottom:15px;"> <input type="radio" name="answer" id="" value=""> </label></div><div class="col-sm-8"><div class="input-group"> <input type="text" class="form-control mcq-question-text" aria-label="" name="option[]" value="" data-value="' + count + '" > <span class="input-group-addon"><a href="javascript:;" class="remove-option-control"><i class="glyphicon glyphicon-minus"></i></a></span></div></div><label for="" class="col-sm-3 control-label"></label></div>')
+                        }
+                    });
+                    $('body').on('click', '#add-mcq-control', function () {
+                        $('.add-mcq-form-panel').removeClass('hide');
+                        $('#mcq-qid-control').val('');
+                    });
+                    $('body').on('click', '#add-mcq-control-close', function () {
+                        $('.add-mcq-form-panel').addClass('hide');
+                        $('#mcq-qid-control').val('');
+                    });
+                    $('body').on('click', '.remove-option-control', function () {
+                        cnt--;
+                        $(this).parent().parent().parent().parent().remove();
+                    });
+                    $('body').on('change keyup', '.mcq-question-text', function () {
+                        var txt = $(this).val();
+                        $(this).parent().parent().parent().find('input:radio').val(txt);
+                    });
+                    $(document).ready(function () {
+                        $("#add-mcq-form").validate({
+                            rules: {
+                                question: {required: true
+                                },
+                                'option[]': {required: true
+                                }
+                            },
+                            messages: {
+                                question: {required: var_fieldnotblank},
+                                'option[]': {required: var_fieldnotblank
+                                }
+                            },
+                            submitHandler: function (form) {
+                // alert('reached submit');
+                // return false;
+                                $.ajax({
+                                    type: $(form).attr('method'),
+                                    url: $(form).attr('action'),
+                                    data: $(form).serialize(),
+                                    dataType: 'json'
+                                })
+                                        .done(function (response) {
+
+                                            if (response.status == "success") {
+                                                var selco = $("#cuttoff-control option:selected").val();
+                                                $('#cuttoff-control').html('');
+                                                $('#add-mcq-form')[0].reset();
+                                                $('.add-mcq-form-panel').addClass('hide');
+                                                $('#options-add-div').html('');
+                                                if (response.type == 'add') {
+                                                    $('#questions-list').prepend(response.response);
+                                                } else
+                                                {
+                                                    $('.question-rec-' + response.id).html(response.response);
+                                                }
+                                                $('#total-marks').html(response.marks);
+                                                $('#total-marks-hidden').val(response.marks);
+                                                var a = parseInt(response.marks);
+                                                var psst = '';
+                                                for (var counter = 0; counter <= a; counter++) {
+                                                    if (counter == selco) {
+                                                        psst += '<option value="' + counter + '" selected="selected" >' + counter + '</option>';
+                                                    } else
+                                                    {
+                                                        psst += '<option value="' + counter + '" >' + counter + '</option>';
+                                                    }
+
+                                                }
+                                                $('#cuttoff-control').html(psst);
+                                                flashmessage(response.message, response.status);
+                                            } else {
+                                                $('#add-mcq-form')[0].reset();
+                                                $('.add-mcq-form-panel').addClass('hide');
+                                                $('#options-add-div').html('');
+                                                flashmessage(response.message, response.status);
+                                            }
+
+                                        });
+                                return false;
+                            },
+                            errorPlacement: function (error, element) {
+
+                                //error.appendTo(element.parent());
+                                //error.prependTo(element.parent().parent().parent());
+                                error.insertAfter(element.parent());
+                                },
+                            invalidHandler: function (form, validation) {
+                                $('div.form-error').remove();
+                            }
+                        });
+                    });
+                </script>
+            </div>
+            <div class="spacer10"></div>
+            <div class="panel panel-default add-tf-form-panel hide">
+                <form method="post" class="form-horizontal" id="add-tf-form" action="{{ url('_ajax_add_mcq') }}">
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-12 ">
+                                <div class="form-group">
+                                    <input type="hidden" name="tid" value="{{ training.tid }}" />
+                                    <input type="hidden" name="qid" id="tf-qid-control" value="" />
+                                    <input type="hidden" name="formType" value="tf" />
+                                    <div class="col-sm-9">
+
+                                        <input type="text" class="form-control" dir='rtl' id="tf-question-control" placeholder="{{ 'addtraining.Question'|trans }}" name="question" value="">
+                                    </div>
+                                    <label for="" class="col-sm-3 control-label">{{ 'addtraining.Question'|trans }}</label>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="col-sm-9">
+                                        <label class="radio-inline" style="padding-bottom:20px;">
+                                            <input type="radio"  name="answer" id="tf-answer-true" value="True" title="True">
+                                        </label>
+                                    </div>
+                                    <label for="" class="col-sm-3 control-label">True</label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-9">
+                                        <label class="radio-inline" style="padding-bottom:20px;">
+                                            <input type="radio"  name="answer" id="tf-answer-false" value="False" title="False">
+                                        </label>
+                                    </div>
+                                    <label for="" class="col-sm-3 control-label">False</label>
+                                </div>
+                                <div id="radioError"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="panel-footer">
+                        <button type="button" class="btn btn-default" id="add-tf-control-close" >{{ 'addtraining.Close'|trans }}</button>
+                        <button type="submit" class="btn btn-primary">{{ 'addtraining.Save'|trans }}</button>
+                    </div>
+                </form>
+<script type="text/javascript">
+
+    $('body').on('click', '#add-tf-control', function () {
+        $('.add-tf-form-panel').removeClass('hide');
+        $('#tf-qid-control').val('');
+    });
+    $('body').on('click', '#add-tf-control-close', function () {
+        $('.add-tf-form-panel').addClass('hide');
+        $('#tf-qid-control').val('');
+    });
+
+    $(document).ready(function () {
+        $("#add-tf-form").validate({
+            rules: {
+                question: {required: true
+                },
+                answer: {required: true}
+
+            },
+            messages: {
+                question: {required: var_fieldnotblank},
+                answer: {required: var_pleasechooseoneoption}
+            },
+            submitHandler: function (form) {
+//  alert('reached submit');
+// return false;
+                $.ajax({
+                    type: $(form).attr('method'),
+                    url: $(form).attr('action'),
+                    data: $(form).serialize(),
+                    dataType: 'json'
+                })
+                        .done(function (response) {
+
+                            if (response.status == "success") {
+                                var selco = $("#cuttoff-control option:selected").val();
+                                $('#cuttoff-control').html('');
+                                $('#add-tf-form')[0].reset();
+                                $('.add-tf-form-panel').addClass('hide');
+                                if (response.type == 'add') {
+                                    $('#questions-list').prepend(response.response);
+                                } else
+                                {
+                                    $('.question-rec-' + response.id).html(response.response);
+                                }
+
+                                $('#total-marks').html(response.marks);
+                                $('#total-marks-hidden').val(response.marks);
+                                var a = parseInt(response.marks);
+                                var psst = '';
+                                for (var counter = 0; counter <= a; counter++) {
+                                    if (counter == selco) {
+                                        psst += '<option value="' + counter + '" selected="selected" >' + counter + '</option>';
+                                    } else
+                                    {
+                                        psst += '<option value="' + counter + '" >' + counter + '</option>';
+                                    }
+
+                                }
+                                $('#cuttoff-control').html(psst);
+                                flashmessage(response.message, response.status);
+                            } else {
+                                $('#add-tf-form')[0].reset();
+                                $('.add-tf-form-panel').addClass('hide');
+                                flashmessage(response.message, response.status);
+                            }
+
+                        });
+                return false;
+            },
+            errorPlacement: function (error, element) {
+                if (element.attr("type") == "radio") {
+                    error.appendTo(element.parent().parent());
+                } else {
+                    error.appendTo(element.parent());
+                }
+                //error.appendTo(element.parent());
+                // error.insertAfter(element.parent());
+            },
+            invalidHandler: function (form, validation) {
+                $('div.form-error').remove();
+            }
+        });
+    });
+</script>
+            </div>
+            <hr/>
+            <form method="post" >
+                <div class="row">
+                    {% if assesment.totalmarks is defined %}
+                        <div class="col-md-3 form-inline">
+                            <strong> CutOff </strong>
+                            <select class="form-control" data-tid='{{ training.tid }}' name="cuttOff" id="cuttoff-control">
+
+                                {% for i in 0..(assesment.totalmarks) %}
+                                    <option value="{{ i }}" {% if assesment.cutoff is defined and assesment.cutoff == i %}selected="selected"{% endif %} >{{ i }}</option>
+                                {% endfor %}
+
+                            </select>
+                        </div>
+                        {# <div class="col-md-6">
+                        <strong> Total Marks </strong> <span class="badge" id="total-marks">{% if assesment.totalmarks is defined %}{{ assesment.totalmarks }}{% else %}0{% endif %}</span>
+                        <input type="hidden" name="totalMarks" id="total-marks-hidden" value="{% if assesment.totalmarks is defined %}{{ assesment.totalmarks }}{% else %}0{% endif %}" />
+                        </div>#}
+                    {% endif %}
+                </div>
+
+
+                <ul style="list-style: none; ">
+                    <div class="row" id="questions-list">
+                        {% for question in questions %}
+                            <li class='question-rec-{{ question.qid }}'>
+
+                                <div class="col-md-3">
+                                    <span class=''> <a href="javascript:;" data-qid="{{ question.qid }}" class="edit-question btn btn-xs btn-default"><i class="fa fa-pencil"></i></a> <a href='javascript:;'  data-qid="{{ question.qid }}"  class="delete-question btn btn-xs btn-danger"><i class="fa fa-trash"></i></a></span>
+                                </div>
+                                <div class="col-md-9">
+                                    <strong>{{ question.question|raw }}</strong>
+                                </div>
+                                {% set opt = getQOptions(question.qid) %}
+                                {% if opt|length > 0 %}
+                                    <ol type="a">
+                                        {% for option in opt %}
+                                            <li>{{ option.options }}</li>
+                                            {% endfor %}
+                                    </ol>
+                                    <div class="well well-sm">
+                                        {% for option in opt %}
+                                            <label class=""> {{ option.options }}  <input type="radio" value="{{ option.options }}" id="" name="qopt[{{ question.qid }}]" {{ getQOptionChecked(question.qid,option.opid) }} /></label>&nbsp;
+                                            {% endfor %}
+                                    </div>
+                                {% endif %}
+
+                            </li>
+                        {% endfor %}
+                    </div>
+                </ul>
+                {#  <div class="form-group">
+                <div class=" col-sm-8">
+                <button type="submit" class="btn btn-primary" id="" name="submit" value="submit" >Save and Continue</button>
+                </div>
+                </div> #}
+            </form>
+        </div>
+
+    </div>
+</div>
+
+</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function () {
+$('body').on('click', '.edit-question', function () {
+    var qid = $(this).attr('data-qid');
+    if (qid > 0) {
+        $.ajax({
+            type: 'post',
+            url: '{{ url('_getquestiondet') }}',
+            data: "qid=" + qid,
+            dataType: 'json'
+        })
+                .done(function (response) {
+//return false;
+                    if (response.status == "success") {
+                        if (typeof response.response.question.qtype != 'undefined') {
+// alert(response.response.question.qtype);
+
+                            var qtype = response.response.question.qtype;
+                            if (qtype == 'tf')
+                            {
+//  console.log('in true false');
+// return false;
+                                $('.add-tf-form-panel').removeClass('hide');
+                                $('#tf-question-control').val(response.response.question.question);
+                                $('#tf-qid-control').val(response.response.question.qid);
+                                var answ = response.response.answer.options;
+                                if (answ == 'True')
+                                {
+                                    $('#tf-answer-true').attr('checked', true)
+                                } else
+                                {
+                                    $('#tf-answer-false').attr('checked', true)
+                                }
+                            } else if (qtype == 'mcq')
+                            {
+
+                                $('.add-mcq-form-panel').removeClass('hide');
+                                $('#mcq-question-control').val(response.response.question.question);
+                                $('#mcq-qid-control').val(response.response.question.qid);
+                                var obj = response.response.options;
+                                var first = 'yo';
+                                var cnt = 0;
+                                var answ = response.response.answer.options;
+                                $('#options-add-div').html('');
+                                $.each(obj, function (key, value) {
+// alert(key + ": " + value);
+                                    if (first == 'yo')
+                                    {
+                                        $('#add-mcq-option-1').val(value.options);
+                                        $('#add-mcq-option-1').parent().parent().parent().find('input:radio').val(value.options);
+                                        if (answ == value.options)
+                                        {
+                                            $('#add-mcq-option-1').parent().parent().parent().find('input:radio').attr('checked', true);
+                                        }
+                                        cnt++;
+                                        first = 'no';
+                                    } else
+                                    {
+                                        if (cnt < 10) {
+                                            count++;//
+                                            cnt++;
+                                            if (answ == value.options)
+                                            {
+                                                $('#options-add-div').append('<div class="form-group"><label for="" class="col-sm-3 control-label"></label><div class="col-sm-8"><div class="input-group"> <input type="text" class="form-control" aria-label="" name="option[]" value="' + value.options + '" data-value="' + count + '" > <span class="input-group-addon"><a href="javascript:;" class="remove-option-control"><i class="glyphicon glyphicon-minus"></i></a></span></div></div><div class="col-sm-1"> <label class="radio-inline"> <input type="radio" name="answer" id="" value="' + value.options + '" checked="checked" > </label></div></div>')
+                                            } else
+                                            {
+                                                $('#options-add-div').append('<div class="form-group"><label for="" class="col-sm-3 control-label"></label><div class="col-sm-8"><div class="input-group"> <input type="text" class="form-control" aria-label="" name="option[]" value="' + value.options + '" data-value="' + count + '" > <span class="input-group-addon"><a href="javascript:;" class="remove-option-control"><i class="glyphicon glyphicon-minus"></i></a></span></div></div><div class="col-sm-1"> <label class="radio-inline"> <input type="radio" name="answer" id="" value="' + value.options + '"> </label></div></div>')
+                                            }
+                                        }
+                                    }
+                                });
+                            }
+
+
+
+//$('#add-tf-form')[0].reset();
+// $('.add-tf-form-panel').addClass('hide');
+//$('#questions-list').prepend(response.response);
+//flashmessage(response.message, response.status);
+                        }
+                    } else {
+//$('#add-tf-form')[0].reset();
+//$('.add-tf-form-panel').addClass('hide');
+//flashmessage(response.message, response.status);
+                    }
+
+                });
+    }
+}); //
+$('body').on('change', '#cuttoff-control', function () {
+    var cut = $(this).val();
+    var trid = $(this).attr('data-tid');
+//  alert(cut);
+    $.ajax({
+        url: "{{ url('_settrainingassesdet') }}",
+        type: "POST",
+        data: "cut=" + cut + "&tid=" + trid,
+        success: function (response)
+        {
+            if (response.status == "success")
+            {
+                flashmessage(response.message, response.status);
+            }
+
+        }});
+});
+
+$('body').on('click', '.delete-question', function () {
+    var qsid = $(this).attr('data-qid');
+//  alert(cut);
+    if (confirm(var_sureyouwanttodelete))
+    {
+        $.ajax({
+            url: "{{ url('_question_delete') }}",
+            type: "POST",
+            data: "qid=" + qsid,
+            success: function (response)
+            {
+                if (response.status == "success")
+                {
+
+                    var selco = response.selco;
+                    $('#cuttoff-control').html('');
+
+
+                    $('#total-marks').html(response.marks);
+                    $('#total-marks-hidden').val(response.marks);
+                    var a = parseInt(response.marks);
+// console.log(a);
+                    var psst = '';
+                    for (var counter = 0; counter <= a; counter++) {
+                        if (counter == selco) {
+                            psst += '<option value="' + counter + '" selected="selected" >' + counter + '</option>';
+                        } else
+                        {
+                            psst += '<option value="' + counter + '" >' + counter + '</option>';
+                        }
+
+                    }
+                    $('#cuttoff-control').html(psst);
+                    $('.question-rec-' + qsid).remove();
+                    flashmessage(response.message, response.status);
+// $('tr[data=' + contentid + ']').remove();
+//location.reload();
+                }
+
+            }});
+    }
+});
+
+});
+</script>
+
+{% endblock %}

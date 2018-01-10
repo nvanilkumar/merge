@@ -1,0 +1,75 @@
+{% extends extend_view %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <h4>View Teacher</h4>
+                        </div>
+                        <div class="col-lg-2">
+                            {% if teacher.status == 'active' and  teacher.is_active == 1 %}
+                                <td><a href="javascript:;" data="active" class="status btn btn-xs btn-success"><i class="fa fa-circle"></i> Active</a></td>
+                            {% else %}
+                                <td><a href="javascript:;" data="inactive" class="status btn btn-xs btn-danger"><i class="fa fa-circle-o"></i> Inactive</a></td>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="well well-sm">
+
+                            <div class="text-center">
+                                <img alt="" class="img-thumbnail" src="{% if teacher.avatar is defined and teacher.avatar!='' %}{{ asset('uploads/')~teacher.avatar }}{% else %}{{ asset('assets/img/default-user-female.png') }}{% endif %}">
+                            </div>
+                            <div class="info">
+                                <div class="title">
+                                    <h4>{% if teacher.fname is defined and teacher.lname is defined %}{{ teacher.fname~' '~teacher.lname }}{% endif %}</h4>
+                                </div>
+                                <div class="text-muted">{% if teacher.position is defined  %}{{ teacher.position }}{% endif %}</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <dl class="dl-horizontal">
+                            <dt>Full name :</dt>
+                            <dd>{% if teacher.fname is defined and teacher.lname is defined %}{{ teacher.fname~' '~teacher.lname }}{% endif %}</dd>
+                            <dt>Email :</dt> 
+                            <dd>{% if teacher.email is defined  %}{{ teacher.email }}{% endif %}</dd> 
+                            <dt>Department :</dt>
+                            <dd>{% if teacher.department is defined  %}{{ teacher.department }}{% endif %}</dd>
+                            <dt>Teaching Experience :</dt>
+                            <dd>{% if teacher.exp is defined  %}{{ teacher.exp }}{% endif %}</dd>
+                            <dt>Qualification :</dt>
+                            <dd>{% if teacher.qualification is defined  %}{{ teacher.qualification }}{% endif %}</dd>
+                            <dt>Last Login :</dt>
+                            <dd>1 Hour ago</dd>
+                            <dt>Bio :</dt>
+                            <dd>{% if teacher.bio is defined  %}{{ teacher.bio }}{% endif %}</dd>
+                            <dt>Resume :</dt>
+                            
+                            <dd>              
+                            {% if teacher.cv is defined and teacher.cv!='' %}
+                                <a class="label label-primary" href="{{ url('_admin_teacher_download',{'filename':teacher.cv})  }}" target="_blank" >
+<i class="fa fa-download" aria-hidden="true"></i> Resume
+                                </a>{% else %}<a><a>
+ 
+                            </dd>{% endif %}
+                        </dl>
+                    </div>
+
+                </div>
+                
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %} 

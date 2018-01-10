@@ -1,0 +1,179 @@
+/* 
+    Created on : Mar 23, 2016, 1:26:56 PM
+    Author     : Praveen Reddy Govind
+*/
+html{
+    background:#f6f8f8;
+    color:#393d40;
+    font-family:"Open Sans",Helvetica,Arial,sans-serif!important;
+    -webkit-font-feature-settings:"kern";
+    -moz-font-feature-settings:"kern";
+    font-feature-settings:"kern";
+    font-size:14px;
+    font-weight:400;
+    line-height:1.5;
+    min-height:100%;
+    position:relative;
+}
+body{ 
+    padding: 90px 0px 0px 0px; 
+    margin: 0px;
+    background: #F6F8F8;
+    font-size:14px;
+    font-weight:400;
+    color:#393d40;
+}
+.grey-bg{ background: #f6f8f8;}
+.red-text{ color: #ff2200;}
+.green-text{ color: #449D44;}
+.navbar-default{ background: #fff; height: 90px;}
+.navbar-brand{ font-weight: 700; font-size: 18px; padding: 10px 0px 0px 0px;}
+
+.login-panel{ margin-top: 60px; position: relative;}
+.login-panel .page-header{ margin: 0px 0px 40px 0px;}
+.logo-floating{ position: absolute; left: 42%; top: -40px;}
+
+#navbar{ margin-top: 20px;}
+.navbar-default .navbar-nav > li > a{ font-weight: 600;}
+.navbar-default .navbar-nav > li.active > a,.navbar-default .navbar-nav > li.active > a:hover{ 
+    background: none; color: #f0ad4e;
+}
+
+.left-column{ margin-top: 20px;}
+.left-column .list-group-item{
+    -webkit-border-radius: 0px!important;
+    -moz-border-radius: 0px!important;
+    border-radius: 0px!important;
+}
+.left-column .list-group-item a{ font-weight: 400; display: block;}
+.left-column .list-group-item.active a{ color: #fff; }
+.left-column .list-group-item a .badge{ float: right;}
+.left-column .list-group-item.active a .badge{ background: #fff; color: #337ab7;}
+.left-column .list-group-item a:hover{text-decoration: none; }
+.main-content{ background: #fff; padding: 15px 20px; margin-top: 20px; border: 1px solid #ddd;}
+.main-content .page-header{ margin-top: 0px; padding-top: 0px;}
+.main-content .page-header h4{ margin-top: 10px; padding-top: 0px; font-weight: 400;}
+
+.stats-panel h2{ margin:20px 0px;}
+.stats-panel .panel-heading h4{ }
+
+.squared{
+    -webkit-border-radius: 0px!important;
+    -moz-border-radius: 0px!important;
+    border-radius: 0px!important;
+}
+
+.spacer20{ height: 20px;}
+.spacer10{ height: 10px;}
+
+/*** Making all borders to square ****/
+* {
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+/*** Making all borders to square ****/
+
+.footer{ border-top: 1px solid #eee; background: #333; color: #eee; padding: 20px 0px 10px 0px;}
+
+
+/*******Activity log******/
+.activity-feed {
+    padding: 15px;
+}
+.activity-feed .feed-item {
+    position: relative;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    border-left: 2px solid #e4e8eb;
+}
+.activity-feed .feed-item:last-child {
+    border-color: transparent;
+}
+.activity-feed .feed-item:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid #f37167;
+}
+.activity-feed .feed-item .date {
+    position: relative;
+    top: -5px;
+    color: #8c96a3;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+.activity-feed .feed-item .text {
+    position: relative;
+    top: -3px;
+    /* These are technically the same, but use both */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    -ms-word-break: break-all;
+    /* This is the dangerous one in WebKit, as it breaks things wherever */
+    word-break: break-all;
+    /* Instead use this non-standard one: */
+    word-break: break-word;
+
+    /* Adds a hyphen where the word breaks, if supported (No Blink) */
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+
+/*---------------------------------------
+ **   F L A S H   M E S S A G E S-----
+-----------------------------------------*/
+.flash-message{
+    background: rgba(0,0,0,0.9);
+    color: #e74c3c;
+    position: absolute;
+    width: 100%;
+    padding: 24px 20px;
+    top: 0px;
+    z-index: 9999;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+}
+.flash-message .close-flash-message{
+    float: right;
+    color: #f1f1f1;
+}
+.flash-message.error{
+    background: rgba(246,90,91,0.9); 
+    border-bottom: 1px solid #c0392b;
+    color: #fff;
+}
+.flash-message.success{
+
+    background: rgba(22,160,133,0.9); 
+    border-bottom: 1px solid #16a085;
+    color: #fff;
+}
+
+.error{
+    color:#c0392b;
+    font-size:14px !important;
+    font-weight:400 !important;
+}
+.form-error-content{
+    color:#c0392b;
+    font-size:14px !important;
+    font-weight:400 !important;
+}
+.actionMenuBar a{
+  margin-right: 5px;
+  margin-bottom: 10px;  
+}
+.editBtn{
+    display:none;
+}

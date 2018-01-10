@@ -1,0 +1,14 @@
+var var_fieldnotblank = "هذه الخانة لا يمكن ان تكون فارغة";
+var var_validemail = "رجاء قم بإدخال بريد الكتروني صحيح";
+var passwordlimitmin3 = "يجب أن يحتوي على كلمة المرور أتلست 3 أحرف";
+var passwordlimit4 = "كلمة المرور يجب ألا تتجاوز أكثر من 25 حرفا";
+var passwordmismatch = "عدم تطابق كلمه المرور";
+var Pleaseenteroldpassword = "يرجى إدخال كلمة المرور القديمة";
+var var_enteroldpassword = "يرجى إدخال كلمة المرور القديمة";
+var var_attachonlyPdfDocDocx = "يرجى إرفاق قوات الدفاع الشعبي الوحيد | وثيقة | دوكإكس";
+var var_Pleaseattachatm = "يرجى إرفاق مواد تدريبية";
+var var_wanttoremovethisrow = "هل تريد إزالة هذا الصف";
+var var_enteryournewpassword = "يرجى إدخال كلمة المرور الجديدة";
+var var_enteremailaddress = "الرجاء إدخال عنوان البريد الإلكتروني";
+var var_sureyouwanttodelete = "هل أنت متأكد أنك تريد حذف؟";
+var var_pleasechooseoneoption = "يرجى اختيار خيار واحد";

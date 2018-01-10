@@ -1,0 +1,21 @@
+<form class="form-horizontal" method="POST" action="{{ url('admin_login_check') }}" id="admin-login-form">
+    <div class="text-center page-header">
+        <h2>Admin Sign In</h2>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-lg-3">Username <span class="red-text">*</span></label>
+        <div class="col-lg-8"><input type="text" name="_username" class="form-control squared"  /></div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-lg-3">Password <span class="red-text">*</span></label>
+        <div class="col-lg-8"><input type="password" name="_password" class="form-control squared"  /></div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-lg-3">&nbsp;</label>
+        <div class="col-lg-8"><input type="checkbox" name="_remember_me" value="yes" class="checkbox-inline" /> Remember me</div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-lg-3">&nbsp;</label>
+        <div class="col-lg-8"><input type="submit" class="btn btn-primary squared" value="Sign In"  /> &nbsp; <a href="{{ url('_forgotpassword') }}">Forgot Password?</a></div>
+    </div>
+</form>

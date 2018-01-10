@@ -1,0 +1,48 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                <div class="page-header">
+                    <div class="row">
+
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 pull-right">
+                            <h2 class="newstextcolor custom-wrap">{{ news.newsTitle }} </h2>
+                           
+                            <h4 class=" custom-wrap" dir="ltr"><i class="fa fa-calendar" aria-hidden="true"></i> {{ news.addedOn|date('d M Y') }}</h4>
+
+                        </div>
+                       {# <div class="col-md-2 col-sm-12 col-xs-12 col-lg-2 pull-right">
+                            <a href="{{ url('_trainingslist') }}" class="btn btn-primary"> Back to Trainings <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                        </div>#}
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col-md-4 col-sm-5 col-xs-12 col-lg-4 pull-right">
+                        <div class="well">
+                              <img src='{% if news.newsImage is defined and news.newsImage != '' %}{{ asset('uploads/')~news.newsImage }}{% else %}{{ asset('assets/img/news_paper_icon.png') }}{% endif %}' width="100%" height="auto" />  
+                             <h4 class="help-text custom-wrap" >{{ news.newsSubtitle }}</h4>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8 big-col col-sm-7 col-lg-8 col-xs-12 pull-right ">      
+                        
+                            {% if news.newsContent is defined and news.newsContent != '' %}
+                            <div class="row">
+                                <div class="col-md-12 pull-right" dir="rtl">
+                                    <strong>{{ news.newsContent|raw }}</strong> 
+                                </div>
+                            </div>
+                            <br>
+                        {% endif %}
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

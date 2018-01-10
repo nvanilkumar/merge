@@ -1,0 +1,343 @@
+common:
+    settings: Settings
+    logout: Logout
+    account: Account
+    dashboard: Dashboard
+    changePassword: Change Password
+    darAlHekma: Dar Al Hekma
+    controlPanel: Control Panel
+    password: Password
+    oldPassword: Old Password
+    newPassword: New Password
+    confirmPassword: Confirm Password
+    submit: Submit
+    email: Email
+    username: Username
+    contact: Contact
+    news: News
+    workshops: Workshops
+    trainingPrograms: Training Programs
+    home: Home
+    DARALHEKMA.: DAR AL HEKMA.
+    Close: Close
+    TeacherTrainer: Teacher/Trainer
+    Student: Student
+    invalidCredentials: Invalid credentials.
+    Useraccountisdisabled: Please verify your account.
+    byclickingsubmityouagree: By clicking submit you are agreeing to the 
+    termsandcondition: Terms and Conditions
+    fieldnotblank: This field cannot be blank
+    validemail: Please enter a valid email address
+    passwordlimitmin3: Password must contain atleast 3 characters
+    passwordlimit4: Password must not exceed more than 25 characters
+    passwordmismatch: Password mismatch
+    fieldlimit100: This field cannot exceed more than 100 characters
+    Select: Select
+    passwordResetMessage: Enter the email address associated with your Account, then click Submit. We'll send you a link to a page where you can easily Reset your password
+    ForgotPassword: Forgot Password
+    Thisemailisnotregistered: This email is not registered with us.
+    ResetPassword: Reset Password
+    LatestNews: Latest News
+    Continue: Continue
+    BrokenLink: Broken Link
+    TeacherProfile: Teacher Profile
+    StudentProfile: Student Profile
+    BasicInformation: Basic Information
+    PopularTrainings: Popular Trainings
+    Search: Search
+    HelpSection: Help Section
+    MaximumMarks: Maximum marks
+    SubmitAssessment: Submit Assessment
+    Options: Options
+    Thissectionisunderconstruction: This section is under construction
+    SaveChanges: Save Changes
+    CorrectOption: Correct Option
+    Showing: Showing
+admin:
+  header:
+    viewSite: View Site
+  leftmenu:
+    content: Content
+    departments: Departments
+    manageTrainings: Manage Trainings
+    pages: Pages
+    faqs: FAQ's
+    users: Users
+    manageTeachersTrainers: Manage Teachers/Trainers
+    manageStudents: Manage Students
+    certificatesIssued: Certificates Issued
+    security: Security
+    activityLog: Activity Log
+dashboard:
+    totalTrainings: Total Trainings
+    totalTrainersTeachers: Total Trainers/Teachers
+    totalStudents: Total Students
+    certificatesIssued: Certificates Issued
+
+home:
+    login:
+        header: Login
+        email: Email
+        password: Password
+        rememberMe: Remember Me
+        signIn: Sign In
+        forgotPassword: Forgot Password
+        newMembership: New Membership
+    features:
+        usefulResearchandJournal: Useful Research & Journal
+        teacherDiploma: Teacher Diploma
+        principalsDiploma: Principal's Diploma
+        experiencedSummit: Experienced Summit
+footer:
+    usefullinks: USEFUL LINKS
+    aboutUs: About Us
+    news: News
+    community: Community
+    career: Career
+    blog: Blog
+    pressKit: Press Kit
+    faq: FAQ
+    terms: Terms
+    privacyPolicy: Privacy Policy
+    contactUs: Contact Us
+    newsletter: NEWSLETTER
+    getthelatestupdatefromusbysubscribingtoournewsletter: Get the latest update from us by subscribing to our newsletter
+    getConnected: GET CONNECTED
+    allRightReserved: All Right Reserved.
+    SUBSCRIBE: SUBSCRIBE
+    yourName: Your Name
+    yourEmail: Your Email
+    yourMessage: Your Message
+    YOUWANTTOKNOWMOREINFORMATION: YOU WANT TO KNOW MORE INFORMATION?
+    SENDUSAMAIL: SEND US A MAIL!
+    Phone: Phone
+    Email: Email
+    Calendar: Calendar
+server:
+    messages:
+        somethingWentWrong: Something went wrong while sending your query. Please try again.
+        Pleaseentervaliddetails: Please enter valid details.
+        thankyouforcontacting: Thank you for contacting us. Our admin will soon get back to you.
+        Pleaseentervalidemail: Please enter valid email.
+        Youhavealreadysubscribetoournewsletter: You have already subscribe to our newsletter.
+        Thankyouforsubscribingtoournewsletter: Thank you for subscribing to our newsletter.
+        Theaccountverificationlinkisinvalidorexpired: The account verification link is invalid or expired
+        Userverifiedsuccessfully: User verified successfully
+        ThePasswordresetlinkisinvalidorexpired: The Password reset link is invalid or expired
+        Pleaseenteravalidpassword: Please enter a valid password
+        Passwordchangedsuccessfully: Password changed successfully
+        Assesmentisnotpreparedforthistraining: Assesment is not prepared for this training.
+        ThankyouForSubmiting: Thankyou for submiting
+chooseuser:
+    PleaseChooseYourAccounttype: Please Choose an Account type to register
+signup:
+    UserRegistration: User Registration
+    FirstName: First Name
+    LastName: Last Name
+    Thisemailisalreadyregistered: This email is already registered
+    Department: Department
+    APasswordresetlinkwassenttoyourregisteredemailaddress: A Password reset link was sent to your registered email address.
+    YourEmailwasRegisteredsuccessfullywithus: Your Email was Registered successfully with us.
+    ClickHere: Click Here
+    toSignin: to Sign in.
+    brokenlink: Hey there, the reset password link you are trying to access is either invalid or expired. Please click on continue to sign in
+account:
+    account: Account
+    logout: Logout
+    MyTrainings: My Trainings
+    Trainings: Trainings
+    Workshops: Workshops
+    Settings: Settings
+    Dashboard: Dashboard
+    BasicInformation: Basic Information
+    EducationalInformation: Educational Information
+    FirstName: First Name
+    LastName: Last Name
+    EmailID: Email ID
+    School: School
+    Location: Location
+    Position: Position
+    Phonenumber: Phone Number
+    ProfileImage: Profile Image
+    UploadCv: Upload Cv
+    DownloadMyCv: Download my cv
+    Department: Department
+    Bio: Bio
+    TotalYearsofExperience: Total Years of Experience
+    Qualification: Qualification
+    Submit: Submit
+    ActiveTrainings: Active Trainings
+    EnrolledStudents: Enrolled Students
+    TotalViews: Total Views
+    LatestTrainings: Latest Trainings
+    FeaturedTrainings: Featured Trainings
+    Viewall: View all
+    LatestNews: Latest News
+    LatestWorkshops: Latest Workshops
+    Nolatesttrainingsfound: No latest trainings found
+    Nolatestnewsfound: No latest news found
+    Password: Password
+    ConfirmPassword: Confirm Password
+    Manager: Manager
+    Teacher: Teacher
+    Mentor: Mentor
+    loading: loading
+    EnterEmailId: Enter Email Id
+    Calender: Calender
+    ChangePassword: Change Password
+    AccountSettings: Account Settings
+    OldPassword: Old Password
+    NewPassword: New Password
+    SchoolCollegeName: School/College name
+    SchoolCollegeLocated: School/CollegeLocated
+    Search: بحث
+    Nofeaturedtrainingsfound: No featured trainings found
+    Nolatestworkshopfound: No latest workshop found
+    YourResult: Your Result!!!
+    TotalEnrollments: Total Enrollments
+    TotalCertificatesissued: Total Certificates issued
+    TotalFeaturedtrainings: Total Featured trainings
+    WorkshopMaterial: Workshop Material
+    EnrolledWorkshops: Enrolled Workshops
+    Requestforcertificate: Request for certificate
+mytrainings:
+    Title: Title
+    Department: Department
+    Type: Type
+    StudentEnrollmentStatus: Student Enrollment Status
+    Enrolled: Enrolled
+    Certificate: Certificate
+    AddTraining: Add Training
+    TrainingEnrollement: Training Enrollement
+    RequestSent: Request Sent
+    NoEnrollmentforthistraining: No Enrollment for this training
+    Date: Date
+addtraining:
+    Add: Add
+    Save: Save
+    AttachMaterial: Attach Material
+    Title: Title
+    Traininginfo: Training info
+    TrainingMaterial: Training Material
+    Videos: Videos
+    Assessment: Assessment
+    Enrolledstudents: Enrolled students
+    Addnewtraining: Add new training
+    Trainingtitle: Training title
+    Department: Department
+    Trainingdescription: Training description
+    Visibility: Visibility
+    Public: Public
+    Private: Private
+    Saveandcontinue: Save and continue
+    Upload: Upload
+    UploadVideos: Upload Videos
+    Videotitle: Video title
+    Videodescription: Video description
+    Videothumbnail: Video thumbnail
+    Close: Close
+    AddTF: Add True/False Question
+    EditTF: Edit True / False question
+    AddMCQ: Add MCQ
+    Question: Question
+    SaveChanges: Save Changes
+    CutOff: Cut Off
+    TotalMarks: Total Marks
+    Pleasechoosecorrectoptionsandclicksave: Please choose correct options and click save.
+    User: User
+    Status: Status
+    Email: Email
+    Issued: Issued
+    Complete: Complete
+    Requested: Requested
+    NotIssued: Not Issued
+    Yes: Yes
+    No: No
+    True: True
+    False: False
+    BacktoTrainings: Back to Trainings
+    TrainersProfile: Trainer's Profile
+    AddTrueandFalseQuestion: Add True and False Question
+    AddMultipleChoiceQuestion: Add Multiple Choice Question
+    Yourtrainingisunderreviewandwewilllistitin: Your training is under review, and we will list it in
+    sectiononcecompleted: section once completed.
+    TrainingVideos: Training Videos
+    Trainingassessment: Training assessment
+    PleasecompletethefollowingbeforethisTraininggetspublished: Please complete the following before this Training gets published.
+    Note: :Note
+entrainings:
+    True: True
+    False: False
+    EnrolledTrainings: Enrolled Trainings
+    Title: Title
+    Department: Department
+    Teacher: Teacher
+    Status: Status
+    Certificate: Certificate
+    Issued: Issued
+    Complete: Complete
+    Requested: Requested
+    NotIssued: Not Issued
+    Download: Download
+    HelpSection: Help Section
+    MaximumMarks: Maximum marks
+    Submitassessment: Submit assessment
+    Incomplete: In complete
+    Looksliketheresnoassessmentforthistraining: Looks like there's no assessment for this training
+    GotoMytrainings: Go to My trainings
+    BrowseTraining: Browse Training
+    AddnewMCQ: Add new MCQ
+    EditMCQ: Edit MCQ
+    TrainersProfile: Trainer's Profile
+workshop:
+    Duration: Duration
+    Title: Title
+    Department: Department
+    Description: Description
+    Venue: Venue
+    EnrollNow: Enroll Now
+    ByenrollingtothisWorkshopyouareagreeingtoreceiveemailsandremaindersaboutthisWorkshop: By enrolling to this Workshop you are agreeing to receive emails and remainders about this Workshop.
+    Cancel: Cancel
+    Enroll: Enroll
+    ThankyouforenrollingtothisWorkshop: Thankyou for enrolling to this Workshop
+    Youarealreadyenrolledforthisworkshop: You are already enrolled for this workshop
+    Schedule: Schedule
+    Speakers: Speakers
+training:
+    Searchfor: Search for
+    SelectDepartment: Select Department
+    ReadMore: Read More
+    By: By
+    Warning: Warning!
+    Thisisaprivatetrainingyoumust: This is a private training, you must
+    login: login
+    signup: signup
+    toviewthistraining: to view this training.
+    EnrollNow: Enroll Now
+    UntitledVideo: Untitled Video
+    ByenrollingtothisTrainingyouareagreeingtoreceiveemailsandremaindersaboutthisTraining: By enrolling to this Training you are agreeing to receive emails and remainders about this Training.
+    Cancel: Cancel
+    Enroll: Enroll
+    ThankyouforenrollingtothisTraining: Thankyou for enrolling to this Training
+    YouarealreadyenrolledforthisTraining: You are already enrolled for this Training
+emails:
+    ContactInfo: Contact Info
+    HiAdmin: Hi, Admin
+    AEnquiryrequestwasreceivedfrom: A Enquiry request was received from
+    withemailaddress: with email address
+    Message: Message
+    Hi: Hi
+    Ouradminhascreatedaaccountwithyouremail: Our admin has created a account with your email
+    andaloginpassword: and a login password
+    PleaseverifyyouraccountandloginwithgivencredentialsYouanchangeyourpasswordonceyoulogin: Please verify your account and login with given credentials. You can change your password once you login.
+    ArequestwasreceivedhopefullyfromyoutoresetyourpasswordPleasegotothispagetoresetyourpasswordandbeabletoaccessthesite: A request was received, hopefully from you, to reset your password. Please go to this page to reset your password and be able to access the site.
+    ResetPassword: Reset Password
+    copybelowlinkinyouraddressbarifabovebuttonisnotworking: copy below link in your address bar if above button is not working.
+    WelcometoDarAl-HekmaUniversity: Welcome to Dar Al-Hekma University!
+    Pleaseclickonthebuttonbelowtoactivateyouraccountandstartveiwingtrainings: Please click on the button below to activate your account and start veiwing trainings.
+    VerifyUser: Verify User
+    TrainingLink: Training link
+    WorkshopLink: Workshop link
+recadded:
+    AccountInformation: Account Information
+    TherearenoTrainingsinthissection: There are no Trainings in this section

@@ -1,0 +1,63 @@
+{% extends extend_view %}
+{% block content %}
+    <!-- HERO UNIT -->
+    <section class="hero-unit-slider no-margin">
+        <div id="carousel-hero" class="slick-carousel">
+            <div class="main-background1">
+                <div class="background-image"><br>
+                    <div> <img src="{%if page.pageImage is defined and page.pageImage !='' and page.pageImage is not null%}{{asset('uploads/'~page.pageImage)}}  {%else %}{{asset('assets/img/image.jpg')}}{%endif%} " width="100%" /></div>
+                    <br>
+                    <h2>{{ 'signup.UserRegistration'|trans }}</h2>
+                    <br>
+                    <form role="form">
+                        <div class="row row-spacing">
+                            <div class="col-md-4">{{ 'account.FirstName'|trans }}:</div>
+                            <div class="col-md-4"><input type="email" class="form-control" id="exampleInputEmail1" placeholder="{{ 'account.FirstName'|trans }}"></div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row row-spacing">
+                            <div class="col-md-4">{{ 'account.LastName'|trans }}:</div>
+                            <div class="col-md-4"><input type="email" class="form-control" id="exampleInputEmail1" placeholder="{{ 'account.LastName'|trans }}"></div>
+                            <div class="col-md-4"></div><br>
+                        </div>
+                        <div class="row row-spacing">
+                            <div class="col-md-4">{{ 'account.EmailID'|trans }}:</div>
+                            <div class="col-md-4"><input type="email" class="form-control" id="exampleInputEmail1" placeholder="{{ 'account.EnterEmailId'|trans }}"></div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row row-spacing">
+                            <div class="col-md-4">{{ 'account.Password'|trans }}:</div>
+                            <div class="col-md-4"><input type="password" class="form-control" id="exampleInputPassword1" placeholder="{{ 'account.Password'|trans }}"></div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row row-spacing">
+                            <div class="col-md-4">{{ 'account.ConfirmPassword'|trans }}:</div>
+                            <div class="col-md-4"><input type="password" class="form-control" id="exampleInputPassword1" placeholder="{{ 'account.ConfirmPassword'|trans }}"></div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row row-spacing">
+                            <div class="col-md-4">{{ 'account.Department'|trans }}:</div>
+                            <div class="col-md-4">
+                                <select class="form-control">
+                                    <option>{{ 'account.Manager'|trans }}</option>
+                                    <option>{{ 'account.Teacher'|trans }}</option>
+                                    <option>{{ 'account.Mentor'|trans }}</option>
+                                </select></div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row row-spacing">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">        <button type="submit" class="btn btn-primary">{{ 'account.Submit'|trans }}</button>            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <br><br>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END HERO UNIT -->
+    <br/>
+{% endblock %}

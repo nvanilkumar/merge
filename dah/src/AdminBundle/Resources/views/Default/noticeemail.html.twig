@@ -1,0 +1,195 @@
+{% extends extend_view %}
+{% block content %}
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                <div class="page-header"><h4>Invitation to Trainings</h4></div>
+                <div class="row">
+                    <div class="panel-body">
+                        <div class="panel panel-default">                               
+                            <div class="panel-body">   
+                                <h4 style="font-size: 16px;">
+                                    {{ training.trainingTitle}}
+                                </h4>    
+                            </div>
+                        </div>                        
+                    </div> 
+                </div>
+                <form class="form-horizontal" method="post" name="settings" id="settings">
+                    <div class="row">
+                        <div class="panel-body">
+                            <div class="panel panel-default">                               
+                                <div class="panel-body">    
+                                    <div class="form-group col-md-12" style="margin-top: 20px;">
+                                        <div class="col-sm-1"></div>
+                                        <div class="col-sm-8">
+                                            <textarea class="form-control emails" dir='ltr' id="emailids" placeholder="Enter email addresses here.." name ="emailids" value=""></textarea>
+                                            <span class="help-block">Enter email addresses separated by commas. Ex: example@exp.com,example1@exp2.com</span>
+                                            <input type="hidden"  value="" name="email_status" id="email_status" />
+                                            {% if error.email is defined %}<div class="form-error-content">{{ error.email }}</div>{% endif %}
+
+                                        </div>
+                                        <label for="" class="col-sm-3 control-label">Email Ids <span class="red-text">*</span></label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="col-md-1"></div>
+                                        <div class="form-group col-md-3">
+                                            <div class="input-group" style="margin-bottom: 5px;">                                    
+                                                <input type="checkbox" name="student_type" value="studentDep" class="checkbox-inline studentHead" id="student_checkbox"/> <strong>&nbspStudents </strong>                                          
+                                            </div>
+                                            {% for department in departments %}
+                                                <input type="checkbox" name="student_dept[]" id="" disabled class="studentDep"
+                                                       value="{{ department.deptid }}" class="checkbox-inline" /> &nbsp{{ department.department }}  <br>
+                                            {% endfor %} 
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <div class="input-group" style="margin-bottom: 5px;">                                    
+                                                <input type="checkbox" name="trainer_type" value="trainerDep" class="checkbox-inline trainerHead" id="trainer_checkbox"/> <strong>&nbspTrainers </strong>                          
+                                            </div>
+                                            {% for department in departments %}
+                                                <input type="checkbox" name="trainer_dept[]" disabled class="trainerDep"
+                                                       value="{{ department.deptid }}" class="checkbox-inline" /> &nbsp{{ department.department }}  <br>
+                                            {% endfor %}
+                                        </div>                                   
+                                        <div class="col-md-3"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-6 input-group">    
+                                            <input type="hidden" value="" class="gid" name="gid" required/>
+                                            {% if error.gid is defined %}<div class="form-error-content">{{ error.gid }}</div>{% endif %}
+                                        </div> 
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <div class="col-sm-offset-1 col-sm-6">
+                                            <button type="submit" class="btn btn-primary" name="submit" value="Save" >Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                        
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $().ready(function () {
+        jQuery.validator.addMethod(
+                "multiemail",
+                function (value, element) {
+                    if (this.optional(element)) // return true on optional element 
+                        return true;
+                    var emails = value.split(/[;,]+/); // split element by , and ;
+                    valid = true;
+                    for (var i in emails) {
+                        value = emails[i];
+                        valid = valid &&
+                                jQuery.validator.methods.email.call(this, $.trim(value), element);
+                    }
+                    return valid;
+                },
+                jQuery.validator.messages.email
+                );
+
+        $('#student_checkbox, #trainer_checkbox').change(function () {
+
+            var studnetbox = $("#student_checkbox").prop('checked');
+            var trainerbox = $("#trainer_checkbox").prop('checked');
+            var email_values = $("#emailids").val();
+            var checkbox_status = false;
+
+            if (studnetbox || trainerbox) {
+                $("#email_status").val(1);
+                checkbox_status = true;
+            }
+            if (email_values.length > 0) {
+                $("#email_status").val(1);
+            } else if (email_values.length == 0 && !checkbox_status) {
+                $("#email_status").val("");
+            }
+
+        });
+
+        $('#emailids').on('input', function (e) {
+            var email_values = $("#emailids").val();
+            var checkbox_status = false;
+
+            if (email_values.length > 0) {
+                $("#email_status").val(1);
+            } else if (email_values.length == 0 && !checkbox_status) {
+                $("#email_status").val("");
+            }
+
+        });
+
+        $("#settings").validate({
+            ignore: [],
+            rules: {
+                gid: {required: true,
+                },
+                emailids: {
+                    multiemail: true
+
+                },
+                email_status: {
+                    required: true
+                },
+            },
+            messages: {
+                emailids: {
+                    multiemail: "Not a valid Email id ",
+                },
+                email_status: {
+                    required: "Please enter the Email"
+                },
+                gid: {required: "Please check atleast one depatment"
+                }
+            }
+        });
+        $('.studentHead').click(function () {
+            if ($(this).is(':checked')) {
+                $('.studentDep').attr('checked', true);
+            } else {
+                $('.studentDep').attr('checked', false);
+            }
+        });
+        $('.trainerHead').click(function () {
+            if ($(this).is(':checked')) {
+                $('.trainerDep').attr('checked', true);
+            } else {
+                $('.trainerDep').attr('checked', false);
+            }
+        });
+        $('body').on('change', '.studentHead', function () {
+            var dis = $(this);
+            var dv = $(this).val();
+            //alert($(this).val());
+            if (dv == 'studentDep')
+            {
+                $('.studentDep').prop("disabled", !this.checked);
+            }
+        });
+        $('body').on('change', '.trainerHead', function () {
+            var dis = $(this);
+            var dv = $(this).val();
+            //alert($(this).val());
+            if (dv == 'trainerDep')
+            {
+                $('.trainerDep').prop("disabled", !this.checked);
+            }
+        });
+        $('body').on('change', '.studentHead', function () {
+            var dis = $(this);
+            var dv = $(this).val();
+            // alert($(this).val());
+            $('.gid').val('yes-' + dv);
+        });
+    });
+</script>
+{% endblock %}

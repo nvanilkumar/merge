@@ -1,0 +1,153 @@
+{% extends extend_view %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                <div class="page-header"><h4>Settings</h4></div>
+                <form class="form-horizontal" method="post" name="settings" id="settings">
+                <div class="row">
+
+
+                    
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Account settings</div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label">Username <span class="red-text">*</span></label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" dir='ltr' id="" placeholder="Username" name ="username" value="{% if app.request.get('username')!='' %}{{ app.request.get('username') }}{% elseif user.username is defined %}{{ user.username }}{% endif %}"  />
+                                        {% if error.username is defined %}<div class="form-error-content">{{ error.username }}</div>{% endif %}
+                                    </div>
+                                </div> 
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label">Email <span class="red-text">*</span></label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control" dir='ltr' id="" placeholder="Email" name ="email" value="{% if app.request.get('email')!='' %}{{ app.request.get('email') }}{% elseif user.email is defined %}{{ user.email }}{% endif %}" />
+                                        {% if error.email is defined %}<div class="form-error-content">{{ error.email }}</div>{% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Site Settings</div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label">Contact email</label>
+                                    <div class="col-sm-6">
+                                        <input type="email" class="form-control" maxlength="100" dir='ltr' id="" placeholder="Contact email" name ="contactemail" value="{% if app.request.get('contactemail')!='' %}{{ app.request.get('contactemail') }}{% elseif settings.email is defined %}{{ settings.email }}{% endif %}" />
+                                        {% if error.contactemail is defined %}<div class="form-error-content">{{ error.contactemail }}</div>{% endif %}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label">Phone number</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" minlength="6" maxlength="15" dir='ltr' id=""  placeholder="Phone number" name ="phone" value="{% if app.request.get('phone')!='' %}{{ app.request.get('phone') }}{% elseif settings.phone is defined %}{{ settings.phone }}{% endif %}" />
+                                        {% if error.phone is defined %}<div class="form-error-content">{{ error.phone }}</div>{% endif %}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label">LinkedIn</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" maxlength="250" dir='ltr' id="" placeholder="LinkedIn" name ="LinkedIn" value="{% if app.request.get('LinkedIn')!='' %}{{ app.request.get('LinkedIn') }}{% elseif settings.linkedin is defined %}{{ settings.linkedin }}{% endif %}" />
+                                        {% if error.LinkedIn is defined %}<div class="form-error-content">{{ error.LinkedIn }}</div>{% endif %}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label">Twitter</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" maxlength="250" dir='ltr' id="" placeholder="Twitter" name ="Twitter" value="{% if app.request.get('Twitter')!='' %}{{ app.request.get('Twitter') }}{% elseif settings.twitter is defined %}{{ settings.twitter }}{% endif %}" />
+                                        {% if error.Twitter is defined %}<div class="form-error-content">{{ error.Twitter }}</div>{% endif %}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label">Google+</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" maxlength="250" dir='ltr' id="" placeholder="Google+" name ="g" value="{% if app.request.get('g')!='' %}{{ app.request.get('g') }}{% elseif settings.googlePlus is defined %}{{ settings.googlePlus }}{% endif %}" />
+                                        {% if error.g is defined %}<div class="form-error-content">{{ error.g }}</div>{% endif %}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label">Black Board</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" maxlength="250" dir='ltr' id="" placeholder="Black Board" name ="blackboard" value="{% if app.request.get('blackboard')!='' %}{{ app.request.get('blackboard') }}{% elseif settings.blackboard is defined %}{{ settings.blackboard }}{% endif %}" />
+                                        {% if error.blackboard is defined %}<div class="form-error-content">{{ error.blackboard }}</div>{% endif %}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label">Facebook</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" maxlength="250" dir='ltr' id="" placeholder="Facebook" name ="Facebook" value="{% if app.request.get('Facebook')!='' %}{{ app.request.get('Facebook') }}{% elseif settings.facebook is defined %}{{ settings.facebook }}{% endif %}" />
+                                        {% if error.Facebook is defined %}<div class="form-error-content">{{ error.Facebook }}</div>{% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Address</label>
+                                <div class="col-sm-6">
+                                    <textarea class="form-control ckeditor" name="Address"> 
+                                        {% if app.request.get('address')!='' %}{{ app.request.get('address') }}{% elseif settings.address  is defined %}{{ settings.address  }}{% endif %} 
+                                        {% if error.Address is defined %}<div class="form-error-content">{{ error.Address }}</div>{% endif %}
+                                    </textarea>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <button type="submit" class="btn btn-primary" name="submit" value="Save" >Submit</button>
+                    </div>
+                </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $().ready(function () {
+
+        CKEDITOR.replace('Address', {
+            contentsLangDirection: 'rtl',
+            language: 'ar',
+        });
+
+        $("#settings").validate({
+            rules: {
+                username: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 50
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                contactemail: {
+                    email: true
+                }
+            },
+            messages: {
+                username: {
+                    required: "Please enter a username",
+                    minlength: "username must contain atleast 3 characters",
+                    maxlength: "username must not exceed more than 50 characters"
+                },
+                email: {
+                    required: "Please enter a new email"
+                }
+            }
+        });
+
+    });
+</script>
+{% endblock %}

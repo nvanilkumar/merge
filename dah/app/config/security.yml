@@ -1,0 +1,74 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        entity_admin:
+            entity:
+                class: AdminBundle\Entity\DahAdmin
+                property: username
+        entity_members:
+            entity:
+                class: AdminBundle\Entity\DahUsers
+                property: email
+    encoders:
+        AdminBundle\Entity\DahAdmin: 
+            algorithm: bcrypt
+            cost: 12
+        AdminBundle\Entity\DahUsers: 
+            algorithm: bcrypt
+            cost: 12    
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        admin_secured_area:
+            pattern: /dah-admin/.*
+            provider: entity_admin
+            anonymous: ~
+            form_login:
+                check_path: /dah-admin/login_check
+                login_path: /dah-admin/
+                default_target_path: /dah-admin/secure/dashboard
+                use_referer: true
+            remember_me:
+                key:      "%secret%"
+                lifetime: 604800 
+                name: "dah_login_cookie"
+                remember_me_parameter: _remember_me
+                path: /    
+            logout:
+                path:   /dah-admin/logout
+                success_handler: logout_listener
+                target: /dah-admin/
+        members_secured_area:
+            pattern: /.*
+            provider: entity_members
+            anonymous: ~
+            form_login:
+                username_parameter: _email
+                check_path: login_check
+                login_path: /
+                default_target_path: /account/dashboard
+                use_referer: true
+            remember_me:
+                key:      "%secret%"
+                lifetime: 604800 
+                name: "dah__member_login_cookie"
+                remember_me_parameter: _remember_me
+                path: /    
+            logout:
+                path:   /logout
+                target: /
+    access_control:
+        - { path: ^/dah-admin/secure/.*, roles: ROLE_ADMIN }
+        - { path: ^/dah-admin/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/account/.*, roles: [ROLE_STUDENT, ROLE_TEACHER] }
+        - { path: ^/, roles: [IS_AUTHENTICATED_ANONYMOUSLY,ROLE_STUDENT, ROLE_TEACHER] }
+        
+        
+        

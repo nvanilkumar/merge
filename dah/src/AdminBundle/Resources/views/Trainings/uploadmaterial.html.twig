@@ -1,0 +1,155 @@
+{% extends extend_view %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <h4>Upload Training Material</h4>
+                        </div>
+                        <div class="col-lg-6">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-10 col-md-offset-1 text-right" style="margin-bottom: 15px;">
+                        <button onclick="myFunction()" class="btn btn-success">Add</button>
+                    </div>
+                    <div class="col-md-offset-1 col-md-10 col-md-offset-1">
+                        <form class="form-horizontal" method="post" id="materialUp" action=''  enctype="multipart/form-data" role="form">
+                            <div id="into" style="margin-bottom: 10px; padding: 20px 0px 10px 20px; border:1px solid #bdc3c7;">
+                                <div class="form-group">
+                                    <div class="col-sm-8">
+                                        <input type="text" name="ftitle[]" id="ftitle" class="form-control" placeholder="Training Title here...."/>
+                                    </div>
+                                    <label for="" class="col-sm-3 control-label">Title</label>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-8">
+                                        <input type="file" name="materialupload[]" id="materialupload"/>
+                                        {% if error.materialupload is defined %}<div class="form-error-content">{{ error.materialupload }}</div>{% endif %}
+                                    </div>
+                                    <label for="" class="col-sm-3 control-label">Material Upload&nbsp;<span class="red-text">*</span></label>
+                                </div>
+                            </div>
+
+                            <div>
+                                {% for material in materials %}
+                                    <div style="padding: 20px 0px 10px 20px; border:1px solid #bdc3c7; margin-bottom: 15px;">
+                                        <div class="materialEdit">
+                                            <div class="form-group col-sm-8 tm">
+                                                <a class="label label-warning editMaterial"><i class='fa fa-pencil'></i> Edit</a> 
+                                            </div>                                                                                  
+                                        <div class="editBtn">
+                                            <div class="form-group">
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="uftitle[{{ material.id }}]"  value="{{ material.ftitle }}" class="form-control" placeholder="Edit Training Title here...."/>
+                                                    <input type="hidden" name="uploadid[{{ material.id }}]"  value="{{ material.id }}" class="form-control" />
+                                                    <input type="hidden" name="ustatus[{{ material.id }}]"  class="form-control" id="ustatus_{{ material.id }}" value="0"/>
+                                                </div>
+                                                <label for="" class="col-sm-3 control-label">Title</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-8 ">
+                                                    <input type="file" name="umaterialupload[{{ material.id }}]" id="umaterialupload" />                                   
+                                                </div>
+                                                <label for="" class="col-sm-3 control-label">Material Upload</label>
+                                            </div>
+                                        </div></div>
+                                        <div class="form-group">
+                                            <div class="col-sm-8 ">
+                                                <a class="matDownload" style="color: #000;" title="Download Material" href="{{ url('_generic_download_act',{'filename':material.materialupload})  }}" target="_blank" ><i class="fa fa-download" aria-hidden="true"></i>
+ {% if material.ftitle != '' %}{{ material.ftitle }}{% else %}Untitled{% endif %}</a>                                
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-8 remv update_class" data-id="{{ material.id }}">
+                                                <button class='delete btn btn-xs btn-danger' type='button' title="Delete Material">
+                                                    <i class='fa fa-trash'></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>       
+                                {% endfor %} 
+                            </div>   
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button type="submit" class="btn btn-primary" id="" name="submit" value="submit" >Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var x = 1;
+        var y = 1;
+        var mydiv = document.getElementById("into").innerHTML;
+        function myFunction() {
+            var btn = document.createElement("div");
+
+            console.log(mydiv);
+            btn.setAttribute("id", "rowid" + x);
+            btn.innerHTML = mydiv + "<div class='remv' style='margin-bottom:10px;'><button class='delete btn btn-xs btn-danger' type='button' title='Delete' onclick='removeelm(" + x + ");'><i class='fa fa-trash'></i></button></div>"
+            document.getElementById("into").appendChild(btn);
+            //alert(x);
+            //console.log(btn);
+            x++;
+        }
+        function removeelm(id) {
+            var newid = "rowid" + id;
+//console.log(newid);
+            var ele = document.getElementById(newid);
+            var element = document.getElementById("into");
+            var cnf = confirm("do you want remove this row");
+            if (cnf == true) {
+                element.removeChild(ele);
+            }
+
+        }
+        $(".editMaterial").click(function () {
+            //alert("hi");
+            $(this).parent(".tm").parent(".materialEdit").find('.editBtn').toggle();
+             //.$('.editBtn').toggle();
+        });
+        $(".update_class").click(function () {
+            $(this).hide();
+            $(this).prev().hide();
+            $(this).prev().prev().hide();
+            var statusid = $(this).data("id");
+            $("#ustatus_" + statusid).val(1);
+
+        });
+        $("#materialUp").validate({
+            ignore: [],
+            rules: {
+                'materialupload[]': {
+                    required: true,
+                    extension: 'docx|doc|pdf'
+                }
+            },
+            messages: {
+                'materialupload[]': {
+                    required: "Please attach a training material",
+                    extension: "Please upload only .pdf | .doc | .docx"
+                }
+            },
+            errorPlacement: function (error, element) {
+
+                error.appendTo(element.parent());
+                //error.prependTo(element.parent());
+            },
+            invalidHandler: function (form, validation) {
+                $('div.form-error').remove();
+            }
+        });
+    </script>
+
+{% endblock %} 

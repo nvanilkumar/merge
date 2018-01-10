@@ -1,0 +1,179 @@
+{% extends extend_view %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                {% if mode == 'add' %}
+                    <div class="page-header"><h4>Add new page</h4></div>
+                {% else %}
+                    <div class="page-header"><h4>Edit page</h4></div>
+                {% endif %}
+                <div class="row">
+
+                    {% if mode == 'add' %}
+                        <form class="form-horizontal" name="admin-add-new-page-form" method="post" id="admin-add-new-page-form" action="{{ url('_admin_add_new_page') }}" enctype="multipart/form-data">
+                        {% else %}
+                            <form class="form-horizontal" name="admin-add-new-page-form" method="post" id="admin-add-new-page-form" action="" enctype="multipart/form-data">
+
+                            {% endif %}
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Page name <span class="red-text">*</span></label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="pageName" maxlength="100" placeholder="Page name" name="pageName" value="{% if app.request.get('pageName')!='' %}{{ app.request.get('pageName') }}{% elseif content_page.pageName is defined %}{{ content_page.pageName  }}{% endif %}"     {% if content_page.pageName is defined %} {% if content_page.pageName =='home' or content_page.pageName =='about us' or content_page.pageName =='terms of condition' or content_page.pageName =='privacy policy'  or content_page.pageName =='contact'%}%} readonly {% endif %} {% endif %}>
+                                    {% if error.pageName is defined %}<div class="form-error-content">{{ error.pageName }}</div>{% endif %}
+
+                                </div>
+                            </div>   
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Page title <span class="red-text">*</span></label>
+                                <div class="col-sm-8">
+
+                                    <input type="text" class="form-control" dir="rtl" id="link-gen-title" maxlength="250" placeholder="Page title" name="pageTitle" value="{% if app.request.get('pageTitle')!='' %}{{ app.request.get('pageTitle') }}{% elseif content_page.pageTitle  is defined %}{{ content_page.pageTitle  }}{% endif %}">
+
+                                    {% if error.pageTitle is defined %}<div class="form-error-content">{{ error.pageTitle }}</div>{% endif %}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Page link <span class="red-text">*</span></label>
+                                <div class="col-sm-8">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" >pages/</span>
+                                        <input type="text" class="form-control" placeholder="Page" maxlength="100" id="link-gen-link" name="pageLink" 
+                                               value="{% if app.request.get('pageLink')!='' %}{{ app.request.get('pageLink') }}{% elseif content_page.pageUrl  is defined %}{{ content_page.pageUrl  }}{% endif %}" {% if content_page.pageName is defined %} {% if content_page.pageName =='home' or content_page.pageName =='about us' or content_page.pageName =='terms of condition' or content_page.pageName =='privacy policy' or content_page.pageName =='contact'%} readonly {% endif %} {% endif %}>
+                                    </div>
+                                    {% if error.pageLink is defined %}<div class="form-error-content">{{ error.pageLink }}</div>{% endif %}  
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Sub title</label>
+                                <div class="col-sm-8">
+
+                                    <input type="text" class="form-control" dir="rtl" id="" placeholder="Subtitle" maxlength="250" name="subTitle" value="{% if app.request.get('subTitle')!='' %}{{ app.request.get('subTitle') }}{% elseif content_page.pageSubTitle  is defined %}{{ content_page.pageSubTitle  }}{% endif %}">
+
+                                    {% if error.subTitle is defined %}<div class="form-error-content">{{ error.subTitle }}</div>{% endif %}
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Page description</label>
+                                <div class="col-sm-8">
+
+                                    <textarea class="form-control ckeditor " dir='rtl' name="pageDescription">{% if app.request.get('pageDescription')!='' %}{{ app.request.get('pageDescription') }}{% elseif content_page.pageContent  is defined %}{{ content_page.pageContent  }}{% endif %}</textarea>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label" >Page image</label>
+                                <div class="col-sm-8">
+
+                                    <input type="file" class="" id="imageUpload"  name="imageupload" value="{%if app.request.get('imageupload')!=''%}{{ app.request.get('imageupload') }}{% endif %}"  accept='image/*'>
+                                    <input type="hidden" id="uploaded-file" name="uploadedFile" value="{%if app.request.get('uploadedFile')!=''%}{{app.request.get('uploadedFile')}}{%  elseif content_page.pageImage  is defined %}{{ content_page.pageImage  }}{% endif %} " />
+
+                                    <div id="uploaded-image-holder">
+                                        {%if app.request.get('imageupload')!=''%}     
+                                            <img src="{{ asset('uploads/')~app.request.get('imageupload') }}" alt="..." class="img-thumbnail">
+                                        {%  elseif content_page.pageImage  is defined and content_page.pageImage!='' %}
+                                            <img src="{{ asset('uploads/')~content_page.pageImage }}" alt="..." class="img-thumbnail">
+                                        {% endif %} 
+                                    </div>
+                                </div>
+                            </div>    
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Meta title</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="" placeholder="Meta title" name="metaTitle"  maxlength="250"
+                                           value="{% if app.request.get('metaTitle')!='' %}{{ app.request.get('metaTitle') }}{% elseif content_page.pageMetaTitle is defined %}{{ content_page.pageMetaTitle  }}{% endif %}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Meta keywords</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="" placeholder="Meta keywords" name="metaKeywords" maxlength="250"
+                                           value="{% if app.request.get('metaKeywords')!='' %}{{ app.request.get('metaKeywords') }}{% elseif content_page.pageMetaKeyword is defined %}{{ content_page.pageMetaKeyword  }}{% endif %}">
+                                </div>
+                            </div>   
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Meta description</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control " maxlength="250" id="" name="metaDescription">{% if app.request.get('metaDescription')!='' %}{{ app.request.get('metaDescription') }}{% elseif content_page.pageMetaDescription  is defined%}{{content_page.pageMetaDescription }}{%endif%}</textarea>
+                                </div>
+                            </div>   
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-8">
+                                    <button type="submit" class="btn btn-primary" name="submit" value="submit" >Save page</button>
+                                </div>
+                            </div>
+                        </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        CKEDITOR.replace('pageDescription', {
+            contentsLangDirection: 'rtl',
+            language: 'ar',
+        });
+
+        $(document).ready(function () {
+
+            $('#pageName').on('blur', function () {
+
+                pn = $(this).val();
+                pn = pn.replace(' ', '-');
+                $('#link-gen-link').val(pn);
+            })
+
+
+            jQuery.validator.addMethod("noSpace", function (value, element) {
+                return value.indexOf(" ") < 0 && value != "";
+            }, "No space please and don't leave it empty");
+
+            jQuery.validator.addMethod("uriLink", function (value, element) {
+                // allow any non-whitespace characters as the host part
+                return this.optional(element) || /^[a-zA-Z0-9\-\_]{4,50}$/.test(value);
+            }, 'Please enter a valid link (minimum 4 characters and maximum 50 characters and spaces are not allowed).');
+
+            $("#admin-add-new-page-form").validate({
+                ignore: [],
+                rules: {
+                    pageName: {required: true,
+                    },
+                    pageLink: {required: true,
+                        uriLink: true
+                    },
+                    pageTitle: {required: true,
+                    }
+                },
+                messages: {
+                    pageName: {required: "Please enter a page name"},
+                    pageLink: {required: "Please enter a page link"},
+                    pageTitle: {required: "Please enter a page title"}
+
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                },
+                errorPlacement: function (error, element) {
+                    if (element.attr("name") == "pageLink") {
+                        error.appendTo(element.parent().parent());
+                    } else {
+                        error.appendTo(element.parent());
+                    }
+                    
+                    //error.prependTo(element.parent());
+                },
+                invalidHandler: function (form, validation) {
+                    $('div.form-error').remove();
+                }
+            });
+
+        });
+
+    </script>
+
+{% endblock %} 

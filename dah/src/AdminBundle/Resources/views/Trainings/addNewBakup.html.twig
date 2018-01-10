@@ -1,0 +1,188 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                {% if mode=='add' %}
+                    <div class="page-header"><h4>Add new training</h4></div>
+                {% else %}
+                    <div class="page-header"><h4>Edit training</h4></div>
+                {% endif %}
+                <div class="row">
+                    <form class="form-horizontal" method="post" id="admin-add-new-page-form" action="{{ url('_admin_create_assesment',{'trainingid':34}) }}" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Training title <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+
+                                <input type="text" class="form-control " dir='rtl' id="" placeholder="عنوان التدريب" name="pageName" value="{% if app.request.get('pageName')!='' %}{{ app.request.get('pageName') }}{% elseif content_page.pageName is defined %}{{ content_page.pageName  }}{% endif %}">
+                            </div>
+                        </div>   
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Department <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+                                <select class='form-control' dir='rtl' name='department'>
+                                    <option value=''>Select</option>
+                                    <option value='الأدب'>الأدب</option>
+                                </select>
+
+
+                                {% if error.department is defined %}<div class="form-error-content">{{ error.department }}</div>{% endif %}
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Training description <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+
+                                <textarea class="form-control ckeditor " dir='rtl' name="article_area">{% if app.request.get('pageDescription')!='' %}{{ app.request.get('pageDescription') }}{% elseif content_page.pageDescription  is defined %}{{ content_page.pageDescription  }}{% endif %}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Asign Teacher/Trainer <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+                                <select class='form-control' dir='rtl' name='teacher'>
+                                    <option value=''>Select</option>
+                                    <option value='الأدب'>الأدب</option>
+                                </select>
+
+
+                                {% if error.department is defined %}<div class="form-error-content">{{ error.department }}</div>{% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Meta title</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="" placeholder="Meta title" name="metaTitle" 
+                                       value="{% if app.request.get('metaTitle')!='' %}{{ app.request.get('metaTitle') }}{% elseif content_page.metaTitle is defined %}{{ content_page.metaTitle  }}{% endif %}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Meta keywords</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="" placeholder="Meta keywords" name="metaKeywords" 
+                                       value="{% if app.request.get('metaKeywords')!='' %}{{ app.request.get('metaKeywords') }}{% elseif content_page.metaKeywords is defined %}{{ content_page.metaKeywords  }}{% endif %}">
+                            </div>
+                        </div>   
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Meta description</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control " id="" name="metaDescription">{% if app.request.get('metaDescription')!='' %}{{ app.request.get('metaDescription') }}{% elseif content_page.metaDescription  is defined%}{{content_page.metaDescription }}{%endif%}</textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Videos</label>
+                            <div class="col-sm-8">
+                                <div class='row' id="video-container-div">
+                                    <div class='col-sm-12' id="video-div">
+                                        <div class="well">
+                                            <div class="form-group">
+                                                <label for="" class="col-sm-3 control-label">Video title</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" id="" dir="rtl" placeholder="Video title" name="metaTitle" 
+                                                           value="{% if app.request.get('metaTitle')!='' %}{{ app.request.get('metaTitle') }}{% elseif content_page.metaTitle is defined %}{{ content_page.metaTitle  }}{% endif %}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="" class="col-sm-3 control-label">Video File</label>
+                                                <div class="col-sm-8">
+                                                    <input type="file" class="" id=""  name="manualUpload[]">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='row'>
+                                    <div class='col-sm-12 text-center'>
+                                        <button type="button" class="btn btn-default" id="add-video-button"><i class="fa fa-plus"></i> Add more videos</button>
+                                    </div>
+                                </div>
+                            </div>  
+
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Public <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+                                <label class="radio-inline">
+                                    <input type="radio" id="" value="option1" name='public'> Public
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" id="" value="option2" name='public'> Private
+                                </label>   
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Assesment <span class="red-text">*</span></label>
+                            <div class="col-sm-8">
+                                <label class="radio-inline">
+                                    <input type="radio" id="" value="option1" name='assesment'> Yes
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" id="" value="option2" name='assesment'> No
+                                </label>   
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-8">
+                                <button type="submit" class="btn btn-primary" name="submit" value="submit" >Save and continue</button>
+                            </div>
+                        </div>
+
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#myModal").on("show.bs.modal", function (e) {
+            var link = $(e.relatedTarget);
+            $(this).find(".modal-content").load(link.attr("href"));
+        });
+        CKEDITOR.replace('article_area', {
+            contentsLangDirection: 'rtl',
+            language: 'ar',
+        });
+    </script>
+    <script type='text/javascript'>
+        var videodiv = $('#video-div').wrap('<div/>').parent().html();
+        {#jwplayer('video-example1').setup({
+            flashplayer: '{{ asset('assets/js/jwplayer/player.swf') }}',
+            file: 'https://www.youtube.com/watch?v=-5wpm-gesOY',
+            height: '100',
+            width: '200',
+            //'playlist.position': 'right',
+            //'playlist.size': 80
+        });
+        jwplayer('video-example2').setup({
+            flashplayer: '{{ asset('assets/js/jwplayer/player.swf') }}',
+            file: '{{ asset('assets/videos/magento.mp4') }}',
+            height: '100',
+            width: '200',
+            //'playlist.position': 'right',
+            //'playlist.size': 80
+        });#}
+        
+        $('body').on('click','#add-video-button',function(){
+            $('#video-container-div').append(videodiv);
+        });
+
+    </script>
+{% endblock %} 

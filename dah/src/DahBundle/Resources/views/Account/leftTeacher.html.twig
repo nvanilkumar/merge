@@ -1,0 +1,22 @@
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <div class="sidebar" style="height: auto; width:100%; text-align:center">
+        <div class="userInfo">
+            <div class="image"> <a href='{{ url('_profile_teacher',{'uid':user.uid}) }}'><img src="{% if user.avatar is defined and user.avatar!='' %}{{ asset('uploads/')~user.avatar }}{% else %}{{ asset('assets/img/default-user-female.png') }}{% endif %}" width="80px" height="80px" class="img-circle" alt="User Image"></a> </div>
+            <div class="info">
+                <p>{% if user.fname is defined and user.lname is defined %}{{ user.lname~' '~user.fname }}{% endif %}</p>
+            </div>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="treeview {% if app.request.attributes.get('_route') == '_dashboard' %}active{% endif %}"><a href="{{ url('_dashboard') }}"><i class="fa fa-user"></i>&nbsp; <span>{{ 'account.Dashboard'|trans }}</span> </a> </li>
+            <li class="treeview {% if app.request.attributes.get('_route') == '_trainings' or app.request.attributes.get('_route') == '_add_new_trainings' or app.request.attributes.get('_route') == '_upload_video_trainings' or app.request.attributes.get('_route') == '_createassesment_trainings' or app.request.attributes.get('_route') == '_enrollment_trainings' or app.request.attributes.get('_route') == '_edit_training' %}active{% endif %}"> <a href="{{ url('_trainings') }}"><i class="fa fa-book"></i>&nbsp; <span>{{ 'account.MyTrainings'|trans }}</span></a></li>
+                {# <li class="treeview"> <a href="{{ url('_enrolled_trainings') }}"><i class="fa fa-graduation-cap fa-2x pull-right"></i>&nbsp; <span>{{ 'account.Trainings'|trans }}</span></a></li>
+                 <li class="treeview"> <a href="{{ url('_enrolled_workshops') }}"><i class="fa fa-calendar-o fa-2x pull-right"></i>&nbsp; <span>{{ 'account.Workshops'|trans }}</span></a></li>
+                 #}<li class="treeview {% if app.request.attributes.get('_route') == '_settings' or app.request.attributes.get('_route') == '_changepass' %}active{% endif %}"><a href="{{ url('_settings') }}"><i class="fa fa-gears"></i>&nbsp;  <span>{{ 'account.Settings'|trans }}</span> </a></li>
+                <li class="treeview {% if app.request.attributes.get('_route') == '_account_calendar' %}active{% endif %}"><a href="{{ url('_account_calendar') }}"><i class="fa fa-calendar"></i>&nbsp;{{ 'footer.Calendar'|trans }}</a></li>
+            </ul>
+        </div>
+        <!-- /.sidebar    _    -->
+    </aside>
+
+

@@ -1,0 +1,82 @@
+<?php
+
+namespace AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DahUsers
+ *
+ * @ORM\Table(name="dah_users")
+ * @ORM\Entity
+ */
+class DahUsers
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=150, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=100, nullable=true)
+     */
+    private $password;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="roleid", type="integer", nullable=true)
+     */
+    private $roleid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", nullable=true)
+     */
+    private $status = 'active';
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="added_on", type="integer", nullable=true)
+     */
+    private $addedOn;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="updated_on", type="integer", nullable=true)
+     */
+    private $updatedOn;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="logged_on", type="integer", nullable=true)
+     */
+    private $loggedOn;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="uid", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $uid;
+
+
+}
+

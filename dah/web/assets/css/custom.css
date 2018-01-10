@@ -1,0 +1,6 @@
+@charset "utf-8";
+/* CSS Document */
+
+.navbar-default .navbar-nav > li > a {
+	color:#ffffff !important;
+}

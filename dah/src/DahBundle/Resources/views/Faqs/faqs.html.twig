@@ -1,0 +1,97 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 pull-right">
+                            <h2 class="custom-wrap">{{ 'footer.faq'|trans }} </h2>
+                        </div>
+                        {# <div class="col-md-2 col-sm-12 col-xs-12 col-lg-2 pull-right">
+                             <a href="{{ url('_trainingslist') }}" class="btn btn-primary"> Back to Trainings <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                         </div>#}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-5 col-xs-12 col-lg-4 pull-right">
+
+                        <div class="panel panel-default panel-styled ">
+                            <div class="panel-heading"><h4>Latest Trainings</h4></div>
+                            {% if trainings|length>0 %}
+                                <ul class="list-group" style="padding: 0px!important;">
+                                    {% for training in trainings %}
+                                        <li class="list-group-item"><a href="{{ url('_view_training',{'tid':training.tid}) }}">{{ training.training_title|striptags|truncate(70, true, "...")|raw }}</a></li>
+                                        {% endfor %}
+                                </ul>
+                            {% else %}
+                                <div class="panel-body">
+                                    <div class="empty-content">
+                                        {{ 'account.Nolatesttrainingsfound'|trans }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="panel-footer"><a href="{{ url('_trainingslist') }}"> View all <i class="fa fa-angle-double-left"></i></a></div>
+                        </div>
+                        <div class="panel panel-default panel-styled">
+                            <div class="panel-heading"><h4>Latest News</h4></div>
+                            {% if news|length>0 %}
+                                <ul class="list-group" style="padding: 0px!important;">
+                                    {% for n in news %}
+                                        <li class="list-group-item"><a href="{{ url('_view_news',{'newsid':n.newsid}) }}">{{ n.news_title|striptags|truncate(70, true, "...")|raw }}</a></li>
+                                        {% endfor %}
+                                </ul>
+                            {% else %}
+                                <div class="panel-body">
+                                    <div class="empty-content">
+                                        {{ 'account.Nolatestnewsfound'|trans }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="panel-footer"><a href="{{ url('_news') }}"> {{ 'account.Viewall'|trans }} <i class="fa fa-angle-double-left"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 big-col col-sm-7 col-lg-8 col-xs-12 pull-right "> 
+                        <div class="row">
+
+                            <div class="col-md-12 pull-right">
+                                <div class="panel-group" id="faqAccordion">
+                                    {% for n in faqs %}
+                                        <div class="panel panel-default ">
+                                            <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question{{ n.faqid }}">
+                                                <h4 class="panel-title">
+                                                    <a href="javascript:;" class="ing">{{ n.question|raw }}</a>
+                                                </h4>
+                                            </div>
+                                            <div id="question{{ n.faqid }}" class="panel-collapse collapse" style="height: 0px;">
+                                                <div class="panel-body">
+                                                    <p>
+                                                        {{ n.answer|raw }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <nav class="text-center">
+                                {% if paginate is defined and paginate|length>1 %}
+                                    <ul class="pagination">
+                                        {% for pg in paginate %}
+                                        <li {% if pg.text==page %}class='active'{% endif %} >{% if pg.url is defined %}<a href="{{ pg.url }}">{{ pg.text }}</a>{% else %}<a>{{ pg.text }}</a>{% endif %}</li>
+                                        {% endfor %}
+                                    </ul>
+
+                                {% endif %} 
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

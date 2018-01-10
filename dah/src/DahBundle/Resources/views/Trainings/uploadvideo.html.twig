@@ -1,0 +1,89 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+             <div class="col-md-3 col-sm-4 col-xs-12 col-lg-3 pull-right">
+                {% if user.role=='ROLE_TEACHER' %}
+                    {% include 'DahBundle:Account:leftTeacher.html.twig' %}
+                {% elseif user.role=='ROLE_STUDENT' %}
+                    {% include 'DahBundle:Account:left.html.twig' %}
+                {% endif %}
+
+            </div>
+            <div class="col-md-9 big-col col-sm-8 col-lg-9 col-xs-12 pull-right">
+                <div class="page-header">
+                    <h2>Training videos</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        {% include 'DahBundle:Trainings:steps.html.twig' %}
+                        <form class="form-horizontal" method="post" id="" action=''  enctype="multipart/form-data">
+
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                    <input type="file" name="manualUpload" id="file_upload_1" />
+                                </div>
+                                <label for="" class="col-sm-3 control-label"></label>
+
+                            </div>
+                            {#<div class="form-group">
+                                <div class=" col-sm-8">
+                                    <button type="button" class="btn btn-primary" id="process-upload" name="submit" value="submit" >Upload</button>
+                                </div>
+                            </div>#}
+                            <hr/>
+                            <div class="row" id="videos-strip">
+                                {% include 'DahBundle:Trainings:videoStrip.html.twig' %}
+                            </div>
+                            {% if videos|length > 0 %}
+                                <div class="form-group">
+                                    <div class=" col-sm-8">
+                                        <button type="submit" class="btn btn-primary" id="" name="submit" value="submit" >Save</button>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+           
+        </div>
+    </div>
+
+    <script src="{{ asset('assets/js/uploadify/jquery.uploadify.min.js') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#file_upload_1").uploadify({
+                height: 30,
+                swf: '{{ asset('assets/js/uploadify/uploadify.swf') }}',
+                uploader: '{{ url('_video_uploadify') }}',
+                width: 250,
+                'height'   : 40,
+                        'fileSizeLimit': '900MB',
+                'fileTypeExts': '*.mp4; *.webm; *.flv',
+                'fileTypeDesc': 'Please choose mp4/webm/flv files',
+                'queueSizeLimit': 5,
+                'fileObjName': 'manualUpload',
+                auto: true,
+                'buttonClass': 'btn btn-info',
+                'buttonText': 'Choose Video <i class="fa fa-cloud-upload" aria-hidden="true"></i>',
+                'multi': false,
+                'debug': false,
+                'formData': {'tid' : {{ tid }} },
+                'onQueueComplete': function (queueData) {
+                    location.reload();
+                }
+
+            });
+        });
+
+        $('body').on('click', '#process-upload', function () {
+            $("#file_upload_1").uploadify('upload', '*');
+        });
+    </script>
+
+{% endblock %}

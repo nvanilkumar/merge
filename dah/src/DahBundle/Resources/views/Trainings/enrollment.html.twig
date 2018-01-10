@@ -1,0 +1,82 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12 col-lg-3 pull-right">
+                {% if user.role=='ROLE_TEACHER' %}
+                    {% include 'DahBundle:Account:leftTeacher.html.twig' %}
+                {% elseif user.role=='ROLE_STUDENT' %}
+                    {% include 'DahBundle:Account:left.html.twig' %}
+                {% endif %}
+
+            </div>
+            <div class="col-md-9 big-col col-sm-8 col-lg-9 col-xs-12 pull-right">
+                <div class="page-header">
+                    <h2>{{ 'mytrainings.TrainingEnrollement'|trans }}</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        {% include 'DahBundle:Trainings:steps.html.twig' %}
+
+                        <table class="table table-bordered ">
+                            <thead>
+                                <tr>
+                                    <th class="text-right" width="40%">{{ 'addtraining.User'|trans }}</th>
+                                    <th class="text-right" width="30%">{{ 'addtraining.Email'|trans }}</th>
+                                    <th rowspan='' width="15%" class='text-right'>{{ 'addtraining.Status'|trans }}</th>
+                                    <th rowspan='' width="15%" class='text-right'>{{ 'entrainings.Certificate'|trans }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if enrolls|length > 0 %}
+                                    {% for enroll in enrolls %}
+                                        <tr>
+                                            <td> <a href="{% if enroll.role=='ROLE_STUDENT' %}{{ url('_profile_student',{'uid':enroll.uid}) }}{% else %}{{ url('_profile_teacher',{'uid':enroll.uid}) }}{% endif %}">{{ enroll.lname~' '~enroll.fname }}</a></td>
+                                            <td>{{ enroll.email }}</td>
+                                            <td class="text-right custom-wrap">
+                                                {% if enroll.training_status == 'complete' %} 
+                                                    <span class="label label-success">{{ 'entrainings.Complete'|trans }}</span>
+                                                {% else %}
+                                                    <span class="label label-danger">{{ 'entrainings.Incomplete'|trans }}</span>
+                                                {% endif %}
+                                            </td>
+                                            <td class="text-right custom-wrap">
+                                                {% if enroll.certificate_status == 'issued' %} 
+                                                    <span class="label label-success">{{ 'entrainings.Issued'|trans }}</span> <br/>
+                                                    </a>
+                                                {% elseif enroll.certificate_status == 'requested' %}
+                                                    <span class="label label-warning">{{ 'entrainings.RequestSent'|trans }}</span>    
+                                                {% else %}
+                                                    <span class="label label-danger">{{ 'addtraining.NotIssued'|trans }}</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <tr>
+                                        <td colspan="4" class="general-empty-content">{{ 'mytrainings.NoEnrollmentforthistraining'|trans }}</td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                        {% if paginate is defined and paginate|length>1 %}
+                            <nav class="text-center">
+                                <ul class="pagination">
+
+
+                                    {% for pg in paginate %}
+                                        <li {% if pg.text==page %}class='active'{% endif %} >{% if pg.url is defined %}<a href="{{ pg.url }}">{{ pg.text }}</a>{% else %}<a>{{ pg.text }}</a>{% endif %}</li>
+                                            {% endfor %}
+                                </ul>
+                            </nav>
+                        {% endif %} 
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+{% endblock %}

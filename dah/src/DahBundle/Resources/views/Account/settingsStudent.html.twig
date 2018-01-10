@@ -1,0 +1,76 @@
+<form class="form-horizontal" method="post" id="userinfo-form" enctype="multipart/form-data">
+    <div class="form-group">
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="" maxlength="100" name="fname" value="{% if app.request.get('fname')!=''  %}{{ app.request.get('fname') }}{% elseif user.fname is defined %}{{ user.fname }}{% endif %}" placeholder="First Name">
+            {% if error.fname is defined %}<div class="form-error-content">{{ error.fname }}</div>{% endif %}
+        </div>
+        <label for="" class="col-sm-3 control-label">{{ 'account.FirstName'|trans }}  <span class="red-text">*</span></label>
+
+    </div>
+    <div class="form-group">
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="" maxlength="100" name="lname" value="{% if app.request.get('lname')!=''  %}{{ app.request.get('lname') }}{% elseif user.lname is defined %}{{ user.lname }}{% endif %}" placeholder="Last Name">
+            {% if error.lname is defined %}<div class="form-error-content">{{ error.lname }}</div>{% endif %}
+        </div>
+        <label for="" class="col-sm-3 control-label">{{ 'account.LastName'|trans }} <span class="red-text">*</span></label>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-9">
+            <input type="email" class="form-control" id="" maxlength="150" name="email" value="{% if app.request.get('email')!=''  %}{{ app.request.get('email') }}{% elseif user.email is defined %}{{ user.email }}{% endif %}" placeholder="Email">
+            {% if error.email is defined %}<div class="form-error-content">{{ error.email }}</div>{% endif %}
+        </div>
+        <label for="inputEmail3" class="col-sm-3 control-label">{{ 'account.EmailID'|trans }} <span class="red-text">*</span></label>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="" maxlength="15" name="phone" value="{% if app.request.get('phone')!=''  %}{{ app.request.get('phone') }}{% elseif userinfo.phone is defined %}{{ userinfo.phone }}{% endif %}" placeholder="Phone number">
+            {% if error.phone is defined %}<div class="form-error-content">{{ error.phone }}</div>{% endif %}
+        </div>
+        <label for="" class="col-sm-3 control-label">{{ 'account.Phonenumber'|trans }}</label>
+    </div>
+    <div class="form-group">
+
+        <div class="col-sm-9">
+
+            <input type="file" class="" id="imageUpload"  name="manualUpload"  accept='image/*'> 
+            <input type="hidden" id="uploaded-file" name="uploadedFile" value="{%if app.request.get('uploadedFile')!=''%}{{app.request.get('uploadedFile')}}{%  elseif user.avatar  is defined %}{{ user.avatar  }}{% endif %} " />
+
+            <div id="uploaded-image-holder">
+                {%if app.request.get('uploadedFile')!=''%}     
+                    <img src="{{ asset('uploads/')~app.request.get('uploadedFile') }}" alt="..." class="img-thumbnail">
+                {%  elseif user.avatar  is defined and user.avatar!='' %}
+                    <img src="{{ asset('uploads/')~user.avatar }}" alt="..." class="img-thumbnail">
+                {% endif %} 
+            </div>
+            {% if error.manualUpload is defined %}<div class="form-error-content">{{ error.manualUpload }}</div>{% endif %}
+        </div>
+        <label for="" class="col-sm-3 control-label" >{{ 'account.ProfileImage'|trans }}</label>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-9">
+            <input type="text" class="form-control" maxlength="250" id="" name="school" value="{% if app.request.get('school')!=''  %}{{ app.request.get('school') }}{% elseif userinfo.school is defined %}{{ userinfo.school }}{% endif %}" placeholder="School/College">
+            {% if error.school is defined %}<div class="form-error-content">{{ error.school }}</div>{% endif %}
+        </div>
+        <label for="" class="col-sm-3 control-label">{{ 'account.SchoolCollegeName'|trans }}</label>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="" maxlength="250" name="location" value="{% if app.request.get('location')!=''  %}{{ app.request.get('location') }}{% elseif userinfo.location is defined %}{{ userinfo.location }}{% endif %}" placeholder="School/College Location">
+            {% if error.location is defined %}<div class="form-error-content">{{ error.location }}</div>{% endif %}
+        </div>
+        <label for="" class="col-sm-3 control-label">{{ 'account.SchoolCollegeLocated'|trans }}</label>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-9">
+            <textarea class="form-control" id="" name="bio"  placeholder="Bio">{% if app.request.get('bio')!=''  %}{{ app.request.get('bio') }}{% elseif userinfo.bio is defined %}{{ userinfo.bio }}{% endif %}</textarea>
+            {% if error.bio is defined %}<div class="form-error-content">{{ error.bio }}</div>{% endif %}
+        </div>
+        <label for="" class="col-sm-3 control-label">Bio</label>
+    </div>
+    <div class="form-group">
+        <div class=" col-sm-9">
+            <button type="submit" class="btn btn-lg btn-primary">{{ 'account.Submit'|trans }}</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,254 @@
+{% extends extend_view %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+                <div class="page-header">
+                    <div class="row">
+
+                        <div class="col-md-10 col-sm-12 col-xs-12 col-lg-10 pull-right">
+                            <h2 class=" custom-wrap">{{ training.trainingTitle|raw }} </h2>
+                            <h4 class="newstextcolor custom-wrap">{{ training.deptid.department }}</h4>
+                            {% if publicpopup is defined and publicpopup == 'yes' %}
+                                <div class="alert alert-warning" role="alert"><strong>{{ 'training.Warning'|trans }}</strong> {{ 'training.Thisisaprivatetrainingyoumust'|trans }} <a href="{{ url('_home') }}">{{ 'training.login'|trans }}</a>/<a href="{{ url('_signup_student') }}">{{ 'training.signup'|trans }}</a> {{ 'training.toviewthistraining'|trans }}</div>
+                                    {% endif %}
+                        </div>
+                        <div class="col-md-2 col-sm-12 col-xs-12 col-lg-2 pull-right">
+                            <a href="{{ url('_trainingslist') }}" class="btn btn-primary">{{ 'addtraining.BacktoTrainings'|trans }} <i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col-md-3 col-sm-4 col-xs-12 col-lg-3 pull-right">
+                        <div class="well">
+                            <h4 class='page-header'>{{ 'addtraining.TrainersProfile'|trans }}</h4>
+                            <center>
+                                <a href='{{ url('_profile_teacher',{'uid':training.uid.uid}) }}'><img src="{% if training.uid.avatar is defined and training.uid.avatar!='' %}{{ asset('uploads/')~training.uid.avatar }}{% else %}{{ asset('assets/img/default-user-female.png') }}{% endif %}" name="aboutme" width="140" height="140" class="img-circle"></a>
+                                <h3>{{ training.uid.lname~' '~training.uid.fname }}</h3>
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>
+                                            {{ 'dashboard.totalTrainings'|trans }}
+                                        </th>
+                                        <th>
+                                            {{ 'account.TotalViews'|trans }}
+                                        </th>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ getUserActiveTrainingCount(training.uid.uid) }}
+                                        </td>
+                                        <td>
+                                            {{ getUserTviewCount(training.uid.uid) }}
+                                        </td>
+
+                                    </tr>
+                                </table>
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>
+                                           {{ 'account.TotalEnrollments'|trans }}
+                                        </th>
+
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ getUserTotalEnrolledCount(training.uid.uid) }}
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>
+                                            {{ 'account.TotalCertificatesissued'|trans }}
+                                        </th>
+
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ getUserTotalCertCount(training.uid.uid) }}
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>
+                                            {{ 'account.TotalFeaturedtrainings'|trans }}
+                                        </th>
+
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ getUserFeaturedTrainingCount(training.uid.uid) }}
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                                {% if materials|length > 0 %}
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th class="text-right">
+                                                {{ 'account.WorkshopMaterial'|trans }}
+                                            </th>
+                                        </tr>
+                                        {% for material in materials %}
+                                            <tr>
+                                                <td class="text-right">
+                                                    <a class="" href="{{ url('_generic_download_act',{'filename':material.materialupload})  }}" target="_blank" >{% if material.ftitle != '' %}{{ material.ftitle }}{% else %}Untitled{% endif %}</a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                {% endif %}
+                            </center>
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-9 big-col col-sm-8 col-lg-9 col-xs-12 pull-right ">      
+
+                        <div class="row">
+
+                            <div class="col-md-12 big-col col-sm-12 col-lg-12 col-xs-12 pull-right ">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>{{ training.trainingDescription|raw }}</p>
+                                    </div>
+                                </div>   
+                                {% if training.status == 'active' %}
+                                    {% if app.user %}
+                                        {% if app.user.role=='ROLE_STUDENT' %}
+                                            <div class="row">
+                                                <div class="col-md-7 pull-right">
+                                                    <button type="submit" class="btn btn-lg btn-info"  id="enroll-to-training" data-tid="{{ training.tid }}"><i class="fa fa-bookmark" aria-hidden="true" ></i> {{ 'training.EnrollNow'|trans }}</button> 
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% else %}
+                                        <div class="row">
+                                            <div class="col-md-7 pull-right">
+                                                <button type="submit" class="btn btn-lg btn-info"  id="enroll-to-training" data-tid="{{ training.tid }}" ><i class="fa fa-bookmark" aria-hidden="true" ></i> {{ 'training.EnrollNow'|trans }}</button> 
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                                <hr/>
+                                <div class="row">
+                                    {% if publicpopup is defined and publicpopup == 'yes' %}
+                                        <div class="alert alert-warning" role="alert"><strong>{{ 'training.Warning'|trans }}</strong> {{ 'training.Thisisaprivatetrainingyoumust'|trans }} <a href="{{ url('_home') }}">{{ 'training.login'|trans }}</a>/<a href="{{ url('_signup_student') }}">{{ 'training.signup'|trans }}</a> {{ 'training.toviewthistraining'|trans }}</div>
+                                            {% else %}
+                                        <script src="{{ asset('assets/js/jwplayer/jwplayer.js') }}"></script>
+                                        {% for video in videos %}
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        {% if  video.video_title != '' %}{{ video.video_title }}{% else %} {{ 'training.UntitledVideo'|trans }} {% endif %}
+                                                    </h4>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="col-md-12 video-player">
+                                                        <div class="" id="videoID-{{ video.tvid }}"></div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <p>{{ video.video_desc }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script type='text/javascript'>
+                                                jwplayer('videoID-{{ video.tvid }}').setup({
+                                                    flashplayer: '{{ asset('assets/js/jwplayer/player.swf') }}',
+                                                    file: '{{ asset('uploads/'~video.video) }}',{# file: '{{ asset('uploads/vid_bf6ab081987348145e0b08bdb24040e7.mp4') }}',#}
+                                                    image: "{% if video.video_thumbnail!='' %}{{ asset('uploads/'~video.video_thumbnail) }}{% else %}{{ asset('assets/img/btn-videoplayoverlay.png') }}{% endif %}",
+                                                    "width": "100%",
+                                                    aspectratio: "4:3",
+                                                    stretching: "exactfit",
+                                                    events: {
+                                                        onPlay: function (callback) {
+                                                        }
+                                                    }
+                                                });
+                                            </script>
+                                        {% endfor %}
+
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        $('body').on('click', '.close-video', function () {
+            var vidid = $(this).attr('data-vidid');
+            jwplayer(vidid).stop();
+        });
+        function toggleChevron(e) {
+            $(e.target)
+                    .prev('.panel-heading')
+                    .find("i.indicator")
+                    .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+        }
+        $('#accordion').on('hidden.bs.collapse', toggleChevron);
+        $('#accordion').on('shown.bs.collapse', toggleChevron);
+
+        (function ($) {
+            var elements = $('.video-player > div, .video-player object'),
+                    playerIds = [];
+            elements.each(function (i, player) {
+                console.log(player.id);
+                playerIds.push(player.id);
+            });
+            $.each(playerIds, function (i, id) {
+                jwplayer(id).onPlay(function () {
+                    $.each(playerIds, function (x, pid) {
+                        if (id === pid)
+                            return true;
+                        jwplayer(pid).stop();
+                    });
+                });
+            });
+        })(jQuery);
+    </script>
+    <script type='text/javascript'>
+        $('body').on('click', '#enroll-to-training', function () {
+            var tid = $(this).attr('data-tid');
+            $.ajax({
+                type: 'POST',
+                url: enroll_to_training_url,
+                data: {'tid': tid},
+                dataType: 'json'
+            })
+                    .done(function (response) {
+
+                        if (response.status == "success") {
+                            flashmessage(response.message, 'success');
+                            //  $('#enrollNowMessagesTraining').html(response.message);
+                            //  timeout = setTimeout(function () {
+                            //      $('#enrollNowTraining').modal('hide');
+                            //  }, 5000);
+                        }
+                        else {
+                            flashmessage(response.message, 'error');
+                        }
+                    });
+        });
+    </script>
+{% endblock %}

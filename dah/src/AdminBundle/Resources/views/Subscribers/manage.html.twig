@@ -1,0 +1,168 @@
+{% extends extend_view %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="main-content">
+                <div class="page-header ">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h4>Newsletters Subscriptions</h4> 
+                        </div>
+                  
+                </div>
+                <div class="row">
+
+                    <div class="col-lg-12">
+                        <div class="panel panel-default grey-bg">
+                            <div class="panel-body">
+                                <form class="form-inline"  action="" name="admin-subscription-search" id="admin-subscription-search">
+                                    <div class="form-group">
+                                        <label for="">Keyword</label>
+                                        <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Keyword" value="{% if app.request.get('keyword')!='' %}{{ app.request.get('keyword') }}{% endif %}">
+                                    </div> &nbsp;
+
+                                    <button type="submit" class="btn btn-primary" id="search-submit" name="" value="">Search</button>
+                                    <button type="submit" class="btn btn-default" id="clear" name="reset" value="Reset" >Clear</button>
+                                    <div class="error" id="errormessgaes"></div>
+                                </form>
+                            </div>
+                        </div> 
+                    </div>
+
+                    <div class="col-lg-12">
+						{% if range is defined and totalpages is defined%}
+                        <h5>Showing <strong>{{range}}</strong> of <strong>{{totalpages}}</strong> Subscribers</h5>
+						{%endif%}
+                        <table class="table table-bordered table-responsive table-striped">
+                            <thead>
+                                <tr>
+                                    <th width="10%">Email</th>
+                                     <th  width="10%">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% if subscribers|length ==0  %}
+                                    <tr>
+                                        <td  colspan="4" align='center'>{{'NO Search Results Found'}}</td>
+                                    </tr>
+                                {%else%}
+                                    {%for subscribe in subscribers %}
+                                        <tr data="{{subscribe.subid}}">
+                                            <td>{{subscribe.email}}</td>
+											<td>
+                                            {% if subscribe.status == 'active' %}
+                                            <a href="javascript:;" data="active" class="status btn btn-xs btn-success"><i class="fa fa-circle"></i> Subscribed</a>
+                                        {% else %}
+                                           <a href="javascript:;" data="inactive" class="status btn btn-xs btn-danger"><i class="fa fa-circle-o"></i> Un subscribed</a>
+											 {% endif %}
+										<a href="javascript:;" class="delete btn btn-xs btn-danger" ><i class="fa fa-trash"></i></a> 
+											
+											</td>
+                                        </tr>
+                                    {% endfor %}
+                                {%endif%}
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-12">
+                        <nav class="text-center">
+                            {% if paginate is defined and paginate|length>1 %}
+                                <ul class="pagination">
+
+
+                                    {% for pg in paginate %}
+                                        <li {% if pg.text==page %}class='active'{% endif %} >{% if pg.url is defined %}<a href="{{ pg.url }}">{{ pg.text }}</a>{% else %}<a>{{ pg.text }}</a>{% endif %}</li>
+                                            {% endfor %}
+                                </ul>
+                            </nav>
+                        {% endif %} 
+
+                        </li>
+
+
+
+                        </ul>
+                        </nav>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var key = $('#keyword').val().trim();
+            $('body').on('click', '#search-submit', function () {
+                var key = $('#keyword').val().trim();
+                if (key == '') {
+                    $('#keyword').val('');
+                    $('#errormessgaes').html(' Please enter keyword to search');
+                    return false;
+                }
+            });
+  $('body').on('click', '.delete', function () {
+
+                if (confirm("Are you sure , you want to delete?"))
+                {
+                    var contentid = $(this).parent('td').parent('tr').attr("data");
+                    var d = $(this).parent('td').parent('tr').find('td:eq(0)').text();
+                    $.ajax({
+                        url: "{{ url('subscribres_delete') }}",
+                        type: "POST",
+                        data: "contentid=" + contentid + "&pageName=" + d,
+                        success: function (response)
+                        {
+                            if (response.status == "Success")
+                            {
+
+                                $('tr[data=' + contentid + ']').remove();
+                                location.reload('_admin_subscribers');
+                            }
+
+                        }});
+                }
+            });
+	          $('body').on('click', '.status', function () {
+
+                var subId = $(this).parent('td').parent('tr').attr("data");
+                var status = $(this).attr("data");
+                var ele = $(this);
+                $.ajax({
+                    url: "{{ url('subscribers_status') }}",
+                    type: "POST",
+                    data: "status=" + status + "&subId=" + subId,
+                    success: function (response)
+                    {
+
+                        if (response.status == "success")
+                        {
+
+                            if (response.response.status == 'active')
+                            {
+								ele.removeClass('btn-danger').addClass('btn-success');
+								ele.html('<i class="fa fa-circle"></i> Subscribed');
+								ele.attr('data', response.response.status);
+                            }
+                            else
+                            {
+								ele.removeClass('btn-success').addClass('btn-danger');
+								ele.html('<i class="fa fa-circle-o"></i>  Un subscribed');
+								ele.attr('data', response.response.status);
+                            }
+
+
+                        }
+
+                    }});
+            });
+
+        });
+
+    </script>
+{% endblock %} 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="AdminBundle\Repository\DahTrainingMaterialRepository" name="AdminBundle\Entity\DahTrainingMaterial">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="ftitle" type="string" column="ftitle" length="150" nullable="true"/>
+    <field name="materialupload" type="string" column="materialupload" length="150" nullable="true"/>
+    <field name="status" type="string" column="status" nullable="true"/>
+    <field name="dtid" type="integer" column="dtid" />
+  </entity>
+</doctrine-mapping>

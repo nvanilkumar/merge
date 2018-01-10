@@ -1,0 +1,102 @@
+{% extends extend_view %}
+{% block content %}
+    <script type="text/javascript">
+        leftifyeditor = 'yes';
+    </script>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12 col-lg-3 pull-right">
+                {% if user.role=='ROLE_TEACHER' %}
+                    {% include 'DahBundle:Account:leftTeacher.html.twig' %}
+                {% elseif user.role=='ROLE_STUDENT' %}
+                    {% include 'DahBundle:Account:left.html.twig' %}
+                {% endif %}
+
+            </div>
+            <div class="col-md-9 big-col col-sm-8 col-lg-9 col-xs-12 pull-right">
+                <div class="page-header">
+                    <h2>{{ 'addtraining.Traininginfo'|trans }}</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        {% include 'DahBundle:Trainings:steps.html.twig' %}
+                        <form class="form-horizontal" method="post" id="user-create-training-form" action=''  enctype="multipart/form-data">
+                            <div class="form-group">
+                                <div class="col-sm-8">
+
+                                    <input type="text" class="form-control " dir='rtl' id="" maxlength="255" placeholder="عنوان التدريب" name="trainingTitle" value="{% if app.request.get('trainingTitle')!='' %}{{ app.request.get('trainingTitle') }}{% elseif training.trainingTitle is defined %}{{ training.trainingTitle  }}{% endif %}">
+                                    {% if error.trainingTitle is defined %}<div class="form-error-content">{{ error.trainingTitle }}</div>{% endif %}
+                                </div>
+                                <label for="" class="col-sm-3 control-label">{{ 'addtraining.Trainingtitle'|trans }} </label>
+
+                            </div>   
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                    <select class='form-control' dir='rtl' name='department'>
+                                        <option value=''>{{ 'common.Select'|trans }}</option>
+                                        {% for department in departments %}
+                                            <option value="{{ department.deptid }}" {% if app.request.get('department')== department.deptid %}selected="selected"{% elseif training.deptid.deptid is defined and training.deptid.deptid == department.deptid  %}selected="selected"{% endif %} >{{ department.department }}</option>
+                                        {% endfor %}
+                                    </select>
+
+
+                                    {% if error.department is defined %}<div class="form-error-content">{{ error.department }}</div>{% endif %}
+                                </div>
+                                <label for="" class="col-sm-3 control-label">{{ 'addtraining.Department'|trans }} </label>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-8">
+
+                                    <textarea class="form-control ckeditor " dir='rtl' name="trainingDescription">{% if app.request.get('trainingDescription')!='' %}{{ app.request.get('trainingDescription') }}{% elseif training.trainingDescription  is defined %}{{ training.trainingDescription  }}{% endif %}</textarea>
+                                    {% if error.trainingDescription is defined %}<div class="form-error-content">{{ error.trainingDescription }}</div>{% endif %}
+                                </div>
+                                <label for="" class="col-sm-3 control-label">{{ 'addtraining.Trainingdescription'|trans }} </label>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                    <label class="">
+                                        {{ 'addtraining.Public'|trans }}   <input type="radio" id="" class="newplace" value="yes" {% if app.request.get('public')== 'yes' %}checked="checked"{% elseif training.public is defined and training.public == 'yes'  %}checked="checked"{% endif %} name='public'> 
+                                    </label>&nbsp;
+                                    <label class="">
+                                        {{ 'addtraining.Private'|trans }}    <input type="radio" id="" class="newplace" value="no" {% if app.request.get('public')== 'no' %}checked="checked"{% elseif training.public is defined and training.public == 'no'  %}checked="checked"{% endif %} name='public'> 
+                                    </label>   
+                                    {% if error.public is defined %}<div class="form-error-content">{{ error.public }}</div>{% endif %}
+                                </div>
+                                <label for="" class="col-sm-3 control-label">{{ 'addtraining.Visibility'|trans }} </label>
+
+                            </div> 
+                            <div class="form-group">
+                                <div class="col-sm-8">
+                                    <label class="">
+                                        {{ 'addtraining.Yes'|trans }}   <input type="radio" id="" class="newplace" value="yes" {% if app.request.get('assesment')== 'yes' %}checked="checked"{% elseif training.assesment is defined and training.assesment == 'yes'  %}checked="checked"{% endif %} name='assesment'> 
+                                    </label>&nbsp;
+                                    <label class="">
+                                        {{ 'addtraining.No'|trans }}    <input type="radio" id="" class="newplace" value="no" {% if app.request.get('assesment')== 'no' %}checked="checked"{% elseif training.assesment is defined and training.assesment == 'no'  %}checked="checked"{% endif %} name='assesment'> 
+                                    </label>   
+                                    {% if error.public is defined %}<div class="form-error-content">{{ error.public }}</div>{% endif %}
+                                </div>
+                                <label for="" class="col-sm-3 control-label">{{ 'addtraining.Assessment'|trans }} </label>
+                            </div> 
+                            <div class="form-group">
+                                <div class=" col-sm-8">
+                                    <button type="submit" class="btn btn-primary" name="submit" value="submit" >{{ 'addtraining.Saveandcontinue'|trans }}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="{{ asset('assets/js/ckeditor_basic/ckeditor.js') }}"></script> 
+    <script type="text/javascript">
+        CKEDITOR.replace('trainingDescription', {
+            contentsLangDirection: 'rtl',
+            language: 'ar',
+        });
+    </script>
+
+{% endblock %}

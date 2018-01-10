@@ -1,0 +1,95 @@
+{% extends extend_view %}
+{% block content %}
+    <!-- HERO UNIT -->
+    <section class="hero-unit-slider no-margin">
+        <div id="carousel-hero" class="slick-carousel">
+            <div class="main-background1">
+                <div class="background-image"><br>
+                    <h2 class=" custom-wrap">{{ training.trainingTitle|raw }} </h2>
+                    <h4 class="newstextcolor custom-wrap">{{ training.deptid.department }}</h4>
+                    <h4> By: <a href="{% if training.uid.role=='ROLE_STUDENT' %}{{ url('_profile_student',{'uid':training.uid.uid}) }}{% else %}{{ url('_profile_teacher',{'uid':training.uid.uid}) }}{% endif %}">{{ training.uid.lname~' '~training.uid.fname }}</a> </h4>
+                    {% if publicpopup is defined and publicpopup == 'yes' %}
+                        <div class="alert alert-warning" role="alert"><strong>{{ 'training.Warning'|trans }}</strong> {{ 'training.Thisisaprivatetrainingyoumust'|trans }} <a href="{{ url('_home') }}">login</a>/<a href="{{ url('_signup_student') }}">signup</a> to view this training.</div>
+                    {% endif %}
+                    {% if error.options is defined and error.options != '' %}
+                        <div role="alert" class="alert alert-danger"> <strong>{{ error.options }}</strong>  </div>
+                    {% endif %}
+                    <hr>
+                    <div class="row">
+                        <div class='col-md-4'>
+                            <div class="well well-lg">
+                                <h4>{{ 'common.HelpSection'|trans }} ?</h4>
+                                <h5>{{ 'common.MaximumMarks'|trans }} : {{ assesment.totalmarks }}</h5>
+                                <hr/>
+                                <p>
+                                    عل الحرة أسابيع بالفشل فعل, أي ٠٨٠٤ العدّ وصل. ونتج اعتداء لبولندا، إذ فعل, أي بعد المحيط الجنود. كل الفرنسي الإحتفاظ الاندونيسية حين, ثم رئيس الدمج واستمرت بال. هاربر القادة ويكيبيديا، أضف ثم, ٣٠ كثيرة الخاطفة لها, تسبب الجو الشمل مما مع. قام و اللا رجوعهم اليميني. من ولم بتخصيص المتحدة لبلجيكا،, مواقعها وأكثرها الا بل.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            {% if questions|length > 0 %}
+                                <form method='post' id='submit-asses-form'>
+                                    <ul style="list-style: none; ">
+                                        <div class="row" id="questions-list">
+                                            {% for question in questions %}
+                                                <li class='question-rec-{{ question.qid }}'>
+
+
+                                                    <div class="col-md-12">
+                                                        <strong>{{ question.question|raw }}</strong>
+                                                    </div>
+                                                    {% set opt = getQOptions(question.qid) %}
+                                                    {% if opt|length > 0 %}
+                                                        <ol type="a">
+                                                            {% for option in opt %}
+                                                                <li class=''><input type='radio' name='qopt[{{ question.qid }}]'  value="{{ option.opid }}" /> {{ option.options }}</li>
+                                                                {% endfor %}
+                                                        </ol>
+
+                                                    {% endif %}
+                                                    <hr/>
+                                                </li>
+                                            {% endfor %}
+                                        </div>
+                                    </ul>
+                                    <div class="form-group">
+                                        <div class=" col-sm-8">
+                                            <button type="submit" class="btn btn-primary" id="" name="submit" value="submit" >{{ 'entrainings.Submitassessment'|trans }}</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            {% else %}
+                                <div role="alert" class="alert alert-danger"> <strong>Oh snap!</strong> {{ 'entrainings.Looksliketheresnoassessmentforthistraining'|trans }} </div>
+                            {% endif %}
+                        </div>
+                    </div>   
+                    <br>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END HERO UNIT -->
+    <br/>
+    <script type='text/javascript'>
+        $(document).ready(function () {
+            $("#submit-asses-form").validate({
+                rules: {
+                    'qopt[]': {required: true
+                    }
+                },
+                messages: {
+                    'qopt[] ': {required: var_fieldnotblank}
+                },
+                errorPlacement: function (error, element) {
+
+                    //error.appendTo(element.parent());
+                    error.prependTo(element.parent());
+                },
+                invalidHandler: function (form, validation) {
+                    $('div.form-error').remove();
+                }
+            });
+        });
+    </script>
+
+{% endblock %}

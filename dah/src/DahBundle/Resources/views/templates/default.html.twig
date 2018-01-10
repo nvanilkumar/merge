@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl"><head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>.: WELCOME TO DAR AL-HEKMA UNIVERSITY :.</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="title" content="{% if metaTitle is defined %}{{ metaTitle }}{% endif %}">
+        <meta name="description" content="{% if metaDescription is defined %}{{ metaDescription }}{% endif %}">
+        <meta name="keywords" content="{% if metaKeywords is defined %}{{ metaKeywords }}{% endif %}">
+        <meta name="author" content="">
+        <!-- Font Awesome Icons -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <!-- Ionicons -->
+        <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+        <!-- CSS -->
+        <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/own_styles.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/my-custom-styles.css') }}" rel="stylesheet" type="text/css">
+
+        <!-- for demo purpose only, you should remove it on your project directory -->
+        <!-- IE 9 Fallback-->
+        <!--[if IE 9]>
+                <link href="assets/css/ie.css" rel="stylesheet">
+        <![endif]-->
+        <!-- GOOGLE FONTS -->
+        <link href="{{ asset('assets/css/css_002.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/css.css') }}" rel="stylesheet" type="text/css">
+        <script src="{{ asset('assets/js/jquery-2.js') }}"></script>
+        <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    </head>
+
+    <body>
+        <!-- WRAPPER -->
+        <div class="wrapper">
+            <!-- NAVBAR -->
+            <nav class="navbar navbar-default " role="navigation">
+                <div class="container-100">
+                    <div class="container">
+                        <div class="topbar">
+                            <!-- <ul class="list-inline top-nav">
+                                  <li><a href="#"><i class="fa fa-fw fa-facebook-official fa-2x white-color"> </i></a></li>
+                                  <li><a href="#"><i class="fa fa-fw fa-instagram fa-2x white-color"> </i></a></li>
+                                  <li><a href="#"><i class="fa fa-fw fa-twitter fa-2x white-color"> </i></a></li>
+                                  <li><a href="#"><i class="fa fa-fw fa-search fa-2x white-color"> </i></a></li>
+                             </ul>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <!-- TOPBAR -->
+
+                    <!-- END TOPBAR -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+                            <span class="sr-only">Toggle Navigation</span>
+                            <i class="fa fa-bars"></i>
+                        </button>
+
+                    </div>
+                    <!-- MAIN NAVIGATION -->
+                    <div id="main-nav" class="navbar-collapse collapse navbar-mega-menu pull-left">
+
+                        <ul class="nav navbar-nav navbar-right">
+                            {% if app.user %}
+                                <li><a href="{{ url('logout') }}">{{ 'account.logout'|trans }}</a></li>
+                                <li><a href="{{ url('_dashboard') }}">{{ 'account.account'|trans }}</a></li>
+                                {% endif %}
+                            <li class=""><a href="{{ url('_news') }}" >{{ 'common.news'|trans }} </a></li>
+                            <li class=""><a href="{{ url('_workshops') }}" >{{ 'common.workshops'|trans }} </a></li>
+                            <li class=""><a href="{{ url('_trainingslist') }}" >{{ 'common.trainingPrograms'|trans }} </a></li>
+                            <li class=""><a href="{{ url('_pages',{'link':'about-us'}) }}">{{ 'footer.aboutUs'|trans }}</a></li>
+                            <li class=""><a href="{{ url('_home') }}" >{{ 'common.home'|trans }} </a></li>   
+                                {% if app.environment=='dev' %}
+                                <li>
+                                    <a href="{{ path('english') }}"><img src="{{ asset('assets/img/eng.ico') }}" alt="English Language" height="auto" width="20" /></a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('arabic') }}"><img src="{{ asset('assets/img/saudi-arabian-flag-small.gif') }}" alt="Arabic Language" height="auto" width="20" /></a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="pull-right"><a href="{{ url('_home') }}" class="navbar-brand navbar-logo navbar-logo-bigger">
+                            <img src="{{ asset('assets/img/DAR-Al-Hekma.jpg') }}"  alt="">
+                        </a></div>
+                    <!-- END MAIN NAVIGATION -->
+                </div>
+            </nav>
+            {% for flashMessage in app.session.flashbag.get('notice')  %}
+                <div class="flash-message notice">
+                    {{ flashMessage|raw }}
+                    <a href="javascript:;" class="close-flash-message"><i class="fa fa-remove"></i></a>
+                </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('error')  %}
+                <div class="flash-message error">
+                    {{ flashMessage|raw }}
+                    <a href="javascript:;" class="close-flash-message"><i class="fa fa-remove"></i></a>
+                </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('success')  %}
+                <div class="flash-message success">
+                    {{ flashMessage|raw }}
+                    <a href="javascript:;" class="close-flash-message"><i class="fa fa-remove"></i></a>
+                </div>
+            {% endfor %}
+            {% block content %}
+            {% endblock %}
+            <!-- CALL-TO-ACTION -->
+            <section class="call-to-action">
+                <div class="container">
+                    <div id="contact-messages"></div>
+                    <form class="form-horizontal" method="POST" action="{{ url('add_contact') }}" id="add-contact-form">
+                        <div class="pull-left" style="padding-right:10px;">
+                            <h4>{{ 'footer.YOUWANTTOKNOWMOREINFORMATION'|trans }}<br>
+                                {{ 'footer.SENDUSAMAIL'|trans }}</h4>
+
+                        </div>
+                        <div class="pull-left" style="padding-right:10px;">
+                            <span><input type="text" class="form-control" name="fullname" maxlength="100" placeholder="{{ 'footer.yourName'|trans }}"/></span><br>
+                            <span><input type="email" class="form-control" name="email" maxlength="100" placeholder="{{ 'footer.yourEmail'|trans }}"/></span>
+                        </div>
+                        <div class="col-md-4 pull-left">
+                            <textarea type="text" class="form-control" name="message" maxlength="65535" placeholder="{{ 'footer.yourMessage'|trans }}" style="height:90px;"></textarea>
+                        </div>
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-lg btn-primary">{{ 'footer.contactUs'|trans }}</button>
+
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <!-- END CALL-TO-ACTION -->
+            <!-- END NAVBAR -->
+            <!-- FOOTER -->
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+
+                            {% if getAddressStat() %}
+                                <address class="margin-bottom-30px">
+                                    {% set addressdetails = getAddressDet() %}
+                                    <ul class="list-unstyled">
+                                        {% if addressdetails.address is defined and addressdetails.address!='' %}<li>{{ addressdetails.address|raw }}</li>{% endif %}
+                                        {% if addressdetails.phone is defined and addressdetails.phone!='' %}<li>{{ 'footer.Phone'|trans }}: {{ addressdetails.phone }}</li>{% endif %}
+                                        {% if addressdetails.email is defined and addressdetails.email!='' %}<li>{{ 'footer.Email'|trans }}: <a href="mailto:{{ addressdetails.email }}">{{ addressdetails.email }}</a></li>{% endif %}
+                                    </ul>
+                                </address>
+                            {% endif %}
+                            <!-- END COLUMN 1 -->
+                        </div>
+                        <div class="col-md-4">
+                            <!-- COLUMN 2 -->
+                            <h3 class="footer-heading">{{ 'footer.usefullinks'|trans }}</h3>
+                            <div class="row margin-bottom-30px">
+                                <div class="col-xs-6">
+                                    <ul class="list-unstyled footer-nav">
+                                        <li><a href="{{ url('_pages',{'link':'about-us'}) }}">{{ 'footer.aboutUs'|trans }}</a></li>
+                                        <li><a href="{{ url('_news') }}">{{ 'common.news'|trans }}</a></li>
+                                        <li><a href="{{ url('_workshops') }}">{{ 'common.workshops'|trans }}</a></li>
+                                        <li><a href="#">{{ 'common.trainingPrograms'|trans }}</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-6">
+                                    <ul class="list-unstyled footer-nav">
+                                        <li><a href="{{ url('_faqs') }}">{{ 'footer.faq'|trans }}</a></li>
+                                        <li><a href="{{ url('_pages',{'link':'terms-of-condition'}) }}">{{ 'footer.terms'|trans }}</a></li>
+                                        <li><a href="{{ url('_pages',{'link':'privacy-policy'}) }}">{{ 'footer.privacyPolicy'|trans }}</a></li>
+                                        <li><a href="{{ url('_calendar') }}">{{ 'footer.Calendar'|trans }}</a></li>
+                                        {% if getAdditionalLinksStat() %}
+                                        {% set newlinks = getAdditionalLinksDet() %}
+                                        {% for link in newlinks %}
+                                        <li><a href="{{ url('_pages',{'link':link.page_url}) }}">{{ link.page_name }}</a></li>
+                                        {% endfor %}
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- END COLUMN 2 -->
+                        </div>
+                        <div class="col-md-4">
+                            <!-- COLUMN 3 -->
+                            <div class="newsletter">
+                                <h3 class="footer-heading">{{ 'footer.newsletter'|trans }}</h3>
+                                <p>{{ 'footer.getthelatestupdatefromusbysubscribingtoournewsletter'|trans }}</p>
+                                <div id="newsletter-messages"></div>
+                                <form class="newsletter-form" method="POST" action='{{ url('add_to_newsletter') }}' id='form-newsletter'>
+                                    <div class="input-group input-group-lg">
+                                        <input class="form-control" name="email" id='newsletter-email' placeholder="{{ 'footer.yourEmail'|trans }}" type="email">
+                                        <span class="input-group-btn"><button class="btn btn-primary" type="submit"><i class="fa fa-spinner fa-spin"></i><span>{{ 'footer.SUBSCRIBE'|trans }}</span></button>
+                                        </span>
+                                    </div>
+                                    <div class="alert"></div>
+                                </form>
+                            </div>
+                            {% if getConnectedStat() %}
+                                {% set details = getConnectedDet() %}
+                                <div class="social-connect">
+                                    <h3 class="footer-heading">{{ 'footer.getConnected'|trans }}</h3>
+                                    <ul class="list-inline social-icons">
+                                        {% if details.facebook is defined and details.facebook != '' %}
+                                            <li><a href="{{ addhttp(details.facebook) }}" target='_blank' class="facebook-bg"><i class="fa fa-facebook"></i></a></li>
+                                                {% endif %}
+                                                {% if details.twitter is defined and details.twitter != '' %}
+                                            <li><a href="{{  addhttp(details.twitter) }}" target='_blank' class="twitter-bg"><i class="fa fa-twitter"></i></a></li>
+                                                {% endif %}
+                                                {% if details.google_plus is defined and details.google_plus != '' %}
+                                            <li><a href="{{  addhttp(details.google_plus) }}" target='_blank' class="googleplus-bg"><i class="fa fa-google-plus"></i></a></li>
+                                                {% endif %}
+                                                {% if details.blackboard is defined and details.blackboard != '' %}
+                                            <li><a href="{{  addhttp(details.blackboard) }}" target='_blank' class="googleplus-bg"><i class="fa fa-pencil-square-o"></i></a></li>
+                                                {% endif %}
+                                                {% if details.linkedin is defined and details.linkedin != '' %}
+                                            <li><a href="{{  addhttp(details.linkedin) }}" target='_blank' class="linkedin-bg"><i class="fa fa-linkedin"></i></a></li>
+                                                {% endif %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                            <!-- END COLUMN 3 -->
+                        </div>
+                    </div>
+                </div>
+                <!-- COPYRIGHT -->
+                <div class="text-center copyright">
+                    ©2016 {{ 'common.DARALHEKMA.'|trans }} {{ 'footer.allRightReserved'|trans }}
+                </div>
+                <!-- END COPYRIGHT -->
+            </footer>
+            <!-- END FOOTER -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content">
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <input type='hidden' name='dublicate_subsc_email_url' value='' id='dublicate_subsc_email_url' /> 
+        <script>
+            var enroll_to_workshop_url = '{{ url('enroll_to_workshop') }}';
+            var enroll_to_training_url = '{{ url('enroll_to_training') }}';
+            var leftifyeditor = 'no';
+        </script>
+        <!-- END WRAPPER -->
+        <!-- JAVASCRIPTS -->
+
+        <script src="{{ asset('assets/js/slick.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery_002.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery_003.js') }}"></script>
+        <script src="{{ asset('assets/js/jquery.validate.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.1/additional-methods.min.js"></script>
+        
+        {% if app.request.getLocale()=='ar_AR' %}
+            <script src="{{ asset('assets/js/messages.ar.js') }}"></script>
+        {% else %}
+            <script src="{{ asset('assets/js/messages.en.js') }}"></script>
+        {% endif %}
+        <script src="{{ asset('assets/js/app.js') }}"></script>
+        <script type="text/javascript">
+            function flashmessage(mesg, status) {
+                var $html = '<div class="flash-message ' + status + '">' + mesg + '<a href="#" class="close_flash_message" title="Close Message"><i class="icon-remove"></i></a></div>';
+                $("body").prepend($html);
+                setTimeout(function () {
+                    $(".flash-message").fadeOut();
+                }, 5000);
+            }
+            function showmessage(mesg, status) {
+                var $html = '<div class="show-message ' + status + '">' + mesg + '<a href="#" class="close_show_message" title="Close Message"><i class="icon-remove"></i></a></div>';
+                $("body").prepend($html);
+            }
+
+            function closeMessage() {
+                $(".show-message").fadeOut();
+            }
+        </script>
+        <script>
+            $(".close-flash-message").click(function ()
+            {
+                $(".flash-message").hide();
+            });
+        </script>
+    </body></html>

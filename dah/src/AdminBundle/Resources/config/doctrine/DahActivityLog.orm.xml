@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AdminBundle\Entity\DahActivityLog" table="dah_activity_log">
+    <indexes>
+      <index name="adminid" columns="adminid"/>
+    </indexes>
+    <id name="logid" type="integer" column="logid"/>
+    <id name="adminid" association-key="true"/>
+    <field name="message" type="text" column="message" length="65535" nullable="true"/>
+    <field name="loggedOn" type="integer" column="logged_on" nullable="true"/>
+    <one-to-one field="adminid" target-entity="DahAdmin">
+      <join-columns>
+        <join-column name="adminid" referenced-column-name="adminid"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>
